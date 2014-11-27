@@ -2,8 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleAllowMixedLocalizations</key>
+	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>慧明教师</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -20,10 +24,20 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>HttpImageurl</key>
+	<string>image.hmjxt.com</string>
+	<key>HttpImageurl2</key>
+	<string>115.29.103.36/SM</string>
+	<key>HttpImageurl3</key>
+	<string>192.168.2.103:8080/SM</string>
+	<key>Httpurl</key>
+	<string>mobile.hmjxt.com/sma</string>
+	<key>Httpurl2</key>
+	<string>115.29.103.36/sma</string>
+	<key>Httpurl3</key>
+	<string>192.168.2.103:8080/sma</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
