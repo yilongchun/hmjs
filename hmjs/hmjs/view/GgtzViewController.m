@@ -22,7 +22,7 @@
     NSNumber *page;
     NSNumber *rows;
     
-    NSString *schoolid;
+    NSString *classId;
     NSString *userid;
 }
     
@@ -40,7 +40,7 @@
     
 
     //初始化tableview
-    CGRect cg = CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64);
+    CGRect cg = CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-50);
     mytableView = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
     mytableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 //    [mytableView setSeparatorColor:[UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1]];
@@ -70,7 +70,7 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     NSDictionary *class = [userDefaults objectForKey:@"class"];
-    schoolid = [class objectForKey:@"schoolid"];
+    classId = [class objectForKey:@"id"];
     userid = [userDefaults objectForKey:@"userid"];
     
     self.dataSource = [[NSMutableArray alloc] init];
@@ -111,8 +111,8 @@
     [dic setValue:userid forKey:@"userid"];
     [dic setValue:page forKey:@"page"];
     [dic setValue:rows forKey:@"rows"];
-    [dic setValue:schoolid forKey:@"recordId"];
-    MKNetworkOperation *op = [engine operationWithPath:@"/Pnotice/findbyidList.do" params:dic httpMethod:@"GET"];
+    [dic setValue:classId forKey:@"classId"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/Notice/findbyidList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         NSString *result = [operation responseString];
         NSError *error;
@@ -157,8 +157,8 @@
     [dic setValue:userid forKey:@"userid"];
     [dic setValue:page forKey:@"page"];
     [dic setValue:rows forKey:@"rows"];
-    [dic setValue:schoolid forKey:@"recordId"];
-    MKNetworkOperation *op = [engine operationWithPath:@"/Pnotice/findbyidList.do" params:dic httpMethod:@"GET"];
+    [dic setValue:classId forKey:@"classId"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/Notice/findbyidList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         NSString *result = [operation responseString];
         NSError *error;
@@ -253,6 +253,7 @@
         NSString *tncontent = [info objectForKey:@"tncontent"];
         NSNumber *noticecount = [info objectForKey:@"noticecount"];
         NSString *tncreatedate = [info objectForKey:@"tncreatedate"];
+        NSString *noticename = [info objectForKey:@"noticename"];
         cell.gtitle.text = tntitle;
         cell.gdispcription.text = tncontent;
         cell.gdispcription.numberOfLines = 2;// 不可少Label属性之一
@@ -260,6 +261,7 @@
         //[cell.gdispcription sizeToFit];
         cell.gpinglun.text = [NSString stringWithFormat:@"评论(%@)",noticecount];
         cell.gdate.text = tncreatedate;
+        cell.gsource.text = [NSString stringWithFormat:@"来自:%@",noticename];
         [cell.imageview setImage:[UIImage imageNamed:@"nopicture.png"]];
         return cell;
     }

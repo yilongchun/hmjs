@@ -11,7 +11,6 @@
 #import "MKNetworkKit.h"
 #import "MainViewController.h"
 #import "Utils.h"
-#import "ChooseChildrenViewController.h"
 #import "ChooseClassViewController.h"
 #import "EMError.h"
 
@@ -29,6 +28,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO ;
     
     self.navigationController.delegate = self;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
@@ -89,7 +90,7 @@
     [dic setValue:self.username.text forKey:@"userId"];
     [dic setValue:self.password.text forKey:@"password"];
     
-    MKNetworkOperation *op = [engine operationWithPath:@"/app/Plogin.do" params:dic httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/app/Tlogin.do" params:dic httpMethod:@"POST"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
 
         NSString *result = [operation responseString];
@@ -153,7 +154,7 @@
             
             
             
-            [self getParentInfo:userid];//获取家长信息
+            [self getClassInfo:userid];//获取班级信息
             
             
             }else{
@@ -179,150 +180,12 @@
 
 }
 
-//登陆之后根据userid获取家长信息
-- (void)getParentInfo:(NSString *)userid{
-    
+//登陆之后根据userid获取班级信息
+- (void)getClassInfo:(NSString *)userid{
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:userid forKey:@"userid"];
     
-    MKNetworkOperation *op = [engine operationWithPath:@"/Parent/findbyid.do" params:dic httpMethod:@"GET"];
-    [op addCompletionHandler:^(MKNetworkOperation *operation) {
-//        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
-        NSString *result = [operation responseString];
-        NSError *error;
-        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-        if (resultDict == nil) {
-            NSLog(@"json parse failed \r\n");
-        }
-        
-        NSNumber *success = [resultDict objectForKey:@"success"];
-        NSString *msg = [resultDict objectForKey:@"msg"];
-        
-        if ([success boolValue]) {
-            NSArray *array = [resultDict objectForKey:@"data"];
-            if ([array count] > 0) {
-                NSDictionary *data = [array objectAtIndex:0];
-                NSString *parentid = [data objectForKey:@"id"];
-                //NSString *parentname = [data objectForKey:@"parentname"];
-                [self getChildrenInfo:parentid];//获取宝宝信息
-            }else{
-                
-            }
-        }else{
-            [HUD hide:YES];
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.mode = MBProgressHUDModeText;
-            hud.labelText = msg;
-            hud.margin = 10.f;
-            hud.removeFromSuperViewOnHide = YES;
-            [hud hide:YES afterDelay:1];
-        }
-    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
-        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.mode = MBProgressHUDModeText;
-        hud.labelText = @"连接失败";
-        hud.margin = 10.f;
-        hud.removeFromSuperViewOnHide = YES;
-        [hud hide:YES afterDelay:2];
-    }];
-    [engine enqueueOperation:op];
-}
-
-//根据家长id获取宝宝信息
-- (void)getChildrenInfo:(NSString *)parentid{
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:parentid forKey:@"parentid"];
-    
-    MKNetworkOperation *op = [engine operationWithPath:@"/Puser/findbyid.do" params:dic httpMethod:@"GET"];
-    [op addCompletionHandler:^(MKNetworkOperation *operation) {
-//        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
-        NSString *result = [operation responseString];
-        NSError *error;
-        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-        if (resultDict == nil) {
-            NSLog(@"json parse failed \r\n");
-        }
-        
-        NSNumber *success = [resultDict objectForKey:@"success"];
-        NSString *msg = [resultDict objectForKey:@"msg"];
-        
-        if ([success boolValue]) {
-            NSArray *array = [resultDict objectForKey:@"data"];
-            if ([array count] == 1) {//只有一个宝宝默认选择
-                NSDictionary *data = [array objectAtIndex:0];
-                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-                [userDefaults setObject:data forKey:@"student"];//将默认的一个宝宝存入userdefaults
-                
-                [userDefaults setObject:array forKey:@"students"];
-                
-                NSString *studentid = [data objectForKey:@"studentid"];//学生id
-                [self getClassInfo:studentid];//获取班级信息
-                
-            }else if([array count] > 1){//有多个宝宝需要用户选择
-                
-//                NSDictionary *data = [array objectAtIndex:0];
-//                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//                [userDefaults setObject:data forKey:@"student"];//将默认的一个宝宝存入userdefaults
-//                NSString *studentid = [data objectForKey:@"studentid"];//学生id
-//                [self getClassInfo:studentid];//获取班级信息
-                
-                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-                [userDefaults setObject:array forKey:@"students"];//将多个宝宝存入userdefaults
-                
-                NSDictionary *student = [userDefaults objectForKey:@"student"];//从用户之前的设置读取已经选择的宝宝
-                NSString *tempstudentid = [student objectForKey:@"studentid"];//取得学生id
-                
-                BOOL studentflag = false;
-                
-                for (int i = 0 ; i < [array count]; i++) {
-                    NSDictionary *data = [array objectAtIndex:i];
-                    NSString *studentid = [data objectForKey:@"studentid"];
-                    if ([studentid isEqualToString:tempstudentid]) {
-                        studentflag = true;//如果相等 说明之前已经选择过宝宝
-                        break;
-                    }
-                }
-                if (studentflag) {//如果选择过宝宝 直接读取班级信息
-                    
-                    [self getClassInfo:tempstudentid];//加载班级信息
-                    
-                }else{//如果没有选择过 跳转切换宝宝界面
-                    ChooseChildrenViewController *vc = [[ChooseChildrenViewController alloc] init];//跳转 需要用户选择宝宝
-                    [userDefaults setObject:@"1" forKey:@"loginflag"];
-                    [self.navigationController pushViewController:vc animated:YES];
-                    [HUD hide:YES];
-                }
-                
-            }
-        }else{
-            [HUD hide:YES];
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.mode = MBProgressHUDModeText;
-            hud.labelText = msg;
-            hud.margin = 10.f;
-            hud.removeFromSuperViewOnHide = YES;
-            [hud hide:YES afterDelay:1];
-        }
-    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
-        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.mode = MBProgressHUDModeText;
-        hud.labelText = @"连接失败";
-        hud.margin = 10.f;
-        hud.removeFromSuperViewOnHide = YES;
-        [hud hide:YES afterDelay:2];
-    }];
-    [engine enqueueOperation:op];
-}
-//根据学生id获取班级信息
-- (void)getClassInfo:(NSString *)studentid{
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:studentid forKey:@"studentid"];
-    
-    MKNetworkOperation *op = [engine operationWithPath:@"/Pclass/findbyid.do" params:dic httpMethod:@"GET"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/class/findAllList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
 //        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
         NSString *result = [operation responseString];
@@ -354,12 +217,12 @@
                 [userDefaults setObject:array forKey:@"classes"];//将多个班级存入userdefaults
                 
                 NSDictionary *class = [userDefaults objectForKey:@"class"];//从用户之前的设置读取已经选择的班级
-                NSString *tempclassid = [class objectForKey:@"classid"];//取得班级id
-                
+                NSString *tempclassid = [class objectForKey:@"id"];//取得班级id
+                [userDefaults setObject:@"1" forKey:@"loginflag"];
                 BOOL classflag = false;
                 for (int i = 0 ; i < [array count]; i++) {
                     NSDictionary *data = [array objectAtIndex:i];
-                    NSString *classid = [data objectForKey:@"classid"];
+                    NSString *classid = [data objectForKey:@"id"];
                     if ([classid isEqualToString:tempclassid]) {
                         classflag = true;//如果相等 说明之前已经选择过班级
                         break;

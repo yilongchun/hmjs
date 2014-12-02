@@ -55,11 +55,11 @@
     self.dataSource = [userDefaults objectForKey:@"classes"];
     
     NSDictionary *class = [userDefaults objectForKey:@"class"];
-    NSString *classid = [class objectForKey:@"classid"];
+    NSString *classid = [class objectForKey:@"id"];
     
     for (int i = 0 ; i < [self.dataSource count]; i++) {
         NSDictionary *data = [self.dataSource objectAtIndex:i];
-        NSString *classid2 = [data objectForKey:@"classid"];
+        NSString *classid2 = [data objectForKey:@"id"];
         if ([classid isEqualToString:classid2]) {
             currentIndex = i;
             break;
@@ -92,7 +92,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     NSDictionary *data = [self.dataSource objectAtIndex:indexPath.row];
-    NSString *classname = [data objectForKey:@"classname"];
+    NSString *classname = [data objectForKey:@"className"];
     cell.textLabel.text = classname;
     // 重用机制，如果选中的行正好要重用
     if (currentIndex == indexPath.row) {
@@ -121,7 +121,7 @@
     
     NSDictionary *data = [self.dataSource objectAtIndex:indexPath.row];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:data forKey:@"class"];//将默认的一个宝宝存入userdefaults
+    [userDefaults setObject:data forKey:@"class"];//将默认的一个班级存入userdefaults
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     

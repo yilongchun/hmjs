@@ -29,14 +29,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self.navigationController setNavigationBarHidden:NO];
-    [self setTitle:@"个人档案"];
+    [self setTitle:@"个人中心"];
     
     UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(updateImgAction:)];
     [self.myimageview addGestureRecognizer:singleTap1];
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
-    [self.mytableview setSeparatorColor:[UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1]];
+    [self.mytableview setSeparatorColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1]];
     [self loadData];
     
     //添加加载等待条
@@ -49,10 +49,10 @@
 - (void)loadData{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    NSDictionary *student = [userDefaults objectForKey:@"student"];
-    name = [student objectForKey:@"studnetname"];
-    age = [student objectForKey:@"age"];
-    NSNumber *sexnum = [student objectForKey:@"studentsex"];
+    NSDictionary *teacher = [userDefaults objectForKey:@"teacher"];
+    name = [teacher objectForKey:@"tname"];
+    age = [teacher objectForKey:@"tage"];
+    NSNumber *sexnum = [teacher objectForKey:@"tsex"];
     if ([sexnum intValue]== 0) {
         sex = @"男";
     }else if ([sexnum intValue]== 1){
@@ -60,25 +60,22 @@
     }
     
     NSDictionary *class= [userDefaults objectForKey:@"class"];
-    classname = [class objectForKey:@"classname"];
-    NSString *flieid = [student objectForKey:@"flieid"];
+    classname = [class objectForKey:@"className"];
+    NSString *flieid = [teacher objectForKey:@"flieid"];
     
     //设置头像
     if ([Utils isBlankString:flieid]) {
         [self.myimageview setImage:[UIImage imageNamed:@"chatListCellHead.png"]];
     }else{
-//        [self.myimageview setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/image/show.do?id=%@",[Utils getImageHostname],flieid]] placeholderImage:[UIImage imageNamed:@"nopicture.png"]];
         [self.myimageview setImageWithURL:[NSURL URLWithString:flieid] placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
-        
-//        [self.myimageview setImageFromURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/image/show.do?id=%@",[Utils getHostname],flieid]] placeHolderImage:[UIImage imageNamed:@"nopicture.png"] usingEngine:engine animation:YES];
     }
     
     self.myimageview.layer.cornerRadius = self.myimageview.frame.size.height/2;
     self.myimageview.layer.masksToBounds = YES;
     [self.myimageview setContentMode:UIViewContentModeScaleAspectFill];
     [self.myimageview setClipsToBounds:YES];
-    self.myimageview.layer.borderColor = [UIColor yellowColor].CGColor;
-    self.myimageview.layer.borderWidth = 1.0f;
+//    self.myimageview.layer.borderColor = [UIColor yellowColor].CGColor;
+//    self.myimageview.layer.borderWidth = 1.0f;
     self.myimageview.layer.shadowOffset = CGSizeMake(4.0, 4.0);
     self.myimageview.layer.shadowOpacity = 0.5;
     self.myimageview.layer.shadowRadius = 2.0;

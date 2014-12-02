@@ -9,13 +9,13 @@
 #import "MainViewController.h"
 #import "MKNetworkKit.h"
 #import "Utils.h"
-#import "YsdtViewController.h"
+//#import "YsdtViewController.h"
 #import "BwhdViewController.h"
 #import "GgtzViewController.h"
 #import "ShezhiViewController.h"
-#import "ChooseChildrenViewController.h"
+
 #import "ChooseClassViewController.h"
-#import "BjtzViewController.h"
+
 #import "BwhdViewController.h"
 #import "MyViewController.h"
 #import "JYSlideSegmentController.h"
@@ -26,6 +26,7 @@
 #import "MBProgressHUD.h"
 #import "ApplyViewController.h"
 #import "MyTabbarController.h"
+#import "BbxxTarbarViewController.h"
 
 //两次提示的默认间隔
 static const CGFloat kDefaultPlaySoundInterval = 3.0;
@@ -72,7 +73,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil]];
     [self.navigationController setNavigationBarHidden:YES];
     
-    
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO ;
         
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
     self.navigationItem.backBarButtonItem = backItem;
@@ -88,58 +89,83 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     HUD.delegate = self;
     
     UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(grdaAction:)];
-    [self.studentimg addGestureRecognizer:singleTap1];
-    
-    self.studentimg.layer.cornerRadius = self.studentimg.frame.size.height/2;
-    self.studentimg.layer.masksToBounds = YES;
-    [self.studentimg setContentMode:UIViewContentModeScaleAspectFill];
-    [self.studentimg setClipsToBounds:YES];
-    self.studentimg.layer.borderColor = [UIColor yellowColor].CGColor;
-    self.studentimg.layer.borderWidth = 1.0f;
-    self.studentimg.layer.shadowOffset = CGSizeMake(4.0, 4.0);
-    self.studentimg.layer.shadowOpacity = 0.5;
-    self.studentimg.layer.shadowRadius = 2.0;
+    [self.teacherimg addGestureRecognizer:singleTap1];
+    self.teacherimg.layer.cornerRadius = self.teacherimg.frame.size.height/2;
+    self.teacherimg.layer.masksToBounds = YES;
+    [self.teacherimg setContentMode:UIViewContentModeScaleAspectFill];
+    [self.teacherimg setClipsToBounds:YES];
+    //self.teacherimg.layer.borderColor = [UIColor yellowColor].CGColor;
+    //self.teacherimg.layer.borderWidth = 1.0f;
+    self.teacherimg.layer.shadowOffset = CGSizeMake(4.0, 4.0);
+    self.teacherimg.layer.shadowOpacity = 0.5;
+    self.teacherimg.layer.shadowRadius = 2.0;
     
     [self initData];
     
 }
 
 - (void)initData{
-    [self loadData];//设置学生信息
-    [self loadYezx];//加载育儿资讯分类
-    [self loadKcb];//加载课程表
-    [self loadBbsp];//加载食谱
-    [self loadData2];
+    [self loadData];//加载教师个人信息
+//    [self loadYezx];//加载育儿资讯分类
+//    [self loadKcb];//加载课程表
+//    [self loadBbsp];//加载食谱
+//    [self loadData2];
    
 }
 
-//加载信息设置
+//加载教师个人信息
 - (void)loadData{
-    //设置信息
+    
+    [HUD show:YES];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *userid = [userDefaults objectForKey:@"userid"];
+    [dic setValue:userid forKey:@"userid"];
     
-    NSDictionary *student = [userDefaults objectForKey:@"student"];
-    NSString *studentname = [student objectForKey:@"studnetname"];
-    NSNumber *studentage = [student objectForKey:@"age"];
-    NSString *flieid = [student objectForKey:@"flieid"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/Teacher/findbyid.do" params:dic httpMethod:@"GET"];
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        NSString *result = [operation responseString];
+        NSError *error;
+        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+        if (resultDict == nil) {
+            NSLog(@"json parse failed \r\n");
+        }
+        NSNumber *success = [resultDict objectForKey:@"success"];
+        NSString *msg = [resultDict objectForKey:@"msg"];
+        if ([success boolValue]) {
+            NSDictionary *data = [resultDict objectForKey:@"data"];
+            if (data != nil) {
+                NSString *fileid = [data objectForKey:@"flieid"];
+                NSString *teachername = [data objectForKey:@"tname"];
+                self.teachername.text = teachername;
+                
+                //设置头像
+                if ([Utils isBlankString:fileid]) {
+                    [self.teacherimg setImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+                }else{
+                    [self.teacherimg setImageWithURL:[NSURL URLWithString:fileid] placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+                }
+                [userDefaults setObject:data forKey:@"teacher"];
+            }
+            [HUD hide:YES];
+        }else{
+            [HUD hide:YES];
+            [self alertMsg:msg];
+        }
+        
+    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
+        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+        [HUD hide:YES];
+    }];
+    [engine enqueueOperation:op];
     
-    self.studentname.text = studentname;
-    self.studentage.text = [NSString stringWithFormat:@"年龄：%@岁",studentage];
-    
-    //设置头像
-    if ([Utils isBlankString:flieid]) {
-        [self.studentimg setImage:[UIImage imageNamed:@"chatListCellHead.png"]];
-    }else{
-//        [self.studentimg setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/image/show.do?id=%@",[Utils getImageHostname],flieid]] placeholderImage:[UIImage imageNamed:@"nopicture.png"]];
-        [self.studentimg setImageWithURL:[NSURL URLWithString:flieid] placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
-    }
 }
 //家长列表
 - (void)loadData2{
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *class = [userDefaults objectForKey:@"class"];
-    NSString *classid = [class objectForKey:@"classid"];
+    NSString *classid = [class objectForKey:@"id"];
     [dic setValue:classid forKey:@"classId"];
     [dic setValue:@"1" forKey:@"page"];
     [dic setValue:@"10" forKey:@"rows"];
@@ -196,11 +222,6 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     }
 }
 
-//选择宝宝
-- (IBAction)chooseChildren:(UIButton *)sender {
-    ChooseChildrenViewController *cc = [[ChooseChildrenViewController alloc] init];
-    [self.navigationController pushViewController:cc animated:YES];
-}
 //选择班级
 - (IBAction)chooseClass:(UIButton *)sender {
     
@@ -223,9 +244,12 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 //园所动态
 - (IBAction)ysdtAction:(UIButton *)sender {
     
+    BbxxTarbarViewController *vc = [[BbxxTarbarViewController alloc] init];
     
-    YsdtViewController *ysdt = [[YsdtViewController alloc] init];
-    [self.navigationController pushViewController:ysdt animated:YES];
+    
+//    YsdtViewController *ysdt = [[YsdtViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+    [self.navigationController setNavigationBarHidden:NO];
 }
 //班务活动
 - (IBAction)bwhdAction:(UIButton *)sender {
@@ -440,7 +464,28 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
         NSDictionary *info = [data objectAtIndex:0];
         NSString *date = [info objectForKey:@"occurDate"];
         if (date.length > 5) {
-            vc.title = [[info objectForKey:@"occurDate"] substringFromIndex:5];
+//            vc.title = [[info objectForKey:@"occurDate"] substringFromIndex:5];
+            
+            switch (i) {
+                case 0:
+                    vc.title = @"周一";
+                    break;
+                case 1:
+                    vc.title = @"周二";
+                    break;
+                case 2:
+                    vc.title = @"周三";
+                    break;
+                case 3:
+                    vc.title = @"周四";
+                    break;
+                case 4:
+                    vc.title = @"周五";
+                    break;
+                default:
+                    break;
+            }
+
         }
         [vcs addObject:vc];
     }
@@ -467,6 +512,10 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
         slideSegmentController.title = @"食谱";
         slideSegmentController.indicatorInsets = UIEdgeInsetsMake(0, 8, 8, 8);
         slideSegmentController.indicator.backgroundColor = [UIColor greenColor];
+        
+        //设置背景图片
+        UIImage *image = [UIImage imageNamed:@"ic_sp_001.png"];
+        slideSegmentController.view.layer.contents = (id)image.CGImage;
         
         [self.navigationController setNavigationBarHidden:NO];
         [self.navigationController pushViewController:slideSegmentController animated:YES];

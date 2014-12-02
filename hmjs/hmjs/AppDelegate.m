@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "ApplyViewController.h"
 #import "Utils.h"
+#import "GuideViewController.h"
 
 @interface AppDelegate ()
 
@@ -32,7 +33,7 @@
                                                object:nil];
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1]];
+        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:116/255.0 green:176/255.0 blue:64/255.0 alpha:1]];
     }
     
     
@@ -76,13 +77,28 @@
 //        [vc setNavigationBarHidden:YES];
 //        self.window.rootViewController = vc;
 //    }else{
+    
+//    }
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"everLaunched"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
+        NSLog(@"first launch第一次程序启动");
+        //  [self.viewController setNsstilt:@"这是第一次启动"];
+        
+        
+        GuideViewController *vc = [[GuideViewController alloc] init];
+        self.window.rootViewController = vc;
+        
+        
+        //== 这里开始你可以放入引导画面了! ==//
+    }else {
+        NSLog(@"second launch再次程序启动");
+        //  [self.viewController setNsstilt:@"这是程序的N次启动"];
         UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
         [vc setNavigationBarHidden:YES];
         self.window.rootViewController = vc;
-//    }
-    
-    
-
+    }
     [self.window makeKeyAndVisible];
     return YES;
 }

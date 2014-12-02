@@ -13,7 +13,7 @@
 @interface MainViewController : UIViewController<UINavigationControllerDelegate,IChatManagerDelegate>{
     BOOL loginSuccess;
 }
-- (IBAction)chooseChildren:(UIButton *)sender;
+
 - (IBAction)chooseClass:(UIButton *)sender;
 - (IBAction)setup:(UIButton *)sender;
 
@@ -24,9 +24,9 @@
 - (IBAction)bbspAction:(UIButton *)sender;
 - (IBAction)xztAction:(UIButton *)sender;
 
-@property (weak, nonatomic) IBOutlet UIImageView *studentimg;
-@property (weak, nonatomic) IBOutlet UILabel *studentname;
-@property (weak, nonatomic) IBOutlet UILabel *studentage;
+@property (weak, nonatomic) IBOutlet UIImageView *teacherimg;
+@property (weak, nonatomic) IBOutlet UILabel *teachername;
+
 @property (weak, nonatomic) IBOutlet UILabel *unreadlabel;
 
 

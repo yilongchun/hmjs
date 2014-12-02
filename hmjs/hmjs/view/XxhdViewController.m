@@ -1,22 +1,22 @@
 //
-//  BjtzViewController.m
+//  XxhdViewController.m
 //  hmjz
 //
-//  Created by yons on 14-10-28.
+//  Created by yons on 14-11-28.
 //  Copyright (c) 2014年 yons. All rights reserved.
 //
 
-#import "BjtzViewController.h"
+#import "XxhdViewController.h"
 #import "GgtzTableViewCell.h"
 #import "MBProgressHUD.h"
 #import "MKNetworkKit.h"
 #import "Utils.h"
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
-#import "BjtzDetailViewController.h"
+#import "MyViewControllerCellDetail.h"
 #import "SRRefreshView.h"
 
-@interface BjtzViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
+@interface XxhdViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
     MBProgressHUD *HUD;
     MKNetworkEngine *engine;
     NSNumber *totalpage;
@@ -27,29 +27,34 @@
 
 @end
 
-@implementation BjtzViewController
+@implementation XxhdViewController
 @synthesize dataSource;
 @synthesize mytableview;
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view from its nib.
     
     //初始化tableview
     CGRect cg = CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-50-64);
     mytableview = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
-//    [mytableview setSeparatorColor:[UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1]];
-//    if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
-//        [mytableview setSeparatorInset:UIEdgeInsetsZero];
-//    }
-//    if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
-//        [mytableview setLayoutMargins:UIEdgeInsetsZero];
-//    }
     mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //    [mytableview setSeparatorColor:[UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1]];
+    //    if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
+    //        [mytableview setSeparatorInset:UIEdgeInsetsZero];
+    //    }
+    //    if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
+    //        [mytableview setLayoutMargins:UIEdgeInsetsZero];
+    //    }
     mytableview.dataSource = self;
     mytableview.delegate = self;
     [self.view addSubview:mytableview];
+    
     [mytableview addSubview:self.slimeView];
+    
+    
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.labelText = @"加载中";
@@ -58,13 +63,14 @@
     [HUD show:YES];
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
+    //    [engine useCache];
     
     self.dataSource = [[NSMutableArray alloc] init];
     
     
     //初始化数据
     [self loadData];
-
+    
 }
 
 #pragma mark - getter
@@ -95,16 +101,15 @@
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *class = [userDefaults objectForKey:@"class"];
-    NSString *classid = [class objectForKey:@"classid"];
-    NSString *userid = [userDefaults objectForKey:@"userid"];
-    [dic setValue:classid forKey:@"recordId"];
+    NSDictionary *student = [userDefaults objectForKey:@"student"];
+    NSString *schoolId = [student objectForKey:@"schoolid"];
+    [dic setValue:schoolId forKey:@"schoolId"];
     [dic setValue:page forKey:@"page"];
     [dic setValue:rows forKey:@"rows"];
-    [dic setValue:userid forKey:@"userid"];
-    MKNetworkOperation *op = [engine operationWithPath:@"/Pnotice/findbyidclass.do" params:dic httpMethod:@"GET"];
+    //    [dic setValue:@"t_activity_title" forKey:@"type"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/pactivity/schoolfindPageList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
-//        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
+        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
         NSString *result = [operation responseString];
         NSError *error;
         NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
@@ -113,10 +118,8 @@
         }
         NSNumber *success = [resultDict objectForKey:@"success"];
         NSString *msg = [resultDict objectForKey:@"msg"];
-        //        NSString *code = [resultDict objectForKey:@"code"];
         if ([success boolValue]) {
             [HUD hide:YES];
-//            [self okMsk:@"加载成功"];
             NSDictionary *data = [resultDict objectForKey:@"data"];
             if (data != nil) {
                 NSArray *arr = [data objectForKey:@"rows"];
@@ -132,7 +135,6 @@
         }else{
             [HUD hide:YES];
             [self alertMsg:msg];
-            
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
@@ -143,19 +145,20 @@
 }
 
 - (void)loadMore{
-    if ([page intValue] < [totalpage intValue]) {
+    
+    if ([page intValue]< [totalpage intValue]) {
         page = [NSNumber numberWithInt:[page intValue] +1];
     }
+    
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *class = [userDefaults objectForKey:@"class"];
-    NSString *classid = [class objectForKey:@"classid"];
-    NSString *userid = [userDefaults objectForKey:@"userid"];
-    [dic setValue:classid forKey:@"recordId"];
+    NSDictionary *student = [userDefaults objectForKey:@"student"];
+    NSString *schoolId = [student objectForKey:@"schoolid"];
+    [dic setValue:schoolId forKey:@"schoolId"];
     [dic setValue:page forKey:@"page"];
     [dic setValue:rows forKey:@"rows"];
-    [dic setValue:userid forKey:@"userid"];
-    MKNetworkOperation *op = [engine operationWithPath:@"/Pnotice/findbyidclass.do" params:dic httpMethod:@"GET"];
+    //    [dic setValue:@"t_activity_title" forKey:@"type"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/pactivity/schoolfindPageList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         //        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
         NSString *result = [operation responseString];
@@ -166,10 +169,8 @@
         }
         NSNumber *success = [resultDict objectForKey:@"success"];
         NSString *msg = [resultDict objectForKey:@"msg"];
-        //        NSString *code = [resultDict objectForKey:@"code"];
         if ([success boolValue]) {
             [HUD hide:YES];
-            //            [self okMsk:@"加载成功"];
             NSDictionary *data = [resultDict objectForKey:@"data"];
             if (data != nil) {
                 NSArray *arr = [data objectForKey:@"rows"];
@@ -185,7 +186,6 @@
         }else{
             [HUD hide:YES];
             [self alertMsg:msg];
-            
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
@@ -248,12 +248,12 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:@"GgtzTableViewCell" owner:self options:nil] lastObject];
         }
         NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
-        NSString *tntitle = [info objectForKey:@"tntitle"];
-        NSString *teacherfileid = [info objectForKey:@"fileid"];
-        NSString *tncontent = [info objectForKey:@"tncontent"];
-        NSNumber *noticecount = [info objectForKey:@"noticecount"];
-        NSString *tncreatedate = [info objectForKey:@"tncreatedate"];
-        NSString *source = [info objectForKey:@"noticename"];
+        NSString *tntitle = [info objectForKey:@"activityTitle"];
+        NSString *teacherfileid = [info objectForKey:@"teacherfileid"];
+        NSString *tncontent = [info objectForKey:@"activityDigest"];
+        NSNumber *noticecount = [info objectForKey:@"count"];
+        NSString *tncreatedate = [info objectForKey:@"createDate"];
+        NSString *source = [info objectForKey:@"teachername"];
         cell.gtitle.text = tntitle;
         
         if ([Utils isBlankString:teacherfileid]) {
@@ -271,6 +271,7 @@
         cell.gsource.text = [NSString stringWithFormat:@"来自:%@",source];
         return cell;
     }
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -283,12 +284,12 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     
-//    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-//        [cell setSeparatorInset:UIEdgeInsetsZero];
-//    }
-//    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-//        [cell setLayoutMargins:UIEdgeInsetsZero];
-//    }
+    //    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+    //        [cell setSeparatorInset:UIEdgeInsetsZero];
+    //    }
+    //    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+    //        [cell setLayoutMargins:UIEdgeInsetsZero];
+    //    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -301,20 +302,18 @@
         }
         
     }else{
-        NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
-        BjtzDetailViewController *vc = [[BjtzDetailViewController alloc]init];
-        vc.title = @"通知详情";
-        vc.dataSource = [NSMutableArray arrayWithObject:info];
-        [self.navigationController pushViewController:vc animated:YES];
+        NSDictionary *data = [self.dataSource objectAtIndex:indexPath.row];
+        NSString *detailid = [data objectForKey:@"id"];
+        MyViewControllerCellDetail *detail = [[MyViewControllerCellDetail alloc] init];
+        detail.detailid = detailid;
+        detail.title = @"活动详情";
+        [self.navigationController pushViewController:detail animated:YES];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - scrollView delegate
@@ -332,18 +331,9 @@
 //刷新消息列表
 - (void)slimeRefreshStartRefresh:(SRRefreshView *)refreshView
 {
+    
     [self loadData];
     [_slimeView endRefresh];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

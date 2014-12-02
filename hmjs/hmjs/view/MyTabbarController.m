@@ -8,7 +8,7 @@
 
 #import "MyTabbarController.h"
 #import "BwhdViewController.h"
-#import "BjtzViewController.h"
+
 
 @interface MyTabbarController ()
 
@@ -31,11 +31,11 @@
     
     
     //    初始化第二个视图控制器
-    BjtzViewController *vc2 = [[BjtzViewController alloc] init];
-    vc2.tabBarItem =[[UITabBarItem alloc] initWithTitle:@"班级通知" image:[UIImage imageNamed:@"ic_bwrz_003.png"] tag:1];
+//    BjtzViewController *vc2 = [[BjtzViewController alloc] init];
+//    vc2.tabBarItem =[[UITabBarItem alloc] initWithTitle:@"班级通知" image:[UIImage imageNamed:@"ic_bwrz_003.png"] tag:1];
     
     //    把导航控制器加入到数组
-    NSMutableArray *viewArr_ = [NSMutableArray arrayWithObjects:vc1,vc2, nil];
+    NSMutableArray *viewArr_ = [NSMutableArray arrayWithObjects:vc1, nil];
     
     self.title = @"班务活动";
     self.viewControllers = viewArr_;
