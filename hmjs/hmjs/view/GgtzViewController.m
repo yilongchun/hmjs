@@ -13,6 +13,7 @@
 #import "MBProgressHUD.h"
 #import "GgxqViewController.h"
 #import "SRRefreshView.h"
+#import "UIImageView+AFNetworking.h"
 
 
 @interface GgtzViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
@@ -254,6 +255,7 @@
         NSNumber *noticecount = [info objectForKey:@"noticecount"];
         NSString *tncreatedate = [info objectForKey:@"tncreatedate"];
         NSString *noticename = [info objectForKey:@"noticename"];
+        NSString *fileid = [info objectForKey:@"fileid"];
         cell.gtitle.text = tntitle;
         cell.gdispcription.text = tncontent;
         cell.gdispcription.numberOfLines = 2;// 不可少Label属性之一
@@ -262,7 +264,11 @@
         cell.gpinglun.text = [NSString stringWithFormat:@"评论(%@)",noticecount];
         cell.gdate.text = tncreatedate;
         cell.gsource.text = [NSString stringWithFormat:@"来自:%@",noticename];
-        [cell.imageview setImage:[UIImage imageNamed:@"nopicture.png"]];
+        if ([Utils isBlankString:fileid]) {
+            [cell.imageview setImage:[UIImage imageNamed:@"nopicture.png"]];
+        }else{
+            [cell.imageview setImageWithURL:[NSURL URLWithString:fileid] placeholderImage:[UIImage imageNamed:@"nopicture.png"]];
+        }
         return cell;
     }
     

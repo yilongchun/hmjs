@@ -21,6 +21,7 @@
     NSNumber *totalpage;
     NSNumber *page;
     NSNumber *rows;
+    int tntype;
 }
 
 @property (nonatomic, strong) SRRefreshView         *slimeView;
@@ -53,16 +54,17 @@
     }
     [HUD show:YES];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *student = [userDefaults objectForKey:@"student"];
-    
-    
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:self.tnid forKey:@"recordId"];
     [dic setValue:[userDefaults objectForKey:@"userid"]  forKey:@"userId"];
     [dic setValue:textView.text forKey:@"commentContent"];
-    [dic setValue:[NSNumber numberWithInt:4] forKey:@"type"];
-    [dic setValue:[student objectForKey:@"studentid"] forKey:@"commentAttr1"];
+    if (tntype == 2) {//学校公告
+        [dic setValue:[NSNumber numberWithInt:4] forKey:@"type"];
+    }else if(tntype == 3){//班级公告
+        [dic setValue:[NSNumber numberWithInt:3] forKey:@"type"];
+    }
+    [dic setValue:[userDefaults objectForKey:@"teacherid"] forKey:@"commentAttr1"];
     
     MKNetworkOperation *op = [engine operationWithPath:@"/Comment/sava.do" params:dic httpMethod:@"POST"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -288,6 +290,8 @@
             NSDictionary *data = [resultDict objectForKey:@"data"];
             if (data != nil) {
                 self.dataSource = [NSMutableArray arrayWithObject:data];
+                NSNumber *type = [data objectForKey:@"tntype"];
+                tntype = [type intValue];
 //                [self.mytableview reloadData];
                 [self loadDataPingLun];
             }else{
@@ -314,7 +318,13 @@
     [dic setValue:self.tnid forKey:@"recordId"];
     [dic setValue:page forKey:@"page"];
     [dic setValue:rows forKey:@"rows"];
-    [dic setValue:[NSNumber numberWithInt:4] forKey:@"type"];
+    
+    if (tntype == 2) {//学校公告
+        [dic setValue:[NSNumber numberWithInt:4] forKey:@"type"];
+    }else if(tntype == 3){//班级公告
+        [dic setValue:[NSNumber numberWithInt:3] forKey:@"type"];
+    }
+    
     MKNetworkOperation *op = [engine operationWithPath:@"/Comment/findPageList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         //        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
@@ -358,7 +368,11 @@
     [dic setValue:self.tnid forKey:@"recordId"];
     [dic setValue:page forKey:@"page"];
     [dic setValue:rows forKey:@"rows"];
-    [dic setValue:[NSNumber numberWithInt:4] forKey:@"type"];
+    if (tntype == 2) {//学校公告
+        [dic setValue:[NSNumber numberWithInt:4] forKey:@"type"];
+    }else if(tntype == 3){//班级公告
+        [dic setValue:[NSNumber numberWithInt:3] forKey:@"type"];
+    }
     MKNetworkOperation *op = [engine operationWithPath:@"/Comment/findPageList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         //        NSLog(@"[operation responseData]-->>%@", [operation responseString]);

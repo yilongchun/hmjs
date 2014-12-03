@@ -66,14 +66,14 @@
     }
     [HUD show:YES];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *student = [userDefaults objectForKey:@"student"];
+    NSString *teacherid = [userDefaults objectForKey:@"teacherid"];
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:self.detailid forKey:@"recordId"];
     [dic setValue:[userDefaults objectForKey:@"userid"]  forKey:@"userId"];
     [dic setValue:textView.text forKey:@"commentContent"];
     [dic setValue:activityType forKey:@"type"];
-    [dic setValue:[student objectForKey:@"studentid"] forKey:@"commentAttr1"];
+    [dic setValue:teacherid forKey:@"commentAttr1"];
     
     MKNetworkOperation *op = [engine operationWithPath:@"/Comment/sava.do" params:dic httpMethod:@"POST"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {

@@ -262,15 +262,15 @@
 //修改数据
 - (void)updateImgData:(NSString *)fileid{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *student = [userDefaults objectForKey:@"student"];
+//    NSDictionary *student = [userDefaults objectForKey:@"student"];
     
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:[userDefaults objectForKey:@"userid"] forKey:@"userid"];
     [dic setValue:fileid forKey:@"fileid"];
-    [dic setValue:[student objectForKey:@"studentid"] forKey:@"studentid"];
+//    [dic setValue:[student objectForKey:@"studentid"] forKey:@"studentid"];
     
-    MKNetworkOperation *op = [engine operationWithPath:@"/Puser/updateimage.do" params:dic httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/Teacher/updateimage.do" params:dic httpMethod:@"POST"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         
         NSString *result = [operation responseString];
@@ -287,10 +287,10 @@
             [self.myimageview setImageWithURL:[NSURL URLWithString:fileid]];
             [HUD hide:YES];
             
-            NSMutableDictionary *updatestudent = [[NSMutableDictionary alloc] initWithDictionary:[userDefaults objectForKey:@"student"]];
-            [updatestudent setValue:fileid forKey:@"flieid"];
+//            NSMutableDictionary *updatestudent = [[NSMutableDictionary alloc] initWithDictionary:[userDefaults objectForKey:@"student"]];
+//            [updatestudent setValue:fileid forKey:@"flieid"];
 //            [userDefaults removeObjectForKey:@"student"];
-            [userDefaults setObject:updatestudent forKey:@"student"];
+//            [userDefaults setObject:updatestudent forKey:@"student"];
             [userDefaults setObject:@"1" forKey:@"updateImgFlag"];
             [self okMsk:msg];
         }else{

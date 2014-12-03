@@ -137,6 +137,8 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
             if (data != nil) {
                 NSString *fileid = [data objectForKey:@"flieid"];
                 NSString *teachername = [data objectForKey:@"tname"];
+                NSString *teacherid = [data objectForKey:@"id"];
+                [userDefaults setObject:teacherid forKey:@"teacherid"];
                 self.teachername.text = teachername;
                 
                 //设置头像

@@ -35,6 +35,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO ;
+    
     // Do any additional setup after loading the view from its nib.
     
     //初始化tableview
