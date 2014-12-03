@@ -39,7 +39,7 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *student = [userDefaults objectForKey:@"class"];
-    NSString *classid = [student objectForKey:@"classid"];
+    NSString *classid = [student objectForKey:@"id"];
     [self getInfo:classid];
     
 }

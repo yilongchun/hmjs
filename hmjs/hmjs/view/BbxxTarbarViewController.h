@@ -1,7 +1,7 @@
 //
 //  BbxxTarbarViewController.h
 //  hmjz
-//  宝宝学校选项卡
+//  班务管理
 //  Created by yons on 14-11-28.
 //  Copyright (c) 2014年 yons. All rights reserved.
 //

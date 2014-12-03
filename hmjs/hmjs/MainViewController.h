@@ -17,11 +17,11 @@
 - (IBAction)chooseClass:(UIButton *)sender;
 - (IBAction)setup:(UIButton *)sender;
 
+- (IBAction)bwglAction:(UIButton *)sender;
 - (IBAction)ysdtAction:(UIButton *)sender;
-- (IBAction)bwhdAction:(UIButton *)sender;
+- (IBAction)xsspAction:(UIButton *)sender;
 - (IBAction)yezxAction:(UIButton *)sender;
 - (IBAction)kcbAction:(UIButton *)sender;
-- (IBAction)bbspAction:(UIButton *)sender;
 - (IBAction)xztAction:(UIButton *)sender;
 
 @property (weak, nonatomic) IBOutlet UIImageView *teacherimg;

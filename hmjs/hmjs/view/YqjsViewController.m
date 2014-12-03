@@ -38,20 +38,19 @@
     HUD.labelText = @"正在加载中";
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *student = [userDefaults objectForKey:@"student"];
-    NSString *studentid = [student objectForKey:@"studentid"];
-    [self getInfo:studentid];
+    NSString *userid = [userDefaults objectForKey:@"userid"];
+    [self getInfo:userid];
 }
 
 //查询园情介绍
-- (void)getInfo:(NSString *)studentid{
+- (void)getInfo:(NSString *)userid{
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:studentid forKey:@"studentId"];
+    [dic setValue:userid forKey:@"userid"];
     
     
     
-    MKNetworkOperation *op = [engine operationWithPath:@"/Pschool/findbyid.do" params:dic httpMethod:@"GET"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/School/findbyid.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
 //        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
         NSString *result = [operation responseString];
@@ -65,20 +64,15 @@
         NSString *msg = [resultDict objectForKey:@"msg"];
         
         if ([success boolValue]) {
-            NSArray *array = [resultDict objectForKey:@"data"];
-            if ([array count] > 0) {
-                NSDictionary *data = [array objectAtIndex:0];
-                NSString *introduce = [data objectForKey:@"introduce"];
-                NSString* fileid = [data objectForKey:@"fileid"];
-                NSMutableString* htmlStr = [NSMutableString string];
-                if (![Utils isBlankString:fileid]) {
-                    [htmlStr appendFormat:@"<head></head><p><img src='%@' width='%f'  /></p>",fileid,[[UIScreen mainScreen] bounds].size.width-20];
-                    
-                }
-                [htmlStr appendString:introduce];
-                [self.mywebview loadHTMLString:htmlStr baseURL:[NSURL URLWithString:[Utils getHostname]]];
+            NSDictionary *data = [resultDict objectForKey:@"data"];
+            NSString *introduce = [data objectForKey:@"introduce"];
+            NSString* fileid = [data objectForKey:@"fileid"];
+            NSMutableString* htmlStr = [NSMutableString string];
+            if (![Utils isBlankString:fileid]) {
+                [htmlStr appendFormat:@"<head></head><p><img src='%@' width='%f'  /></p>",fileid,[[UIScreen mainScreen] bounds].size.width-20];
             }
-            
+            [htmlStr appendString:introduce];
+            [self.mywebview loadHTMLString:htmlStr baseURL:[NSURL URLWithString:[Utils getHostname]]];
         }else{
             [HUD hide:YES];
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];

@@ -55,51 +55,55 @@
 }
 
 - (void)loadData{
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+//    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *class = [userDefaults objectForKey:@"class"];
-    NSString *classid = [class objectForKey:@"classid"];
-    [dic setValue:classid forKey:@"classId"];
-    [dic setValue:page forKey:@"page"];
-    [dic setValue:rows forKey:@"rows"];
+    self.dataSource = [userDefaults objectForKey:@"friendarr"];
+//    NSDictionary *class = [userDefaults objectForKey:@"class"];
+//    NSString *classid = [class objectForKey:@"classid"];
+//    [dic setValue:classid forKey:@"classId"];
+//    [dic setValue:page forKey:@"page"];
+//    [dic setValue:rows forKey:@"rows"];
+//    
+//    MKNetworkOperation *op = [engine operationWithPath:@"/Parentfield/findPageList.do" params:dic httpMethod:@"GET"];
+//    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+////        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
+//        NSString *result = [operation responseString];
+//        NSError *error;
+//        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+//        if (resultDict == nil) {
+//            NSLog(@"json parse failed \r\n");
+//        }
+//        NSNumber *success = [resultDict objectForKey:@"success"];
+//        if ([success boolValue]) {
+//            NSDictionary *data = [resultDict objectForKey:@"data"];
+//            if (data != nil) {
+//                NSArray *arr = [data objectForKey:@"rows"];
     
-    MKNetworkOperation *op = [engine operationWithPath:@"/Parentfield/findPageList.do" params:dic httpMethod:@"GET"];
-    [op addCompletionHandler:^(MKNetworkOperation *operation) {
-//        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
-        NSString *result = [operation responseString];
-        NSError *error;
-        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-        if (resultDict == nil) {
-            NSLog(@"json parse failed \r\n");
-        }
-        NSNumber *success = [resultDict objectForKey:@"success"];
-        if ([success boolValue]) {
-            NSDictionary *data = [resultDict objectForKey:@"data"];
-            if (data != nil) {
-                NSArray *arr = [data objectForKey:@"rows"];
-                [self.dataSource addObjectsFromArray:arr];
-                
+    
+    
+//                [self.dataSource addObjectsFromArray:arr];
+    
                 
                 
 //                [userDefaults setObject:arr forKey:@"friendarr"];
                 
                 
-                NSNumber *total = [data objectForKey:@"total"];
-                if ([total intValue] % [rows intValue] == 0) {
-                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue]];
-                }else{
-                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue] + 1];
-                }
-                [self.tableView reloadData];
-            }
-        }else{
-            
-            
-        }
-    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
-        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-    }];
-    [engine enqueueOperation:op];
+//                NSNumber *total = [data objectForKey:@"total"];
+//                if ([total intValue] % [rows intValue] == 0) {
+//                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue]];
+//                }else{
+//                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue] + 1];
+//                }
+//                [self.tableView reloadData];
+//            }
+//        }else{
+//            
+//            
+//        }
+//    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
+//        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+//    }];
+//    [engine enqueueOperation:op];
 }
 
 - (void)viewDidLoad

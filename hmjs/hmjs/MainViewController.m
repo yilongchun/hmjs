@@ -106,10 +106,10 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 
 - (void)initData{
     [self loadData];//加载教师个人信息
-//    [self loadYezx];//加载育儿资讯分类
-//    [self loadKcb];//加载课程表
-//    [self loadBbsp];//加载食谱
-//    [self loadData2];
+    [self loadBbsp];//加载食谱
+    [self loadYezx];//加载育儿资讯分类
+    [self loadKcb];//加载课程表
+    [self loadData2];//加载家长列表
    
 }
 
@@ -241,8 +241,8 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     ShezhiViewController *sz = [[ShezhiViewController alloc] init];
     [self.navigationController pushViewController:sz animated:YES];
 }
-//园所动态
-- (IBAction)ysdtAction:(UIButton *)sender {
+//班务管理
+- (IBAction)bwglAction:(UIButton *)sender {
     
     BbxxTarbarViewController *vc = [[BbxxTarbarViewController alloc] init];
     
@@ -251,8 +251,8 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     [self.navigationController pushViewController:vc animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
 }
-//班务活动
-- (IBAction)bwhdAction:(UIButton *)sender {
+//园所动态
+- (IBAction)ysdtAction:(UIButton *)sender {
     
     //    初始化第一个视图控制器
 //    BwhdViewController *vc1 = [[BwhdViewController alloc] init];
@@ -285,70 +285,104 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     
 }
 
-- (void)loadYezx{
-        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        NSString *userid = [userDefaults objectForKey:@"userid"];
-        [dic setValue:userid forKey:@"userid"];
-    
-        MKNetworkOperation *op = [engine operationWithPath:@"/MationType/findAllList.do" params:dic httpMethod:@"GET"];
-        [op addCompletionHandler:^(MKNetworkOperation *operation) {
 
-            NSString *result = [operation responseString];
-            NSError *error;
-            NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-            if (resultDict == nil) {
-                NSLog(@"json parse failed \r\n");
-            }
-            NSNumber *success = [resultDict objectForKey:@"success"];
-            if ([success boolValue]) {
-                NSArray *data = [resultDict objectForKey:@"data"];
-                if (data != nil) {
-                    typearr = data;
-                }
-            }else{
+//加载食谱
+- (void)loadBbsp{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *userid = [userDefaults objectForKey:@"userid"];
+    [dic setValue:userid forKey:@"userid"];
     
-    
+    MKNetworkOperation *op = [engine operationWithPath:@"/Cookbook/findCookList.do" params:dic httpMethod:@"GET"];
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        //        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
+        NSString *result = [operation responseString];
+        NSError *error;
+        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+        if (resultDict == nil) {
+            NSLog(@"json parse failed \r\n");
+        }
+        NSNumber *success = [resultDict objectForKey:@"success"];
+        if ([success boolValue]) {
+            NSArray *data = [resultDict objectForKey:@"data"];
+            if (data != nil) {
+                sparr = data;
             }
-        }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
-            NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        }];
-        [engine enqueueOperation:op];
+        }else{
+            
+            
+        }
+    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
+        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+    }];
+    [engine enqueueOperation:op];
 }
 
-//育儿资讯
-- (IBAction)yezxAction:(UIButton *)sender {
+//学生食谱
+- (IBAction)xsspAction:(UIButton *)sender {
     
     NSMutableArray *vcs = [NSMutableArray array];
-    for (int i = 0; i < [typearr count]; i++) {
-        NSDictionary *type = [typearr objectAtIndex:i];
-        
-        MyViewController *vc = [[MyViewController alloc] init];
-        vc.typeId = [type objectForKey:@"id"];
-//        UIViewController *vc = [[UIViewController alloc] init];
-        vc.title = [NSString stringWithFormat:@"%@", [type objectForKey:@"typename"]];
+    
+    for (int i = 0 ; i < [sparr count]; i++) {
+        BbspViewController *vc = [[BbspViewController alloc] init];
+        NSArray *data = [sparr objectAtIndex:i];
+        vc.dataSource = data;
+        NSDictionary *info = [data objectAtIndex:0];
+        NSString *date = [info objectForKey:@"occurDate"];
+        if (date.length > 5) {
+            //            vc.title = [[info objectForKey:@"occurDate"] substringFromIndex:5];
+            
+            switch (i) {
+                case 0:
+                    vc.title = @"周一";
+                    break;
+                case 1:
+                    vc.title = @"周二";
+                    break;
+                case 2:
+                    vc.title = @"周三";
+                    break;
+                case 3:
+                    vc.title = @"周四";
+                    break;
+                case 4:
+                    vc.title = @"周五";
+                    break;
+                default:
+                    break;
+            }
+            
+        }
         [vcs addObject:vc];
     }
     
-    JYSlideSegmentController *slideSegmentController = [[JYSlideSegmentController alloc] initWithViewControllers:vcs];
-    slideSegmentController.title = @"育儿资讯";
-    slideSegmentController.indicatorInsets = UIEdgeInsetsMake(0, 8, 8, 8);
-    slideSegmentController.indicator.backgroundColor = [UIColor greenColor];
-    
-    [self.navigationController setNavigationBarHidden:NO];
-    [self.navigationController pushViewController:slideSegmentController animated:YES];
-    
-   
+    if (vcs.count > 0) {
+        JYSlideSegmentController *slideSegmentController = [[JYSlideSegmentController alloc] initWithViewControllers:vcs];
+        
+        slideSegmentController.title = @"食谱";
+        slideSegmentController.indicatorInsets = UIEdgeInsetsMake(0, 8, 8, 8);
+        slideSegmentController.indicator.backgroundColor = [UIColor greenColor];
+        
+        //设置背景图片
+        UIImage *image = [UIImage imageNamed:@"ic_sp_001.png"];
+        slideSegmentController.view.layer.contents = (id)image.CGImage;
+        
+        [self.navigationController setNavigationBarHidden:NO];
+        [self.navigationController pushViewController:slideSegmentController animated:YES];
+    }else{
+        //提示没有信息
+        [self alertMsg:@"暂时没有食谱信息，请稍后再试"];
+    }
 }
 
 - (void)loadKcb{
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *class = [userDefaults objectForKey:@"class"];
-    NSString *classid = [class objectForKey:@"classid"];
+    NSString *classid = [class objectForKey:@"id"];
     [dic setValue:classid forKey:@"classid"];
     
-    MKNetworkOperation *op = [engine operationWithPath:@"/Schedule/findPbyid.do" params:dic httpMethod:@"GET"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/Schedule/findbyid.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
 //        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
         NSString *result = [operation responseString];
@@ -374,8 +408,69 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     }];
     [engine enqueueOperation:op];
 }
+
+//加载育儿资讯栏目
+- (void)loadYezx{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *userid = [userDefaults objectForKey:@"userid"];
+    [dic setValue:userid forKey:@"userid"];
+    
+    MKNetworkOperation *op = [engine operationWithPath:@"/MationType/findAllList.do" params:dic httpMethod:@"GET"];
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        
+        NSString *result = [operation responseString];
+        NSError *error;
+        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+        if (resultDict == nil) {
+            NSLog(@"json parse failed \r\n");
+        }
+        NSNumber *success = [resultDict objectForKey:@"success"];
+        if ([success boolValue]) {
+            NSArray *data = [resultDict objectForKey:@"data"];
+            if (data != nil) {
+                typearr = data;
+            }
+        }else{
+            
+            
+        }
+    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
+        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+    }];
+    [engine enqueueOperation:op];
+}
+
+//育儿资讯
+- (IBAction)yezxAction:(UIButton *)sender {
+    
+    NSMutableArray *vcs = [NSMutableArray array];
+    for (int i = 0; i < [typearr count]; i++) {
+        NSDictionary *type = [typearr objectAtIndex:i];
+        
+        MyViewController *vc = [[MyViewController alloc] init];
+        vc.typeId = [type objectForKey:@"id"];
+        //        UIViewController *vc = [[UIViewController alloc] init];
+        vc.title = [NSString stringWithFormat:@"%@", [type objectForKey:@"typename"]];
+        [vcs addObject:vc];
+    }
+    
+    JYSlideSegmentController *slideSegmentController = [[JYSlideSegmentController alloc] initWithViewControllers:vcs];
+    slideSegmentController.title = @"育儿资讯";
+    slideSegmentController.indicatorInsets = UIEdgeInsetsMake(0, 8, 8, 8);
+    slideSegmentController.indicator.backgroundColor = [UIColor greenColor];
+    
+    [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController pushViewController:slideSegmentController animated:YES];
+    
+    
+}
+
+
+
 //课程表
 - (IBAction)kcbAction:(UIButton *)sender {
+    
     NSMutableArray *vcs = [NSMutableArray array];
     
     KcbViewController *vc1 = [[KcbViewController alloc] init];
@@ -404,125 +499,19 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     vc5.weekName = @"friday";
     [vcs addObject:vc5];
     
-
+    
     JYSlideSegmentController *slideSegmentController = [[JYSlideSegmentController alloc] initWithViewControllers:vcs];
     //设置背景图片
     UIImage *image = [UIImage imageNamed:@"ic_kcb_bg.png"];
     slideSegmentController.view.layer.contents = (id)image.CGImage;
     
-
+    
     slideSegmentController.title = @"课程表";
     slideSegmentController.indicatorInsets = UIEdgeInsetsMake(0, 8, 8, 8);
     slideSegmentController.indicator.backgroundColor = [UIColor greenColor];
     
     [self.navigationController setNavigationBarHidden:NO];
     [self.navigationController pushViewController:slideSegmentController animated:YES];
-}
-
-//加载食谱
-- (void)loadBbsp{
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *student = [userDefaults objectForKey:@"student"];
-    NSString *studentid = [student objectForKey:@"studentid"];
-    [dic setValue:studentid forKey:@"studentid"];
-    
-    MKNetworkOperation *op = [engine operationWithPath:@"/Pcookbook/findCookList.do" params:dic httpMethod:@"GET"];
-    [op addCompletionHandler:^(MKNetworkOperation *operation) {
-        //        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
-        NSString *result = [operation responseString];
-        NSError *error;
-        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-        if (resultDict == nil) {
-            NSLog(@"json parse failed \r\n");
-        }
-        NSNumber *success = [resultDict objectForKey:@"success"];
-        if ([success boolValue]) {
-            NSArray *data = [resultDict objectForKey:@"data"];
-            if (data != nil) {
-                sparr = data;
-            }
-        }else{
-            
-            
-        }
-    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
-        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-    }];
-    [engine enqueueOperation:op];
-}
-
-//宝宝食谱
-- (IBAction)bbspAction:(UIButton *)sender {
-    
-    NSMutableArray *vcs = [NSMutableArray array];
-    
-    for (int i = 0 ; i < [sparr count]; i++) {
-        BbspViewController *vc = [[BbspViewController alloc] init];
-        NSArray *data = [sparr objectAtIndex:i];
-        vc.dataSource = data;
-        NSDictionary *info = [data objectAtIndex:0];
-        NSString *date = [info objectForKey:@"occurDate"];
-        if (date.length > 5) {
-//            vc.title = [[info objectForKey:@"occurDate"] substringFromIndex:5];
-            
-            switch (i) {
-                case 0:
-                    vc.title = @"周一";
-                    break;
-                case 1:
-                    vc.title = @"周二";
-                    break;
-                case 2:
-                    vc.title = @"周三";
-                    break;
-                case 3:
-                    vc.title = @"周四";
-                    break;
-                case 4:
-                    vc.title = @"周五";
-                    break;
-                default:
-                    break;
-            }
-
-        }
-        [vcs addObject:vc];
-    }
-    
-//    BbspViewController *vc1 = [[BbspViewController alloc] init];
-//    vc1.title = @"11-03";
-//    [vcs addObject:vc1];
-//    BbspViewController *vc2 = [[BbspViewController alloc] init];
-//    vc2.title = @"周二";
-//    [vcs addObject:vc2];
-//    BbspViewController *vc3 = [[BbspViewController alloc] init];
-//    vc3.title = @"周三";
-//    [vcs addObject:vc3];
-//    BbspViewController *vc4 = [[BbspViewController alloc] init];
-//    vc4.title = @"周四";
-//    [vcs addObject:vc4];
-//    BbspViewController *vc5 = [[BbspViewController alloc] init];
-//    vc5.title = @"周五";
-//    [vcs addObject:vc5];
-    
-    if (vcs.count > 0) {
-        JYSlideSegmentController *slideSegmentController = [[JYSlideSegmentController alloc] initWithViewControllers:vcs];
-        
-        slideSegmentController.title = @"食谱";
-        slideSegmentController.indicatorInsets = UIEdgeInsetsMake(0, 8, 8, 8);
-        slideSegmentController.indicator.backgroundColor = [UIColor greenColor];
-        
-        //设置背景图片
-        UIImage *image = [UIImage imageNamed:@"ic_sp_001.png"];
-        slideSegmentController.view.layer.contents = (id)image.CGImage;
-        
-        [self.navigationController setNavigationBarHidden:NO];
-        [self.navigationController pushViewController:slideSegmentController animated:YES];
-    }else{
-        //提示没有信息
-        [self alertMsg:@"暂时没有食谱信息，请稍后再试"];
-    }
     
 }
 
