@@ -310,9 +310,10 @@
     
     
     [HUD show:YES];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:self.detailid forKey:@"activityId"];
-    
+    [dic setValue:[userDefaults objectForKey:@"userid"] forKey:@"userId"];
     MKNetworkOperation *op = [engine operationWithPath:@"/classActivity/findbyid.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         NSLog(@"[operation responseData]-->>%@", [operation responseString]);
@@ -495,10 +496,8 @@
                     file = [filelist objectAtIndex:i];
                     if ((i % 3 == 0) && i != 0) {
                         y += 105;
-                        x = 5+(105 * (i % 3));
-                    }else{
-                        x = 5+ 105*i;
                     }
+                    x = 5+(105 * (i % 3));
                     TapImageView *tmpView = [[TapImageView alloc] initWithFrame:CGRectMake(x, y, 100, 100)];
                     tmpView.t_delegate = self;
                     [tmpView setImageWithURL:[file objectForKey:@"fileId"]];
@@ -609,9 +608,9 @@
             if ([type isEqualToString:@"t_activity_image"]) {//显示图片
                 int count = 0;
                 if ([filelist count] % 3 == 0) {
-                    count = [filelist count] / 2;
+                    count = [filelist count] / 3;
                 }else{
-                    count = [filelist count] / 2 + 1;
+                    count = [filelist count] / 3 + 1;
                 }
                 size.height = size.height + 100 * count + 5;
             }else if ([type isEqualToString:@"t_activity_video"]){//显示视频

@@ -6,17 +6,17 @@
 //  Copyright (c) 2014年 yons. All rights reserved.
 //
 
-#import "BwhdViewController.h"
+#import "WdhdViewController.h"
 #import "GgtzTableViewCell.h"
 #import "MBProgressHUD.h"
 #import "MKNetworkKit.h"
 #import "Utils.h"
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
-#import "MyViewControllerCellDetail.h"
+#import "MyActivityReviewViewController.h"
 #import "SRRefreshView.h"
 
-@interface BwhdViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
+@interface WdhdViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
     MBProgressHUD *HUD;
     MKNetworkEngine *engine;
     NSNumber *totalpage;
@@ -27,7 +27,7 @@
 
 @end
 
-@implementation BwhdViewController
+@implementation WdhdViewController
 @synthesize dataSource;
 @synthesize mytableview;
 
@@ -43,20 +43,20 @@
     CGRect cg = CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-50-64);
     mytableview = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
     mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    [mytableview setSeparatorColor:[UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1]];
-//    if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
-//        [mytableview setSeparatorInset:UIEdgeInsetsZero];
-//    }
-//    if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
-//        [mytableview setLayoutMargins:UIEdgeInsetsZero];
-//    }
+    //    [mytableview setSeparatorColor:[UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1]];
+    //    if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
+    //        [mytableview setSeparatorInset:UIEdgeInsetsZero];
+    //    }
+    //    if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
+    //        [mytableview setLayoutMargins:UIEdgeInsetsZero];
+    //    }
     mytableview.dataSource = self;
     mytableview.delegate = self;
     [self.view addSubview:mytableview];
     
     [mytableview addSubview:self.slimeView];
-
-
+    
+    
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.labelText = @"加载中";
@@ -65,14 +65,14 @@
     
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
-//    [engine useCache];
+    //    [engine useCache];
     
     self.dataSource = [[NSMutableArray alloc] init];
     
     [HUD show:YES];
     //初始化数据
     [self loadData];
-
+    
 }
 
 #pragma mark - getter
@@ -103,16 +103,16 @@
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *class = [userDefaults objectForKey:@"class"];
-    NSString *classid = [class objectForKey:@"id"];
-    [dic setValue:classid forKey:@"classId"];
+//    NSDictionary *class = [userDefaults objectForKey:@"class"];
+//    NSString *classid = [class objectForKey:@"id"];
+    [dic setValue:[userDefaults objectForKey:@"userid"] forKey:@"userId"];
     [dic setValue:page forKey:@"page"];
     [dic setValue:rows forKey:@"rows"];
-    [dic setValue:@"t_activity_title" forKey:@"type"];
+//    [dic setValue:@"t_activity_title" forKey:@"type"];
     
-    MKNetworkOperation *op = [engine operationWithPath:@"/classActivity/findPageList.do" params:dic httpMethod:@"GET"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/classActivity/findNoPageList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
-//        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
+        //        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
         NSString *result = [operation responseString];
         NSError *error;
         NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
@@ -155,13 +155,13 @@
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *class = [userDefaults objectForKey:@"class"];
-    NSString *classid = [class objectForKey:@"id"];
-    [dic setValue:classid forKey:@"classId"];
+//    NSDictionary *class = [userDefaults objectForKey:@"class"];
+//    NSString *classid = [class objectForKey:@"id"];
+    [dic setValue:[userDefaults objectForKey:@"userid"] forKey:@"userId"];
     [dic setValue:page forKey:@"page"];
     [dic setValue:rows forKey:@"rows"];
-    [dic setValue:@"t_activity_title" forKey:@"type"];
-    MKNetworkOperation *op = [engine operationWithPath:@"/classActivity/findPageList.do" params:dic httpMethod:@"GET"];
+//    [dic setValue:@"t_activity_title" forKey:@"type"];
+    MKNetworkOperation *op = [engine operationWithPath:@"/classActivity/findNoPageList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         //        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
         NSString *result = [operation responseString];
@@ -254,22 +254,29 @@
         NSString *tntitle = [info objectForKey:@"activityTitle"];
         NSString *teacherfileid = [info objectForKey:@"teacherfileid"];
         NSString *tncontent = [info objectForKey:@"activityDigest"];
-        NSNumber *noticecount = [info objectForKey:@"count"];
+//        NSNumber *noticecount = [info objectForKey:@"count"];
         NSString *tncreatedate = [info objectForKey:@"createDate"];
         NSString *source = [info objectForKey:@"teachername"];
+        NSNumber *activityStatus = [info objectForKey:@"activityStatus"];
         cell.gtitle.text = tntitle;
         
         if ([Utils isBlankString:teacherfileid]) {
             [cell.imageview setImage:[UIImage imageNamed:@"nopicture.png"]];
         }else{
-//            [cell.imageview setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/image/show.do?id=%@",[Utils getImageHostname],teacherfileid]] placeholderImage:[UIImage imageNamed:@"nopicture.png"]];
+            //            [cell.imageview setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/image/show.do?id=%@",[Utils getImageHostname],teacherfileid]] placeholderImage:[UIImage imageNamed:@"nopicture.png"]];
             [cell.imageview setImageWithURL:[NSURL URLWithString:teacherfileid] placeholderImage:[UIImage imageNamed:@"nopicture.png"]];
         }
         cell.gdispcription.text = tncontent;
         cell.gdispcription.numberOfLines = 2;// 不可少Label属性之一
         cell.gdispcription.lineBreakMode = NSLineBreakByCharWrapping;// 不可少Label属性之二
         //[cell.gdispcription sizeToFit];
-        cell.gpinglun.text = [NSString stringWithFormat:@"评论(%@)",noticecount];
+//        cell.gpinglun.text = [NSString stringWithFormat:@"评论(%@)",noticecount];
+        if ([activityStatus intValue] == 1) {
+            cell.gpinglun.text = @"待审核";
+        }else if([activityStatus intValue] == 2){
+            cell.gpinglun.text = @"已发布";
+        }
+        
         cell.gdate.text = tncreatedate;
         cell.gsource.text = [NSString stringWithFormat:@"来自:%@",source];
         return cell;
@@ -287,12 +294,12 @@
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     
-//    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-//        [cell setSeparatorInset:UIEdgeInsetsZero];
-//    }
-//    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-//        [cell setLayoutMargins:UIEdgeInsetsZero];
-//    }
+    //    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+    //        [cell setSeparatorInset:UIEdgeInsetsZero];
+    //    }
+    //    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+    //        [cell setLayoutMargins:UIEdgeInsetsZero];
+    //    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -307,9 +314,9 @@
     }else{
         NSDictionary *data = [self.dataSource objectAtIndex:indexPath.row];
         NSString *detailid = [data objectForKey:@"id"];
-        MyViewControllerCellDetail *detail = [[MyViewControllerCellDetail alloc] init];
+        MyActivityReviewViewController *detail = [[MyActivityReviewViewController alloc] init];
         detail.detailid = detailid;
-        detail.title = @"活动详情";
+        detail.title = @"待审核";
         [self.navigationController pushViewController:detail animated:YES];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

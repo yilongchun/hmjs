@@ -468,6 +468,19 @@
 		E4EB902B1A2DBEE500DFEA47 /* start_open.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EB90261A2DBEE500DFEA47 /* start_open.png */; };
 		E4EB90321A2E17EA00DFEA47 /* BwrzViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EB90301A2E17EA00DFEA47 /* BwrzViewController.m */; };
 		E4EB90331A2E17EA00DFEA47 /* BwrzViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EB90311A2E17EA00DFEA47 /* BwrzViewController.xib */; };
+		E4ECE2BE1A30614300DC118B /* MyActivityReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ECE2BC1A30614300DC118B /* MyActivityReviewViewController.m */; };
+		E4ECE2BF1A30614300DC118B /* MyActivityReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE2BD1A30614300DC118B /* MyActivityReviewViewController.xib */; };
+		E4ECE93F1A2F5ACC00860CE7 /* ic_bwgg_011.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE93E1A2F5ACC00860CE7 /* ic_bwgg_011.png */; };
+		E4ECE9481A2F74BD00860CE7 /* wdgg_high.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE9401A2F74BD00860CE7 /* wdgg_high.png */; };
+		E4ECE9491A2F74BD00860CE7 /* wdgg_high@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE9411A2F74BD00860CE7 /* wdgg_high@2x.png */; };
+		E4ECE94A1A2F74BD00860CE7 /* wdgg.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE9421A2F74BD00860CE7 /* wdgg.png */; };
+		E4ECE94B1A2F74BD00860CE7 /* wdgg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE9431A2F74BD00860CE7 /* wdgg@2x.png */; };
+		E4ECE94C1A2F74BD00860CE7 /* wdhd_high.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE9441A2F74BD00860CE7 /* wdhd_high.png */; };
+		E4ECE94D1A2F74BD00860CE7 /* wdhd_high@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE9451A2F74BD00860CE7 /* wdhd_high@2x.png */; };
+		E4ECE94E1A2F74BD00860CE7 /* wdhd.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE9461A2F74BD00860CE7 /* wdhd.png */; };
+		E4ECE94F1A2F74BD00860CE7 /* wdhd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE9471A2F74BD00860CE7 /* wdhd@2x.png */; };
+		E4ECE9531A2F77DF00860CE7 /* WdhdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ECE9511A2F77DF00860CE7 /* WdhdViewController.m */; };
+		E4ECE9541A2F77DF00860CE7 /* WdhdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE9521A2F77DF00860CE7 /* WdhdViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1222,6 +1235,21 @@
 		E4EB902F1A2E17EA00DFEA47 /* BwrzViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BwrzViewController.h; sourceTree = "<group>"; };
 		E4EB90301A2E17EA00DFEA47 /* BwrzViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BwrzViewController.m; sourceTree = "<group>"; };
 		E4EB90311A2E17EA00DFEA47 /* BwrzViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BwrzViewController.xib; sourceTree = "<group>"; };
+		E4ECE2BB1A30614300DC118B /* MyActivityReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyActivityReviewViewController.h; sourceTree = "<group>"; };
+		E4ECE2BC1A30614300DC118B /* MyActivityReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyActivityReviewViewController.m; sourceTree = "<group>"; };
+		E4ECE2BD1A30614300DC118B /* MyActivityReviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyActivityReviewViewController.xib; sourceTree = "<group>"; };
+		E4ECE93E1A2F5ACC00860CE7 /* ic_bwgg_011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bwgg_011.png; sourceTree = "<group>"; };
+		E4ECE9401A2F74BD00860CE7 /* wdgg_high.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wdgg_high.png; sourceTree = "<group>"; };
+		E4ECE9411A2F74BD00860CE7 /* wdgg_high@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wdgg_high@2x.png"; sourceTree = "<group>"; };
+		E4ECE9421A2F74BD00860CE7 /* wdgg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wdgg.png; sourceTree = "<group>"; };
+		E4ECE9431A2F74BD00860CE7 /* wdgg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wdgg@2x.png"; sourceTree = "<group>"; };
+		E4ECE9441A2F74BD00860CE7 /* wdhd_high.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wdhd_high.png; sourceTree = "<group>"; };
+		E4ECE9451A2F74BD00860CE7 /* wdhd_high@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wdhd_high@2x.png"; sourceTree = "<group>"; };
+		E4ECE9461A2F74BD00860CE7 /* wdhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wdhd.png; sourceTree = "<group>"; };
+		E4ECE9471A2F74BD00860CE7 /* wdhd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wdhd@2x.png"; sourceTree = "<group>"; };
+		E4ECE9501A2F77DF00860CE7 /* WdhdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WdhdViewController.h; sourceTree = "<group>"; };
+		E4ECE9511A2F77DF00860CE7 /* WdhdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WdhdViewController.m; sourceTree = "<group>"; };
+		E4ECE9521A2F77DF00860CE7 /* WdhdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WdhdViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1343,6 +1371,17 @@
 		E4E76B041A277997004DF568 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E4E76B071A277997004DF568 /* chatListCell */,
+				E4E76B0A1A277997004DF568 /* ChatView */,
+				E4ECE9401A2F74BD00860CE7 /* wdgg_high.png */,
+				E4ECE9411A2F74BD00860CE7 /* wdgg_high@2x.png */,
+				E4ECE9421A2F74BD00860CE7 /* wdgg.png */,
+				E4ECE9431A2F74BD00860CE7 /* wdgg@2x.png */,
+				E4ECE9441A2F74BD00860CE7 /* wdhd_high.png */,
+				E4ECE9451A2F74BD00860CE7 /* wdhd_high@2x.png */,
+				E4ECE9461A2F74BD00860CE7 /* wdhd.png */,
+				E4ECE9471A2F74BD00860CE7 /* wdhd@2x.png */,
+				E4ECE93E1A2F5ACC00860CE7 /* ic_bwgg_011.png */,
 				E4EB90221A2DBEE500DFEA47 /* guide_1.png */,
 				E4EB90231A2DBEE500DFEA47 /* guide_2.png */,
 				E4EB90241A2DBEE500DFEA47 /* guide_3.png */,
@@ -1364,8 +1403,6 @@
 				E4E76FC11A277F74004DF568 /* default4.png */,
 				E4E76B051A277997004DF568 /* 37x-Checkmark.png */,
 				E4E76B061A277997004DF568 /* 37x-Checkmark@2x.png */,
-				E4E76B071A277997004DF568 /* chatListCell */,
-				E4E76B0A1A277997004DF568 /* ChatView */,
 				E4E76B6B1A277997004DF568 /* ic_bwrz_001.png */,
 				E4E76B6C1A277997004DF568 /* ic_bwrz_001@2x.png */,
 				E4E76B6D1A277997004DF568 /* ic_bwrz_002.png */,
@@ -1924,6 +1961,12 @@
 				E4E76CF71A277B28004DF568 /* BwhdViewController.h */,
 				E4E76CF81A277B28004DF568 /* BwhdViewController.m */,
 				E4E76CF91A277B28004DF568 /* BwhdViewController.xib */,
+				E4ECE9501A2F77DF00860CE7 /* WdhdViewController.h */,
+				E4ECE9511A2F77DF00860CE7 /* WdhdViewController.m */,
+				E4ECE9521A2F77DF00860CE7 /* WdhdViewController.xib */,
+				E4ECE2BB1A30614300DC118B /* MyActivityReviewViewController.h */,
+				E4ECE2BC1A30614300DC118B /* MyActivityReviewViewController.m */,
+				E4ECE2BD1A30614300DC118B /* MyActivityReviewViewController.xib */,
 				E4E76CFA1A277B28004DF568 /* ChildrenTableViewCell.h */,
 				E4E76CFB1A277B28004DF568 /* ChildrenTableViewCell.m */,
 				E4E76CFC1A277B28004DF568 /* ChildrenTableViewCell.xib */,
@@ -2784,9 +2827,11 @@
 				E4E76F0F1A277B3C004DF568 /* chatBar_faceSelected@2x.png in Resources */,
 				E4E76BBC1A277997004DF568 /* VoiceSearchFeedback012.png in Resources */,
 				E4E76BA81A277997004DF568 /* VoiceSearchFeedback002.png in Resources */,
+				E4ECE9541A2F77DF00860CE7 /* WdhdViewController.xib in Resources */,
 				E4E76F461A277B3C004DF568 /* group_detail@2x.png in Resources */,
 				E4E76BED1A277997004DF568 /* chat_sender_audio_playing_000.png in Resources */,
 				E4EB900C1A2DB9F600DFEA47 /* xxgg_high.png in Resources */,
+				E4ECE94E1A2F74BD00860CE7 /* wdhd.png in Resources */,
 				E4EB90141A2DB9F600DFEA47 /* xxjs_high.png in Resources */,
 				E4E76F5A1A277B3C004DF568 /* newFriends@2x.png in Resources */,
 				E4E76F141A277B3C004DF568 /* chatBar_more.png in Resources */,
@@ -2805,6 +2850,7 @@
 				E4E76D351A277B28004DF568 /* BjjsViewController.xib in Resources */,
 				E4EB90271A2DBEE500DFEA47 /* guide_1.png in Resources */,
 				E4E76C221A277997004DF568 /* tabbar_setting@2x.png in Resources */,
+				E4ECE94C1A2F74BD00860CE7 /* wdhd_high.png in Resources */,
 				E4E76BA61A277997004DF568 /* VoiceSearchFeedback001.png in Resources */,
 				E4E76F0C1A277B3C004DF568 /* chatBar_face.png in Resources */,
 				E4E76C241A277997004DF568 /* tabbar_settingHL@2x.png in Resources */,
@@ -2859,6 +2905,7 @@
 				E4E76F2B1A277B3C004DF568 /* chatBar_more_cameraSelected@2x.png in Resources */,
 				E4E76BFB1A277997004DF568 /* ic_bwrz_002.png in Resources */,
 				E4E76D5D1A277B28004DF568 /* UpdatePasswordViewController.xib in Resources */,
+				E4ECE94A1A2F74BD00860CE7 /* wdgg.png in Resources */,
 				E4E76F481A277B3C004DF568 /* group_participant_add@2x.png in Resources */,
 				E4E76F251A277B3C004DF568 /* chatBar_colorMore_photoSelected@2x.png in Resources */,
 				E4E76EF91A277B3C004DF568 /* call_out_h@2x.png in Resources */,
@@ -2903,6 +2950,7 @@
 				E4E76BB81A277997004DF568 /* VoiceSearchFeedback010.png in Resources */,
 				E4E76BC61A277997004DF568 /* VoiceSearchFeedback017.png in Resources */,
 				E4E76F211A277B3C004DF568 /* chatBar_colorMore_cameraSelected@2x.png in Resources */,
+				E4ECE93F1A2F5ACC00860CE7 /* ic_bwgg_011.png in Resources */,
 				E4E76D5A1A277B28004DF568 /* SpTableViewCell.xib in Resources */,
 				E4EB90101A2DB9F600DFEA47 /* xxhd_high.png in Resources */,
 				E4E76F591A277B3C004DF568 /* FriendCell.xib in Resources */,
@@ -2913,6 +2961,7 @@
 				E4E76F261A277B3C004DF568 /* chatBar_colorMore_video@2x.png in Resources */,
 				E4E76C031A277997004DF568 /* ic_index_006.png in Resources */,
 				E4E76B9E1A277997004DF568 /* chatFire_audioPlaying0.png in Resources */,
+				E4ECE94B1A2F74BD00860CE7 /* wdgg@2x.png in Resources */,
 				E4E76F0E1A277B3C004DF568 /* chatBar_faceSelected.png in Resources */,
 				E4E76BBD1A277997004DF568 /* VoiceSearchFeedback012@2x.png in Resources */,
 				E4E76BB91A277997004DF568 /* VoiceSearchFeedback010@2x.png in Resources */,
@@ -2951,6 +3000,7 @@
 				E4EB90291A2DBEE500DFEA47 /* guide_3.png in Resources */,
 				E4E76BCF1A277997004DF568 /* chatBar_more_card.png in Resources */,
 				E4E76BA41A277997004DF568 /* chatFire_audioPlaying3.png in Resources */,
+				E4ECE9491A2F74BD00860CE7 /* wdgg_high@2x.png in Resources */,
 				E4E76BB41A277997004DF568 /* VoiceSearchFeedback008.png in Resources */,
 				E4E76BE41A277997004DF568 /* chat_receiver_audio_playing001@2x.png in Resources */,
 				E4E76F1F1A277B3C004DF568 /* chatBar_recordSelectedBg@2x.png in Resources */,
@@ -2973,6 +3023,7 @@
 				E4EB90331A2E17EA00DFEA47 /* BwrzViewController.xib in Resources */,
 				E4EB90281A2DBEE500DFEA47 /* guide_2.png in Resources */,
 				E4E76C0B1A277997004DF568 /* ic_kcb_bg.png in Resources */,
+				E4ECE2BF1A30614300DC118B /* MyActivityReviewViewController.xib in Resources */,
 				E4E76BEE1A277997004DF568 /* chat_sender_audio_playing_000@2x.png in Resources */,
 				E4E76C0A1A277997004DF568 /* ic_index_bg.png in Resources */,
 				E4E76C141A277997004DF568 /* MessageEntryBackground.png in Resources */,
@@ -3009,6 +3060,8 @@
 				E4E76BC71A277997004DF568 /* VoiceSearchFeedback017@2x.png in Resources */,
 				E4E76BF21A277997004DF568 /* chat_sender_audio_playing_002@2x.png in Resources */,
 				E4E76F491A277B3C004DF568 /* group_participant_addHL@2x.png in Resources */,
+				E4ECE94D1A2F74BD00860CE7 /* wdhd_high@2x.png in Resources */,
+				E4ECE94F1A2F74BD00860CE7 /* wdhd@2x.png in Resources */,
 				E4E76FA11A277C8D004DF568 /* YsdtViewController.xib in Resources */,
 				E4E76EFA1A277B3C004DF568 /* call_silence.png in Resources */,
 				E4E76F321A277B3C004DF568 /* chatBar_more_photoSelected.png in Resources */,
@@ -3018,6 +3071,7 @@
 				E4EB90171A2DB9F600DFEA47 /* xxjs@2x.png in Resources */,
 				E4E76AE51A2773BB004DF568 /* LaunchScreen.xib in Resources */,
 				E4E76F531A277B3C004DF568 /* add@2x.png in Resources */,
+				E4ECE9481A2F74BD00860CE7 /* wdgg_high.png in Resources */,
 				E4E76BA71A277997004DF568 /* VoiceSearchFeedback001@2x.png in Resources */,
 				E4E76C0E1A277997004DF568 /* ic_login_password.png in Resources */,
 				E4E76BDF1A277997004DF568 /* chat_location_preview.png in Resources */,
@@ -3071,6 +3125,7 @@
 				E4E76F4D1A277B3C004DF568 /* GroupSettingViewController.m in Sources */,
 				E4E76F851A277B3C004DF568 /* XHMessageTextView.m in Sources */,
 				E4E76D3C1A277B28004DF568 /* ChildrenTableViewCell.m in Sources */,
+				E4ECE9531A2F77DF00860CE7 /* WdhdViewController.m in Sources */,
 				E4E76F7B1A277B3C004DF568 /* PushNotificationViewController.m in Sources */,
 				E4E76D5C1A277B28004DF568 /* UpdatePasswordViewController.m in Sources */,
 				E4E76F361A277B3C004DF568 /* EMChatBaseBubbleView.m in Sources */,
@@ -3080,6 +3135,7 @@
 				E4E76F5B1A277B3C004DF568 /* RealtimeSearchUtil.m in Sources */,
 				E4E76F061A277B3C004DF568 /* DXFaceView.m in Sources */,
 				E4E76F821A277B3C004DF568 /* EMChooseViewController.m in Sources */,
+				E4ECE2BE1A30614300DC118B /* MyActivityReviewViewController.m in Sources */,
 				E4E76D401A277B28004DF568 /* ChooseClassViewController.m in Sources */,
 				E4E76C901A277AD0004DF568 /* HPTextViewInternal.m in Sources */,
 				E4E76F051A277B3C004DF568 /* DXMessageToolBar.m in Sources */,
