@@ -7,8 +7,17 @@
 //
 
 #import "MyNoticeReviewDetailViewController.h"
+#import "MKNetworkKit.h"
+#import "Utils.h"
+#import "MBProgressHUD.h"
 
-@interface MyNoticeReviewDetailViewController ()
+@interface MyNoticeReviewDetailViewController ()<MBProgressHUDDelegate>{
+    MKNetworkEngine *engine;
+    MBProgressHUD *HUD;
+    
+    NSString *detailid;
+}
+
 
 @end
 
@@ -17,6 +26,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    //初始化引擎
+    engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
+    
+    //添加加载等待条
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    HUD.labelText = @"加载中";
+    [self.view addSubview:HUD];
+    HUD.delegate = self;
     
     self.contentTextview.layer.borderColor = [UIColor colorWithRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1].CGColor;
     self.contentTextview.layer.borderWidth = 1.0;
@@ -41,14 +59,23 @@
         NSNumber *status = [self.data objectForKey:@"status"];
         self.titleLabel.text = noticeTitle;
         self.contentTextview.text = noticeContent;
-        
+        detailid = [self.data objectForKey:@"id"];
         if ([status intValue] == 2) {//待发布 隐藏按钮
             [self.btn1 setHidden:YES];
             [self.btn2 setHidden:YES];
         }
     }
     
-    
+    //添加手势，点击输入框其他区域隐藏键盘
+    UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
+    tapGr.cancelsTouchesInView =NO;
+    [self.view addGestureRecognizer:tapGr];
+}
+
+//隐藏键盘
+-(void)viewTapped:(UITapGestureRecognizer*)tapGr{
+    [self.titleLabel resignFirstResponder];
+    [self.contentTextview resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,10 +94,120 @@
 */
 
 - (IBAction)delBtn:(id)sender {
-    NSLog(@"删除");
+    [self viewTapped:nil];
+
+    [HUD show:YES];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *userid = [userDefaults objectForKey:@"userid"];
+    
+    [dic setValue:userid forKey:@"userid"];
+    [dic setValue:detailid forKey:@"noticeId"];
+    
+    MKNetworkOperation *op = [engine operationWithPath:@"/Notice/delete.do" params:dic httpMethod:@"POST"];
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        //        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
+        NSString *result = [operation responseString];
+        NSError *error;
+        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+        if (resultDict == nil) {
+            NSLog(@"json parse failed \r\n");
+        }
+        NSNumber *success = [resultDict objectForKey:@"success"];
+        if ([success boolValue]) {
+            [HUD hide:YES];
+            self.titleLabel.text = @"";
+            self.contentTextview.text = @"";
+            [self okMsk:@"删除成功"];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshMyNoticeRevice" object:nil];
+        }else{
+            [HUD hide:YES];
+            [self alertMsg:@"删除失败"];
+        }
+    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
+        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+        [HUD hide:YES];
+        
+    }];
+    [engine enqueueOperation:op];
+    
+    
 }
 
 - (IBAction)saveBtn:(id)sender {
-    NSLog(@"提交");
+    [self save:@"2"];
+}
+
+-(void)save:(NSString *)status{
+    [self viewTapped:nil];
+    if (self.titleLabel.text.length == 0) {
+        [self alertMsg:@"请填写标题"];
+    }else if(self.contentTextview.text.length == 0){
+        [self alertMsg:@"请填写内容"];
+    }else{
+        [HUD show:YES];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString *userid = [userDefaults objectForKey:@"userid"];
+        
+        [dic setValue:userid forKey:@"userid"];
+        [dic setValue:detailid forKey:@"id"];
+        [dic setValue:self.titleLabel.text forKey:@"noticetitle"];
+        [dic setValue:self.contentTextview.text forKey:@"noticecontent"];
+        
+        MKNetworkOperation *op = [engine operationWithPath:@"/Notice/releasenotice.do" params:dic httpMethod:@"POST"];
+        [op addCompletionHandler:^(MKNetworkOperation *operation) {
+            //        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
+            NSString *result = [operation responseString];
+            NSError *error;
+            NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+            if (resultDict == nil) {
+                NSLog(@"json parse failed \r\n");
+            }
+            NSNumber *success = [resultDict objectForKey:@"success"];
+            if ([success boolValue]) {
+                [HUD hide:YES];
+                self.titleLabel.text = @"";
+                self.contentTextview.text = @"";
+                [self okMsk:@"发布成功"];
+                
+                [self.navigationController popViewControllerAnimated:YES];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshMyNoticeRevice" object:nil];
+            }else{
+                [HUD hide:YES];
+                [self alertMsg:@"发布失败"];
+            }
+        }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
+            NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+            [HUD hide:YES];
+            
+        }];
+        [engine enqueueOperation:op];
+    }
+}
+
+//成功
+- (void)okMsk:(NSString *)msg{
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:hud];
+    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+    hud.mode = MBProgressHUDModeCustomView;
+    hud.delegate = self;
+    hud.labelText = msg;
+    [hud show:YES];
+    [hud hide:YES afterDelay:1];
+}
+
+
+//提示
+- (void)alertMsg:(NSString *)msg{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = msg;
+    hud.margin = 10.f;
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hide:YES afterDelay:1];
 }
 @end

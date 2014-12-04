@@ -38,7 +38,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(refreshMyNoticeRevice)
+                                                 name:@"refreshMyNoticeRevice"
+                                               object:nil];
     
     //初始化tableview
     CGRect cg = CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-50);
@@ -340,7 +343,9 @@
     [_slimeView endRefresh];
 }
 
-
+- (void)refreshMyNoticeRevice{
+    [self loadData];
+}
 
 
 @end

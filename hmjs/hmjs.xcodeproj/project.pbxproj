@@ -2002,12 +2002,12 @@
 				E4E76D0E1A277B28004DF568 /* GgxqViewController.h */,
 				E4E76D0F1A277B28004DF568 /* GgxqViewController.m */,
 				E4E76D101A277B28004DF568 /* GgxqViewController.xib */,
-				E4B9169D1A30A69A009075A0 /* MyNoticeReviewDetailViewController.h */,
-				E4B9169E1A30A69A009075A0 /* MyNoticeReviewDetailViewController.m */,
-				E4B9169F1A30A69A009075A0 /* MyNoticeReviewDetailViewController.xib */,
 				E4B916A01A30A69A009075A0 /* MyNoticeReviewViewController.h */,
 				E4B916A11A30A69A009075A0 /* MyNoticeReviewViewController.m */,
 				E4B916A21A30A69A009075A0 /* MyNoticeReviewViewController.xib */,
+				E4B9169D1A30A69A009075A0 /* MyNoticeReviewDetailViewController.h */,
+				E4B9169E1A30A69A009075A0 /* MyNoticeReviewDetailViewController.m */,
+				E4B9169F1A30A69A009075A0 /* MyNoticeReviewDetailViewController.xib */,
 				E4B9169A1A30A69A009075A0 /* AddNoticeViewController.h */,
 				E4B9169B1A30A69A009075A0 /* AddNoticeViewController.m */,
 				E4B9169C1A30A69A009075A0 /* AddNoticeViewController.xib */,
@@ -2814,6 +2814,7 @@
 					};
 					E4E76AE91A2773BB004DF568 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = 385K2MCGVE;
 						TestTargetID = E4E76AD01A2773BB004DF568;
 					};
 				};
@@ -3379,7 +3380,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yunchao Zhou (R2QU3CV878)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yunchao Zhou (R2QU3CV878)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3399,6 +3401,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "795e446f-9456-40eb-9dad-d35bda19a59b";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3420,7 +3423,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Yunchao Zhou (R2QU3CV878)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yunchao Zhou (R2QU3CV878)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -3433,6 +3437,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "795e446f-9456-40eb-9dad-d35bda19a59b";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3459,7 +3464,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "17642be1-69c3-463e-ae47-5fb1a9f3ff30";
+				PROVISIONING_PROFILE = "795e446f-9456-40eb-9dad-d35bda19a59b";
 			};
 			name = Debug;
 		};
@@ -3484,7 +3489,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "17642be1-69c3-463e-ae47-5fb1a9f3ff30";
+				PROVISIONING_PROFILE = "795e446f-9456-40eb-9dad-d35bda19a59b";
 			};
 			name = Release;
 		};
@@ -3492,6 +3497,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -3503,6 +3510,7 @@
 				INFOPLIST_FILE = hmjsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hmjs.app/hmjs";
 			};
 			name = Debug;
@@ -3511,6 +3519,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -3518,6 +3528,7 @@
 				INFOPLIST_FILE = hmjsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hmjs.app/hmjs";
 			};
 			name = Release;
