@@ -62,6 +62,13 @@
     [self.view addSubview:HUD];
     HUD.delegate = self;
     
+    
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [_textView becomeFirstResponder];
 }
 
 - (void)textViewDidChangeSelection:(UITextView *)textView

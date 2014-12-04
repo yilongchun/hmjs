@@ -11,6 +11,8 @@
 #import "GgtzViewController.h"
 #import "BwrzViewController.h"
 #import "WdhdViewController.h"
+#import "MyNoticeReviewViewController.h"
+#import "AddNoticeViewController.h"
 
 @interface BbxxTarbarViewController (){
     UIBarButtonItem *bwhdButtonItem;
@@ -49,7 +51,7 @@
     [item2 setTag:1];
     vc2.tabBarItem = item2;
     
-    GgtzViewController *vc5 = [[GgtzViewController alloc] init];
+    MyNoticeReviewViewController *vc5 = [[MyNoticeReviewViewController alloc] init];
     UITabBarItem *item5 = [[UITabBarItem alloc] initWithTitle:@"我的公告" image:[[UIImage imageNamed:@"wdgg.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"wdgg_high.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [item5 setTag:4];
     vc5.tabBarItem = item5;
@@ -121,13 +123,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)action1{//班务活动
+- (void)action1{//添加班务活动
     NSLog(@"班务活动");
 }
-- (void)action2{//公告通知
-    NSLog(@"公告通知");
+- (void)action2{//添加公告通知
+    AddNoticeViewController *vc = [[AddNoticeViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
-- (void)action3{//班务日志
+- (void)action3{//添加班务日志
     NSLog(@"班务日志");
 }
 
