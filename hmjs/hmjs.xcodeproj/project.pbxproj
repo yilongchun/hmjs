@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E4B916A31A30A69A009075A0 /* AddNoticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B9169B1A30A69A009075A0 /* AddNoticeViewController.m */; };
+		E4B916A41A30A69A009075A0 /* AddNoticeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4B9169C1A30A69A009075A0 /* AddNoticeViewController.xib */; };
+		E4B916A51A30A69A009075A0 /* MyNoticeReviewDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B9169E1A30A69A009075A0 /* MyNoticeReviewDetailViewController.m */; };
+		E4B916A61A30A69A009075A0 /* MyNoticeReviewDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4B9169F1A30A69A009075A0 /* MyNoticeReviewDetailViewController.xib */; };
+		E4B916A71A30A69A009075A0 /* MyNoticeReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B916A11A30A69A009075A0 /* MyNoticeReviewViewController.m */; };
+		E4B916A81A30A69A009075A0 /* MyNoticeReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4B916A21A30A69A009075A0 /* MyNoticeReviewViewController.xib */; };
 		E4E76AD71A2773BB004DF568 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E76AD61A2773BB004DF568 /* main.m */; };
 		E4E76ADA1A2773BB004DF568 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E76AD91A2773BB004DF568 /* AppDelegate.m */; };
 		E4E76AE01A2773BB004DF568 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4E76ADE1A2773BB004DF568 /* Main.storyboard */; };
@@ -494,6 +500,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E4B9169A1A30A69A009075A0 /* AddNoticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNoticeViewController.h; sourceTree = "<group>"; };
+		E4B9169B1A30A69A009075A0 /* AddNoticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNoticeViewController.m; sourceTree = "<group>"; };
+		E4B9169C1A30A69A009075A0 /* AddNoticeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddNoticeViewController.xib; sourceTree = "<group>"; };
+		E4B9169D1A30A69A009075A0 /* MyNoticeReviewDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNoticeReviewDetailViewController.h; sourceTree = "<group>"; };
+		E4B9169E1A30A69A009075A0 /* MyNoticeReviewDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNoticeReviewDetailViewController.m; sourceTree = "<group>"; };
+		E4B9169F1A30A69A009075A0 /* MyNoticeReviewDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNoticeReviewDetailViewController.xib; sourceTree = "<group>"; };
+		E4B916A01A30A69A009075A0 /* MyNoticeReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNoticeReviewViewController.h; sourceTree = "<group>"; };
+		E4B916A11A30A69A009075A0 /* MyNoticeReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNoticeReviewViewController.m; sourceTree = "<group>"; };
+		E4B916A21A30A69A009075A0 /* MyNoticeReviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNoticeReviewViewController.xib; sourceTree = "<group>"; };
 		E4E76AD11A2773BB004DF568 /* hmjs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hmjs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4E76AD51A2773BB004DF568 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4E76AD61A2773BB004DF568 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1987,6 +2002,15 @@
 				E4E76D0E1A277B28004DF568 /* GgxqViewController.h */,
 				E4E76D0F1A277B28004DF568 /* GgxqViewController.m */,
 				E4E76D101A277B28004DF568 /* GgxqViewController.xib */,
+				E4B9169D1A30A69A009075A0 /* MyNoticeReviewDetailViewController.h */,
+				E4B9169E1A30A69A009075A0 /* MyNoticeReviewDetailViewController.m */,
+				E4B9169F1A30A69A009075A0 /* MyNoticeReviewDetailViewController.xib */,
+				E4B916A01A30A69A009075A0 /* MyNoticeReviewViewController.h */,
+				E4B916A11A30A69A009075A0 /* MyNoticeReviewViewController.m */,
+				E4B916A21A30A69A009075A0 /* MyNoticeReviewViewController.xib */,
+				E4B9169A1A30A69A009075A0 /* AddNoticeViewController.h */,
+				E4B9169B1A30A69A009075A0 /* AddNoticeViewController.m */,
+				E4B9169C1A30A69A009075A0 /* AddNoticeViewController.xib */,
 				E4E76D111A277B28004DF568 /* GrdaViewController.h */,
 				E4E76D121A277B28004DF568 /* GrdaViewController.m */,
 				E4E76D131A277B28004DF568 /* GrdaViewController.xib */,
@@ -2912,6 +2936,7 @@
 				E4E76AE01A2773BB004DF568 /* Main.storyboard in Resources */,
 				E4E76BC91A277997004DF568 /* VoiceSearchFeedback018@2x.png in Resources */,
 				E4E76BAB1A277997004DF568 /* VoiceSearchFeedback003@2x.png in Resources */,
+				E4B916A41A30A69A009075A0 /* AddNoticeViewController.xib in Resources */,
 				E4EB90161A2DB9F600DFEA47 /* xxjs.png in Resources */,
 				E4E76F191A277B3C004DF568 /* chatBar_record@2x.png in Resources */,
 				E4E76EF81A277B3C004DF568 /* call_out_h.png in Resources */,
@@ -3013,6 +3038,7 @@
 				E4E76F8E1A277B4F004DF568 /* ShezhiViewController.xib in Resources */,
 				E4E76C191A277997004DF568 /* tabbar_chats.png in Resources */,
 				E4EB900D1A2DB9F600DFEA47 /* xxgg_high@2x.png in Resources */,
+				E4B916A81A30A69A009075A0 /* MyNoticeReviewViewController.xib in Resources */,
 				E4E76C061A277997004DF568 /* ic_index_009.png in Resources */,
 				E4E76F0D1A277B3C004DF568 /* chatBar_face@2x.png in Resources */,
 				E4E76D481A277B28004DF568 /* GgtzViewController.xib in Resources */,
@@ -3073,6 +3099,7 @@
 				E4E76F531A277B3C004DF568 /* add@2x.png in Resources */,
 				E4ECE9481A2F74BD00860CE7 /* wdgg_high.png in Resources */,
 				E4E76BA71A277997004DF568 /* VoiceSearchFeedback001@2x.png in Resources */,
+				E4B916A61A30A69A009075A0 /* MyNoticeReviewDetailViewController.xib in Resources */,
 				E4E76C0E1A277997004DF568 /* ic_login_password.png in Resources */,
 				E4E76BDF1A277997004DF568 /* chat_location_preview.png in Resources */,
 				E4E76BD81A277997004DF568 /* chatBar_textBg@2x.png in Resources */,
@@ -3162,6 +3189,7 @@
 				E4E76F511A277B3C004DF568 /* ChineseToPinyin.m in Sources */,
 				E4E76EDF1A277B3C004DF568 /* PSTCollectionViewUpdateItem.m in Sources */,
 				E4E76EE31A277B3C004DF568 /* PSTGridLayoutSection.m in Sources */,
+				E4B916A31A30A69A009075A0 /* AddNoticeViewController.m in Sources */,
 				E4E76CAB1A277AF9004DF568 /* NSDate+RFC1123.m in Sources */,
 				E4E76ED21A277B3C004DF568 /* MWPhotoBrowser.m in Sources */,
 				E4E76F381A277B3C004DF568 /* EMChatLocationBubbleView.m in Sources */,
@@ -3245,12 +3273,14 @@
 				E4E76F831A277B3C004DF568 /* EMNavigationController.m in Sources */,
 				E4E76F541A277B3C004DF568 /* AddFriendCell.m in Sources */,
 				E4E76F551A277B3C004DF568 /* AddFriendViewController.m in Sources */,
+				E4B916A71A30A69A009075A0 /* MyNoticeReviewViewController.m in Sources */,
 				E4E76F651A277B3C004DF568 /* NSManagedObject+MagicalDataImport.m in Sources */,
 				E4E76F3C1A277B3C004DF568 /* EMChatTimeCell.m in Sources */,
 				E4E76D341A277B28004DF568 /* BjjsViewController.m in Sources */,
 				E4E76EED1A277B3C004DF568 /* NSDate+Category.m in Sources */,
 				E4E76D421A277B28004DF568 /* ContentCell.m in Sources */,
 				E4E76F8D1A277B4F004DF568 /* ShezhiViewController.m in Sources */,
+				E4B916A51A30A69A009075A0 /* MyNoticeReviewDetailViewController.m in Sources */,
 				E4E76F6A1A277B3C004DF568 /* NSManagedObjectContext+MagicalRecord.m in Sources */,
 				E4E76EF41A277B3C004DF568 /* ChatListCell.m in Sources */,
 				E4E76D531A277B28004DF568 /* MyViewControllerCellDetail.m in Sources */,
