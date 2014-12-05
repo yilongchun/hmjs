@@ -60,9 +60,11 @@
         self.titleLabel.text = noticeTitle;
         self.contentTextview.text = noticeContent;
         detailid = [self.data objectForKey:@"id"];
-        if ([status intValue] == 2) {//待发布 隐藏按钮
+        if ([status intValue] == 2) {//待审核 隐藏按钮 控件禁用
             [self.btn1 setHidden:YES];
             [self.btn2 setHidden:YES];
+            [self.titleLabel setEnabled:NO];
+            [self.contentTextview setEditable:NO];
         }
     }
     
