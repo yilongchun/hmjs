@@ -7,15 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ELCImagePickerHeader.h"
 
-@interface AddActivityViewController : UIViewController
+@interface AddActivityViewController : UIViewController<ELCImagePickerControllerDelegate, UINavigationControllerDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate>
+
+@property (nonatomic, strong) NSMutableArray *chosenImages;
 
 @property (weak, nonatomic) IBOutlet UITextField *titleLabel;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextview;
-@property (weak, nonatomic) IBOutlet UIButton *btn1;
 @property (weak, nonatomic) IBOutlet UIButton *imagePickBtn;
+@property (weak, nonatomic) IBOutlet UIScrollView *myscrollview;
 
-- (IBAction)saveBtn:(id)sender;
 
-
+- (IBAction)launchController;
 @end
