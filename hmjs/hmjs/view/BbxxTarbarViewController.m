@@ -13,6 +13,7 @@
 #import "WdhdViewController.h"
 #import "MyNoticeReviewViewController.h"
 #import "AddNoticeViewController.h"
+#import "AddActivityViewController.h"
 
 @interface BbxxTarbarViewController (){
     UIBarButtonItem *bwhdButtonItem;
@@ -125,6 +126,8 @@
 
 - (void)action1{//添加班务活动
     NSLog(@"班务活动");
+    AddActivityViewController *vc = [[AddActivityViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)action2{//添加公告通知
     AddNoticeViewController *vc = [[AddNoticeViewController alloc] init];

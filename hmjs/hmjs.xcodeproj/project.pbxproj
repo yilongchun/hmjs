@@ -13,6 +13,10 @@
 		E4B916A61A30A69A009075A0 /* MyNoticeReviewDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4B9169F1A30A69A009075A0 /* MyNoticeReviewDetailViewController.xib */; };
 		E4B916A71A30A69A009075A0 /* MyNoticeReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B916A11A30A69A009075A0 /* MyNoticeReviewViewController.m */; };
 		E4B916A81A30A69A009075A0 /* MyNoticeReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4B916A21A30A69A009075A0 /* MyNoticeReviewViewController.xib */; };
+		E4CAF5BE1A31B333009A77BE /* AddActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CAF5BC1A31B333009A77BE /* AddActivityViewController.m */; };
+		E4CAF5BF1A31B333009A77BE /* AddActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4CAF5BD1A31B333009A77BE /* AddActivityViewController.xib */; };
+		E4CAF5C21A31B7A4009A77BE /* smiley_add_btn_nor.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CAF5C01A31B7A4009A77BE /* smiley_add_btn_nor.png */; };
+		E4CAF5C31A31B7A4009A77BE /* smiley_add_btn_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CAF5C11A31B7A4009A77BE /* smiley_add_btn_pressed.png */; };
 		E4E76AD71A2773BB004DF568 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E76AD61A2773BB004DF568 /* main.m */; };
 		E4E76ADA1A2773BB004DF568 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E76AD91A2773BB004DF568 /* AppDelegate.m */; };
 		E4E76AE01A2773BB004DF568 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4E76ADE1A2773BB004DF568 /* Main.storyboard */; };
@@ -509,6 +513,11 @@
 		E4B916A01A30A69A009075A0 /* MyNoticeReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNoticeReviewViewController.h; sourceTree = "<group>"; };
 		E4B916A11A30A69A009075A0 /* MyNoticeReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNoticeReviewViewController.m; sourceTree = "<group>"; };
 		E4B916A21A30A69A009075A0 /* MyNoticeReviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNoticeReviewViewController.xib; sourceTree = "<group>"; };
+		E4CAF5BB1A31B333009A77BE /* AddActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddActivityViewController.h; sourceTree = "<group>"; };
+		E4CAF5BC1A31B333009A77BE /* AddActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddActivityViewController.m; sourceTree = "<group>"; };
+		E4CAF5BD1A31B333009A77BE /* AddActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddActivityViewController.xib; sourceTree = "<group>"; };
+		E4CAF5C01A31B7A4009A77BE /* smiley_add_btn_nor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smiley_add_btn_nor.png; sourceTree = "<group>"; };
+		E4CAF5C11A31B7A4009A77BE /* smiley_add_btn_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smiley_add_btn_pressed.png; sourceTree = "<group>"; };
 		E4E76AD11A2773BB004DF568 /* hmjs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hmjs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4E76AD51A2773BB004DF568 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4E76AD61A2773BB004DF568 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -1386,6 +1395,8 @@
 		E4E76B041A277997004DF568 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E4CAF5C01A31B7A4009A77BE /* smiley_add_btn_nor.png */,
+				E4CAF5C11A31B7A4009A77BE /* smiley_add_btn_pressed.png */,
 				E4E76B071A277997004DF568 /* chatListCell */,
 				E4E76B0A1A277997004DF568 /* ChatView */,
 				E4ECE9401A2F74BD00860CE7 /* wdgg_high.png */,
@@ -1976,6 +1987,9 @@
 				E4E76CF71A277B28004DF568 /* BwhdViewController.h */,
 				E4E76CF81A277B28004DF568 /* BwhdViewController.m */,
 				E4E76CF91A277B28004DF568 /* BwhdViewController.xib */,
+				E4CAF5BB1A31B333009A77BE /* AddActivityViewController.h */,
+				E4CAF5BC1A31B333009A77BE /* AddActivityViewController.m */,
+				E4CAF5BD1A31B333009A77BE /* AddActivityViewController.xib */,
 				E4ECE9501A2F77DF00860CE7 /* WdhdViewController.h */,
 				E4ECE9511A2F77DF00860CE7 /* WdhdViewController.m */,
 				E4ECE9521A2F77DF00860CE7 /* WdhdViewController.xib */,
@@ -3012,6 +3026,7 @@
 				E4E76BEA1A277997004DF568 /* chat_receiver_audio_playing_full@2x.png in Resources */,
 				E4E76BFE1A277997004DF568 /* ic_bwrz_003@2x.png in Resources */,
 				E4E76BAD1A277997004DF568 /* VoiceSearchFeedback004@2x.png in Resources */,
+				E4CAF5C31A31B7A4009A77BE /* smiley_add_btn_pressed.png in Resources */,
 				E4E76BE01A277997004DF568 /* chat_location_preview@2x.png in Resources */,
 				E4E76BD91A277997004DF568 /* chat_location_annotation_someone.png in Resources */,
 				E4E76BBF1A277997004DF568 /* VoiceSearchFeedback013@2x.png in Resources */,
@@ -3092,6 +3107,7 @@
 				E4E76FA11A277C8D004DF568 /* YsdtViewController.xib in Resources */,
 				E4E76EFA1A277B3C004DF568 /* call_silence.png in Resources */,
 				E4E76F321A277B3C004DF568 /* chatBar_more_photoSelected.png in Resources */,
+				E4CAF5C21A31B7A4009A77BE /* smiley_add_btn_nor.png in Resources */,
 				E4E76C231A277997004DF568 /* tabbar_settingHL.png in Resources */,
 				E4E76F031A277B3C004DF568 /* delete@2x.png in Resources */,
 				E4E76BFC1A277997004DF568 /* ic_bwrz_002@2x.png in Resources */,
@@ -3104,6 +3120,7 @@
 				E4E76C0E1A277997004DF568 /* ic_login_password.png in Resources */,
 				E4E76BDF1A277997004DF568 /* chat_location_preview.png in Resources */,
 				E4E76BD81A277997004DF568 /* chatBar_textBg@2x.png in Resources */,
+				E4CAF5BF1A31B333009A77BE /* AddActivityViewController.xib in Resources */,
 				E4E76BD01A277997004DF568 /* chatBar_more_card@2x.png in Resources */,
 				E4E76D411A277B28004DF568 /* ChooseClassViewController.xib in Resources */,
 				E4E76F1C1A277B3C004DF568 /* chatBar_recordSelected.png in Resources */,
@@ -3216,6 +3233,7 @@
 				E4E76F931A277B67004DF568 /* Utils.m in Sources */,
 				E4E76F641A277B3C004DF568 /* NSManagedObject+MagicalAggregation.m in Sources */,
 				E4E76EDA1A277B3C004DF568 /* PSTCollectionViewController.m in Sources */,
+				E4CAF5BE1A31B333009A77BE /* AddActivityViewController.m in Sources */,
 				E4E76EEB1A277B3C004DF568 /* TTGlobalUICommon.m in Sources */,
 				E4E76EEE1A277B3C004DF568 /* NSDateFormatter+Category.m in Sources */,
 				E4E76EEC1A277B3C004DF568 /* WCAlertView.m in Sources */,
