@@ -17,6 +17,9 @@
     MKNetworkEngine *engine;
     MBProgressHUD *HUD;
     int type;
+    NSMutableArray *fileArr;
+    NSURL *videoUrl;
+    BOOL flag;
 }
 
 @property (nonatomic, strong) ALAssetsLibrary *specialLibrary;
@@ -77,6 +80,7 @@
     
     self.chosenImages = [[NSMutableArray alloc] init];
     //[self.myscrollview setFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-64)];
+    fileArr = [[NSMutableArray alloc] init];
 }
 
 //隐藏键盘
@@ -101,7 +105,197 @@
 */
 
 - (void)save{
-    NSLog(@"保存");
+    [self viewTapped:nil];
+    if (self.titleLabel.text.length == 0) {
+        [self alertMsg:@"请填写标题"];
+    }else if(self.contentTextview.text.length == 0){
+        [self alertMsg:@"请填写内容"];
+    }else{
+        [HUD show:YES];
+        if (self.chosenImages.count == 0) {
+            flag = true;
+            [self insertData];
+        }else{
+            flag = false;
+            if (type == 1) {
+                [fileArr removeAllObjects];
+                [self uploadImg:0];
+            }else if(type == 2){
+                [self uploadVideo];
+            }
+            
+        }
+    }
+}
+
+-(void)insertData{
+    
+    if (flag) {
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSDictionary *class = [userDefaults objectForKey:@"class"];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+        [dic setValue:self.titleLabel.text forKey:@"activityTitle"];
+        [dic setValue:self.contentTextview.text forKey:@"activityContent"];
+        [dic setValue:[userDefaults objectForKey:@"userid"] forKey:@"userid"];
+        [dic setValue:[class objectForKey:@"id"] forKey:@"classId"];
+        if (type == 1) {
+            [dic setValue:@"image" forKey:@"filetype"];
+        }else if(type == 2){
+            [dic setValue:@"video" forKey:@"filetype"];
+        }else if(self.chosenImages.count == 0){
+            [dic setValue:@"" forKey:@"filetype"];
+        }
+        
+        if (fileArr.count !=0 && fileArr.count == self.chosenImages.count) {
+            NSMutableString *fileids = [[NSMutableString alloc] init];
+            for (int i = 0 ; i < fileArr.count; i++) {
+                NSString *fileid = [fileArr objectAtIndex:i];
+                [fileids appendString:fileid];
+                if (i < fileArr.count -1) {
+                    [fileids appendString:@","];
+                }
+            }
+            [dic setValue:fileids forKey:@"fileid"];
+        }else{
+            [dic setValue:@"" forKey:@"fileid"];
+        }
+        
+        MKNetworkOperation *op = [engine operationWithPath:@"/classActivity/activityimageload.do" params:dic httpMethod:@"POST"];
+        [op addCompletionHandler:^(MKNetworkOperation *operation) {
+            NSLog(@"[operation responseData]-->>%@", [operation responseString]);
+            NSString *result = [operation responseString];
+            NSError *error;
+            NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+            if (resultDict == nil) {
+                NSLog(@"json parse failed \r\n");
+            }
+            NSNumber *success = [resultDict objectForKey:@"success"];
+            NSString *msg = [resultDict objectForKey:@"msg"];
+            //        NSString *code = [resultDict objectForKey:@"code"];
+            if ([success boolValue]) {
+                //            NSDictionary *data = [resultDict objectForKey:@"data"];
+                [HUD hide:YES];
+                [self alertMsg:msg];
+                self.titleLabel.text = @"";
+                self.contentTextview.text = @"";
+                [self.chosenImages removeAllObjects];
+                [fileArr removeAllObjects];
+                [self reloadImageToView];
+                
+            }else{
+                [HUD hide:YES];
+                [self alertMsg:msg];
+            }
+        }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
+            NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+            [HUD hide:YES];
+            [self alertMsg:[err localizedDescription]];
+        }];
+        [engine enqueueOperation:op];
+    }else{
+        
+    }
+    
+}
+
+
+//上传图片
+-(void)uploadImg:(int)num{
+    
+    UIImage *image = [self.chosenImages objectAtIndex:num];
+    NSData *fileData = UIImageJPEGRepresentation(image, 1.0);
+    
+    //将文件保存到本地
+    NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
+    NSString *documentsDirectory=[paths objectAtIndex:0];
+    NSString *savedImagePath=[documentsDirectory stringByAppendingPathComponent:@"saveFore.jpg"];
+    BOOL saveFlag = [fileData writeToFile:savedImagePath atomically:YES];
+    
+    
+   
+    
+    MKNetworkOperation *op =[engine operationWithURLString:[NSString stringWithFormat:@"http://%@/image/upload.do",[Utils getImageHostname]] params:nil httpMethod:@"POST"];
+    [op addFile:savedImagePath forKey:@"allFile"];
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        
+        NSString *result = [operation responseString];
+        NSError *error;
+        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+        if (resultDict == nil) {
+            NSLog(@"json parse failed \r\n");
+        }NSLog(@"%@",resultDict);
+        NSNumber *success = [resultDict objectForKey:@"success"];
+        if ([success boolValue]) {
+            NSString *fileurl = [resultDict objectForKey:@"data"];
+            [fileArr addObject:fileurl];
+            NSLog(@"上传成功");
+            if (fileArr.count == self.chosenImages.count) {
+                flag = true;
+                [self insertData];
+            }else{
+                [self uploadImg:num+1];
+            }
+            
+        }else{
+            [HUD hide:YES];
+            [self alertMsg:@"上传失败"];
+        }
+        if (saveFlag) {
+            NSFileManager *fileMgr = [NSFileManager defaultManager];
+            NSError *err;
+            [fileMgr removeItemAtPath:savedImagePath error:&err];
+        }
+    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
+        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+        if (saveFlag) {
+            NSFileManager *fileMgr = [NSFileManager defaultManager];
+            NSError *err;
+            [fileMgr removeItemAtPath:savedImagePath error:&err];
+        }
+        [HUD hide:YES];
+        [self alertMsg:[err localizedDescription]];
+    }];
+    [engine enqueueOperation:op];
+    
+    
+}
+//上传视频
+-(void)uploadVideo{
+    
+    NSData *filedata = [NSData dataWithContentsOfURL:videoUrl];
+    
+//    NSString *thePath=[[NSBundle mainBundle] pathForResource:@"" ofType:@"mov"];
+    
+    MKNetworkOperation *op =[engine operationWithURLString:[NSString stringWithFormat:@"http://%@",[Utils getVideoHostname]] params:nil httpMethod:@"POST"];
+//    [op addFile:videoUrl forKey:@"allFile"];
+//   [op addData:filedata forKey:@"allFile"];
+    [op addData:filedata forKey:@"allFile" mimeType:@"video/mov" fileName:@"output.mov"];
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        
+        NSString *result = [operation responseString];
+        NSError *error;
+        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+        if (resultDict == nil) {
+            NSLog(@"json parse failed \r\n");
+        }
+        NSNumber *success = [resultDict objectForKey:@"success"];
+        if ([success boolValue]) {
+            flag = true;
+            NSString *fileurl = [resultDict objectForKey:@"data"];
+            [fileArr addObject:fileurl];
+            [self insertData];
+        }else{
+            [HUD hide:YES];
+            [self alertMsg:@"上传失败"];
+        }
+    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
+        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+        [HUD hide:YES];
+        [self alertMsg:[err localizedDescription]];
+    }];
+    [engine enqueueOperation:op];
+    
+    
 }
 
 - (IBAction)launchController{
@@ -304,31 +498,19 @@
             imagePicker.allowsEditing = YES;
             imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
             imagePicker.mediaTypes =  @[(NSString *)kUTTypeImage];
-            //            imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:imagePicker.sourceType];
             [self presentViewController:imagePicker animated:YES completion:nil];
         }
             break;
         case 1://本地相簿
         {
             type = 1;
-//            UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-//            imagePicker.delegate = self;
-//            imagePicker.allowsEditing = YES;
-//            imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//            imagePicker.mediaTypes =  [[NSArray alloc] initWithObjects:@"public.image", nil];
-//            [self presentViewController:imagePicker animated:YES completion:^{
-//                
-//            }];
-            
             ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initImagePicker];
             elcPicker.maximumImagesCount = 9 - self.chosenImages.count; //Set the maximum number of images to select to 100
             elcPicker.returnsOriginalImage = YES; //Only return the fullScreenImage, not the fullResolutionImage
             elcPicker.returnsImage = YES; //Return UIimage if YES. If NO, only return asset location information
             elcPicker.onOrder = YES; //For multiple image selection, display and return order of selected images
             elcPicker.mediaTypes = @[(NSString *)kUTTypeImage]; //Supports image and movie types
-            
             elcPicker.imagePickerDelegate = self;
-            
             [self presentViewController:elcPicker animated:YES completion:nil];
         }
             break;
@@ -345,7 +527,6 @@
                 imagePicker.allowsEditing = YES;
                 imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
                 imagePicker.mediaTypes =  @[(NSString *)kUTTypeMovie];
-                //            imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:imagePicker.sourceType];
                 [self presentViewController:imagePicker animated:YES completion:nil];
             }
         }
@@ -360,17 +541,6 @@
                 imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
                 imagePicker.mediaTypes =  @[(NSString *)kUTTypeMovie];
                 [self presentViewController:imagePicker animated:YES completion:nil];
-                //            ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initImagePicker];
-                //
-                //            elcPicker.maximumImagesCount = 1; //Set the maximum number of images to select to 100
-                //            elcPicker.returnsOriginalImage = YES; //Only return the fullScreenImage, not the fullResolutionImage
-                //            elcPicker.returnsImage = YES; //Return UIimage if YES. If NO, only return asset location information
-                //            elcPicker.onOrder = YES; //For multiple image selection, display and return order of selected images
-                //            elcPicker.mediaTypes = @[(NSString *)kUTTypeMovie]; //Supports image and movie types
-                //
-                //            elcPicker.imagePickerDelegate = self;
-                //            
-                //            [self presentViewController:elcPicker animated:YES completion:nil];
             }
         }
             break;
@@ -385,28 +555,21 @@
     
     if ([[info objectForKey:UIImagePickerControllerMediaType] isEqualToString:@"public.image"]) {
         UIImage  *image = [info objectForKey:UIImagePickerControllerEditedImage];
-        NSData *fildData = UIImageJPEGRepresentation(image, 1.0);//UIImagePNGRepresentation(img); //
         [self.chosenImages addObject:image];
         [self reloadImageToView];
-        
-        
-        
-        //        self.fileData = UIImageJPEGRepresentation(img, 1.0);
     }
     else if([[info objectForKey:UIImagePickerControllerMediaType] isEqualToString:@"public.movie"])
     {
         NSURL *videoURL = [info objectForKey:UIImagePickerControllerMediaURL];
-        NSLog(@"found a video");
+        videoUrl = videoURL;
+        NSLog(@"found a video %@",videoURL);
         //获取视频的thumbnail
         MPMoviePlayerController *player = [[MPMoviePlayerController alloc]initWithContentURL:videoURL];
         UIImage  *image = [player thumbnailImageAtTime:1.0 timeOption:MPMovieTimeOptionNearestKeyFrame];
         [self.chosenImages addObject:image];
         [self reloadImageToView];
     }
-    [picker dismissViewControllerAnimated:YES completion:^{
-        
-        
-    }];
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

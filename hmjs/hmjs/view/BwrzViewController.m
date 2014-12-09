@@ -6,13 +6,13 @@
 //  Copyright (c) 2014年 yons. All rights reserved.
 //
 #import "BwrzViewController.h"
-#import "GgtzTableViewCell.h"
+#import "BwrzTableViewCell.h"
 #import "MBProgressHUD.h"
 #import "MKNetworkKit.h"
 #import "Utils.h"
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
-#import "BjtzDetailViewController.h"
+#import "UpdateBwrzViewController.h"
 #import "SRRefreshView.h"
 
 @interface BwrzViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
@@ -38,13 +38,13 @@
     CGRect cg = CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-50-64);
     mytableview = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
     //    [mytableview setSeparatorColor:[UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1]];
-    //    if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
-    //        [mytableview setSeparatorInset:UIEdgeInsetsZero];
-    //    }
-    //    if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
-    //        [mytableview setLayoutMargins:UIEdgeInsetsZero];
-    //    }
-    mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+    if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
+        [mytableview setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
+        [mytableview setLayoutMargins:UIEdgeInsetsZero];
+    }
+//    mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     mytableview.dataSource = self;
     mytableview.delegate = self;
     [self.view addSubview:mytableview];
@@ -241,31 +241,17 @@
         return cell;
         
     }else{
-        static NSString *cellIdentifier = @"ggtzcell";
-        GgtzTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        static NSString *cellIdentifier = @"bwrzcell";
+        BwrzTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
-            cell = [[[NSBundle mainBundle] loadNibNamed:@"GgtzTableViewCell" owner:self options:nil] lastObject];
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"BwrzTableViewCell" owner:self options:nil] lastObject];
         }
         NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
         NSString *tntitle = [info objectForKey:@"dailyTitle"];
-        NSString *teacherfileid = [info objectForKey:@"fileid"];
-        //        NSString *tncontent = [info objectForKey:@"tncontent"];
-        //        NSNumber *noticecount = [info objectForKey:@"noticecount"];
+//        NSString *teacherfileid = [info objectForKey:@"fileid"];
         NSString *tncreatedate = [info objectForKey:@"createDate"];
         NSString *source = [info objectForKey:@"creatorName"];
         cell.gtitle.text = tntitle;
-        
-        if ([Utils isBlankString:teacherfileid]) {
-            [cell.imageview setImage:[UIImage imageNamed:@"nopicture.png"]];
-        }else{
-            //            [cell.imageview setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/image/show.do?id=%@",[Utils getImageHostname],teacherfileid]] placeholderImage:[UIImage imageNamed:@"nopicture.png"]];
-            [cell.imageview setImageWithURL:[NSURL URLWithString:teacherfileid] placeholderImage:[UIImage imageNamed:@"nopicture.png"]];
-        }
-        //        cell.gdispcription.text = tncontent;
-        cell.gdispcription.numberOfLines = 2;// 不可少Label属性之一
-        cell.gdispcription.lineBreakMode = NSLineBreakByCharWrapping;// 不可少Label属性之二
-        //[cell.gdispcription sizeToFit];
-        //        cell.gpinglun.text = [NSString stringWithFormat:@"评论(%@)",noticecount];
         cell.gdate.text = tncreatedate;
         cell.gsource.text = [NSString stringWithFormat:@"来自:%@",source];
         return cell;
@@ -276,18 +262,18 @@
     if ([self.dataSource count] == indexPath.row) {
         return 44;
     }else{
-        return 100;
+        return 66;
     }
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    //    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-    //        [cell setSeparatorInset:UIEdgeInsetsZero];
-    //    }
-    //    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-    //        [cell setLayoutMargins:UIEdgeInsetsZero];
-    //    }
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -300,10 +286,10 @@
         }
         
     }else{
+        UpdateBwrzViewController *vc = [[UpdateBwrzViewController alloc] init];
         NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
-        BjtzDetailViewController *vc = [[BjtzDetailViewController alloc]init];
-        vc.title = @"通知详情";
-        vc.dataSource = [NSMutableArray arrayWithObject:info];
+        NSString *detailId = [info objectForKey:@"id"];
+        vc.detailId = detailId;
         [self.navigationController pushViewController:vc animated:YES];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

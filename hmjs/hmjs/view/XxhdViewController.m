@@ -16,6 +16,7 @@
 #import "MyViewControllerCellDetail.h"
 #import "SRRefreshView.h"
 
+
 @interface XxhdViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
     MBProgressHUD *HUD;
     MKNetworkEngine *engine;

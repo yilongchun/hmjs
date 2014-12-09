@@ -14,5 +14,7 @@
 
 + (NSString *)getImageHostname;
 
++ (NSString *)getVideoHostname;
+
 + (BOOL) isBlankString:(NSString *)string;
 @end

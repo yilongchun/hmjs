@@ -371,6 +371,7 @@
         [sender setAnimationRect];
         markView.alpha = 1.0;
         [self.navigationController setNavigationBarHidden:YES];
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
     }];
 }
 
@@ -410,6 +411,7 @@
 - (void) tapImageViewTappedWithObject:(id)sender
 {
     [self.navigationController setNavigationBarHidden:NO];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     ImgScrollView *tmpImgView = sender;
     
     [UIView animateWithDuration:0.2 animations:^{

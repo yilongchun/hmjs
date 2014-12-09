@@ -505,6 +505,12 @@
 		E4ECE94F1A2F74BD00860CE7 /* wdhd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE9471A2F74BD00860CE7 /* wdhd@2x.png */; };
 		E4ECE9531A2F77DF00860CE7 /* WdhdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ECE9511A2F77DF00860CE7 /* WdhdViewController.m */; };
 		E4ECE9541A2F77DF00860CE7 /* WdhdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE9521A2F77DF00860CE7 /* WdhdViewController.xib */; };
+		E4F38F641A373A5B00F4FE3B /* BwrzTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F38F621A373A5B00F4FE3B /* BwrzTableViewCell.m */; };
+		E4F38F651A373A5B00F4FE3B /* BwrzTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F38F631A373A5B00F4FE3B /* BwrzTableViewCell.xib */; };
+		E4F38F691A373D7100F4FE3B /* AddBwrzViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F38F671A373D7100F4FE3B /* AddBwrzViewController.m */; };
+		E4F38F6A1A373D7100F4FE3B /* AddBwrzViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F38F681A373D7100F4FE3B /* AddBwrzViewController.xib */; };
+		E4F38F6E1A37589100F4FE3B /* UpdateBwrzViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F38F6C1A37589100F4FE3B /* UpdateBwrzViewController.m */; };
+		E4F38F6F1A37589100F4FE3B /* UpdateBwrzViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F38F6D1A37589100F4FE3B /* UpdateBwrzViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1312,6 +1318,15 @@
 		E4ECE9501A2F77DF00860CE7 /* WdhdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WdhdViewController.h; sourceTree = "<group>"; };
 		E4ECE9511A2F77DF00860CE7 /* WdhdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WdhdViewController.m; sourceTree = "<group>"; };
 		E4ECE9521A2F77DF00860CE7 /* WdhdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WdhdViewController.xib; sourceTree = "<group>"; };
+		E4F38F611A373A5B00F4FE3B /* BwrzTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BwrzTableViewCell.h; sourceTree = "<group>"; };
+		E4F38F621A373A5B00F4FE3B /* BwrzTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BwrzTableViewCell.m; sourceTree = "<group>"; };
+		E4F38F631A373A5B00F4FE3B /* BwrzTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BwrzTableViewCell.xib; sourceTree = "<group>"; };
+		E4F38F661A373D7100F4FE3B /* AddBwrzViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBwrzViewController.h; sourceTree = "<group>"; };
+		E4F38F671A373D7100F4FE3B /* AddBwrzViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBwrzViewController.m; sourceTree = "<group>"; };
+		E4F38F681A373D7100F4FE3B /* AddBwrzViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddBwrzViewController.xib; sourceTree = "<group>"; };
+		E4F38F6B1A37589100F4FE3B /* UpdateBwrzViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateBwrzViewController.h; sourceTree = "<group>"; };
+		E4F38F6C1A37589100F4FE3B /* UpdateBwrzViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateBwrzViewController.m; sourceTree = "<group>"; };
+		E4F38F6D1A37589100F4FE3B /* UpdateBwrzViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateBwrzViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2074,6 +2089,18 @@
 				E4ECE2BB1A30614300DC118B /* MyActivityReviewViewController.h */,
 				E4ECE2BC1A30614300DC118B /* MyActivityReviewViewController.m */,
 				E4ECE2BD1A30614300DC118B /* MyActivityReviewViewController.xib */,
+				E4EB902F1A2E17EA00DFEA47 /* BwrzViewController.h */,
+				E4EB90301A2E17EA00DFEA47 /* BwrzViewController.m */,
+				E4EB90311A2E17EA00DFEA47 /* BwrzViewController.xib */,
+				E4F38F611A373A5B00F4FE3B /* BwrzTableViewCell.h */,
+				E4F38F621A373A5B00F4FE3B /* BwrzTableViewCell.m */,
+				E4F38F631A373A5B00F4FE3B /* BwrzTableViewCell.xib */,
+				E4F38F661A373D7100F4FE3B /* AddBwrzViewController.h */,
+				E4F38F671A373D7100F4FE3B /* AddBwrzViewController.m */,
+				E4F38F681A373D7100F4FE3B /* AddBwrzViewController.xib */,
+				E4F38F6B1A37589100F4FE3B /* UpdateBwrzViewController.h */,
+				E4F38F6C1A37589100F4FE3B /* UpdateBwrzViewController.m */,
+				E4F38F6D1A37589100F4FE3B /* UpdateBwrzViewController.xib */,
 				E4E76CFA1A277B28004DF568 /* ChildrenTableViewCell.h */,
 				E4E76CFB1A277B28004DF568 /* ChildrenTableViewCell.m */,
 				E4E76CFC1A277B28004DF568 /* ChildrenTableViewCell.xib */,
@@ -2136,9 +2163,6 @@
 				E4E76D2F1A277B28004DF568 /* YqjsViewController.h */,
 				E4E76D301A277B28004DF568 /* YqjsViewController.m */,
 				E4E76D311A277B28004DF568 /* YqjsViewController.xib */,
-				E4EB902F1A2E17EA00DFEA47 /* BwrzViewController.h */,
-				E4EB90301A2E17EA00DFEA47 /* BwrzViewController.m */,
-				E4EB90311A2E17EA00DFEA47 /* BwrzViewController.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2952,6 +2976,7 @@
 				E4E76BED1A277997004DF568 /* chat_sender_audio_playing_000.png in Resources */,
 				E4EB900C1A2DB9F600DFEA47 /* xxgg_high.png in Resources */,
 				E4ECE94E1A2F74BD00860CE7 /* wdhd.png in Resources */,
+				E4F38F6F1A37589100F4FE3B /* UpdateBwrzViewController.xib in Resources */,
 				E4EB90141A2DB9F600DFEA47 /* xxjs_high.png in Resources */,
 				E4E76F5A1A277B3C004DF568 /* newFriends@2x.png in Resources */,
 				E4E76F141A277B3C004DF568 /* chatBar_more.png in Resources */,
@@ -3010,6 +3035,7 @@
 				E4E76BBE1A277997004DF568 /* VoiceSearchFeedback013.png in Resources */,
 				E4E76BEF1A277997004DF568 /* chat_sender_audio_playing_001.png in Resources */,
 				E4E76F2A1A277B3C004DF568 /* chatBar_more_cameraSelected.png in Resources */,
+				E4F38F6A1A373D7100F4FE3B /* AddBwrzViewController.xib in Resources */,
 				E4E76BE51A277997004DF568 /* chat_receiver_audio_playing002.png in Resources */,
 				E4E76C041A277997004DF568 /* ic_index_007.png in Resources */,
 				E4E76BF81A277997004DF568 /* chat_sender_bg@2x.png in Resources */,
@@ -3024,6 +3050,7 @@
 				E4E76BFA1A277997004DF568 /* ic_bwrz_001@2x.png in Resources */,
 				E4E76F2B1A277B3C004DF568 /* chatBar_more_cameraSelected@2x.png in Resources */,
 				E4E76BFB1A277997004DF568 /* ic_bwrz_002.png in Resources */,
+				E4F38F651A373A5B00F4FE3B /* BwrzTableViewCell.xib in Resources */,
 				E4E76D5D1A277B28004DF568 /* UpdatePasswordViewController.xib in Resources */,
 				E4ECE94A1A2F74BD00860CE7 /* wdgg.png in Resources */,
 				E4E76F481A277B3C004DF568 /* group_participant_add@2x.png in Resources */,
@@ -3366,6 +3393,7 @@
 				E4E76CDA1A277B0E004DF568 /* AFHTTPRequestOperationManager.m in Sources */,
 				E4E76F721A277B3C004DF568 /* MagicalRecord+iCloud.m in Sources */,
 				E4E76D571A277B28004DF568 /* PinglunTableViewCell.m in Sources */,
+				E4F38F6E1A37589100F4FE3B /* UpdateBwrzViewController.m in Sources */,
 				E4E76ED51A277B3C004DF568 /* MWZoomingScrollView.m in Sources */,
 				E4E76EF11A277B3C004DF568 /* UIViewController+DismissKeyboard.m in Sources */,
 				E4E76F621A277B3C004DF568 /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
@@ -3377,6 +3405,7 @@
 				E4E76FA01A277C8D004DF568 /* YsdtViewController.m in Sources */,
 				E4E76CE41A277B0E004DF568 /* UIAlertView+AFNetworking.m in Sources */,
 				E4E76F4F1A277B3C004DF568 /* PublicGroupDetailViewController.m in Sources */,
+				E4F38F691A373D7100F4FE3B /* AddBwrzViewController.m in Sources */,
 				E4E76F661A277B3C004DF568 /* NSManagedObject+MagicalFinders.m in Sources */,
 				E4E76F761A277B3C004DF568 /* MagicalRecord.m in Sources */,
 				E4E76F831A277B3C004DF568 /* EMNavigationController.m in Sources */,
@@ -3399,6 +3428,7 @@
 				E4E76CB21A277AF9004DF568 /* Reachability.m in Sources */,
 				E4E76B001A277979004DF568 /* LoginViewController.m in Sources */,
 				E4E76D4B1A277B28004DF568 /* GrdaViewController.m in Sources */,
+				E4F38F641A373A5B00F4FE3B /* BwrzTableViewCell.m in Sources */,
 				E4CAF5DD1A31BE0A009A77BE /* ELCAsset.m in Sources */,
 				E4EB901B1A2DBBD000DFEA47 /* XxhdViewController.m in Sources */,
 				E4E76EE01A277B3C004DF568 /* PSTGridLayoutInfo.m in Sources */,

@@ -14,6 +14,7 @@
 #import "MyNoticeReviewViewController.h"
 #import "AddNoticeViewController.h"
 #import "AddActivityViewController.h"
+#import "AddBwrzViewController.h"
 
 @interface BbxxTarbarViewController (){
     UIBarButtonItem *bwhdButtonItem;
@@ -125,7 +126,6 @@
 }
 
 - (void)action1{//添加班务活动
-    NSLog(@"班务活动");
     AddActivityViewController *vc = [[AddActivityViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -134,7 +134,8 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)action3{//添加班务日志
-    NSLog(@"班务日志");
+    AddBwrzViewController *vc = [[AddBwrzViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 /*
