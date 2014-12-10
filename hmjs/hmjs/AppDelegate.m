@@ -43,9 +43,11 @@
 //#warning SDK注册 APNS文件的名字, 需要与后台上传证书时的名字一一对应
     NSString *apnsCertName = nil;
 //#if DEBUG
-//    apnsCertName = @"hmjytDevelopPush";
+//    apnsCertName = @"hmjsDevelopPush";
+//    NSLog(@"开发推送证书");
 //#else
-    apnsCertName = @"hmjytProductPush";
+    apnsCertName = @"hmjsProductPush";
+//    NSLog(@"正式推送证书");
 //#endif
     
     [[EaseMob sharedInstance] registerSDKWithAppKey:@"whhm918#hmjyt" apnsCertName:apnsCertName];

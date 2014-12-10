@@ -50,7 +50,7 @@
     
     MKNetworkOperation *op = [engine operationWithPath:@"/Mation/findbyid.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
-//        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
+        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
         NSString *result = [operation responseString];
         NSError *error;
         NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
@@ -67,7 +67,7 @@
                 NSString *content = [data objectForKey:@"content"];
                 NSString *title = [data objectForKey:@"title"];
                 NSString *date = [data objectForKey:@"createDate"];
-                NSString *content2 = [NSString stringWithFormat:@"<div style='padding:10px 0;text-align:center;font-weight:bold;font-size：30pt;'>%@</div><div style='text-align:center;'>%@</div>%@",title,date,content];
+                NSString *content2 = [NSString stringWithFormat:@"<html><head></head><body><div id='titleDiv' style='padding:10px 0;text-align:center;font-weight:bold;font-size：30pt;'>%@</div><div style='text-align:center;'>%@</div>%@</body></html>",title,date,content];
                 [self.mywebview loadHTMLString:content2 baseURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",[Utils getHostname]]]];
             }
         }else{
@@ -95,9 +95,12 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)web{
     
-    //修改服务器页面的meta的值
+    
+
+//    //修改服务器页面的meta的值
 //    NSString *meta = [NSString stringWithFormat:@"document.getElementsByName(\"viewport\")[0].content = \"width=%f, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no\"", self.view.frame.size.width];
 //    [self.mywebview stringByEvaluatingJavaScriptFromString:meta];
+    
     //拦截网页图片  并修改图片大小
 //    [self.mywebview stringByEvaluatingJavaScriptFromString:
 //     @"var script = document.createElement('script');"
@@ -106,15 +109,16 @@
 //     "var myimg,oldwidth;"
 //     "var maxwidth=280;" //缩放系数
 //     "var maxheight =145;" //缩放系数
-//     "for(i=0;i <document.images.length;i++){"
-//     "myimg = document.images[i];"
+//     "for(i=0;i < document.getElementsByTagName(\"img\").length;i++){"
+//     "myimg = document.getElementsByTagName(\"img\")[i];"
 //     "if(myimg.width > maxwidth){"
 //     "oldwidth = myimg.width;"
 //     "myimg.width = maxwidth;"
 //     "myimg.height = maxheight;"
 //     "}"
 //     "}"
-//     "}\";"];
+//     "}\";"
+//     "document.getElementsByTagName('head')[0].appendChild(script);"];
 //    //"myimg.height = myimg.height * (maxwidth/oldwidth)+10;"
 //    
 //    [self.mywebview stringByEvaluatingJavaScriptFromString:@"ResizeImages();"];
