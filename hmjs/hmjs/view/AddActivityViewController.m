@@ -119,7 +119,9 @@
             flag = false;
             if (type == 1) {
                 [fileArr removeAllObjects];
-                [self uploadImg:0];
+                for (int i = 0 ; i < self.chosenImages.count; i++) {
+                    [self uploadImg:i];
+                }
             }else if(type == 2){
                 [self uploadVideo];
             }
@@ -211,11 +213,10 @@
     NSString *savedImagePath=[documentsDirectory stringByAppendingPathComponent:@"saveFore.jpg"];
     BOOL saveFlag = [fileData writeToFile:savedImagePath atomically:YES];
     
-    
-   
-    
     MKNetworkOperation *op =[engine operationWithURLString:[NSString stringWithFormat:@"http://%@/image/upload.do",[Utils getImageHostname]] params:nil httpMethod:@"POST"];
+    
     [op addFile:savedImagePath forKey:@"allFile"];
+    [op setFreezable:YES];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         
         NSString *result = [operation responseString];
@@ -223,21 +224,20 @@
         NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
         if (resultDict == nil) {
             NSLog(@"json parse failed \r\n");
-        }NSLog(@"%@",resultDict);
+        }
         NSNumber *success = [resultDict objectForKey:@"success"];
+        NSString *msg = [resultDict objectForKey:@"msg"];
         if ([success boolValue]) {
             NSString *fileurl = [resultDict objectForKey:@"data"];
             [fileArr addObject:fileurl];
-            NSLog(@"上传成功");
+            NSLog(@"上传成功 %d",num);
             if (fileArr.count == self.chosenImages.count) {
                 flag = true;
                 [self insertData];
-            }else{
-                [self uploadImg:num+1];
             }
-            
         }else{
             [HUD hide:YES];
+            NSLog(@"上传失败 %@ %d",msg,num);
             [self alertMsg:@"上传失败"];
         }
         if (saveFlag) {
@@ -247,6 +247,7 @@
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+        NSLog(@"%@ %d",[err localizedDescription],num);
         if (saveFlag) {
             NSFileManager *fileMgr = [NSFileManager defaultManager];
             NSError *err;
@@ -256,8 +257,6 @@
         [self alertMsg:[err localizedDescription]];
     }];
     [engine enqueueOperation:op];
-    
-    
 }
 //上传视频
 -(void)uploadVideo{
@@ -339,7 +338,6 @@
     
     for (UIView *v in [self.myscrollview subviews]) {
         if ([v isKindOfClass:[UIButton class]]) {
-            NSLog(@"%@",v);
             if (v.tag != 99) {
                 [v removeFromSuperview];
             }
@@ -380,7 +378,7 @@
         
     }
     if (type == 1) {
-        if (self.chosenImages.count == 9) {
+        if (self.chosenImages.count == 6) {
             [self.imagePickBtn setHidden:YES];
         }else{
             [self.imagePickBtn setHidden:NO];
@@ -505,7 +503,7 @@
         {
             type = 1;
             ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initImagePicker];
-            elcPicker.maximumImagesCount = 9 - self.chosenImages.count; //Set the maximum number of images to select to 100
+            elcPicker.maximumImagesCount = 6 - self.chosenImages.count; //Set the maximum number of images to select to 100
             elcPicker.returnsOriginalImage = YES; //Only return the fullScreenImage, not the fullResolutionImage
             elcPicker.returnsImage = YES; //Return UIimage if YES. If NO, only return asset location information
             elcPicker.onOrder = YES; //For multiple image selection, display and return order of selected images
