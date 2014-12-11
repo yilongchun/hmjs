@@ -81,6 +81,10 @@
     self.chosenImages = [[NSMutableArray alloc] init];
     //[self.myscrollview setFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-64)];
     fileArr = [[NSMutableArray alloc] init];
+    
+    
+    NSLog(@"%f",self.contentTextview.frame.size.height);
+    NSLog(@"%f",self.imagePickBtn.frame.size.height);
 }
 
 //隐藏键盘
@@ -319,7 +323,7 @@
     hud.delegate = self;
     hud.labelText = msg;
     [hud show:YES];
-    [hud hide:YES afterDelay:1];
+    [hud hide:YES afterDelay:1.5];
 }
 
 
@@ -330,7 +334,7 @@
     hud.labelText = msg;
     hud.margin = 10.f;
     hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1];
+    [hud hide:YES afterDelay:1.5];
 }
 
 - (void)reloadImageToView{

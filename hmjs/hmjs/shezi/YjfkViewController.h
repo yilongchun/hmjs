@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface YjfkViewController : UIViewController<UITextViewDelegate>{
-//    UITextView *textView;
+
 }
-@property (nonatomic, retain) UITextView *textView; 
+
+@property (weak, nonatomic) IBOutlet UITextView *mytextview;
 
 @end

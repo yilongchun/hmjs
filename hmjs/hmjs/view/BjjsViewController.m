@@ -83,7 +83,7 @@
             hud.labelText = msg;
             hud.margin = 10.f;
             hud.removeFromSuperViewOnHide = YES;
-            [hud hide:YES afterDelay:1];
+            [hud hide:YES afterDelay:1.5];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
@@ -93,7 +93,7 @@
         hud.labelText = @"连接失败";
         hud.margin = 10.f;
         hud.removeFromSuperViewOnHide = YES;
-        [hud hide:YES afterDelay:2];
+        [hud hide:YES afterDelay:1.5];
     }];
     [engine enqueueOperation:op];
 }

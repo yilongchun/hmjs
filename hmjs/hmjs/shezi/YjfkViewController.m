@@ -19,7 +19,7 @@
 @end
 
 @implementation YjfkViewController
-@synthesize textView = _textView;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,20 +41,20 @@
     [self.navigationItem setRightBarButtonItem:someBarButtonItem];
     
     //初始化文本域
-    _textView = [[UITextView alloc] initWithFrame:CGRectMake(10.0, 80.0, [[UIScreen mainScreen] bounds].size.width-20, 200.0)];
-    _textView.layer.backgroundColor = [[UIColor clearColor] CGColor];
-    _textView.layer.borderColor = [UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1].CGColor;
-    _textView.layer.borderWidth = 1.0;
-    _textView.layer.cornerRadius = 8.0f;
-    _textView.delegate = self;
-    _textView.scrollEnabled = YES;
-    _textView.font = [UIFont fontWithName:@"Helvetica Neue" size:16.0];
-    _textView.returnKeyType = UIReturnKeyDefault;
     
-    _textView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    _textView.backgroundColor = [UIColor colorWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1];
-    [_textView.layer setMasksToBounds:YES];
-    [self.view addSubview:_textView];
+    self.mytextview.layer.backgroundColor = [[UIColor clearColor] CGColor];
+    self.mytextview.layer.borderColor = [UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1].CGColor;
+    self.mytextview.layer.borderWidth = 1.0;
+    self.mytextview.layer.cornerRadius = 8.0f;
+    self.mytextview.scrollEnabled = YES;
+    self.mytextview.font = [UIFont fontWithName:@"Helvetica Neue" size:16.0];
+    self.mytextview.returnKeyType = UIReturnKeyDefault;
+    
+    self.mytextview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    self.mytextview.backgroundColor = [UIColor colorWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1];
+    [self.mytextview.layer setMasksToBounds:YES];
+    
+    
     
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -68,7 +68,7 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [_textView becomeFirstResponder];
+    [self.mytextview becomeFirstResponder];
 }
 
 - (void)textViewDidChangeSelection:(UITextView *)textView
@@ -82,8 +82,8 @@
 
 
 - (void)feecback{
-    [_textView resignFirstResponder];
-    if (_textView.text.length == 0) {
+    [self.mytextview resignFirstResponder];
+    if (self.mytextview.text.length == 0) {
         [self alertMsg:@"请填写内容"];
     }else{
         [HUD show:YES];
@@ -92,7 +92,7 @@
         NSString *userid = [userDefaults objectForKey:@"userid"];
         
         [dic setValue:userid forKey:@"userid"];
-        [dic setValue:_textView.text forKey:@"feedbackcontent"];
+        [dic setValue:self.mytextview.text forKey:@"feedbackcontent"];
         
         MKNetworkOperation *op = [engine operationWithPath:@"/Feedback/savafback.do" params:dic httpMethod:@"POST"];
         [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -107,7 +107,7 @@
             if ([success boolValue]) {
                 [HUD hide:YES];
                 [self okMsk:@"提交成功"];
-                _textView.text = @"";
+                self.mytextview.text = @"";
             }else{
                 [HUD hide:YES];
                 [self alertMsg:@"提交失败"];
@@ -131,7 +131,7 @@
     hud.delegate = self;
     hud.labelText = msg;
     [hud show:YES];
-    [hud hide:YES afterDelay:1];
+    [hud hide:YES afterDelay:1.5];
 }
 
 
@@ -142,7 +142,7 @@
     hud.labelText = msg;
     hud.margin = 10.f;
     hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1];
+    [hud hide:YES afterDelay:1.5];
 }
 
 - (void)didReceiveMemoryWarning {

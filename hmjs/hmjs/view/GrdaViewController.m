@@ -323,7 +323,7 @@
     hud.delegate = self;
     hud.labelText = msg;
     [hud show:YES];
-    [hud hide:YES afterDelay:1];
+    [hud hide:YES afterDelay:1.5];
 }
 
 //提示
@@ -333,7 +333,7 @@
     hud.labelText = msg;
     hud.margin = 10.f;
     hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1];
+    [hud hide:YES afterDelay:1.5];
 }
 
 

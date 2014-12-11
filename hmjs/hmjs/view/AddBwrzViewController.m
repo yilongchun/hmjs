@@ -118,9 +118,20 @@
             //        NSString *code = [resultDict objectForKey:@"code"];
             if ([success boolValue]) {
                 [HUD hide:YES];
+                self.bjsj.text = @"";
+                self.cqrs.text = @"";
+                self.bjrs2.text = @"";
+                self.sjrs.text = @"";
+                self.cdrs.text = @"";
                 [self okMsk:msg];
+                
             }else{
                 [HUD hide:YES];
+                self.bjsj.text = @"";
+                self.cqrs.text = @"";
+                self.bjrs2.text = @"";
+                self.sjrs.text = @"";
+                self.cdrs.text = @"";
                 [self alertMsg:msg];
             }
         }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
@@ -141,7 +152,7 @@
     hud.delegate = self;
     hud.labelText = msg;
     [hud show:YES];
-    [hud hide:YES afterDelay:1];
+    [hud hide:YES afterDelay:1.5];
 }
 
 
@@ -152,7 +163,7 @@
     hud.labelText = msg;
     hud.margin = 10.f;
     hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1];
+    [hud hide:YES afterDelay:1.5];
 }
 
 
