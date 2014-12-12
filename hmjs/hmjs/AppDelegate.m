@@ -97,7 +97,9 @@
     }else {
         NSLog(@"second launch再次程序启动");
         //  [self.viewController setNsstilt:@"这是程序的N次启动"];
-        UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:[[LoginViewController alloc] init]];
+        LoginViewController *loginvc =  [[LoginViewController alloc] init];
+        loginvc.logintype = @"login";
+        UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:loginvc];
         [vc setNavigationBarHidden:YES];
         self.window.rootViewController = vc;
     }

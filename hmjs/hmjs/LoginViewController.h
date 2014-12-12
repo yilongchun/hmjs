@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UIImageView *loginBtn;
 
-
+@property (nonatomic,copy) NSString *logintype;
 @property (strong, nonatomic) MainViewController *mainController;
 
 @end

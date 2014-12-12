@@ -120,6 +120,7 @@
         
     }else{
         //退出登陆
+        [self logoutAction];
 //        for (UIViewController *temp in self.navigationController.viewControllers) {
 //            if ([temp isKindOfClass:[LoginViewController class]]) {
 //                [self.navigationController setNavigationBarHidden:YES];
@@ -128,15 +129,15 @@
 //                break;
 //            }
 //        }
+        [self.navigationController setNavigationBarHidden:YES];
+        [self.navigationController popToRootViewControllerAnimated:YES];
         
-//        [self.navigationController popToRootViewControllerAnimated:YES];
         
-        [self logoutAction];
         
-        LoginViewController *loginCtrl = [[LoginViewController alloc] init];
-        UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:loginCtrl];
-        [navCtrl setNavigationBarHidden:YES];
-        self.view.window.rootViewController = navCtrl;
+//        LoginViewController *loginCtrl = [[LoginViewController alloc] init];
+//        UINavigationController *navCtrl = [[UINavigationController alloc] initWithRootViewController:loginCtrl];
+//        [navCtrl setNavigationBarHidden:YES];
+//        self.view.window.rootViewController = navCtrl;
     }
 }
 

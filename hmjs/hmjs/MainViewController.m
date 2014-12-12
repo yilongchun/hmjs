@@ -27,6 +27,8 @@
 #import "ApplyViewController.h"
 #import "MyTabbarController.h"
 #import "BbxxTarbarViewController.h"
+#import "EaseMob.h"
+
 
 //两次提示的默认间隔
 static const CGFloat kDefaultPlaySoundInterval = 3.0;
@@ -47,8 +49,6 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
     
     self.unreadlabel.layer.cornerRadius = self.unreadlabel.frame.size.height/2;
     self.unreadlabel.layer.masksToBounds = YES;
@@ -101,6 +101,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     self.teacherimg.layer.shadowRadius = 2.0;
     
     [self initData];
+    
     
 }
 
