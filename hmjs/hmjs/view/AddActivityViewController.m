@@ -302,6 +302,9 @@
 }
 
 - (IBAction)launchController{
+    
+    
+    
     if (self.chosenImages.count > 0 && type == 1) {
         UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:@"选择" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"选择照片", nil];
         actionsheet.tag = 1;
@@ -339,6 +342,9 @@
 
 - (void)reloadImageToView{
     
+    NSTimeInterval animationDuration = 1.0f;
+    [UIView beginAnimations:@"ReloadImage" context:nil];
+    [UIView setAnimationDuration:animationDuration];
     
     for (UIView *v in [self.myscrollview subviews]) {
         if ([v isKindOfClass:[UIButton class]]) {
@@ -347,6 +353,7 @@
             }
         }
     }
+    
     
     CGRect workingFrame = CGRectMake(15, 220, 90, 90);
     
@@ -381,6 +388,8 @@
         }
         
     }
+    [self.imagePickBtn setFrame:workingFrame];
+    
     if (type == 1) {
         if (self.chosenImages.count == 6) {
             [self.imagePickBtn setHidden:YES];
@@ -396,14 +405,14 @@
     }
     
     
-    [self.imagePickBtn setFrame:workingFrame];
+    [UIView commitAnimations];
     
-    if (self.imagePickBtn.hidden) {
-        UIButton *lastBtn = self.myscrollview.subviews.lastObject;
-        [self.myscrollview setContentSize:CGSizeMake(self.view.frame.size.width,lastBtn.frame.origin.y + lastBtn.frame.size.height + 10)];
-    }else{
-        [self.myscrollview setContentSize:CGSizeMake(self.view.frame.size.width,self.imagePickBtn.frame.origin.y + self.imagePickBtn.frame.size.height + 10)];
-    }
+//    if (self.imagePickBtn.hidden) {
+//        UIButton *lastBtn = self.myscrollview.subviews.lastObject;
+//        [self.myscrollview setContentSize:CGSizeMake(self.view.frame.size.width,lastBtn.frame.origin.y + lastBtn.frame.size.height + 10)];
+//    }else{
+//        [self.myscrollview setContentSize:CGSizeMake(self.view.frame.size.width,self.imagePickBtn.frame.origin.y + self.imagePickBtn.frame.size.height + 10)];
+//    }
     
 }
 
@@ -418,9 +427,6 @@
 - (void)elcImagePickerController:(ELCImagePickerController *)picker didFinishPickingMediaWithInfo:(NSArray *)info
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-    
-    
-    
     
     
 //    NSMutableArray *images = [NSMutableArray arrayWithCapacity:[info count]];

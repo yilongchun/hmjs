@@ -54,9 +54,9 @@
     age = [teacher objectForKey:@"tage"];
     NSNumber *sexnum = [teacher objectForKey:@"tsex"];
     if ([sexnum intValue]== 0) {
-        sex = @"男";
-    }else if ([sexnum intValue]== 1){
         sex = @"女";
+    }else if ([sexnum intValue]== 1){
+        sex = @"男";
     }
     
     NSDictionary *class= [userDefaults objectForKey:@"class"];
