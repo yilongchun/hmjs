@@ -73,7 +73,7 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    if ([self.logintype isEqualToString:@"login"]) {
+    if ([self.logintype isEqualToString:@"login"] && ![Utils isBlankString:self.username.text] && ![Utils isBlankString:self.password.text]) {
         [self loginTag:nil];
     }
 }
