@@ -55,47 +55,15 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //初始化网络引擎
-    engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
-    
-    //添加加载等待条
-    HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    HUD.labelText = @"加载中";
-    [self.view addSubview:HUD];
-    HUD.delegate = self;
-    
-    [self setButtons];
-    
-//    self.unreadlabel.layer.cornerRadius = self.unreadlabel.frame.size.height/2;
-//    self.unreadlabel.layer.masksToBounds = YES;
-    
-    //获取未读消息数，此时并没有把self注册为SDK的delegate，读取出的未读数是上次退出程序时的
-    [self didUnreadMessagesCountChanged];
-    //warning 把self注册为SDK的delegate
-    [self registerNotifications];
-    
-    [[ApplyViewController shareController] loadDataSourceFromLocalDB];
-//    _mainController = [[MainChatViewController alloc] init];
-    _chatListController = [[ChatListViewController alloc] init];
-    _chatListController.title = @"会话";
-//    [_chatListController registerNotifications];
-    
-    
-    
-    
     //设置导航栏
     self.navigationController.delegate = self;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil]];
     [self.navigationController setNavigationBarHidden:YES];
-    
     self.navigationController.interactivePopGestureRecognizer.enabled = NO ;
-        
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
     self.navigationItem.backBarButtonItem = backItem;
     backItem.title = @"返回";
-    
-    
     
     UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(grdaAction:)];
     [self.teacherimg addGestureRecognizer:singleTap1];
@@ -109,11 +77,35 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     self.teacherimg.layer.shadowOpacity = 0.5;
     self.teacherimg.layer.shadowRadius = 2.0;
     
-    [self initData];
     
+    //初始化网络引擎
+    engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
+    
+    mainScrollView = [[UIScrollView alloc] init];
+    mainScrollView.delegate = self;
+    [mainScrollView setPagingEnabled:YES];
+    mainScrollView.showsHorizontalScrollIndicator = NO;
+    [self.view addSubview:mainScrollView];
+    
+    //添加加载等待条
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    HUD.labelText = @"加载中";
+    [self.view addSubview:HUD];
+    HUD.delegate = self;
+    
+    [self setButtons];
+    
+    //获取未读消息数，此时并没有把self注册为SDK的delegate，读取出的未读数是上次退出程序时的
+    [self didUnreadMessagesCountChanged];
+    [self registerNotifications];
+    [[ApplyViewController shareController] loadDataSourceFromLocalDB];
+    _chatListController = [[ChatListViewController alloc] init];
+    _chatListController.title = @"会话";
     
     [self setupUnreadMessageCount];
     
+    
+    [self initData];
 }
 
 - (void)setButtons{
@@ -121,15 +113,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     float height = [UIScreen mainScreen].bounds.size.height;
     float width = [UIScreen mainScreen].bounds.size.width;
     
-    
-    
-    //    if (self.menus.count > 6) {
-    //
-    //    }
-    
-    
-    
-    
+    [mainScrollView setFrame:CGRectMake(0, 170, width, height-170)];
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -167,11 +151,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                     }
                 }
                 
-                mainScrollView = [[UIScrollView alloc] init];
-                [mainScrollView setFrame:CGRectMake(0, 170, width, height-170)];
-                mainScrollView.delegate = self;
-                [mainScrollView setPagingEnabled:YES];
-                mainScrollView.showsHorizontalScrollIndicator = NO;
+                
                 if (self.menus.count > 6) {
                     if (height <= 480) {
                         [mainScrollView setContentSize:CGSizeMake(width*2, height-170)];
@@ -188,7 +168,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                 }else{
                     [mainScrollView setContentSize:CGSizeMake(width, height-170)];
                 }
-                [self.view addSubview:mainScrollView];
+                
                 
                 
                 for (int i = 0 ; i < self.menus.count; i++) {
@@ -233,11 +213,10 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         [btn4 setBackgroundImage:[UIImage imageNamed:@"ic_index_009_high.png"] forState:UIControlStateHighlighted];
                         [btn4 addTarget:self action:@selector(xztAction:) forControlEvents:UIControlEventTouchUpInside];
                         UILabel *label4 = [[UILabel alloc] init];
-                            [label4 setFrame:CGRectMake(btn4.frame.origin.x, btn4.frame.origin.y+95, 90, 20)];
+                        [label4 setFrame:CGRectMake(btn4.frame.origin.x, btn4.frame.origin.y+95, 90, 20)];
                         label4.text = @"小纸条";
                         label4.textAlignment = NSTextAlignmentCenter;
                         [label4 setFont:[UIFont systemFontOfSize:16]];
-                        
                         unreadlabel = [[UILabel alloc] init];
                         [unreadlabel setFrame:CGRectMake(btn4.frame.origin.x + btn4.frame.size.width - 12, btn4.frame.origin.y - 8, 20, 20)];
                         unreadlabel.layer.cornerRadius = unreadlabel.frame.size.height/2;
