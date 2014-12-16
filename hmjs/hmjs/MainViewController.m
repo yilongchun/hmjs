@@ -159,6 +159,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         spacePageControl.numberOfPages = 2;
                         spacePageControl.indicatorMargin = 10.0f;
                         spacePageControl.indicatorDiameter = 10.0f;
+                        spacePageControl.userInteractionEnabled = NO;
                         [self.view addSubview:spacePageControl];
                     }else{
                         [mainScrollView setContentSize:CGSizeMake(width, height-170)];
