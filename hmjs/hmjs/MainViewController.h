@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "MainChatViewController.h"
 #import "ChatListViewController.h"
+#import "SMPageControl.h"
 
-@interface MainViewController : UIViewController<UINavigationControllerDelegate,IChatManagerDelegate>{
+@interface MainViewController : UIViewController<UINavigationControllerDelegate,IChatManagerDelegate,UIScrollViewDelegate>{
     BOOL loginSuccess;
 }
 
@@ -27,11 +28,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *teacherimg;
 @property (weak, nonatomic) IBOutlet UILabel *teachername;
 
-@property (weak, nonatomic) IBOutlet UILabel *unreadlabel;
-
-
-
 @property (nonatomic, copy) NSString *flag;
+@property (nonatomic, strong) NSMutableArray *menus;
 
 
 //@property (strong, nonatomic) MainChatViewController *mainController;

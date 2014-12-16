@@ -801,6 +801,15 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    if ([self.view window] == nil)// 是否是正在使用的视图
+    {
+        // Add code to preserve data stored in the views that might be
+        // needed later.
+        
+        // Add code to clean up other strong references to the view in
+        // the view hierarchy.
+        self.view = nil;// 目的是再次进入时能够重新加载调用viewDidLoad函数。
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
