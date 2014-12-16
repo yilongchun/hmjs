@@ -103,8 +103,6 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     _chatListController.title = @"会话";
     
     [self setupUnreadMessageCount];
-    
-    
     [self initData];
 }
 
@@ -145,7 +143,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         if(objectValue != nil)  
                         {
                             if ([objectValue boolValue]) {
-                                    [self.menus addObject:object];
+                                [self.menus addObject:object];
                             }
                         }
                     }
@@ -233,7 +231,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         [btn2 setFrame:btnr];
                         [btn2 setBackgroundImage:[UIImage imageNamed:@"ic_index_005.png"] forState:UIControlStateNormal];
                         [btn2 setBackgroundImage:[UIImage imageNamed:@"ic_index_005_high.png"] forState:UIControlStateHighlighted];
-                        [btn2 addTarget:self action:@selector(ysdtAction:) forControlEvents:UIControlEventTouchUpInside];
+                        [btn2 addTarget:self action:@selector(jsydAction:) forControlEvents:UIControlEventTouchUpInside];
                         UILabel *label2 = [[UILabel alloc] init];
                         [label2 setFrame:CGRectMake(btn2.frame.origin.x, btn2.frame.origin.y+95, 90, 20)];
                         label2.text = @"教师园地";
@@ -483,6 +481,10 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 //    YsdtViewController *ysdt = [[YsdtViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
+}
+//教师园地
+- (IBAction)jsydAction:(UIButton *)sender{
+    NSLog(@"教师园地");
 }
 //园所动态
 - (IBAction)ysdtAction:(UIButton *)sender {
