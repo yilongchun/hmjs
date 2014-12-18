@@ -516,6 +516,7 @@
 		E4EDEABE1A403A7000711A94 /* pageDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EDEABC1A403A7000711A94 /* pageDot@2x.png */; };
 		E4EDEAC11A4080AA00711A94 /* ic_index_005_high.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EDEABF1A4080AA00711A94 /* ic_index_005_high.png */; };
 		E4EDEAC21A4080AA00711A94 /* ic_index_005.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EDEAC01A4080AA00711A94 /* ic_index_005.png */; };
+		E4F2AA3F1A42DF900072725E /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F2AA3E1A42DF900072725E /* Friend.m */; };
 		E4F38F641A373A5B00F4FE3B /* BwrzTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F38F621A373A5B00F4FE3B /* BwrzTableViewCell.m */; };
 		E4F38F651A373A5B00F4FE3B /* BwrzTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F38F631A373A5B00F4FE3B /* BwrzTableViewCell.xib */; };
 		E4F38F691A373D7100F4FE3B /* AddBwrzViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F38F671A373D7100F4FE3B /* AddBwrzViewController.m */; };
@@ -1341,6 +1342,8 @@
 		E4EDEABC1A403A7000711A94 /* pageDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pageDot@2x.png"; sourceTree = "<group>"; };
 		E4EDEABF1A4080AA00711A94 /* ic_index_005_high.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_index_005_high.png; sourceTree = "<group>"; };
 		E4EDEAC01A4080AA00711A94 /* ic_index_005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_index_005.png; sourceTree = "<group>"; };
+		E4F2AA3D1A42DF900072725E /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
+		E4F2AA3E1A42DF900072725E /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 		E4F38F611A373A5B00F4FE3B /* BwrzTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BwrzTableViewCell.h; sourceTree = "<group>"; };
 		E4F38F621A373A5B00F4FE3B /* BwrzTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BwrzTableViewCell.m; sourceTree = "<group>"; };
 		E4F38F631A373A5B00F4FE3B /* BwrzTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BwrzTableViewCell.xib; sourceTree = "<group>"; };
@@ -2670,6 +2673,8 @@
 				E4E76E501A277B3C004DF568 /* PublicGroupDetailViewController.m */,
 				E4E76E511A277B3C004DF568 /* PublicGroupListViewController.h */,
 				E4E76E521A277B3C004DF568 /* PublicGroupListViewController.m */,
+				E4F2AA3D1A42DF900072725E /* Friend.h */,
+				E4F2AA3E1A42DF900072725E /* Friend.m */,
 			);
 			path = ChatGroup;
 			sourceTree = "<group>";
@@ -3335,6 +3340,7 @@
 				E4E76F5E1A277B3C004DF568 /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				E4E76CDE1A277B0E004DF568 /* AFURLConnectionOperation.m in Sources */,
 				E4E76F5B1A277B3C004DF568 /* RealtimeSearchUtil.m in Sources */,
+				E4F2AA3F1A42DF900072725E /* Friend.m in Sources */,
 				E4E76F061A277B3C004DF568 /* DXFaceView.m in Sources */,
 				E4E76F821A277B3C004DF568 /* EMChooseViewController.m in Sources */,
 				E4ECE2BE1A30614300DC118B /* MyActivityReviewViewController.m in Sources */,

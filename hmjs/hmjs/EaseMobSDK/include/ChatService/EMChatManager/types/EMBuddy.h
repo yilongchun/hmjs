@@ -42,9 +42,6 @@ typedef enum : NSInteger {
  */
 @property (copy, nonatomic, readonly)NSString *username;
 
-//这里是显示的名字
-@property (copy, nonatomic, readonly)NSString *hxusername;
-
 /*!
  @property
  @brief 好友状态

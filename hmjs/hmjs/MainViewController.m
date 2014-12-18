@@ -485,7 +485,15 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 }
 //教师园地
 - (IBAction)jsydAction:(UIButton *)sender{
-    NSLog(@"教师园地");
+    if (_groupController == nil) {
+        _groupController = [[GroupListViewController alloc] initWithStyle:UITableViewStylePlain];
+    }
+    else{
+        [_groupController reloadDataSource];
+    }
+    [self.navigationController pushViewController:_groupController animated:YES];
+    [self.navigationController setNavigationBarHidden:NO];
+    
 }
 //园所动态
 - (IBAction)ysdtAction:(UIButton *)sender {

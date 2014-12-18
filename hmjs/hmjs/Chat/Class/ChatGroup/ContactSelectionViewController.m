@@ -16,6 +16,8 @@
 #import "EMRemarkImageView.h"
 #import "EMSearchDisplayController.h"
 #import "RealtimeSearchUtil.h"
+#import "UIImageView+AFNetworking.h"
+#import "Friend.h"
 
 @interface ContactSelectionViewController ()<UISearchBarDelegate, UISearchDisplayDelegate>
 
@@ -43,13 +45,19 @@
         _selectedContacts = [NSMutableArray array];
         
         [self setObjectComparisonStringBlock:^NSString *(id object) {
-            EMBuddy *buddy = (EMBuddy *)object;
-            return buddy.username;
+//            EMBuddy *buddy = (EMBuddy *)object;
+//            return buddy.username;
+            Friend *f = (Friend *)object;
+            return f.username;
         }];
         
         [self setComparisonObjectSelector:^NSComparisonResult(id object1, id object2) {
-            EMBuddy *buddy1 = (EMBuddy *)object1;
-            EMBuddy *buddy2 = (EMBuddy *)object2;
+//            EMBuddy *buddy1 = (EMBuddy *)object1;
+//            EMBuddy *buddy2 = (EMBuddy *)object2;
+//            
+//            return [buddy1.username caseInsensitiveCompare: buddy2.username];
+            Friend *buddy1 = (Friend *)object1;
+            Friend *buddy2 = (Friend *)object2;
             
             return [buddy1.username caseInsensitiveCompare: buddy2.username];
         }];
@@ -74,11 +82,11 @@
     // Do any additional setup after loading the view.
     self.title = @"选择联系人";
     self.navigationItem.rightBarButtonItem = nil;
-    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [backButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    [self.navigationItem setLeftBarButtonItem:backItem];
+//    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+//    [backButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+//    [backButton addTarget:self.navigationController action:@selector(popViewControllerAnimated:) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+//    [self.navigationItem setLeftBarButtonItem:backItem];
     
     [self.view addSubview:self.searchBar];
     [self.view addSubview:self.footerView];
@@ -92,9 +100,16 @@
             NSMutableArray *tmpArray = [_dataSource objectAtIndex:section];
             if (tmpArray && [tmpArray count] > 0) {
                 for (int i = 0; i < [tmpArray count]; i++) {
-                    EMBuddy *buddy = [tmpArray objectAtIndex:i];
-                    if ([buddy.username isEqualToString:username]) {
-                        [self.selectedContacts addObject:buddy];
+//                    EMBuddy *buddy = [tmpArray objectAtIndex:i];
+//                    if ([buddy.username isEqualToString:username]) {
+//                        [self.selectedContacts addObject:buddy];
+//                        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:section] animated:NO scrollPosition:UITableViewScrollPositionNone];
+//                        
+//                        break;
+//                    }
+                    Friend *f = [tmpArray objectAtIndex:i];
+                    if ([f.username isEqualToString:username]) {
+                        [self.selectedContacts addObject:f];
                         [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:section] animated:NO scrollPosition:UITableViewScrollPositionNone];
                         
                         break;
@@ -148,17 +163,24 @@
                 cell = [[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
             
-            EMBuddy *buddy = [weakSelf.searchController.resultsSource objectAtIndex:indexPath.row];
-            cell.imageView.image = [UIImage imageNamed:@"chatListCellHead.png"];
-            cell.textLabel.text = buddy.username;
+//            EMBuddy *buddy = [weakSelf.searchController.resultsSource objectAtIndex:indexPath.row];
+//            cell.imageView.image = [UIImage imageNamed:@"chatListCellHead.png"];
+//            cell.textLabel.text = buddy.username;
+            
+            Friend *f = [weakSelf.searchController.resultsSource objectAtIndex:indexPath.row];
+            [cell.imageView setImageWithURL:[NSURL URLWithString:f.userimage] placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+            cell.textLabel.text = f.username;
             
             return cell;
         }];
         
         [_searchController setCanEditRowAtIndexPath:^BOOL(UITableView *tableView, NSIndexPath *indexPath) {
             if ([weakSelf.blockSelectedUsernames count] > 0) {
-                EMBuddy *buddy = [weakSelf.searchController.resultsSource objectAtIndex:indexPath.row];
-                return ![weakSelf isBlockUsername:buddy.username];
+//                EMBuddy *buddy = [weakSelf.searchController.resultsSource objectAtIndex:indexPath.row];
+//                return ![weakSelf isBlockUsername:buddy.username];
+                Friend *f = [weakSelf.searchController.resultsSource objectAtIndex:indexPath.row];
+                return ![weakSelf isBlockUsername:f.username];
+                
             }
             
             return YES;
@@ -169,34 +191,61 @@
         }];
         
         [_searchController setDidSelectRowAtIndexPathCompletion:^(UITableView *tableView, NSIndexPath *indexPath) {
-            EMBuddy *buddy = [weakSelf.searchController.resultsSource objectAtIndex:indexPath.row];
-            if (![weakSelf.selectedContacts containsObject:buddy])
+//            EMBuddy *buddy = [weakSelf.searchController.resultsSource objectAtIndex:indexPath.row];
+//            if (![weakSelf.selectedContacts containsObject:buddy])
+//            {
+//                NSInteger section = [weakSelf sectionForString:buddy.username];
+//                if (section >= 0) {
+//                    NSMutableArray *tmpArray = [weakSelf.dataSource objectAtIndex:section];
+//                    NSInteger row = [tmpArray indexOfObject:buddy];
+//                    [weakSelf.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section] animated:NO scrollPosition:UITableViewScrollPositionNone];
+//                }
+//                
+//                [weakSelf.selectedContacts addObject:buddy];
+//                [weakSelf reloadFooterView];
+//            }
+            Friend *f = [weakSelf.searchController.resultsSource objectAtIndex:indexPath.row];
+            if (![weakSelf.selectedContacts containsObject:f])
             {
-                NSInteger section = [weakSelf sectionForString:buddy.username];
+                NSInteger section = [weakSelf sectionForString:f.username];
                 if (section >= 0) {
                     NSMutableArray *tmpArray = [weakSelf.dataSource objectAtIndex:section];
-                    NSInteger row = [tmpArray indexOfObject:buddy];
+                    NSInteger row = [tmpArray indexOfObject:f];
                     [weakSelf.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section] animated:NO scrollPosition:UITableViewScrollPositionNone];
                 }
                 
-                [weakSelf.selectedContacts addObject:buddy];
+                [weakSelf.selectedContacts addObject:f];
                 [weakSelf reloadFooterView];
             }
+                
         }];
         
         [_searchController setDidDeselectRowAtIndexPathCompletion:^(UITableView *tableView, NSIndexPath *indexPath) {
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             
-            EMBuddy *buddy = [weakSelf.searchController.resultsSource objectAtIndex:indexPath.row];
-            if ([weakSelf.selectedContacts containsObject:buddy]) {
-                NSInteger section = [weakSelf sectionForString:buddy.username];
+//            EMBuddy *buddy = [weakSelf.searchController.resultsSource objectAtIndex:indexPath.row];
+//            if ([weakSelf.selectedContacts containsObject:buddy]) {
+//                NSInteger section = [weakSelf sectionForString:buddy.username];
+//                if (section >= 0) {
+//                    NSMutableArray *tmpArray = [weakSelf.dataSource objectAtIndex:section];
+//                    NSInteger row = [tmpArray indexOfObject:buddy];
+//                    [weakSelf.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section] animated:NO];
+//                }
+//                
+//                [weakSelf.selectedContacts removeObject:buddy];
+//                [weakSelf reloadFooterView];
+//            }
+            
+            Friend *f = [weakSelf.searchController.resultsSource objectAtIndex:indexPath.row];
+            if ([weakSelf.selectedContacts containsObject:f]) {
+                NSInteger section = [weakSelf sectionForString:f.username];
                 if (section >= 0) {
                     NSMutableArray *tmpArray = [weakSelf.dataSource objectAtIndex:section];
-                    NSInteger row = [tmpArray indexOfObject:buddy];
+                    NSInteger row = [tmpArray indexOfObject:f];
                     [weakSelf.tableView deselectRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section] animated:NO];
                 }
                 
-                [weakSelf.selectedContacts removeObject:buddy];
+                [weakSelf.selectedContacts removeObject:f];
                 [weakSelf reloadFooterView];
             }
         }];
@@ -241,9 +290,26 @@
         cell = [[BaseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    EMBuddy *buddy = [[_dataSource objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    cell.imageView.image = [UIImage imageNamed:@"chatListCellHead.png"];
-    cell.textLabel.text = buddy.username;
+//    EMBuddy *buddy = [[_dataSource objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    
+//    cell.imageView.image = [UIImage imageNamed:@"chatListCellHead.png"];
+//    cell.textLabel.text = buddy.username;
+    
+    
+    Friend *f = [[_dataSource objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    
+    [cell.imageView setImageWithURL:[NSURL URLWithString:f.userimage] placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+    cell.textLabel.text = f.username;
+    
+    
+//    NSDictionary *data = [self.dataSource objectAtIndex:indexPath.row];
+//    NSString *name = [data objectForKey:@"parentname"];
+//    NSString *fileid = [data objectForKey:@"fileid"];
+//    [cell.imageView setImageWithURL:[NSURL URLWithString:fileid] placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+//    cell.textLabel.text = name;
+    
+    
+    
     
     return cell;
 }
@@ -252,8 +318,11 @@
 {
     // Return NO if you do not want the specified item to be editable.
     if ([_blockSelectedUsernames count] > 0) {
-        EMBuddy *buddy = [[_dataSource objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-        return ![self isBlockUsername:buddy.username];
+//        EMBuddy *buddy = [[_dataSource objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+//        return ![self isBlockUsername:buddy.username];
+        
+        Friend *f = [[_dataSource objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        return ![self isBlockUsername:f.username];
     }
     
     return YES;
@@ -274,12 +343,20 @@
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    EMBuddy *buddy = [[_dataSource objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    if ([self.selectedContacts containsObject:buddy]) {
-        [self.selectedContacts removeObject:buddy];
+    Friend *f = [[_dataSource objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    if ([self.selectedContacts containsObject:f]) {
+        [self.selectedContacts removeObject:f];
         
         [self reloadFooterView];
     }
+    
+    
+//    EMBuddy *buddy = [[_dataSource objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+//    if ([self.selectedContacts containsObject:buddy]) {
+//        [self.selectedContacts removeObject:buddy];
+//        
+//        [self reloadFooterView];
+//    }
 }
 
 #pragma mark - UISearchBarDelegate
@@ -301,13 +378,23 @@
                 [self.searchController.resultsSource addObjectsFromArray:results];
                 [self.searchController.searchResultsTableView reloadData];
                 
-                for (EMBuddy *buddy in results) {
-                    if ([self.selectedContacts containsObject:buddy])
+                for (Friend *f in results) {
+                    if ([self.selectedContacts containsObject:f])
                     {
-                        NSInteger row = [results indexOfObject:buddy];
+                        NSInteger row = [results indexOfObject:f];
                         [self.searchController.searchResultsTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
                     }
                 }
+                
+                
+                
+//                for (EMBuddy *buddy in results) {
+//                    if ([self.selectedContacts containsObject:buddy])
+//                    {
+//                        NSInteger row = [results indexOfObject:buddy];
+//                        [self.searchController.searchResultsTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+//                    }
+//                }
             });
         }
     }];
@@ -363,10 +450,21 @@
     NSInteger count = [self.selectedContacts count];
     self.footerScrollView.contentSize = CGSizeMake(imageSize * count, imageSize);
     for (int i = 0; i < count; i++) {
-        EMBuddy *buddy = [self.selectedContacts objectAtIndex:i];
+        
+//        EMBuddy *buddy = [self.selectedContacts objectAtIndex:i];
+        
+        Friend *f = [self.selectedContacts objectAtIndex:i];
+        
+        
         EMRemarkImageView *remarkView = [[EMRemarkImageView alloc] initWithFrame:CGRectMake(i * imageSize, 0, imageSize, imageSize)];
-        remarkView.image = [UIImage imageNamed:@"chatListCellHead.png"];
-        remarkView.remark = buddy.username;
+//        remarkView.image = [UIImage imageNamed:@"chatListCellHead.png"];
+        
+        if (f.userimage.length > 0) {
+            remarkView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:f.userimage]]];
+        }else{
+            remarkView.image = [UIImage imageNamed:@"chatListCellHead.png"];
+        }
+        remarkView.remark = f.username;
         [self.footerScrollView addSubview:remarkView];
     }
     
@@ -386,11 +484,31 @@
     [_dataSource removeAllObjects];
     [_contactsSource removeAllObjects];
     
-    NSArray *buddyList = [[EaseMob sharedInstance].chatManager buddyList];
-    for (EMBuddy *buddy in buddyList) {
-        if (buddy.followState != eEMBuddyFollowState_NotFollowed) {
-            [self.contactsSource addObject:buddy];
-        }
+//    NSArray *buddyList = [[EaseMob sharedInstance].chatManager buddyList];
+//    for (EMBuddy *buddy in buddyList) {
+//        if (buddy.followState != eEMBuddyFollowState_NotFollowed) {
+//            [self.contactsSource addObject:buddy];
+//        }
+//    }
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSArray *friends = [userDefaults objectForKey:@"friendarr"];
+    for (int i = 0 ; i < friends.count ; i++) {
+        NSDictionary *data = [friends objectAtIndex:i];
+        NSString *name = [data objectForKey:@"parentname"];
+        NSString *fileid = [data objectForKey:@"fileid"];
+        NSString *hxusercode = [data objectForKey:@"hxusercode"];
+        
+//        EMBuddy *buddy = [EMBuddy buddyWithUsername:hxusercode];
+//        buddy.hxusername = name;
+//        buddy.userimg = fileid;
+        
+        Friend *f = [[Friend alloc] init];
+        f.usercode = hxusercode;
+        f.username = name;
+        f.userimage = fileid;
+        
+        [self.contactsSource addObject:f];
     }
     
     [_dataSource addObjectsFromArray:[self sortRecords:self.contactsSource]];

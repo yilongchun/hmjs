@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MainChatViewController.h"
 #import "ChatListViewController.h"
+#import "GroupListViewController.h"
 #import "SMPageControl.h"
 
 @interface MainViewController : UIViewController<UINavigationControllerDelegate,IChatManagerDelegate,UIScrollViewDelegate>{
@@ -34,6 +35,7 @@
 
 //@property (strong, nonatomic) MainChatViewController *mainController;
 @property (strong, nonatomic) ChatListViewController *chatListController;
+@property (strong, nonatomic) GroupListViewController *groupController;
 
 - (void)setupUnreadMessageCount;
 

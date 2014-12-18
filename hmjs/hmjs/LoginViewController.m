@@ -90,9 +90,8 @@
     
     
     [self viewTapped:rapGr];
-    HUD.labelText = @"登陆中";
+    HUD.labelText = @"登陆中...";
     [HUD show:YES];
-    
     
     NSString *app_Version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     

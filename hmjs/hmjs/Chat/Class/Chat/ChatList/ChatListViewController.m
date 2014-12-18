@@ -412,7 +412,7 @@
     chatController = [[ChatViewController alloc] initWithChatter:chatter isGroup:conversation.isGroup];
     
     if (conversation.isGroup) {
-        chatController.title = conversation.chatter;
+        chatController.title = title;
     }else{
         NSDictionary *userinfo = [self getRealName:conversation.chatter];
         chatController.title = [userinfo objectForKey:@"parentname"];
