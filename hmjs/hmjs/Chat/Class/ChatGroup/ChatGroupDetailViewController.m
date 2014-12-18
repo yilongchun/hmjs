@@ -14,6 +14,7 @@
 #import "ContactSelectionViewController.h"
 #import "GroupSettingViewController.h"
 #import "EMGroup.h"
+#import "Friend.h"
 
 #pragma mark - ChatGroupContactView
 
@@ -326,8 +327,11 @@
     __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSMutableArray *source = [NSMutableArray array];
-        for (EMBuddy *buddy in selectedSources) {
-            [source addObject:buddy.username];
+//        for (EMBuddy *buddy in selectedSources) {
+//            [source addObject:buddy.username];
+//        }
+        for (Friend *f in selectedSources) {
+            [source addObject:f.usercode];
         }
         
         NSDictionary *loginInfo = [[[EaseMob sharedInstance] chatManager] loginInfo];
@@ -456,8 +460,22 @@
                 NSString *username = [self.dataSource objectAtIndex:index];
                 ChatGroupContactView *contactView = [[ChatGroupContactView alloc] initWithFrame:CGRectMake(j * kContactSize, i * kContactSize, kContactSize, kContactSize)];
                 contactView.index = i * kColOfRow + j;
-                contactView.image = [UIImage imageNamed:@"chatListCellHead.png"];
-                contactView.remark = username;
+                
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                NSDictionary *data = [userDefaults objectForKey:username];
+                
+                NSString *realname = [data objectForKey:@"parentname"];
+                NSString *userimage = [data objectForKey:@"fileid"];
+                
+                if (userimage.length > 0) {
+                    contactView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:userimage]]];
+                }else{
+                    contactView.image = [UIImage imageNamed:@"chatListCellHead.png"];
+                }
+                contactView.remark = realname;
+                
+                
+//                contactView.remark = username;
                 if (![username isEqualToString:loginUsername]) {
                     contactView.editing = isEditing;
                 }
@@ -634,5 +652,7 @@
 // todo
     NSLog(@"ignored group list:%@.", ignoredGroupList);
 }
+
+
 
 @end

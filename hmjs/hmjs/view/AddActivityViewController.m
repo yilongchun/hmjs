@@ -208,6 +208,9 @@
 //上传图片
 -(void)uploadImg:(int)num{
     
+    __weak AddActivityViewController *weakSelf = self;
+    
+    
     UIImage *image = [self.chosenImages objectAtIndex:num];
     NSData *fileData = UIImageJPEGRepresentation(image, 1.0);
     
@@ -235,6 +238,7 @@
             NSString *fileurl = [resultDict objectForKey:@"data"];
             [fileArr addObject:fileurl];
             NSLog(@"上传成功 %d",num);
+//            [weakSelf uploadImg:num + 1];
             if (fileArr.count == self.chosenImages.count) {
                 flag = true;
                 [self insertData];

@@ -155,11 +155,24 @@
             }
             
             EMConversation *conversation = [weakSelf.searchController.resultsSource objectAtIndex:indexPath.row];
-            cell.name = conversation.chatter;
-            if (!conversation.isGroup) {
-                cell.placeholderImage = [UIImage imageNamed:@"chatListCellHead.png"];
+            
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            NSDictionary *userinfo = [userDefaults objectForKey:conversation.chatter];
+            if (userinfo != nil) {
+                cell.name = [userinfo objectForKey:@"parentname"];
+            }else{
+                cell.name = conversation.chatter;
             }
-            else{
+            
+//            cell.name = conversation.chatter;
+            if (!conversation.isGroup) {//单聊
+                if (userinfo != nil) {
+                    [cell.imageView setImageWithURL:[NSURL URLWithString:[userinfo objectForKey:@"fileid"]] placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+                }else{
+                    [cell.imageView setImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+                }
+            }
+            else{//群聊
                 NSString *imageName = @"groupPublicHeader";
                 NSArray *groupArray = [[EaseMob sharedInstance].chatManager groupList];
                 for (EMGroup *group in groupArray) {
@@ -169,7 +182,7 @@
                         break;
                     }
                 }
-                cell.placeholderImage = [UIImage imageNamed:imageName];
+                cell.imageView.image = [UIImage imageNamed:imageName];
             }
             cell.detailMsg = [weakSelf subTitleMessageByConversation:conversation];
             cell.time = [weakSelf lastMessageTimeByConversation:conversation];
@@ -192,7 +205,23 @@
             
             EMConversation *conversation = [weakSelf.searchController.resultsSource objectAtIndex:indexPath.row];
             ChatViewController *chatVC = [[ChatViewController alloc] initWithChatter:conversation.chatter isGroup:conversation.isGroup];
-            chatVC.title = conversation.chatter;
+            if (!conversation.isGroup) {//单聊
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                NSDictionary *userinfo = [userDefaults objectForKey:conversation.chatter];
+                if (userinfo != nil) {
+                    chatVC.title = [userinfo objectForKey:@"parentname"];
+                }else{
+                    chatVC.title = conversation.chatter;
+                }
+            }else{
+                NSArray *groupArray = [[EaseMob sharedInstance].chatManager groupList];
+                for (EMGroup *group in groupArray) {
+                    if ([group.groupId isEqualToString:conversation.chatter]) {
+                        chatVC.title = group.groupSubject;
+                        break;
+                    }
+                }
+            }
             [weakSelf.navigationController pushViewController:chatVC animated:YES];
         }];
     }
@@ -297,41 +326,41 @@
 }
 
 
-- (NSDictionary *)getRealName:(NSString *)chatter{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSArray *friendarr = [userDefaults objectForKey:@"friendarr"];
-    
-    NSString *name = chatter;
-    NSString *fileid = nil;
-    NSMutableDictionary *resultDic = [[NSMutableDictionary alloc] init];
-    BOOL flag = false;
-    if (friendarr != nil) {
-        for (int i = 0 ; i < friendarr.count; i++) {
-            NSDictionary *friend = [friendarr objectAtIndex:i];
-            NSString *hxusercode = [friend objectForKey:@"hxusercode"];
-            NSString *parentname = [friend objectForKey:@"parentname"];
-            NSString *tempfileid = [friend objectForKey:@"fileid"];
-            if ([chatter isEqualToString:hxusercode]) {
-                name = parentname;
-                fileid = tempfileid;
-                [resultDic setObject:hxusercode forKey:@"hxusercode"];
-                [resultDic setObject:parentname forKey:@"parentname"];
-                [resultDic setObject:tempfileid forKey:@"fileid"];
-                flag = true;
-                break;
-            }
-        }
-    }
-    
-    if (!flag) {
-        [resultDic setObject:chatter forKey:@"hxusercode"];
-        [resultDic setObject:chatter forKey:@"parentname"];
-        [resultDic setObject:@"" forKey:@"fileid"];
-    }
-    
-    return resultDic;
-    
-}
+//- (NSDictionary *)getRealName:(NSString *)chatter{
+//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//    NSArray *friendarr = [userDefaults objectForKey:@"friendarr"];
+//    
+//    NSString *name = chatter;
+//    NSString *fileid = nil;
+//    NSMutableDictionary *resultDic = [[NSMutableDictionary alloc] init];
+//    BOOL flag = false;
+//    if (friendarr != nil) {
+//        for (int i = 0 ; i < friendarr.count; i++) {
+//            NSDictionary *friend = [friendarr objectAtIndex:i];
+//            NSString *hxusercode = [friend objectForKey:@"hxusercode"];
+//            NSString *parentname = [friend objectForKey:@"parentname"];
+//            NSString *tempfileid = [friend objectForKey:@"fileid"];
+//            if ([chatter isEqualToString:hxusercode]) {
+//                name = parentname;
+//                fileid = tempfileid;
+//                [resultDic setObject:hxusercode forKey:@"hxusercode"];
+//                [resultDic setObject:parentname forKey:@"parentname"];
+//                [resultDic setObject:tempfileid forKey:@"fileid"];
+//                flag = true;
+//                break;
+//            }
+//        }
+//    }
+//    
+//    if (!flag) {
+//        [resultDic setObject:chatter forKey:@"hxusercode"];
+//        [resultDic setObject:chatter forKey:@"parentname"];
+//        [resultDic setObject:@"" forKey:@"fileid"];
+//    }
+//    
+//    return resultDic;
+//    
+//}
 
 #pragma mark - TableViewDelegate & TableViewDatasource
 
@@ -346,10 +375,18 @@
     }
     EMConversation *conversation = [self.dataSource objectAtIndex:indexPath.row];
     
-    NSDictionary *userinfo = [self getRealName:conversation.chatter];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *userinfo = [userDefaults objectForKey:conversation.chatter];
+    if (userinfo != nil) {
+        cell.name = [userinfo objectForKey:@"parentname"];
+    }else{
+        cell.name = conversation.chatter;
+    }
     
     
-    cell.name = [userinfo objectForKey:@"parentname"];
+    
+    
     
     if (!conversation.isGroup) {
 //        if (fileid == nil) {
@@ -414,7 +451,8 @@
     if (conversation.isGroup) {
         chatController.title = title;
     }else{
-        NSDictionary *userinfo = [self getRealName:conversation.chatter];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSDictionary *userinfo = [userDefaults objectForKey:conversation.chatter];
         chatController.title = [userinfo objectForKey:@"parentname"];
     }
     

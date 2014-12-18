@@ -14,6 +14,7 @@
 
 #import "ContactSelectionViewController.h"
 #import "EMTextView.h"
+#import "Friend.h"
 
 @interface CreateGroupViewController ()<UITextFieldDelegate, UITextViewDelegate, EMChooseViewDelegate>
 
@@ -197,8 +198,11 @@
     [self showHudInView:self.view hint:@"创建群组..."];
     
     NSMutableArray *source = [NSMutableArray array];
-    for (EMBuddy *buddy in selectedSources) {
-        [source addObject:buddy.username];
+//    for (EMBuddy *buddy in selectedSources) {
+//        [source addObject:buddy.username];
+//    }
+    for (Friend *f in selectedSources) {
+        [source addObject:f.usercode];
     }
     
     EMGroupStyleSetting *setting = [[EMGroupStyleSetting alloc] init];

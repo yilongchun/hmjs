@@ -416,8 +416,13 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
             NSDictionary *data = [resultDict objectForKey:@"data"];
             if (data != nil) {
                 NSArray *arr = [data objectForKey:@"rows"];
-                
+                for (int i = 0; i < arr.count; i++) {
+                    NSDictionary *data = [arr objectAtIndex:i];
+                    NSString *hxusercode = [data objectForKey:@"hxusercode"];
+                    [userDefaults setObject:data forKey:hxusercode];
+                }
                 [userDefaults setObject:arr forKey:@"friendarr"];
+                
             }
         }else{
             
