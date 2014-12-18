@@ -75,16 +75,14 @@
                                  action:@selector(save)];
     self.navigationItem.rightBarButtonItem = rightBtn;
     
-//    [self.myscrollview setContentSize:CGSizeMake(self.view.frame.size.width,self.view.frame.size.height+1)];
-//    [self.myscrollview setScrollEnabled:YES];
+    [self.myscrollview setContentSize:CGSizeMake(self.view.frame.size.width,self.view.frame.size.height+1)];
+    [self.myscrollview setScrollEnabled:YES];
     
     self.chosenImages = [[NSMutableArray alloc] init];
     //[self.myscrollview setFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-64)];
     fileArr = [[NSMutableArray alloc] init];
     
     
-    NSLog(@"%f",self.contentTextview.frame.size.height);
-    NSLog(@"%f",self.imagePickBtn.frame.size.height);
 }
 
 //隐藏键盘
@@ -208,7 +206,7 @@
 //上传图片
 -(void)uploadImg:(int)num{
     
-    __weak AddActivityViewController *weakSelf = self;
+//    __weak AddActivityViewController *weakSelf = self;
     
     
     UIImage *image = [self.chosenImages objectAtIndex:num];
@@ -217,13 +215,14 @@
     //将文件保存到本地
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
     NSString *documentsDirectory=[paths objectAtIndex:0];
-    NSString *savedImagePath=[documentsDirectory stringByAppendingPathComponent:@"saveFore.jpg"];
+    NSString *savedImagePath=[documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%d.jpg",num]];
     BOOL saveFlag = [fileData writeToFile:savedImagePath atomically:YES];
     
     MKNetworkOperation *op =[engine operationWithURLString:[NSString stringWithFormat:@"http://%@/image/upload.do",[Utils getImageHostname]] params:nil httpMethod:@"POST"];
     
     [op addFile:savedImagePath forKey:@"allFile"];
-    [op setFreezable:YES];
+    NSLog(@"%@ %d",savedImagePath,num);
+    [op setFreezable:NO];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         
         NSString *result = [operation responseString];
@@ -238,7 +237,13 @@
             NSString *fileurl = [resultDict objectForKey:@"data"];
             [fileArr addObject:fileurl];
             NSLog(@"上传成功 %d",num);
-//            [weakSelf uploadImg:num + 1];
+//            if (num + 1 < self.chosenImages.count) {
+//                [weakSelf uploadImg:num + 1];
+//            }else{
+//                flag = true;
+//                [self insertData];
+//            }
+            
             if (fileArr.count == self.chosenImages.count) {
                 flag = true;
                 [self insertData];
@@ -395,7 +400,7 @@
     [self.imagePickBtn setFrame:workingFrame];
     
     if (type == 1) {
-        if (self.chosenImages.count == 6) {
+        if (self.chosenImages.count == 9) {
             [self.imagePickBtn setHidden:YES];
         }else{
             [self.imagePickBtn setHidden:NO];
@@ -517,7 +522,7 @@
         {
             type = 1;
             ELCImagePickerController *elcPicker = [[ELCImagePickerController alloc] initImagePicker];
-            elcPicker.maximumImagesCount = 6 - self.chosenImages.count; //Set the maximum number of images to select to 100
+            elcPicker.maximumImagesCount = 9 - self.chosenImages.count; //Set the maximum number of images to select to 100
             elcPicker.returnsOriginalImage = YES; //Only return the fullScreenImage, not the fullResolutionImage
             elcPicker.returnsImage = YES; //Return UIimage if YES. If NO, only return asset location information
             elcPicker.onOrder = YES; //For multiple image selection, display and return order of selected images
