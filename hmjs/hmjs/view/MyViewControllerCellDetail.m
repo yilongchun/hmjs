@@ -503,7 +503,6 @@
                     [tmpView setImageWithURL:[file objectForKey:@"fileId"]];
                     tmpView.tag = 10 + i;
                     [cell.contentView addSubview:tmpView];
-                    
                     tmpView = (TapImageView *)[cell.contentView viewWithTag:10+i];
                     tmpView.identifier = cell;
                 }
