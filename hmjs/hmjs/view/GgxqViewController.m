@@ -272,7 +272,11 @@
 - (void)loadData{
     [HUD show:YES];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *userid = [userDefaults objectForKey:@"userid"];
+    [dic setValue:userid forKey:@"userId"];
     [dic setValue:self.tnid forKey:@"tnid"];
+    
     
     MKNetworkOperation *op = [engine operationWithPath:@"/Notice/findbyid.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
