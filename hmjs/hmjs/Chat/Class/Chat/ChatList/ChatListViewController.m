@@ -453,7 +453,11 @@
     }else{
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSDictionary *userinfo = [userDefaults objectForKey:conversation.chatter];
-        chatController.title = [userinfo objectForKey:@"parentname"];
+        if (userinfo != nil) {
+            chatController.title = [userinfo objectForKey:@"parentname"];
+        }else{
+            chatController.title = conversation.chatter;
+        }
     }
     
     [conversation markMessagesAsRead:YES];

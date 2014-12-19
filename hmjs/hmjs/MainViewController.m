@@ -80,7 +80,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     
     //初始化网络引擎
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
-    
+    unreadlabel = [[UILabel alloc] init];
     mainScrollView = [[UIScrollView alloc] init];
     mainScrollView.delegate = self;
     [mainScrollView setPagingEnabled:YES];
@@ -169,9 +169,9 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                 }
                 
                 
-                
-                for (int i = 0 ; i < self.menus.count; i++) {
-                    NSString *menuStr = [self.menus objectAtIndex:i];
+                int i = 0;
+                for (NSString *menuStr in self.menus) {
+//                    NSString *menuStr = [self.menus objectAtIndex:i];
                     
                     CGRect btnr;
                     switch (i) {
@@ -216,7 +216,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         label4.text = @"小纸条";
                         label4.textAlignment = NSTextAlignmentCenter;
                         [label4 setFont:[UIFont systemFontOfSize:16]];
-                        unreadlabel = [[UILabel alloc] init];
+                        
                         [unreadlabel setFrame:CGRectMake(btn4.frame.origin.x + btn4.frame.size.width - 12, btn4.frame.origin.y - 8, 20, 20)];
                         unreadlabel.layer.cornerRadius = unreadlabel.frame.size.height/2;
                         unreadlabel.layer.masksToBounds = YES;
@@ -306,6 +306,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         [mainScrollView addSubview:btn6];
                         [mainScrollView addSubview:label6];
                     }
+                    i++;
                 }
             }
             [HUD hide:YES];
@@ -416,12 +417,13 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
             NSDictionary *data = [resultDict objectForKey:@"data"];
             if (data != nil) {
                 NSArray *arr = [data objectForKey:@"rows"];
+                [userDefaults setObject:arr forKey:@"friendarr"];
                 for (int i = 0; i < arr.count; i++) {
                     NSDictionary *data = [arr objectAtIndex:i];
                     NSString *hxusercode = [data objectForKey:@"hxusercode"];
                     [userDefaults setObject:data forKey:hxusercode];
                 }
-                [userDefaults setObject:arr forKey:@"friendarr"];
+                
                 
             }
         }else{
