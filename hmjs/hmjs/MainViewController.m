@@ -210,7 +210,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                             break;
                     }
                     
-                    if ([menuStr isEqualToString:@"1_singleChat"]) {//1_singleChat">小纸条
+                    if ([menuStr isEqualToString:@"16_singleChat"]) {//1_singleChat">小纸条
                         UIButton *btn4 = [[UIButton alloc] init];
                         [btn4 setFrame:btnr];
                         [btn4 setBackgroundImage:[UIImage imageNamed:@"ic_index_009.png"] forState:UIControlStateNormal];
@@ -232,7 +232,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         [mainScrollView addSubview:btn4];
                         [mainScrollView addSubview:label4];
                         [mainScrollView addSubview:unreadlabel];
-                    }else if([menuStr isEqualToString:@"1_groupleChat"]){//1_groupleChat">教师园地
+                    }else if([menuStr isEqualToString:@"17_groupleChat"]){//1_groupleChat">教师园地
                         UIButton *btn2 = [[UIButton alloc] init];
                         [btn2 setFrame:btnr];
                         [btn2 setBackgroundImage:[UIImage imageNamed:@"ic_index_005.png"] forState:UIControlStateNormal];
@@ -246,7 +246,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         [label2 setBackgroundColor:[UIColor clearColor]];
                         [mainScrollView addSubview:btn2];
                         [mainScrollView addSubview:label2];
-                    }else if([menuStr isEqualToString:@"1_school"]){//1_school">园所动态
+                    }else if([menuStr isEqualToString:@"11_school"]){//1_school">园所动态
                         UIButton *btn2 = [[UIButton alloc] init];
                         [btn2 setFrame:btnr];
                         [btn2 setBackgroundImage:[UIImage imageNamed:@"ic_index_003.png"] forState:UIControlStateNormal];
@@ -260,7 +260,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         [label2 setBackgroundColor:[UIColor clearColor]];
                         [mainScrollView addSubview:btn2];
                         [mainScrollView addSubview:label2];
-                    }else if([menuStr isEqualToString:@"1_class"]){//1_class">班级管理
+                    }else if([menuStr isEqualToString:@"12_class"]){//1_class">班级管理
                         UIButton *btn1 = [[UIButton alloc] init];
                         [btn1 setFrame:btnr];
                         [btn1 setBackgroundImage:[UIImage imageNamed:@"ic_index_002.png"] forState:UIControlStateNormal];
@@ -274,7 +274,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         [label1 setBackgroundColor:[UIColor clearColor]];
                         [mainScrollView addSubview:btn1];
                         [mainScrollView addSubview:label1];
-                    }else if([menuStr isEqualToString:@"1_cookbook"]){//1_cookbook">学生食谱
+                    }else if([menuStr isEqualToString:@"14_cookbook"]){//1_cookbook">学生食谱
                         UIButton *btn3 = [[UIButton alloc] init];
                         [btn3 setFrame:btnr];
                         [btn3 setBackgroundImage:[UIImage imageNamed:@"ic_index_004.png"] forState:UIControlStateNormal];
@@ -288,7 +288,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         [label3 setBackgroundColor:[UIColor clearColor]];
                         [mainScrollView addSubview:btn3];
                         [mainScrollView addSubview:label3];
-                    }else if([menuStr isEqualToString:@"1_information"]){//1_information">育儿资讯
+                    }else if([menuStr isEqualToString:@"15_information"]){//1_information">育儿资讯
                         UIButton *btn5 = [[UIButton alloc] init];
                         [btn5 setFrame:btnr];
                         [btn5 setBackgroundImage:[UIImage imageNamed:@"ic_index_006.png"] forState:UIControlStateNormal];
@@ -302,7 +302,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         [label5 setBackgroundColor:[UIColor clearColor]];
                         [mainScrollView addSubview:btn5];
                         [mainScrollView addSubview:label5];
-                    }else if([menuStr isEqualToString:@"1_course"]){//1_course">课程表
+                    }else if([menuStr isEqualToString:@"13_course"]){//1_course">课程表
                         UIButton *btn6 = [[UIButton alloc] init];
                         [btn6 setFrame:btnr];
                         [btn6 setBackgroundImage:[UIImage imageNamed:@"ic_index_007.png"] forState:UIControlStateNormal];

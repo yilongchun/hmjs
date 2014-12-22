@@ -23,12 +23,20 @@
     self.guideScrollView.bounces = NO;
     self.guideScrollView.showsHorizontalScrollIndicator = NO;
     self.guideScrollView.showsVerticalScrollIndicator = NO;
-    self.guideScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width*4, [UIScreen mainScreen].bounds.size.height);
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+        self.guideScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width*4, [UIScreen mainScreen].bounds.size.height);
+    }else{
+        self.guideScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width*4, [UIScreen mainScreen].bounds.size.height-20);
+    }
     self.guideScrollView.pagingEnabled = YES;
     for (int i=0; i<4; i++) {
-        UIImageView* imageView = [[UIImageView alloc ]initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width*i, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-        NSLog(@"%f %f",self.view.frame.size.height,[UIScreen mainScreen].bounds.size.height);
-        
+        CGRect rect;
+        if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+            rect = CGRectMake([UIScreen mainScreen].bounds.size.width*i, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+        }else{
+            rect = CGRectMake([UIScreen mainScreen].bounds.size.width*i, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-20);
+        }
+        UIImageView* imageView = [[UIImageView alloc ]initWithFrame:rect];
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         switch (i) {
             case 0:
