@@ -34,6 +34,12 @@
     UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(updateImgAction:)];
     [self.myimageview addGestureRecognizer:singleTap1];
     
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+    }else{
+        [self.myimageview setFrame:CGRectMake(self.myimageview.frame.origin.x, self.myimageview.frame.origin.y-64, self.myimageview.frame.size.width, self.myimageview.frame.size.height)];
+        [self.mytableview setFrame:CGRectMake(self.mytableview.frame.origin.x, self.mytableview.frame.origin.y-64, self.mytableview.frame.size.width, self.mytableview.frame.size.height)];
+    }
+    
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
     [self.mytableview setSeparatorColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1]];

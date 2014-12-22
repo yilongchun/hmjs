@@ -14,6 +14,8 @@
 @property (nonatomic, strong) NSDictionary *data;
 @property (weak, nonatomic) IBOutlet UIButton *btn1;
 @property (weak, nonatomic) IBOutlet UIButton *btn2;
+@property (weak, nonatomic) IBOutlet UILabel *title1;
+@property (weak, nonatomic) IBOutlet UILabel *title2;
 - (IBAction)delBtn:(id)sender;
 - (IBAction)saveBtn:(id)sender;
 

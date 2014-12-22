@@ -226,8 +226,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
         self.automaticallyAdjustsScrollViewInsets = NO;
+    }else{
+        [self.mytableview setFrame:CGRectMake(0, 0, self.mytableview.frame.size.width,self.mytableview.frame.size.height+64)];
     }
     
     [self initTextView];
@@ -491,12 +493,31 @@
             NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
             paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
             NSDictionary *attributes = @{NSFontAttributeName:font, NSParagraphStyleAttributeName:paragraphStyle.copy};
-            CGRect rect = [cell.commentlabel.text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
+            CGRect rect;
+            
+            
+            if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+                rect = [cell.commentlabel.text boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil];
+            }else{
+                NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:cell.commentlabel.text attributes:attributes];
+                NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+                [paragraphStyle setLineSpacing:10];
+                [attributedStr addAttribute:NSParagraphStyleAttributeName
+                                      value:paragraphStyle
+                                      range:NSMakeRange(0, [cell.commentlabel.text length])];
+                rect = [attributedStr boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+            }
+            
+            
+            
+            
+            
             CGSize labelsize = rect.size;
             labelsize.height = ceil(labelsize.height);
             labelsize.width = ceil(labelsize.width);
-            [cell.commentlabel setFrame:CGRectMake(cell.commentlabel.frame.origin.x, cell.commentlabel.frame.origin.y, labelsize.width, labelsize.height)];
             
+            
+            [cell.commentlabel setFrame:CGRectMake(cell.commentlabel.frame.origin.x, cell.commentlabel.frame.origin.y, labelsize.width, labelsize.height)];
             
             
             if ([Utils isBlankString:fileid]) {

@@ -9,10 +9,16 @@
             <connections>
                 <outlet property="bjrs" destination="lSh-X6-Xxp" id="6Vj-8h-UCm"/>
                 <outlet property="bjrs2" destination="ZBG-Ac-jWS" id="aUM-xb-IlM"/>
-                <outlet property="bjsj" destination="jfo-wm-UTK" id="73c-P7-9oi"/>
+                <outlet property="bjsj" destination="UuT-6p-iux" id="dqh-nT-J6V"/>
                 <outlet property="cdrs" destination="24a-qr-hYv" id="N8F-fB-jU6"/>
                 <outlet property="cqrs" destination="hti-js-jJF" id="b8E-74-YEN"/>
                 <outlet property="dateTitleLabel" destination="WOk-L4-bUp" id="lmO-8y-uLI"/>
+                <outlet property="label1" destination="eVx-Nh-Snc" id="o7I-O4-lQB"/>
+                <outlet property="label2" destination="umb-3C-f7n" id="hIy-Qq-gyZ"/>
+                <outlet property="label3" destination="zhJ-lj-wpa" id="f0N-eP-NNm"/>
+                <outlet property="label4" destination="dD5-5K-uaV" id="AoE-cK-wGP"/>
+                <outlet property="label5" destination="sqd-hh-EMD" id="N9G-Am-xbW"/>
+                <outlet property="label6" destination="UfD-2P-XKB" id="JU8-Vd-fVt"/>
                 <outlet property="sjrs" destination="3Ic-Im-2ox" id="Zyf-w9-QvY"/>
                 <outlet property="view" destination="Vhm-b6-XrV" id="Mt4-yo-I82"/>
             </connections>
@@ -99,16 +105,6 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="99" contentMode="scaleToFill" id="jfo-wm-UTK">
-                    <rect key="frame" x="90" y="295" width="220" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    <connections>
-                        <outlet property="delegate" destination="-1" id="Hpl-iR-TCl"/>
-                    </connections>
-                </textView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="班级事件:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UfD-2P-XKB">
                     <rect key="frame" x="10" y="300" width="74" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -123,9 +119,18 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="99" contentMode="scaleToFill" id="UuT-6p-iux">
+                    <rect key="frame" x="90" y="295" width="220" height="128"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="G4L-pD-WYp"/>
+                    </connections>
+                </textView>
             </subviews>
             <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <point key="canvasLocation" x="265" y="259"/>
         </view>
     </objects>

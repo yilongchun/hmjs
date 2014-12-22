@@ -52,8 +52,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
         self.automaticallyAdjustsScrollViewInsets = NO;
+    }else{
+        [self.mytableview setFrame:CGRectMake(0, 0, self.mytableview.frame.size.width, self.mytableview.frame.size.height+64)];
     }
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
@@ -370,8 +372,8 @@
     [UIView animateWithDuration:0.2 animations:^{
         [sender setAnimationRect];
         markView.alpha = 1.0;
-        [self.navigationController setNavigationBarHidden:YES];
         [[UIApplication sharedApplication] setStatusBarHidden:YES];
+        [self.navigationController setNavigationBarHidden:YES animated:NO];
     }];
 }
 
@@ -410,8 +412,8 @@
 
 - (void) tapImageViewTappedWithObject:(id)sender
 {
-    [self.navigationController setNavigationBarHidden:NO];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
     ImgScrollView *tmpImgView = sender;
     
     [UIView animateWithDuration:0.2 animations:^{

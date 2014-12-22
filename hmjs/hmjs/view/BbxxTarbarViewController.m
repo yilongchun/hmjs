@@ -30,42 +30,92 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
+    // 禁用 iOS7 返回手势
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
     
-    self.navigationController.interactivePopGestureRecognizer.enabled = NO ;
     
-    //    初始化第一个视图控制器
+    UIImage *img1 = [UIImage imageNamed:@"xxjs.png"];
+    UIImage *img1_h = [UIImage imageNamed:@"xxjs_high.png"];
+    
+    UIImage *img2 = [UIImage imageNamed:@"wdhd.png"];
+    UIImage *img2_h = [UIImage imageNamed:@"wdhd_high.png"];
+    
+    UIImage *img3 = [UIImage imageNamed:@"xxgg.png"];
+    UIImage *img3_h = [UIImage imageNamed:@"xxgg_high.png"];
+    
+    UIImage *img4 = [UIImage imageNamed:@"wdgg.png"];
+    UIImage *img4_h = [UIImage imageNamed:@"wdgg_high.png"];
+    
+    UIImage *img5 = [UIImage imageNamed:@"xxhd.png"];
+    UIImage *img5_h = [UIImage imageNamed:@"xxhd_high.png"];
+    
+    
     BwhdViewController *vc1 = [[BwhdViewController alloc] init];
-    UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"班务活动" image:[[UIImage imageNamed:@"xxjs.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"xxjs_high.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    [item1 setTag:0];
-    vc1.tabBarItem = item1;
+    WdhdViewController *vc2 = [[WdhdViewController alloc] init];
+    GgtzViewController *vc3 = [[GgtzViewController alloc] init];
+    MyNoticeReviewViewController *vc4 = [[MyNoticeReviewViewController alloc] init];
+    BwrzViewController *vc5 = [[BwrzViewController alloc] init];
     
-    WdhdViewController *vc4 = [[WdhdViewController alloc] init];
-    UITabBarItem *item4 = [[UITabBarItem alloc] initWithTitle:@"我的活动" image:[[UIImage imageNamed:@"wdhd.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"wdhd_high.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    [item4 setTag:3];
-    vc4.tabBarItem = item4;
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+        img1 = [img1 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        img1_h = [img1_h imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+        img2 = [img2 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        img2_h = [img2_h imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+        img3 = [img3 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        img3_h = [img3_h imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+        img4 = [img4 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        img4_h = [img4_h imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+        img5 = [img5 imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        img5_h = [img5_h imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        
+        UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"班务活动" image:img1 selectedImage:img1_h];
+        [item1 setTag:0];
+        vc1.tabBarItem = item1;
+        
+        UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"我的活动" image:img2 selectedImage:img2_h];
+        [item2 setTag:1];
+        vc2.tabBarItem = item2;
+        
+        UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"公告通知" image:img3 selectedImage:img3_h];
+        [item3 setTag:2];
+        vc3.tabBarItem = item3;
+        
+        UITabBarItem *item4 = [[UITabBarItem alloc] initWithTitle:@"我的公告" image:img4 selectedImage:img4_h];
+        [item4 setTag:3];
+        vc4.tabBarItem = item4;
+        
+        UITabBarItem *item5 = [[UITabBarItem alloc] initWithTitle:@"班务日志" image:img5 selectedImage:img5_h];
+        [item5 setTag:4];
+        vc5.tabBarItem = item5;
+    }else{
+        UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"班务活动" image:img1 tag:0];
+        vc1.tabBarItem = item1;
+        
+        UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"我的活动" image:img2 tag:1];
+        vc2.tabBarItem = item2;
+        
+        UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"公告通知" image:img3 tag:2];
+        vc3.tabBarItem = item3;
+        
+        UITabBarItem *item4 = [[UITabBarItem alloc] initWithTitle:@"我的公告" image:img4 tag:3];
+        vc4.tabBarItem = item4;
+        
+        UITabBarItem *item5 = [[UITabBarItem alloc] initWithTitle:@"班务日志" image:img5 tag:4];
+        vc5.tabBarItem = item5;
+    }
     
-    //    初始化第二个视图控制器
-    GgtzViewController *vc2 = [[GgtzViewController alloc] init];
-    UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"公告通知" image:[[UIImage imageNamed:@"xxgg.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"xxgg_high.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    [item2 setTag:1];
-    vc2.tabBarItem = item2;
-    
-    MyNoticeReviewViewController *vc5 = [[MyNoticeReviewViewController alloc] init];
-    UITabBarItem *item5 = [[UITabBarItem alloc] initWithTitle:@"我的公告" image:[[UIImage imageNamed:@"wdgg.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"wdgg_high.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    [item5 setTag:4];
-    vc5.tabBarItem = item5;
-    
-    //    初始化第三个视图控制器
-    BwrzViewController *vc3 = [[BwrzViewController alloc] init];
-    UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@"班务日志" image:[[UIImage imageNamed:@"xxhd.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"xxhd_high.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    [item3 setTag:2];
-    vc3.tabBarItem = item3;
     
     //    把导航控制器加入到数组
-    NSMutableArray *viewArr_ = [NSMutableArray arrayWithObjects:vc1,vc4,vc2,vc5,vc3, nil];
+    NSMutableArray *viewArr_ = [NSMutableArray arrayWithObjects:vc1,vc2,vc3,vc4,vc5, nil];
     
     self.title = @"班务活动";
     self.viewControllers = viewArr_;
@@ -103,18 +153,17 @@
 {
     if (item.tag == 0) {
         self.title = @"班务活动";
-        //设置导航栏右侧按钮
         [self.navigationItem setRightBarButtonItem:bwhdButtonItem];
-    }else if (item.tag == 1){
+    }else if (item.tag == 2){
         self.title = @"公告通知";
         [self.navigationItem setRightBarButtonItem:ggtzButtonItem];
-    }else if (item.tag == 2){
+    }else if (item.tag == 4){
         self.title = @"班务日志";
         [self.navigationItem setRightBarButtonItem:bwrzButtonItem];
-    }else if (item.tag == 3){
+    }else if (item.tag == 1){
         self.title = @"我的活动";
         [self.navigationItem setRightBarButtonItem:nil];
-    }else if (item.tag == 4){
+    }else if (item.tag == 3){
         self.title = @"我的公告";
         [self.navigationItem setRightBarButtonItem:nil];
     }

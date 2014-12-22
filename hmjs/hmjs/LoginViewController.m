@@ -29,7 +29,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationController.interactivePopGestureRecognizer.enabled = NO ;
+    // 禁用 iOS7 返回手势
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
     
     self.navigationController.delegate = self;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
@@ -74,6 +77,7 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     if ([self.logintype isEqualToString:@"login"] && ![Utils isBlankString:self.username.text] && ![Utils isBlankString:self.password.text]) {
+        self.logintype = @"";
         [self loginTag:nil];
     }
 }

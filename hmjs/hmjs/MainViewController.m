@@ -57,10 +57,15 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     
     //设置导航栏
     self.navigationController.delegate = self;
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    }
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil]];
     [self.navigationController setNavigationBarHidden:YES];
-    self.navigationController.interactivePopGestureRecognizer.enabled = NO ;
+    // 禁用 iOS7 返回手势
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
     self.navigationItem.backBarButtonItem = backItem;
     backItem.title = @"返回";
@@ -216,7 +221,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         label4.text = @"小纸条";
                         label4.textAlignment = NSTextAlignmentCenter;
                         [label4 setFont:[UIFont systemFontOfSize:16]];
-                        
+                        [label4 setBackgroundColor:[UIColor clearColor]];
                         [unreadlabel setFrame:CGRectMake(btn4.frame.origin.x + btn4.frame.size.width - 12, btn4.frame.origin.y - 8, 20, 20)];
                         unreadlabel.layer.cornerRadius = unreadlabel.frame.size.height/2;
                         unreadlabel.layer.masksToBounds = YES;
@@ -238,6 +243,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         label2.text = @"教师园地";
                         label2.textAlignment = NSTextAlignmentCenter;
                         [label2 setFont:[UIFont systemFontOfSize:16]];
+                        [label2 setBackgroundColor:[UIColor clearColor]];
                         [mainScrollView addSubview:btn2];
                         [mainScrollView addSubview:label2];
                     }else if([menuStr isEqualToString:@"1_school"]){//1_school">园所动态
@@ -251,6 +257,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         label2.text = @"园所动态";
                         label2.textAlignment = NSTextAlignmentCenter;
                         [label2 setFont:[UIFont systemFontOfSize:16]];
+                        [label2 setBackgroundColor:[UIColor clearColor]];
                         [mainScrollView addSubview:btn2];
                         [mainScrollView addSubview:label2];
                     }else if([menuStr isEqualToString:@"1_class"]){//1_class">班级管理
@@ -264,6 +271,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         label1.text = @"班务管理";
                         label1.textAlignment = NSTextAlignmentCenter;
                         [label1 setFont:[UIFont systemFontOfSize:16]];
+                        [label1 setBackgroundColor:[UIColor clearColor]];
                         [mainScrollView addSubview:btn1];
                         [mainScrollView addSubview:label1];
                     }else if([menuStr isEqualToString:@"1_cookbook"]){//1_cookbook">学生食谱
@@ -277,6 +285,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         label3.text = @"学生食谱";
                         label3.textAlignment = NSTextAlignmentCenter;
                         [label3 setFont:[UIFont systemFontOfSize:16]];
+                        [label3 setBackgroundColor:[UIColor clearColor]];
                         [mainScrollView addSubview:btn3];
                         [mainScrollView addSubview:label3];
                     }else if([menuStr isEqualToString:@"1_information"]){//1_information">育儿资讯
@@ -290,6 +299,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         label5.text = @"育儿资讯";
                         label5.textAlignment = NSTextAlignmentCenter;
                         [label5 setFont:[UIFont systemFontOfSize:16]];
+                        [label5 setBackgroundColor:[UIColor clearColor]];
                         [mainScrollView addSubview:btn5];
                         [mainScrollView addSubview:label5];
                     }else if([menuStr isEqualToString:@"1_course"]){//1_course">课程表
@@ -303,6 +313,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         label6.text = @"课程表";
                         label6.textAlignment = NSTextAlignmentCenter;
                         [label6 setFont:[UIFont systemFontOfSize:16]];
+                        [label6 setBackgroundColor:[UIColor clearColor]];
                         [mainScrollView addSubview:btn6];
                         [mainScrollView addSubview:label6];
                     }

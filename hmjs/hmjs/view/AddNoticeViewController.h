@@ -15,6 +15,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btn1;
 @property (weak, nonatomic) IBOutlet UIButton *btn2;
+@property (weak, nonatomic) IBOutlet UILabel *title1;
+@property (weak, nonatomic) IBOutlet UILabel *title2;
 - (IBAction)saveBtn:(id)sender;
 - (IBAction)addBtn:(id)sender;
 

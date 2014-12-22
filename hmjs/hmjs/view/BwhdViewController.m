@@ -34,13 +34,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.navigationController.interactivePopGestureRecognizer.enabled = NO ;
+    // 禁用 iOS7 返回手势
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
     
     // Do any additional setup after loading the view from its nib.
     
     //初始化tableview
-    CGRect cg = CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-50-64);
+    CGRect cg;
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+        cg = CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-50-64);
+    }else{
+        cg = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-50-64);
+    }
+    
     mytableview = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
     mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
 //    [mytableview setSeparatorColor:[UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1]];

@@ -41,7 +41,12 @@
     
 
     //初始化tableview
-    CGRect cg = CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-50);
+    CGRect cg;
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+        cg = CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-50-64);
+    }else{
+        cg = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-50-64);
+    }
     mytableView = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
     mytableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 //    [mytableView setSeparatorColor:[UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1]];

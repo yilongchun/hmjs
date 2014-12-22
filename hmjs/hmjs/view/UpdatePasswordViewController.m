@@ -50,6 +50,13 @@
     rect3.size.height = 40;
     self.password2.frame = rect3;
     
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+    }else{
+        [self.oldPassword setFrame:CGRectMake(self.oldPassword.frame.origin.x, self.oldPassword.frame.origin.y-64, self.oldPassword.frame.size.width, self.oldPassword.frame.size.height)];
+        [self.password1 setFrame:CGRectMake(self.password1.frame.origin.x, self.password1.frame.origin.y-64, self.password1.frame.size.width, self.password1.frame.size.height)];
+        [self.password2 setFrame:CGRectMake(self.password2.frame.origin.x, self.password2.frame.origin.y-64, self.password2.frame.size.width, self.password2.frame.size.height)];
+    }
+    
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.labelText = @"提交中";

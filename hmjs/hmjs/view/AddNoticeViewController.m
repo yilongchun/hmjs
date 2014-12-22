@@ -34,6 +34,19 @@
     [self.view addSubview:HUD];
     HUD.delegate = self;
     
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+//        self.automaticallyAdjustsScrollViewInsets = NO;
+    }else{
+        [self.titleLabel setFrame:CGRectMake(self.titleLabel.frame.origin.x, self.titleLabel.frame.origin.y-64, self.titleLabel.frame.size.width, self.titleLabel.frame.size.height)];
+        [self.contentTextview setFrame:CGRectMake(self.contentTextview.frame.origin.x, self.contentTextview.frame.origin.y-64, self.contentTextview.frame.size.width, 250)];
+        [self.title1 setFrame:CGRectMake(self.title1.frame.origin.x, self.title1.frame.origin.y-64, self.title1.frame.size.width, self.title1.frame.size.height)];
+        [self.title2 setFrame:CGRectMake(self.title2.frame.origin.x, self.title2.frame.origin.y-64, self.title2.frame.size.width, self.title2.frame.size.height)];
+        [self.btn1 setFrame:CGRectMake(self.btn1.frame.origin.x, self.btn1.frame.origin.y-64, self.btn1.frame.size.width, self.btn1.frame.size.height)];
+        [self.btn2 setFrame:CGRectMake(self.btn2.frame.origin.x, self.btn2.frame.origin.y-64, self.btn2.frame.size.width, self.btn2.frame.size.height)];
+        [self.btn1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [self.btn2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
+    
     self.contentTextview.layer.borderColor = [UIColor colorWithRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1].CGColor;
     self.contentTextview.layer.borderWidth = 1.0;
     self.contentTextview.layer.cornerRadius = 5.0f;

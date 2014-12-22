@@ -31,8 +31,12 @@
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
     HUD.delegate = self;
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+        [self.mywebview setFrame:CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-49)];
+    }else{
+        [self.mywebview setFrame:CGRectMake(0, 0, self.mywebview.frame.size.width, self.mywebview.frame.size.height+64+49)];
+    }
     
-    [self.mywebview setFrame:CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-64-50)];
     
     HUD.labelText = @"正在加载中";
     [HUD show:YES];

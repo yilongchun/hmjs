@@ -27,6 +27,10 @@
 //    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
 //        self.edgesForExtendedLayout =  UIRectEdgeNone;
 //    }
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+    }else{
+        [self.mywebview setFrame:CGRectMake(self.mywebview.frame.origin.x, 0, self.mywebview.frame.size.width, self.mywebview.frame.size.height+64+49)];
+    }
     
     //初始化网络引擎
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];

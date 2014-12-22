@@ -10,6 +10,8 @@
                 <outlet property="btn1" destination="M3t-db-rj5" id="wDm-h1-USJ"/>
                 <outlet property="btn2" destination="QB4-8u-8e1" id="bMF-bR-OGA"/>
                 <outlet property="contentTextview" destination="VGb-pu-dNu" id="Mox-JF-01H"/>
+                <outlet property="title1" destination="en5-Gq-kHI" id="bAc-eP-zc7"/>
+                <outlet property="title2" destination="Cdr-YB-P4X" id="5EG-TO-c3Q"/>
                 <outlet property="titleLabel" destination="lP8-IJ-mqC" id="qBc-py-hcj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

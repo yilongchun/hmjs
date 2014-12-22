@@ -25,8 +25,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"意见反馈";
-    
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }else{
+        [self.mytextview setFrame:CGRectMake(20, 15, self.mytextview.frame.size.width, 300)];
+    }
     //初始化引擎
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
