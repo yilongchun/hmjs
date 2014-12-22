@@ -38,19 +38,19 @@
     
     
     
-    self.bjsj.scrollEnabled = YES;
-    self.bjsj.font = [UIFont fontWithName:@"Helvetica Neue" size:16.0];
-    self.bjsj.delegate = self;
     self.bjsj.layer.borderColor = [UIColor colorWithRed:219/255.0 green:219/255.0 blue:219/255.0 alpha:1].CGColor;
     self.bjsj.layer.borderWidth = 1.0;
     self.bjsj.layer.cornerRadius = 5.0f;
-    
+    self.bjsj.scrollEnabled = YES;
+    self.bjsj.font = [UIFont fontWithName:@"Helvetica Neue" size:16.0];
+    self.bjsj.returnKeyType = UIReturnKeyDefault;
+    self.bjsj.delegate = self;
     [self.bjsj.layer setMasksToBounds:YES];
-    
+    self.bjsj.autoresizingMask = UIViewAutoresizingNone;
     self.title = @"班务日志详情";
     
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
-        self.bjsj.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        self.bjsj.autoresizingMask = UIViewAutoresizingNone;
 //        self.automaticallyAdjustsScrollViewInsets = NO;
         NSLog(@"%f",self.bjsj.frame.size.height);
         [self.bjsj setFrame:CGRectMake(self.bjsj.frame.origin.x, self.bjsj.frame.origin.y, self.bjsj.frame.size.width, 130)];

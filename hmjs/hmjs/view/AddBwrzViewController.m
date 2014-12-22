@@ -54,7 +54,7 @@
     
     
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
-        self.bjsj.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        self.bjsj.autoresizingMask = UIViewAutoresizingNone;
 //        self.automaticallyAdjustsScrollViewInsets = NO;
     }else{
         [self.label1 setFrame:CGRectMake(self.label1.frame.origin.x, self.label1.frame.origin.y-64, self.label1.frame.size.width, self.label1.frame.size.height)];

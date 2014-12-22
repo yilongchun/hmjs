@@ -28,7 +28,7 @@
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
         self.automaticallyAdjustsScrollViewInsets = NO;
     }else{
-        [self.mytextview setFrame:CGRectMake(20, 15, self.mytextview.frame.size.width, 300)];
+        [self.mytextview setFrame:CGRectMake(20, 15, self.mytextview.frame.size.width, self.mytextview.frame.size.height)];
     }
     //初始化引擎
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
@@ -53,7 +53,7 @@
     self.mytextview.font = [UIFont fontWithName:@"Helvetica Neue" size:16.0];
     self.mytextview.returnKeyType = UIReturnKeyDefault;
     
-    self.mytextview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    self.mytextview.autoresizingMask = UIViewAutoresizingNone;
     self.mytextview.backgroundColor = [UIColor colorWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1];
     [self.mytextview.layer setMasksToBounds:YES];
     
