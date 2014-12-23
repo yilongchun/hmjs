@@ -61,6 +61,8 @@
             UIButton* start = [UIButton buttonWithType:UIButtonTypeCustom];
             [start setImage:[UIImage imageNamed:@"start_open.png"] forState:UIControlStateNormal];
         start.frame = CGRectMake([UIScreen mainScreen].bounds.size.width*3+[UIScreen mainScreen].bounds.size.width/2-71, [UIScreen mainScreen].bounds.size.height < self.view.frame.size.height ? [UIScreen mainScreen].bounds.size.height/2+170 : [UIScreen mainScreen].bounds.size.height-100, 142, 44);
+        [start.layer setMasksToBounds:YES];
+        start.layer.cornerRadius = 5.0f;
 //            start.layer.cornerRadius = 5;
 //            start.layer.borderWidth = 0.5;
         
