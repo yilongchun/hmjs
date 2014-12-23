@@ -210,7 +210,7 @@
     
     
     UIImage *image = [self.chosenImages objectAtIndex:num];
-    NSData *fileData = UIImageJPEGRepresentation(image, 1.0);
+    NSData *fileData = UIImageJPEGRepresentation(image, 0.5);
     
     //将文件保存到本地
     NSArray *paths=NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask,YES);
@@ -221,7 +221,6 @@
     MKNetworkOperation *op =[engine operationWithURLString:[NSString stringWithFormat:@"http://%@/image/upload.do",[Utils getImageHostname]] params:nil httpMethod:@"POST"];
     
     [op addFile:savedImagePath forKey:@"allFile"];
-    NSLog(@"%@ %d",savedImagePath,num);
     [op setFreezable:NO];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         
@@ -249,6 +248,7 @@
                 [self insertData];
             }
         }else{
+            flag = false;
             [HUD hide:YES];
             NSLog(@"上传失败 %@ %d",msg,num);
             [self alertMsg:@"上传失败"];
@@ -284,7 +284,7 @@
     [op addData:filedata forKey:@"allFile" mimeType:@"video/mov" fileName:@"output.mov"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         
-        NSString *result = [operation responseString];
+        NSString *result = [operation responseString];NSLog(@"%@",result);
         NSError *error;
         NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
         if (resultDict == nil) {
@@ -297,8 +297,15 @@
             [fileArr addObject:fileurl];
             [self insertData];
         }else{
+            flag = false;
             [HUD hide:YES];
             [self alertMsg:@"上传失败"];
+        }
+        if (flag) {
+            NSFileManager *fileMgr = [NSFileManager defaultManager];
+            NSError *err;
+            BOOL b = [fileMgr removeItemAtPath:[videoUrl absoluteString] error:&err];
+            NSLog(@"%@ %@",b ? @"删除视频成功" : @"删除视频失败",videoUrl);
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
@@ -429,6 +436,18 @@
     [sender removeFromSuperview];
     [self.chosenImages removeObject:sender.imageView.image];
     [self reloadImageToView];
+    if (type == 2) {
+        NSFileManager *fileMgr = [NSFileManager defaultManager];
+        NSError *err;
+        NSMutableString *mstr = [[NSMutableString alloc] initWithString:[videoUrl absoluteString]];
+        NSString *str = @"/var";
+        //在str1这个字符串中搜索\n，判断有没有
+        if ([mstr rangeOfString:str].location != NSNotFound) {
+            NSString *filepath = [mstr substringFromIndex:[mstr rangeOfString:str].location];
+            BOOL b = [fileMgr removeItemAtPath:filepath error:&err];
+            NSLog(@"%@ %@",b ? @"删除视频成功" : @"删除视频失败",videoUrl);
+        }
+    }
 }
 
 #pragma mark ELCImagePickerControllerDelegate Methods

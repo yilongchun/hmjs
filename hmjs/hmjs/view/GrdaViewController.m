@@ -205,7 +205,7 @@
     
     if ([[info objectForKey:UIImagePickerControllerMediaType] isEqualToString:@"public.image"]) {
         UIImage  *img = [info objectForKey:UIImagePickerControllerEditedImage];
-        NSData *fildData = UIImageJPEGRepresentation(img, 1.0);//UIImagePNGRepresentation(img); //
+        NSData *fildData = UIImageJPEGRepresentation(img, 0.5);//UIImagePNGRepresentation(img); //
         [self uploadImg:fildData];
         //        self.fileData = UIImageJPEGRepresentation(img, 1.0);
     }
@@ -227,7 +227,6 @@
     NSString *savedImagePath=[documentsDirectory stringByAppendingPathComponent:@"saveFore.jpg"];
     BOOL saveFlag = [fileData writeToFile:savedImagePath atomically:YES];
     
-    
     MKNetworkOperation *op =[engine operationWithURLString:[NSString stringWithFormat:@"http://%@/image/upload.do",[Utils getImageHostname]] params:nil httpMethod:@"POST"];
     [op addFile:savedImagePath forKey:@"allFile"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -242,7 +241,6 @@
         if ([success boolValue]) {
             //上传成功 删除文件  还有返回的问题
             [self updateImgData:[resultDict objectForKey:@"data"]];
-            
         }else{
             [self alertMsg:@"上传失败"];
         }
