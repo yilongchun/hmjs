@@ -50,10 +50,7 @@
     UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
     tapGr.cancelsTouchesInView =NO;
     [self.view addGestureRecognizer:tapGr];
-    //添加登陆事件
-    self.loginBtn.userInteractionEnabled = YES;
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(loginTag:)];
-    [self.loginBtn addGestureRecognizer:singleTap];
+    
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
@@ -78,122 +75,8 @@
     [super viewDidAppear:animated];
     if ([self.logintype isEqualToString:@"login"] && ![Utils isBlankString:self.username.text] && ![Utils isBlankString:self.password.text]) {
         self.logintype = @"";
-        [self loginTag:nil];
+        [self login:nil];
     }
-}
-//登陆
--(void)loginTag:(UITapGestureRecognizer *) rapGr{
-    
-    if (self.username.text.length == 0) {
-        [self alertMsg:@"请输入账号"];
-        return;
-    }else if (self.password.text.length == 0){
-        [self alertMsg:@"请输入密码"];
-        return;
-    }
-    
-    
-    [self viewTapped:rapGr];
-    HUD.labelText = @"登陆中...";
-    [HUD show:YES];
-    
-    NSString *app_Version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    [dic setValue:self.username.text forKey:@"userId"];
-    [dic setValue:self.password.text forKey:@"password"];
-    [dic setValue:@"2" forKey:@"clientType"];
-    [dic setValue:app_Version forKey:@"clientVersion"];
-    
-    
-    MKNetworkOperation *op = [engine operationWithPath:@"/app/Tlogin.do" params:dic httpMethod:@"POST"];
-    [op addCompletionHandler:^(MKNetworkOperation *operation) {
-
-        NSString *result = [operation responseString];
-        NSError *error;
-        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-        if (resultDict == nil) {
-            NSLog(@"json parse failed \r\n");
-        }
-        
-        NSNumber *success = [resultDict objectForKey:@"success"];
-        NSString *msg = [resultDict objectForKey:@"msg"];
-
-        if ([success boolValue]) {
-            NSDictionary *data = [resultDict objectForKey:@"data"];
-            NSString *userid = [data objectForKey:@"userid"];
-            NSString *hxusercode = [data objectForKey:@"hxusercode"];
-            NSString *hxpassword = [data objectForKey:@"hxpassword"];
-            
-            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            [userDefaults setObject:userid forKey:@"userid"];
-
-            [userDefaults setObject:self.username.text forKey:@"loginusername"];
-            [userDefaults setObject:self.password.text forKey:@"loginpassword"];
-            
-            
-            
-            [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:hxusercode
-                                                                password:hxpassword
-                                                              completion:
-             ^(NSDictionary *loginInfo, EMError *error) {
-                 
-                 if (loginInfo && !error) {
-                     
-//                     [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@YES];
-                     [_mainController setupUnreadMessageCount];
-                     
-                 }else {
-                     
-                     switch (error.errorCode) {
-                         case EMErrorServerNotReachable:
-                             [self alertMsg:@"连接服务器失败!"];
-                             NSLog(@"连接服务器失败!");
-                             break;
-                         case EMErrorServerAuthenticationFailure:
-                             [self alertMsg:@"用户名或密码错误"];
-                             NSLog(@"用户名或密码错误");
-                             break;
-                         case EMErrorServerTimeout:
-                             [self alertMsg:@"连接服务器超时!"];
-                             NSLog(@"连接服务器超时!");
-                             break;
-                         default:
-                             [self alertMsg:@"登录失败"];
-                             NSLog(@"登录失败");
-                             break;
-                     }
-                 }
-             } onQueue:nil];
-            
-            
-            
-            
-            
-            [self getClassInfo:userid];//获取班级信息
-            
-            
-            }else{
-            [HUD hide:YES];
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.mode = MBProgressHUDModeText;
-            hud.labelText = msg;
-            hud.margin = 10.f;
-            hud.removeFromSuperViewOnHide = YES;
-            [hud hide:YES afterDelay:1.5];
-        }
-    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
-        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.mode = MBProgressHUDModeText;
-        hud.labelText = @"连接失败";
-        hud.margin = 10.f;
-        hud.removeFromSuperViewOnHide = YES;
-        [hud hide:YES afterDelay:1.5];
-    }];
-    [engine enqueueOperation:op];
-
 }
 
 //登陆之后根据userid获取班级信息
@@ -360,4 +243,115 @@
     [hud hide:YES afterDelay:1.5];
 }
 
+- (IBAction)login:(id)sender {
+    if (self.username.text.length == 0) {
+        [self alertMsg:@"请输入账号"];
+        return;
+    }else if (self.password.text.length == 0){
+        [self alertMsg:@"请输入密码"];
+        return;
+    }
+    
+    
+    [self viewTapped:nil];
+    HUD.labelText = @"登陆中...";
+    [HUD show:YES];
+    
+    NSString *app_Version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
+    [dic setValue:self.username.text forKey:@"userId"];
+    [dic setValue:self.password.text forKey:@"password"];
+    [dic setValue:@"2" forKey:@"clientType"];
+    [dic setValue:app_Version forKey:@"clientVersion"];
+    
+    
+    MKNetworkOperation *op = [engine operationWithPath:@"/app/Tlogin.do" params:dic httpMethod:@"POST"];
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        
+        NSString *result = [operation responseString];
+        NSError *error;
+        NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
+        if (resultDict == nil) {
+            NSLog(@"json parse failed \r\n");
+        }
+        
+        NSNumber *success = [resultDict objectForKey:@"success"];
+        NSString *msg = [resultDict objectForKey:@"msg"];
+        
+        if ([success boolValue]) {
+            NSDictionary *data = [resultDict objectForKey:@"data"];
+            NSString *userid = [data objectForKey:@"userid"];
+            NSString *hxusercode = [data objectForKey:@"hxusercode"];
+            NSString *hxpassword = [data objectForKey:@"hxpassword"];
+            
+            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+            [userDefaults setObject:userid forKey:@"userid"];
+            
+            [userDefaults setObject:self.username.text forKey:@"loginusername"];
+            [userDefaults setObject:self.password.text forKey:@"loginpassword"];
+            
+            
+            
+            [[EaseMob sharedInstance].chatManager asyncLoginWithUsername:hxusercode
+                                                                password:hxpassword
+                                                              completion:
+             ^(NSDictionary *loginInfo, EMError *error) {
+                 
+                 if (loginInfo && !error) {
+                     
+                     //                     [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@YES];
+                     [_mainController setupUnreadMessageCount];
+                     
+                 }else {
+                     
+                     switch (error.errorCode) {
+                         case EMErrorServerNotReachable:
+                             [self alertMsg:@"连接服务器失败!"];
+                             NSLog(@"连接服务器失败!");
+                             break;
+                         case EMErrorServerAuthenticationFailure:
+                             [self alertMsg:@"用户名或密码错误"];
+                             NSLog(@"用户名或密码错误");
+                             break;
+                         case EMErrorServerTimeout:
+                             [self alertMsg:@"连接服务器超时!"];
+                             NSLog(@"连接服务器超时!");
+                             break;
+                         default:
+                             [self alertMsg:@"登录失败"];
+                             NSLog(@"登录失败");
+                             break;
+                     }
+                 }
+             } onQueue:nil];
+            
+            
+            
+            
+            
+            [self getClassInfo:userid];//获取班级信息
+            
+            
+        }else{
+            [HUD hide:YES];
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.labelText = msg;
+            hud.margin = 10.f;
+            hud.removeFromSuperViewOnHide = YES;
+            [hud hide:YES afterDelay:1.5];
+        }
+    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
+        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+        [HUD hide:YES];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"连接失败";
+        hud.margin = 10.f;
+        hud.removeFromSuperViewOnHide = YES;
+        [hud hide:YES afterDelay:1.5];
+    }];
+    [engine enqueueOperation:op];
+}
 @end
