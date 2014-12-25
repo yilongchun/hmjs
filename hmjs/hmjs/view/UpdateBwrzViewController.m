@@ -50,7 +50,7 @@
     self.title = @"班务日志详情";
     
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
-        self.bjsj.autoresizingMask = UIViewAutoresizingNone;
+        self.bjsj.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 //        self.automaticallyAdjustsScrollViewInsets = NO;
         NSLog(@"%f",self.bjsj.frame.size.height);
         [self.bjsj setFrame:CGRectMake(self.bjsj.frame.origin.x, self.bjsj.frame.origin.y, self.bjsj.frame.size.width, 130)];

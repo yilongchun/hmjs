@@ -35,6 +35,7 @@
     HUD.delegate = self;
     
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+        self.contentTextview.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 //        self.contentTextview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 //        self.automaticallyAdjustsScrollViewInsets = NO;
     }else{

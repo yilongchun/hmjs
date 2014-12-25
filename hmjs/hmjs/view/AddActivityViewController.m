@@ -49,7 +49,11 @@
     //    self.contentTextview.font = [UIFont fontWithName:@"Helvetica Neue" size:16.0];
     //    _textView.returnKeyType = UIReturnKeyDefault;
     
-    self.contentTextview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+        self.contentTextview.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        //        self.contentTextview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        //        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     
     [self.contentTextview.layer setMasksToBounds:YES];
     
