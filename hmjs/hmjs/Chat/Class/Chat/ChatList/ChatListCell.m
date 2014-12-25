@@ -53,7 +53,7 @@
         
         self.textLabel.backgroundColor = [UIColor clearColor];
         
-        _lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.frame.size.width, 1)];
+        _lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 1)];
         _lineView.backgroundColor = RGBACOLOR(207, 210, 213, 0.7);
         [self.contentView addSubview:_lineView];
         
