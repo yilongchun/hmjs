@@ -57,7 +57,7 @@
 //    self.contentTextview.font = [UIFont fontWithName:@"Helvetica Neue" size:16.0];
 //    _textView.returnKeyType = UIReturnKeyDefault;
     
-    self.contentTextview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+//    self.contentTextview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     
     [self.contentTextview.layer setMasksToBounds:YES];
     

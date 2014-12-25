@@ -28,6 +28,7 @@
     
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
         self.automaticallyAdjustsScrollViewInsets = NO;
+        self.mytextview.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
     }else{
         [self.mytextview setFrame:CGRectMake(20, 15, self.mytextview.frame.size.width, self.mytextview.frame.size.height)];
     }

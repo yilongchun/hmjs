@@ -35,6 +35,7 @@
     HUD.delegate = self;
     
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+//        self.contentTextview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 //        self.automaticallyAdjustsScrollViewInsets = NO;
     }else{
         [self.titleLabel setFrame:CGRectMake(self.titleLabel.frame.origin.x, self.titleLabel.frame.origin.y-64, self.titleLabel.frame.size.width, self.titleLabel.frame.size.height)];
@@ -55,7 +56,7 @@
     //    self.contentTextview.font = [UIFont fontWithName:@"Helvetica Neue" size:16.0];
     //    _textView.returnKeyType = UIReturnKeyDefault;
     
-    self.contentTextview.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    
     
     [self.contentTextview.layer setMasksToBounds:YES];
     
