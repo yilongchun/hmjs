@@ -139,6 +139,14 @@
                     [self.navigationController pushViewController:vc animated:YES];
                 }
                 [HUD hide:YES];
+            }else{
+                [HUD hide:YES];
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                hud.mode = MBProgressHUDModeText;
+                hud.labelText = @"没有获取到班级信息";
+                hud.margin = 10.f;
+                hud.removeFromSuperViewOnHide = YES;
+                [hud hide:YES afterDelay:1.5];
             }
             
         }else{

@@ -78,7 +78,7 @@
                 cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                 break;
             case 1:
-                cell.textLabel.text =  @"退出登陆";
+                cell.textLabel.text =  @"退出登录";
                 [cell.textLabel setTextColor:[UIColor redColor]];
                 [cell.textLabel setTextAlignment:NSTextAlignmentCenter];
                 break;
