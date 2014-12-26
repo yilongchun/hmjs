@@ -80,8 +80,8 @@
     self.myimageview.layer.masksToBounds = YES;
     [self.myimageview setContentMode:UIViewContentModeScaleAspectFill];
     [self.myimageview setClipsToBounds:YES];
-//    self.myimageview.layer.borderColor = [UIColor yellowColor].CGColor;
-//    self.myimageview.layer.borderWidth = 1.0f;
+    self.myimageview.layer.borderColor = [UIColor colorWithRed:183/255.0 green:178/255.0 blue:160/255.0 alpha:1].CGColor;
+    self.myimageview.layer.borderWidth = 0.5f;
     self.myimageview.layer.shadowOffset = CGSizeMake(4.0, 4.0);
     self.myimageview.layer.shadowOpacity = 0.5;
     self.myimageview.layer.shadowRadius = 2.0;
