@@ -31,10 +31,10 @@
 -(void)drawTableView{
     
     UITableView *tview = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, self.view.frame.size.height) style:UITableViewStyleGrouped];
-    [tview setBackgroundColor:[UIColor whiteColor]];
+    [tview setBackgroundColor:[UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1]];
     [tview setDelegate:self];
     [tview setDataSource:self];
-    [tview setScrollEnabled:NO];
+    [tview setScrollEnabled:YES];
     if ([tview respondsToSelector:@selector(setSeparatorInset:)]) {
         [tview setSeparatorInset:UIEdgeInsetsZero];
     }

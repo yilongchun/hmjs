@@ -51,15 +51,18 @@
     self.mytextview.layer.borderColor = [UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1].CGColor;
     self.mytextview.layer.borderWidth = 1.0;
     self.mytextview.layer.cornerRadius = 8.0f;
+    self.mytextview.autoresizingMask = UIViewAutoresizingNone;
     self.mytextview.scrollEnabled = YES;
     self.mytextview.font = [UIFont fontWithName:@"Helvetica Neue" size:16.0];
     self.mytextview.returnKeyType = UIReturnKeyDefault;
-    
-    self.mytextview.autoresizingMask = UIViewAutoresizingNone;
-    self.mytextview.backgroundColor = [UIColor colorWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1];
+    self.view.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
+    self.mytextview.backgroundColor = [UIColor whiteColor];
     [self.mytextview.layer setMasksToBounds:YES];
     
-    
+    //添加手势，点击输入框其他区域隐藏键盘
+    UITapGestureRecognizer *tapGr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
+    tapGr.cancelsTouchesInView =NO;
+    [self.view addGestureRecognizer:tapGr];
     
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -73,7 +76,7 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self.mytextview becomeFirstResponder];
+//    [self.mytextview becomeFirstResponder];
 }
 
 - (void)textViewDidChangeSelection:(UITextView *)textView
@@ -148,6 +151,11 @@
     hud.margin = 10.f;
     hud.removeFromSuperViewOnHide = YES;
     [hud hide:YES afterDelay:1.5];
+}
+
+//隐藏键盘
+-(void)viewTapped:(UITapGestureRecognizer*)tapGr{
+    [self.mytextview resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
