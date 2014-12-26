@@ -40,7 +40,7 @@
 //        self.automaticallyAdjustsScrollViewInsets = NO;
     }else{
         [self.titleLabel setFrame:CGRectMake(self.titleLabel.frame.origin.x, self.titleLabel.frame.origin.y-64, self.titleLabel.frame.size.width, self.titleLabel.frame.size.height)];
-        [self.contentTextview setFrame:CGRectMake(self.contentTextview.frame.origin.x, self.contentTextview.frame.origin.y-64, self.contentTextview.frame.size.width, 250)];
+        [self.contentTextview setFrame:CGRectMake(self.contentTextview.frame.origin.x, self.contentTextview.frame.origin.y-64, self.contentTextview.frame.size.width, self.contentTextview.frame.size.height)];
         [self.title1 setFrame:CGRectMake(self.title1.frame.origin.x, self.title1.frame.origin.y-64, self.title1.frame.size.width, self.title1.frame.size.height)];
         [self.title2 setFrame:CGRectMake(self.title2.frame.origin.x, self.title2.frame.origin.y-64, self.title2.frame.size.width, self.title2.frame.size.height)];
         [self.btn1 setFrame:CGRectMake(self.btn1.frame.origin.x, self.btn1.frame.origin.y-64, self.btn1.frame.size.width, self.btn1.frame.size.height)];
