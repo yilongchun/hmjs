@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 yons. All rights reserved.
 //
 
-#ifndef hmjz_hmjz_pch
-#define hmjz_hmjz_pch
+#ifndef hmjs_hmjs_pch
+#define hmjs_hmjs_pch
 
 #import <Foundation/Foundation.h>
 

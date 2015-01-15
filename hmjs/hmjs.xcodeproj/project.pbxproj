@@ -498,8 +498,6 @@
 		E4EB902B1A2DBEE500DFEA47 /* start_open.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EB90261A2DBEE500DFEA47 /* start_open.png */; };
 		E4EB90321A2E17EA00DFEA47 /* BwrzViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EB90301A2E17EA00DFEA47 /* BwrzViewController.m */; };
 		E4EB90331A2E17EA00DFEA47 /* BwrzViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EB90311A2E17EA00DFEA47 /* BwrzViewController.xib */; };
-		E4ECE2BE1A30614300DC118B /* MyActivityReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ECE2BC1A30614300DC118B /* MyActivityReviewViewController.m */; };
-		E4ECE2BF1A30614300DC118B /* MyActivityReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE2BD1A30614300DC118B /* MyActivityReviewViewController.xib */; };
 		E4ECE93F1A2F5ACC00860CE7 /* ic_bwgg_011.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE93E1A2F5ACC00860CE7 /* ic_bwgg_011.png */; };
 		E4ECE9481A2F74BD00860CE7 /* wdgg_high.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE9401A2F74BD00860CE7 /* wdgg_high.png */; };
 		E4ECE9491A2F74BD00860CE7 /* wdgg_high@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE9411A2F74BD00860CE7 /* wdgg_high@2x.png */; };
@@ -516,6 +514,8 @@
 		E4EDEABE1A403A7000711A94 /* pageDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EDEABC1A403A7000711A94 /* pageDot@2x.png */; };
 		E4EDEAC11A4080AA00711A94 /* ic_index_005_high.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EDEABF1A4080AA00711A94 /* ic_index_005_high.png */; };
 		E4EDEAC21A4080AA00711A94 /* ic_index_005.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EDEAC01A4080AA00711A94 /* ic_index_005.png */; };
+		E4EF57791A681099004B57E6 /* MyActivityReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF57771A681099004B57E6 /* MyActivityReviewViewController.m */; };
+		E4EF577A1A681099004B57E6 /* MyActivityReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EF57781A681099004B57E6 /* MyActivityReviewViewController.xib */; };
 		E4F2AA3F1A42DF900072725E /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F2AA3E1A42DF900072725E /* Friend.m */; };
 		E4F38F641A373A5B00F4FE3B /* BwrzTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F38F621A373A5B00F4FE3B /* BwrzTableViewCell.m */; };
 		E4F38F651A373A5B00F4FE3B /* BwrzTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F38F631A373A5B00F4FE3B /* BwrzTableViewCell.xib */; };
@@ -1321,9 +1321,6 @@
 		E4EB902F1A2E17EA00DFEA47 /* BwrzViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BwrzViewController.h; sourceTree = "<group>"; };
 		E4EB90301A2E17EA00DFEA47 /* BwrzViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BwrzViewController.m; sourceTree = "<group>"; };
 		E4EB90311A2E17EA00DFEA47 /* BwrzViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BwrzViewController.xib; sourceTree = "<group>"; };
-		E4ECE2BB1A30614300DC118B /* MyActivityReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyActivityReviewViewController.h; sourceTree = "<group>"; };
-		E4ECE2BC1A30614300DC118B /* MyActivityReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyActivityReviewViewController.m; sourceTree = "<group>"; };
-		E4ECE2BD1A30614300DC118B /* MyActivityReviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyActivityReviewViewController.xib; sourceTree = "<group>"; };
 		E4ECE93E1A2F5ACC00860CE7 /* ic_bwgg_011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bwgg_011.png; sourceTree = "<group>"; };
 		E4ECE9401A2F74BD00860CE7 /* wdgg_high.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wdgg_high.png; sourceTree = "<group>"; };
 		E4ECE9411A2F74BD00860CE7 /* wdgg_high@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wdgg_high@2x.png"; sourceTree = "<group>"; };
@@ -1342,6 +1339,9 @@
 		E4EDEABC1A403A7000711A94 /* pageDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pageDot@2x.png"; sourceTree = "<group>"; };
 		E4EDEABF1A4080AA00711A94 /* ic_index_005_high.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_index_005_high.png; sourceTree = "<group>"; };
 		E4EDEAC01A4080AA00711A94 /* ic_index_005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_index_005.png; sourceTree = "<group>"; };
+		E4EF57761A681099004B57E6 /* MyActivityReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyActivityReviewViewController.h; sourceTree = "<group>"; };
+		E4EF57771A681099004B57E6 /* MyActivityReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyActivityReviewViewController.m; sourceTree = "<group>"; };
+		E4EF57781A681099004B57E6 /* MyActivityReviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyActivityReviewViewController.xib; sourceTree = "<group>"; };
 		E4F2AA3D1A42DF900072725E /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Friend.h; sourceTree = "<group>"; };
 		E4F2AA3E1A42DF900072725E /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Friend.m; sourceTree = "<group>"; };
 		E4F38F611A373A5B00F4FE3B /* BwrzTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BwrzTableViewCell.h; sourceTree = "<group>"; };
@@ -2094,6 +2094,9 @@
 		E4E76CEA1A277B28004DF568 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				E4EF57761A681099004B57E6 /* MyActivityReviewViewController.h */,
+				E4EF57771A681099004B57E6 /* MyActivityReviewViewController.m */,
+				E4EF57781A681099004B57E6 /* MyActivityReviewViewController.xib */,
 				E4EB90181A2DBBD000DFEA47 /* XxhdViewController.h */,
 				E4EB90191A2DBBD000DFEA47 /* XxhdViewController.m */,
 				E4EB901A1A2DBBD000DFEA47 /* XxhdViewController.xib */,
@@ -2124,9 +2127,6 @@
 				E4ECE9501A2F77DF00860CE7 /* WdhdViewController.h */,
 				E4ECE9511A2F77DF00860CE7 /* WdhdViewController.m */,
 				E4ECE9521A2F77DF00860CE7 /* WdhdViewController.xib */,
-				E4ECE2BB1A30614300DC118B /* MyActivityReviewViewController.h */,
-				E4ECE2BC1A30614300DC118B /* MyActivityReviewViewController.m */,
-				E4ECE2BD1A30614300DC118B /* MyActivityReviewViewController.xib */,
 				E4EB902F1A2E17EA00DFEA47 /* BwrzViewController.h */,
 				E4EB90301A2E17EA00DFEA47 /* BwrzViewController.m */,
 				E4EB90311A2E17EA00DFEA47 /* BwrzViewController.xib */,
@@ -3055,6 +3055,7 @@
 				E4E76C151A277997004DF568 /* MessageEntryBackground@2x.png in Resources */,
 				E4E76BCB1A277997004DF568 /* VoiceSearchFeedback019@2x.png in Resources */,
 				E4E76BEC1A277997004DF568 /* chat_receiver_bg@2x.png in Resources */,
+				E4EF577A1A681099004B57E6 /* MyActivityReviewViewController.xib in Resources */,
 				E4EB900B1A2DB9F600DFEA47 /* ic_sp_001.png in Resources */,
 				E4E76F201A277B3C004DF568 /* chatBar_colorMore_camera@2x.png in Resources */,
 				E4E76F2F1A277B3C004DF568 /* chatBar_more_locationSelected@2x.png in Resources */,
@@ -3224,7 +3225,6 @@
 				E4EB90331A2E17EA00DFEA47 /* BwrzViewController.xib in Resources */,
 				E4EB90281A2DBEE500DFEA47 /* guide_2.png in Resources */,
 				E4E76C0B1A277997004DF568 /* ic_kcb_bg.png in Resources */,
-				E4ECE2BF1A30614300DC118B /* MyActivityReviewViewController.xib in Resources */,
 				E4E76BEE1A277997004DF568 /* chat_sender_audio_playing_000@2x.png in Resources */,
 				E4E76C0A1A277997004DF568 /* ic_index_bg.png in Resources */,
 				E4E76C141A277997004DF568 /* MessageEntryBackground.png in Resources */,
@@ -3343,7 +3343,6 @@
 				E4F2AA3F1A42DF900072725E /* Friend.m in Sources */,
 				E4E76F061A277B3C004DF568 /* DXFaceView.m in Sources */,
 				E4E76F821A277B3C004DF568 /* EMChooseViewController.m in Sources */,
-				E4ECE2BE1A30614300DC118B /* MyActivityReviewViewController.m in Sources */,
 				E4E76D401A277B28004DF568 /* ChooseClassViewController.m in Sources */,
 				E4E76C901A277AD0004DF568 /* HPTextViewInternal.m in Sources */,
 				E4CAF5E21A31BE0A009A77BE /* ELCOverlayImageView.m in Sources */,
@@ -3435,6 +3434,7 @@
 				E4E76ED91A277B3C004DF568 /* PSTCollectionViewCell.m in Sources */,
 				E4E76F021A277B3C004DF568 /* ConvertToCommonEmoticonsHelper.m in Sources */,
 				E4E76C8F1A277AD0004DF568 /* HPGrowingTextView.m in Sources */,
+				E4EF57791A681099004B57E6 /* MyActivityReviewViewController.m in Sources */,
 				E4E76F4A1A277B3C004DF568 /* GroupListViewController.m in Sources */,
 				E4E76F091A277B3C004DF568 /* FacialView.m in Sources */,
 				E4E76F801A277B3C004DF568 /* EMRemarkImageView.m in Sources */,
