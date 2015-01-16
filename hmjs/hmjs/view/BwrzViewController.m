@@ -34,6 +34,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loadData)
+                                                 name:@"reloadBwrz"
+                                               object:nil];
+    
     //初始化tableview
     CGRect cg;
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){

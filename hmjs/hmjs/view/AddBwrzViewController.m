@@ -171,13 +171,15 @@
                 self.cdrs.text = @"";
                 [self okMsk:msg];
                 
+                [self performSelector:@selector(backAndReload) withObject:nil afterDelay:1.5f];
+                
             }else{
                 [HUD hide:YES];
-                self.bjsj.text = @"";
-                self.cqrs.text = @"";
-                self.bjrs2.text = @"";
-                self.sjrs.text = @"";
-                self.cdrs.text = @"";
+//                self.bjsj.text = @"";
+//                self.cqrs.text = @"";
+//                self.bjrs2.text = @"";
+//                self.sjrs.text = @"";
+//                self.cdrs.text = @"";
                 [self alertMsg:msg];
             }
         }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
@@ -272,6 +274,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+//返回重新加载
+-(void)backAndReload{
+    [self.navigationController popViewControllerAnimated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadBwrz" object:nil];
+}
 /*
 #pragma mark - Navigation
 

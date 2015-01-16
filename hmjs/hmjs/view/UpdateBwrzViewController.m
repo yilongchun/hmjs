@@ -78,17 +78,6 @@
     tapGr.cancelsTouchesInView =NO;
     [self.view addGestureRecognizer:tapGr];
     
-    //添加按钮
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
-                                 initWithTitle:@"修改"
-                                 style:UIBarButtonItemStyleBordered
-                                 target:self
-                                 action:@selector(save)];
-    self.navigationItem.rightBarButtonItem = rightBtn;
-    
-    
-    
-    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSDictionary *class = [userDefaults objectForKey:@"class"];
     NSNumber *snum = [class objectForKey:@"studentnum"];
@@ -144,6 +133,28 @@
             self.cqrs.text = [NSString stringWithFormat:@"%@",cqrs];
             self.bjsj.text = bjsj;
             [HUD hide:YES];
+            
+            NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];//实例化一个NSDateFormatter对象
+            [dateFormat setDateFormat:@"yyyy-MM-dd"];//设定时间格式,这里可以设置成自己需要的格式
+            NSDate *date =[dateFormat dateFromString:title];
+            NSDate * now = [NSDate date];
+            NSTimeInterval timeBetween = [now timeIntervalSinceDate:date];
+            if (timeBetween > 60*60*24*7) {//7天之前
+                [self.bjsj setUserInteractionEnabled:NO];
+                [self.cqrs setUserInteractionEnabled:NO];
+                [self.bjrs2 setUserInteractionEnabled:NO];
+                [self.sjrs setUserInteractionEnabled:NO];
+                [self.cdrs setUserInteractionEnabled:NO];
+            }else{//7天之内可以修改
+                //添加按钮
+                UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
+                                             initWithTitle:@"修改"
+                                             style:UIBarButtonItemStyleBordered
+                                             target:self
+                                             action:@selector(save)];
+                self.navigationItem.rightBarButtonItem = rightBtn;
+            }
+            
         }else{
             [HUD hide:YES];
             [self alertMsg:msg];
