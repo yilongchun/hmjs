@@ -38,8 +38,8 @@
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
         self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     }else{
-        [self.loginBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [self.loginBtn setBackgroundColor:[UIColor clearColor]];
+//        [self.loginBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//        [self.loginBtn setBackgroundColor:[UIColor clearColor]];
         
     }
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil]];
@@ -62,7 +62,12 @@
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
-    self.loginBtn.layer.cornerRadius = 5.0f;
+//    self.loginBtn.layer.cornerRadius = 5.0f;
+    self.loginImageView.layer.cornerRadius = 5.0f;
+    UITapGestureRecognizer *click;
+    click = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(login)];
+    click.numberOfTapsRequired = 1;
+    [self.loginImageView addGestureRecognizer:click];
     
     _mainController = [[MainViewController alloc] init];
     
@@ -79,7 +84,7 @@
     [super viewDidAppear:animated];
     if ([self.logintype isEqualToString:@"login"] && ![Utils isBlankString:self.username.text] && ![Utils isBlankString:self.password.text]) {
         self.logintype = @"";
-        [self login:nil];
+        [self login];
     }
 }
 
@@ -255,7 +260,7 @@
     [hud hide:YES afterDelay:1.5];
 }
 
-- (IBAction)login:(id)sender {
+- (void)login{
     if (self.username.text.length == 0) {
         [self alertMsg:@"请输入账号"];
         return;
