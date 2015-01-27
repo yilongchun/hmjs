@@ -28,7 +28,7 @@
     [super viewDidLoad];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 	
-	[self.navigationItem setTitle:NSLocalizedString(@"加载中...", nil)];
+	[self.navigationItem setTitle:NSLocalizedString(@"加载中......", nil)];
 
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self.parent action:@selector(cancelImagePicker)];
 	[self.navigationItem setRightBarButtonItem:cancelButton];

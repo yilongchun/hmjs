@@ -47,6 +47,9 @@
     self.navigationItem.backBarButtonItem = backItem;
     backItem.title = @"返回";
     
+    [self.loginBtn setBackgroundImage:[[UIImage imageNamed:@"loginBtnBg.png"]stretchableImageWithLeftCapWidth:5.0 topCapHeight:5.0] forState:UIControlStateNormal];
+    [self.loginBtn setBackgroundImage:[[UIImage imageNamed:@"loginBtnBg2.png"]stretchableImageWithLeftCapWidth:5.0 topCapHeight:5.0] forState:UIControlStateHighlighted];
+    
     self.navigationController.delegate = self;
     
     // Do any additional setup after loading the view from its nib.
@@ -62,12 +65,12 @@
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
-//    self.loginBtn.layer.cornerRadius = 5.0f;
-    self.loginImageView.layer.cornerRadius = 5.0f;
-    UITapGestureRecognizer *click;
-    click = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(login)];
-    click.numberOfTapsRequired = 1;
-    [self.loginImageView addGestureRecognizer:click];
+    self.loginBtn.layer.cornerRadius = 5.0f;
+//    self.loginImageView.layer.cornerRadius = 5.0f;
+//    UITapGestureRecognizer *click;
+//    click = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(login)];
+//    click.numberOfTapsRequired = 1;
+//    [self.loginImageView addGestureRecognizer:click];
     
     _mainController = [[MainViewController alloc] init];
     
@@ -84,7 +87,7 @@
     [super viewDidAppear:animated];
     if ([self.logintype isEqualToString:@"login"] && ![Utils isBlankString:self.username.text] && ![Utils isBlankString:self.password.text]) {
         self.logintype = @"";
-        [self login];
+        [self login:nil];
     }
 }
 
@@ -209,31 +212,31 @@
 */
 
 #pragma mark - 输入框代理
--(void)textFieldDidBeginEditing:(UITextField *)textField{   //开始编辑时，整体上移
-    if(textField.tag == 0){
-        if(self.view.frame.origin.y == 0){
-            [self moveView:-60];
-        }
-        
-    }else if(textField.tag == 1){
-        if(self.view.frame.origin.y == -60){
-            [self moveView:-60];
-        }else if(self.view.frame.origin.y == 0){
-            [self moveView:-120];
-        }
-    }
-}
+//-(void)textFieldDidBeginEditing:(UITextField *)textField{   //开始编辑时，整体上移
+//    if(textField.tag == 0){
+//        if(self.view.frame.origin.y == 0){
+//            [self moveView:-60];
+//        }
+//        
+//    }else if(textField.tag == 1){
+//        if(self.view.frame.origin.y == -60){
+//            [self moveView:-60];
+//        }else if(self.view.frame.origin.y == 0){
+//            [self moveView:-120];
+//        }
+//    }
+//}
 
 #pragma mark - 键盘回车
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if (textField.tag==0) {
-        [self.password becomeFirstResponder];
-    }
-    if (textField.tag==1) {
-        [self viewTapped:nil];
-    }
-    return YES;
-}
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+//    if (textField.tag==0) {
+//        [self.password becomeFirstResponder];
+//    }
+//    if (textField.tag==1) {
+//        [self viewTapped:nil];
+//    }
+//    return YES;
+//}
 //界面根据键盘的显示和隐藏上下移动
 -(void)moveView:(float)move{
     NSTimeInterval animationDuration = 1.0f;
@@ -260,7 +263,7 @@
     [hud hide:YES afterDelay:1.5];
 }
 
-- (void)login{
+- (IBAction)login:(id)sender{
     if (self.username.text.length == 0) {
         [self alertMsg:@"请输入账号"];
         return;
@@ -271,7 +274,7 @@
     
     
     [self viewTapped:nil];
-    HUD.labelText = @"登陆中...";
+    HUD.labelText = @"请稍后...";
     [HUD show:YES];
     
     NSString *app_Version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];

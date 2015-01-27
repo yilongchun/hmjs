@@ -38,7 +38,7 @@
     }
     
     
-    HUD.labelText = @"正在加载中";
+    HUD.labelText = @"加载中...";
     [HUD show:YES];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];

@@ -34,7 +34,7 @@
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
     HUD.delegate = self;
-    HUD.labelText = @"正在加载中";
+    HUD.labelText = @"加载中...";
     [HUD show:YES];
     
     

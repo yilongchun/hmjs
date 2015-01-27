@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddActivityViewController">
             <connections>
-                <outlet property="contentTextview" destination="ujU-Sa-0hy" id="gPU-XZ-iBj"/>
+                <outlet property="contentTextview" destination="ujU-Sa-0hy" id="iZD-B1-rZW"/>
                 <outlet property="imagePickBtn" destination="hG2-PM-2pG" id="HmK-bw-ZUd"/>
                 <outlet property="myscrollview" destination="dGI-7i-Kfs" id="TE2-uG-R9L"/>
                 <outlet property="titleLabel" destination="hsj-Vt-FJp" id="0GB-wO-Wdi"/>

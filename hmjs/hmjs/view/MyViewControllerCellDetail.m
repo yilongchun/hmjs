@@ -17,6 +17,7 @@
 #import "TapImageView.h"
 #import "ImgScrollView.h"
 #import "SRRefreshView.h"
+#import "IQKeyboardManager.h"
 
 @interface MyViewControllerCellDetail ()<MBProgressHUDDelegate,TapImageViewDelegate,ImgScrollViewDelegate,UIScrollViewDelegate,SRRefreshDelegate>{
     MKNetworkEngine *engine;
@@ -234,6 +235,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [IQKeyboardManager sharedManager].enable = NO;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     // Do any additional setup after loading the view from its nib.
     
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
@@ -248,7 +252,7 @@
     
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    HUD.labelText = @"加载中";
+    HUD.labelText = @"加载中...";
     [self.view addSubview:HUD];
     HUD.delegate = self;
     
@@ -285,6 +289,12 @@
     
     [self setTitle:self.title];
     [self loadData];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [IQKeyboardManager sharedManager].enable = YES;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
 }
 
 #pragma mark - getter

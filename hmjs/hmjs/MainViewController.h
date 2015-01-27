@@ -10,7 +10,6 @@
 #import "MainChatViewController.h"
 #import "ChatListViewController.h"
 #import "GroupListViewController.h"
-#import "SMPageControl.h"
 
 @interface MainViewController : UIViewController<UINavigationControllerDelegate,IChatManagerDelegate,UIScrollViewDelegate>{
     BOOL loginSuccess;

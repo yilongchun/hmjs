@@ -104,7 +104,7 @@
         }
     }else{
         if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1){
-            alert = [UIAlertController alertControllerWithTitle:@"确定要退出吗?" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+            alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
             [alert addAction:[UIAlertAction actionWithTitle:@"确定"
                                                       style:UIAlertActionStyleDestructive
                                                     handler:^(UIAlertAction *action) {
@@ -118,7 +118,7 @@
                                                     }]];
             [self presentViewController:alert animated:YES completion:nil];
         }else{
-            UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:@"确定要退出吗?" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"退出登录" otherButtonTitles:nil];
+            UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"退出登录" otherButtonTitles:nil];
             actionsheet.tag = 100;
             [actionsheet showInView:self.view];
         }

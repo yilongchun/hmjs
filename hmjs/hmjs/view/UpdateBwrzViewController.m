@@ -31,7 +31,7 @@
     
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    HUD.labelText = @"加载中";
+    HUD.labelText = @"加载中...";
     [self.view addSubview:HUD];
     HUD.delegate = self;
     
@@ -44,7 +44,7 @@
     self.bjsj.scrollEnabled = YES;
     self.bjsj.font = [UIFont fontWithName:@"Helvetica Neue" size:16.0];
     self.bjsj.returnKeyType = UIReturnKeyDefault;
-    self.bjsj.delegate = self;
+    
     [self.bjsj.layer setMasksToBounds:YES];
     self.bjsj.autoresizingMask = UIViewAutoresizingNone;
     self.title = @"班务日志详情";
@@ -243,23 +243,23 @@
 
 
 #pragma mark - 输入框代理
--(void)textFieldDidBeginEditing:(UITextField *)textField{
-    if (textField.tag != 99) {
-        if(self.view.frame.origin.y == -80){
-            [self moveView:80];
-        }
-    }
-}
-
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
-    
-    if(textView.tag == 99){
-        if(self.view.frame.origin.y == 0){
-            [self moveView:-80];
-        }
-    }
-    return true;
-}
+//-(void)textFieldDidBeginEditing:(UITextField *)textField{
+//    if (textField.tag != 99) {
+//        if(self.view.frame.origin.y == -80){
+//            [self moveView:80];
+//        }
+//    }
+//}
+//
+//- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+//    
+//    if(textView.tag == 99){
+//        if(self.view.frame.origin.y == 0){
+//            [self moveView:-80];
+//        }
+//    }
+//    return true;
+//}
 
 //界面根据键盘的显示和隐藏上下移动
 -(void)moveView:(float)move{

@@ -32,7 +32,7 @@
 #import "DXMessageToolBar.h"
 #import "DXChatBarMoreView.h"
 #import "CallViewController.h"
-
+#import "IQKeyboardManager.h"
 #define KPageCount 20
 
 @interface ChatViewController ()<UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, SRRefreshDelegate, IChatManagerDelegate, DXChatBarMoreViewDelegate, DXMessageToolBarDelegate, LocationViewDelegate, IDeviceManagerDelegate>
@@ -88,6 +88,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [IQKeyboardManager sharedManager].enable = NO;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor lightGrayColor];
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
@@ -167,7 +169,8 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
+    [IQKeyboardManager sharedManager].enable = YES;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
     // 设置当前conversation的所有message为已读
     [_conversation markMessagesAsRead:YES];
     

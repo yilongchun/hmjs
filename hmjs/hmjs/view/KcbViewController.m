@@ -73,6 +73,17 @@
     [attributedString2 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle2 range:NSMakeRange(0, [self.rightContent.text length])];
     [self.rightContent setAttributedText:attributedString2];
     [self.rightContent sizeToFit];
+    
+    CGFloat height = self.leftContent.frame.size.height;
+    if (self.rightContent.frame.size.height > height) {
+        height = self.rightContent.frame.size.height;
+    }
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+        
+    }else{
+        height += 64;
+    }
+    [self.conBackground setFrame:CGRectMake(self.conBackground.frame.origin.x, self.conBackground.frame.origin.y, self.conBackground.frame.size.width, height+80+44)];
 }
 
 - (void)viewDidAppear:(BOOL)animated

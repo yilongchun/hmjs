@@ -11,6 +11,7 @@
 #import "ApplyViewController.h"
 #import "Utils.h"
 #import "GuideViewController.h"
+#import "IQKeyboardManager.h"
 
 @interface AppDelegate ()
 

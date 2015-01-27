@@ -45,7 +45,7 @@
     } else {
         UIBarButtonItem *doneButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAction:)];
         [self.navigationItem setRightBarButtonItem:doneButtonItem];
-        [self.navigationItem setTitle:NSLocalizedString(@"加载中...", nil)];
+        [self.navigationItem setTitle:NSLocalizedString(@"加载中......", nil)];
     }
 
 	[self performSelectorInBackground:@selector(preparePhotos) withObject:nil];

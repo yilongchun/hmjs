@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddBwrzViewController : UIViewController<UITextViewDelegate,UITextFieldDelegate>
+@interface AddBwrzViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *bjrs;
 @property (weak, nonatomic) IBOutlet UITextField *cqrs;
 @property (weak, nonatomic) IBOutlet UITextField *bjrs2;

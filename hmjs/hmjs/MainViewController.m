@@ -41,8 +41,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     MBProgressHUD *HUD;
     
     UILabel *unreadlabel;
-//    UIPageControl *myPageControl;
-    SMPageControl *spacePageControl;
+    UIPageControl *spacePageControl;
     UIScrollView *mainScrollView;
 }
 
@@ -94,7 +93,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
-    HUD.labelText = @"加载中";
+    HUD.labelText = @"加载中...";
     [self.view addSubview:HUD];
     HUD.delegate = self;
     
@@ -158,12 +157,14 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                 if (self.menus.count > 6) {
                     if (height <= 480) {
                         [mainScrollView setContentSize:CGSizeMake(width*2, height-170)];
-                        spacePageControl = [[SMPageControl alloc] initWithFrame:CGRectMake(0.0, height-30, width, 10)];
-                        [spacePageControl setPageIndicatorImage:[UIImage imageNamed:@"pageDot"]];
-                        [spacePageControl setCurrentPageIndicatorImage:[UIImage imageNamed:@"currentPageDot"]];
+                        if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+                            spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-30, width, 10)];
+                        }else{
+                            spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-50, width, 10)];
+                        }
+                        spacePageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+                        spacePageControl.pageIndicatorTintColor = [UIColor grayColor];
                         spacePageControl.numberOfPages = 2;
-                        spacePageControl.indicatorMargin = 10.0f;
-                        spacePageControl.indicatorDiameter = 10.0f;
                         spacePageControl.userInteractionEnabled = NO;
                         [self.view addSubview:spacePageControl];
                     }else{
