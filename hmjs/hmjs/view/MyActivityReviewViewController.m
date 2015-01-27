@@ -79,7 +79,7 @@
     
     
     
-    scrollPanel = [[UIView alloc] initWithFrame:self.view.bounds];
+    scrollPanel = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     scrollPanel.backgroundColor = [UIColor clearColor];
     scrollPanel.alpha = 0;
     [self.view addSubview:scrollPanel];
@@ -89,7 +89,7 @@
     markView.alpha = 0.0;
     [scrollPanel addSubview:markView];
     
-    myScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    myScrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [scrollPanel addSubview:myScrollView];
     myScrollView.pagingEnabled = YES;
     myScrollView.delegate = self;
