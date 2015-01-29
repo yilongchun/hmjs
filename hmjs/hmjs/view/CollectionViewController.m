@@ -20,11 +20,12 @@
     MBProgressHUD *HUD;
     MKNetworkEngine *engine;
     NSNumber *totalpage;
-    NSNumber *page;
-    NSNumber *rows;
+//    NSNumber *page;
+//    NSNumber *rows;
     
     NSString *userid;
     NSString *classid;
+    int sort;
 //    UIActivityIndicatorView *tempactivity;
 }
 //@property (nonatomic, strong) SRRefreshView *slimeView;
@@ -176,15 +177,15 @@
 //加载数据
 - (void)loadData{
 //    [HUD show:YES];
-    page = [NSNumber numberWithInt:1];
-    rows = [NSNumber numberWithInt:12];
+//    page = [NSNumber numberWithInt:1];
+//    rows = [NSNumber numberWithInt:12];
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:self.examinetype forKey:@"examinetype"];
     [dic setValue:classid forKey:@"classid"];
     [dic setValue:userid forKey:@"userid"];
-    [dic setValue:page forKey:@"page"];
-    [dic setValue:rows forKey:@"rows"];
+//    [dic setValue:page forKey:@"page"];
+//    [dic setValue:rows forKey:@"rows"];
     MKNetworkOperation *op = [engine operationWithPath:@"/examine/findPageList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         NSString *result = [operation responseString];
@@ -201,6 +202,8 @@
                 NSArray *arr = [data objectForKey:@"list"];
                 self.dataSource = [NSMutableArray arrayWithArray:arr];
                 
+                
+                
                 NSDictionary *map = [data objectForKey:@"examineMap"];
                 NSNumber *okcount = [map objectForKey:@"okcount"];
                 NSNumber *qqcount = [map objectForKey:@"qqcount"];
@@ -216,6 +219,16 @@
 //                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue] + 1];
 //                }
                 
+                for (int i = 0; i < arr.count; i++) {
+                    NSDictionary *info = [arr objectAtIndex:i];
+                    NSNumber *sortNum = [info objectForKey:@"sort"];
+                    if ([sortNum intValue] != 999) {
+                        int temp = [sortNum intValue];
+                        if (temp > sort) {
+                            sort = temp;
+                        }
+                    }
+                }
                 
                 
             }
@@ -316,6 +329,7 @@
     CwjDetailViewController *cwj = [[CwjDetailViewController alloc] init];
     cwj.title = self.tabBarController.title;
     cwj.info = info;
+    cwj.sortNum = [NSNumber numberWithInt:sort+1];
     [self.navigationController pushViewController:cwj animated:YES];
 }
 //返回这个UICollectionView是否可以被选择

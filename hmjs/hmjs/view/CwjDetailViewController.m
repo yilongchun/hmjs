@@ -150,7 +150,7 @@
     }
     [dic setValue:self.mytextview1.text forKey:@"detail"];
     [dic setValue:self.mobileText.text forKey:@"mobile"];
-    [dic setValue:@"2" forKey:@"sort"];
+    [dic setValue:self.sortNum forKey:@"sort"];
     
     MKNetworkOperation *op = [engine operationWithPath:@"/examine/update.do" params:dic httpMethod:@"POST"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {

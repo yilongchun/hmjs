@@ -11,6 +11,7 @@
 @interface CwjDetailViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (nonatomic, strong) NSDictionary *info;
+@property (nonatomic, strong) NSNumber *sortNum;
 - (IBAction)save:(id)sender;
 @property (weak, nonatomic) IBOutlet UITextView *mytextview1;
 @property (weak, nonatomic) IBOutlet UITextField *temperatureText;
