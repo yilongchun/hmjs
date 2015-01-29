@@ -60,6 +60,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     [self registerNotifications];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUntreatedApplyCount) name:@"setupUntreatedApplyCount" object:nil];
     
+    
     [self setupSubviews];
     self.selectedIndex = 0;
     

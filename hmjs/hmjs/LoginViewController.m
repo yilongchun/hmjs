@@ -122,6 +122,7 @@
                     _mainController = [[MainViewController alloc] init];
                 }
                 [userDefaults setObject:@"1" forKey:@"loginflag"];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"setButtons" object:nil];
                 [self.navigationController pushViewController:_mainController animated:YES];
                 [HUD hide:YES];
             }else if([array count] > 1){//有多个班级需要用户选择
@@ -143,7 +144,7 @@
                     if (_mainController == nil) {
                         _mainController = [[MainViewController alloc] init];;
                     }
-                    
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"setButtons" object:nil];
                     [self.navigationController pushViewController:_mainController animated:YES];
                     
                 }else{//如果没有选择过 跳转选择班级界面

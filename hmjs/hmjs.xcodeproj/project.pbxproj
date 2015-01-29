@@ -13,6 +13,11 @@
 		E4B916A61A30A69A009075A0 /* MyNoticeReviewDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4B9169F1A30A69A009075A0 /* MyNoticeReviewDetailViewController.xib */; };
 		E4B916A71A30A69A009075A0 /* MyNoticeReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B916A11A30A69A009075A0 /* MyNoticeReviewViewController.m */; };
 		E4B916A81A30A69A009075A0 /* MyNoticeReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4B916A21A30A69A009075A0 /* MyNoticeReviewViewController.xib */; };
+		E4C3F46B1A7A40C90055041E /* checkbox1_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3F4651A7A40C90055041E /* checkbox1_checked.png */; };
+		E4C3F46C1A7A40C90055041E /* checkbox1_checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3F4661A7A40C90055041E /* checkbox1_checked@2x.png */; };
+		E4C3F46D1A7A40C90055041E /* checkbox1_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3F4671A7A40C90055041E /* checkbox1_unchecked.png */; };
+		E4C3F46E1A7A40C90055041E /* checkbox1_unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3F4681A7A40C90055041E /* checkbox1_unchecked@2x.png */; };
+		E4C3F46F1A7A40C90055041E /* QCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C3F46A1A7A40C90055041E /* QCheckBox.m */; };
 		E4CAF5BE1A31B333009A77BE /* AddActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CAF5BC1A31B333009A77BE /* AddActivityViewController.m */; };
 		E4CAF5BF1A31B333009A77BE /* AddActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4CAF5BD1A31B333009A77BE /* AddActivityViewController.xib */; };
 		E4CAF5C21A31B7A4009A77BE /* smiley_add_btn_nor.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CAF5C01A31B7A4009A77BE /* smiley_add_btn_nor.png */; };
@@ -510,6 +515,10 @@
 		E4EC155C1A77E51F0048ACDB /* UIView+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC15501A77E51F0048ACDB /* UIView+Hierarchy.m */; };
 		E4EC155D1A77E51F0048ACDB /* UIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC15521A77E51F0048ACDB /* UIView+IQKeyboardToolbar.m */; };
 		E4EC155E1A77E51F0048ACDB /* UIWindow+Hierarchy.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC15541A77E51F0048ACDB /* UIWindow+Hierarchy.m */; };
+		E4EC158A1A77FF250048ACDB /* CollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC15851A77FF250048ACDB /* CollectionCell.m */; };
+		E4EC158B1A77FF250048ACDB /* CollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EC15861A77FF250048ACDB /* CollectionCell.xib */; };
+		E4EC158C1A77FF250048ACDB /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EC15881A77FF250048ACDB /* CollectionViewController.m */; };
+		E4EC158D1A77FF250048ACDB /* CollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EC15891A77FF250048ACDB /* CollectionViewController.xib */; };
 		E4ECE93F1A2F5ACC00860CE7 /* ic_bwgg_011.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE93E1A2F5ACC00860CE7 /* ic_bwgg_011.png */; };
 		E4ECE9481A2F74BD00860CE7 /* wdgg_high.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE9401A2F74BD00860CE7 /* wdgg_high.png */; };
 		E4ECE9491A2F74BD00860CE7 /* wdgg_high@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE9411A2F74BD00860CE7 /* wdgg_high@2x.png */; };
@@ -521,6 +530,13 @@
 		E4ECE94F1A2F74BD00860CE7 /* wdhd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE9471A2F74BD00860CE7 /* wdhd@2x.png */; };
 		E4ECE9531A2F77DF00860CE7 /* WdhdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ECE9511A2F77DF00860CE7 /* WdhdViewController.m */; };
 		E4ECE9541A2F77DF00860CE7 /* WdhdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE9521A2F77DF00860CE7 /* WdhdViewController.xib */; };
+		E4ED05271A78F44E005C5683 /* CwjTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED05261A78F44E005C5683 /* CwjTabBarController.m */; };
+		E4ED052A1A78FF40005C5683 /* CustomCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED05291A78FF40005C5683 /* CustomCellBackground.m */; };
+		E4ED052E1A7905BF005C5683 /* CwjDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED052C1A7905BF005C5683 /* CwjDetailViewController.m */; };
+		E4ED052F1A7905BF005C5683 /* CwjDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4ED052D1A7905BF005C5683 /* CwjDetailViewController.xib */; };
+		E4ED05361A79182B005C5683 /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED05331A79182B005C5683 /* UIScrollView+SVInfiniteScrolling.m */; };
+		E4ED05371A79182B005C5683 /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED05351A79182B005C5683 /* UIScrollView+SVPullToRefresh.m */; };
+		E4ED05391A792097005C5683 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4ED05381A792097005C5683 /* QuartzCore.framework */; };
 		E4EDEABD1A403A7000711A94 /* currentPageDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EDEABB1A403A7000711A94 /* currentPageDot@2x.png */; };
 		E4EDEABE1A403A7000711A94 /* pageDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EDEABC1A403A7000711A94 /* pageDot@2x.png */; };
 		E4EDEAC11A4080AA00711A94 /* ic_index_005_high.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EDEABF1A4080AA00711A94 /* ic_index_005_high.png */; };
@@ -556,6 +572,12 @@
 		E4B916A01A30A69A009075A0 /* MyNoticeReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNoticeReviewViewController.h; sourceTree = "<group>"; };
 		E4B916A11A30A69A009075A0 /* MyNoticeReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MyNoticeReviewViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E4B916A21A30A69A009075A0 /* MyNoticeReviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyNoticeReviewViewController.xib; sourceTree = "<group>"; };
+		E4C3F4651A7A40C90055041E /* checkbox1_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox1_checked.png; sourceTree = "<group>"; };
+		E4C3F4661A7A40C90055041E /* checkbox1_checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox1_checked@2x.png"; sourceTree = "<group>"; };
+		E4C3F4671A7A40C90055041E /* checkbox1_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox1_unchecked.png; sourceTree = "<group>"; };
+		E4C3F4681A7A40C90055041E /* checkbox1_unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox1_unchecked@2x.png"; sourceTree = "<group>"; };
+		E4C3F4691A7A40C90055041E /* QCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCheckBox.h; sourceTree = "<group>"; };
+		E4C3F46A1A7A40C90055041E /* QCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCheckBox.m; sourceTree = "<group>"; };
 		E4CAF5BB1A31B333009A77BE /* AddActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddActivityViewController.h; sourceTree = "<group>"; };
 		E4CAF5BC1A31B333009A77BE /* AddActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AddActivityViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E4CAF5BD1A31B333009A77BE /* AddActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddActivityViewController.xib; sourceTree = "<group>"; };
@@ -1356,6 +1378,12 @@
 		E4EC15521A77E51F0048ACDB /* UIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
 		E4EC15531A77E51F0048ACDB /* UIWindow+Hierarchy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+Hierarchy.h"; sourceTree = "<group>"; };
 		E4EC15541A77E51F0048ACDB /* UIWindow+Hierarchy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+Hierarchy.m"; sourceTree = "<group>"; };
+		E4EC15841A77FF250048ACDB /* CollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionCell.h; sourceTree = "<group>"; };
+		E4EC15851A77FF250048ACDB /* CollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionCell.m; sourceTree = "<group>"; };
+		E4EC15861A77FF250048ACDB /* CollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionCell.xib; sourceTree = "<group>"; };
+		E4EC15871A77FF250048ACDB /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		E4EC15881A77FF250048ACDB /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		E4EC15891A77FF250048ACDB /* CollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewController.xib; sourceTree = "<group>"; };
 		E4ECE93E1A2F5ACC00860CE7 /* ic_bwgg_011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_bwgg_011.png; sourceTree = "<group>"; };
 		E4ECE9401A2F74BD00860CE7 /* wdgg_high.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wdgg_high.png; sourceTree = "<group>"; };
 		E4ECE9411A2F74BD00860CE7 /* wdgg_high@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wdgg_high@2x.png"; sourceTree = "<group>"; };
@@ -1368,6 +1396,19 @@
 		E4ECE9501A2F77DF00860CE7 /* WdhdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WdhdViewController.h; sourceTree = "<group>"; };
 		E4ECE9511A2F77DF00860CE7 /* WdhdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WdhdViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E4ECE9521A2F77DF00860CE7 /* WdhdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WdhdViewController.xib; sourceTree = "<group>"; };
+		E4ED05251A78F44E005C5683 /* CwjTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CwjTabBarController.h; sourceTree = "<group>"; };
+		E4ED05261A78F44E005C5683 /* CwjTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CwjTabBarController.m; sourceTree = "<group>"; };
+		E4ED05281A78FF40005C5683 /* CustomCellBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCellBackground.h; sourceTree = "<group>"; };
+		E4ED05291A78FF40005C5683 /* CustomCellBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellBackground.m; sourceTree = "<group>"; };
+		E4ED052B1A7905BF005C5683 /* CwjDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CwjDetailViewController.h; sourceTree = "<group>"; };
+		E4ED052C1A7905BF005C5683 /* CwjDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CwjDetailViewController.m; sourceTree = "<group>"; };
+		E4ED052D1A7905BF005C5683 /* CwjDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CwjDetailViewController.xib; sourceTree = "<group>"; };
+		E4ED05311A79182B005C5683 /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
+		E4ED05321A79182B005C5683 /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
+		E4ED05331A79182B005C5683 /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
+		E4ED05341A79182B005C5683 /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
+		E4ED05351A79182B005C5683 /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
+		E4ED05381A792097005C5683 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E4EDEABB1A403A7000711A94 /* currentPageDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "currentPageDot@2x.png"; sourceTree = "<group>"; };
 		E4EDEABC1A403A7000711A94 /* pageDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pageDot@2x.png"; sourceTree = "<group>"; };
 		E4EDEABF1A4080AA00711A94 /* ic_index_005_high.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_index_005_high.png; sourceTree = "<group>"; };
@@ -1393,6 +1434,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4ED05391A792097005C5683 /* QuartzCore.framework in Frameworks */,
 				E4CAF5EB1A32085E009A77BE /* CoreMedia.framework in Frameworks */,
 				E4CAF5E91A320855009A77BE /* AVFoundation.framework in Frameworks */,
 				E4E76FBF1A277E0D004DF568 /* SystemConfiguration.framework in Frameworks */,
@@ -1425,6 +1467,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E4C3F4641A7A40C90055041E /* QCheckbox */ = {
+			isa = PBXGroup;
+			children = (
+				E4C3F4651A7A40C90055041E /* checkbox1_checked.png */,
+				E4C3F4661A7A40C90055041E /* checkbox1_checked@2x.png */,
+				E4C3F4671A7A40C90055041E /* checkbox1_unchecked.png */,
+				E4C3F4681A7A40C90055041E /* checkbox1_unchecked@2x.png */,
+				E4C3F4691A7A40C90055041E /* QCheckBox.h */,
+				E4C3F46A1A7A40C90055041E /* QCheckBox.m */,
+			);
+			path = QCheckbox;
+			sourceTree = "<group>";
+		};
 		E4CAF5C41A31BE0A009A77BE /* ELCImagePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -1498,16 +1553,18 @@
 				E4E76AFD1A277979004DF568 /* MainViewController.h */,
 				E4E76AFE1A277979004DF568 /* MainViewController.m */,
 				E4E76AFF1A277979004DF568 /* MainViewController.xib */,
-				E4E76AD41A2773BB004DF568 /* Supporting Files */,
+				E4E76CEA1A277B28004DF568 /* view */,
 				E4E76C281A277AB7004DF568 /* EaseMobSDK */,
+				E4C3F4641A7A40C90055041E /* QCheckbox */,
+				E4ED05301A79182B005C5683 /* SVPullToRefresh */,
 				E4CAF5C41A31BE0A009A77BE /* ELCImagePicker */,
 				E4E76C8A1A277AD0004DF568 /* GrowingTextView */,
 				E4E76C911A277AF9004DF568 /* MKNetworkKit */,
 				E4E76CB31A277B0E004DF568 /* AFNetworking */,
 				E4EC153E1A77E51F0048ACDB /* IQKeyBoardManager */,
-				E4E76CEA1A277B28004DF568 /* view */,
 				E4E76D601A277B3C004DF568 /* Chat */,
 				E4E76F861A277B4F004DF568 /* shezi */,
+				E4E76AD41A2773BB004DF568 /* Supporting Files */,
 				E4E76F911A277B67004DF568 /* Utils.h */,
 				E4E76F921A277B67004DF568 /* Utils.m */,
 				E4E76F941A277B7F004DF568 /* UIDevice+Resolutions.h */,
@@ -2235,6 +2292,19 @@
 				E4E76D2F1A277B28004DF568 /* YqjsViewController.h */,
 				E4E76D301A277B28004DF568 /* YqjsViewController.m */,
 				E4E76D311A277B28004DF568 /* YqjsViewController.xib */,
+				E4ED05251A78F44E005C5683 /* CwjTabBarController.h */,
+				E4ED05261A78F44E005C5683 /* CwjTabBarController.m */,
+				E4EC15841A77FF250048ACDB /* CollectionCell.h */,
+				E4EC15851A77FF250048ACDB /* CollectionCell.m */,
+				E4EC15861A77FF250048ACDB /* CollectionCell.xib */,
+				E4ED05281A78FF40005C5683 /* CustomCellBackground.h */,
+				E4ED05291A78FF40005C5683 /* CustomCellBackground.m */,
+				E4EC15871A77FF250048ACDB /* CollectionViewController.h */,
+				E4EC15881A77FF250048ACDB /* CollectionViewController.m */,
+				E4EC15891A77FF250048ACDB /* CollectionViewController.xib */,
+				E4ED052B1A7905BF005C5683 /* CwjDetailViewController.h */,
+				E4ED052C1A7905BF005C5683 /* CwjDetailViewController.m */,
+				E4ED052D1A7905BF005C5683 /* CwjDetailViewController.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2932,6 +3002,7 @@
 		E4E76FC01A277E76004DF568 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E4ED05381A792097005C5683 /* QuartzCore.framework */,
 				E4CAF5EA1A32085E009A77BE /* CoreMedia.framework */,
 				E4CAF5E81A320855009A77BE /* AVFoundation.framework */,
 				E4E76FBE1A277E0D004DF568 /* SystemConfiguration.framework */,
@@ -2980,6 +3051,18 @@
 				E4EC15541A77E51F0048ACDB /* UIWindow+Hierarchy.m */,
 			);
 			path = IQKeyBoardManager;
+			sourceTree = "<group>";
+		};
+		E4ED05301A79182B005C5683 /* SVPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				E4ED05311A79182B005C5683 /* SVPullToRefresh.h */,
+				E4ED05321A79182B005C5683 /* UIScrollView+SVInfiniteScrolling.h */,
+				E4ED05331A79182B005C5683 /* UIScrollView+SVInfiniteScrolling.m */,
+				E4ED05341A79182B005C5683 /* UIScrollView+SVPullToRefresh.h */,
+				E4ED05351A79182B005C5683 /* UIScrollView+SVPullToRefresh.m */,
+			);
+			path = SVPullToRefresh;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3094,6 +3177,7 @@
 				E4CFE2101A3F5014006BD88C /* ic_index_004_high.png in Resources */,
 				E4E76D461A277B28004DF568 /* GgtzTableViewCell.xib in Resources */,
 				E4E76BA01A277997004DF568 /* chatFire_audioPlaying1.png in Resources */,
+				E4EC158B1A77FF250048ACDB /* CollectionCell.xib in Resources */,
 				E4E76BCD1A277997004DF568 /* VoiceSearchFeedback020@2x.png in Resources */,
 				E4E76B9B1A277997004DF568 /* 37x-Checkmark@2x.png in Resources */,
 				E4E76FC21A277F74004DF568 /* default4.png in Resources */,
@@ -3115,6 +3199,7 @@
 				E4E76EFC1A277B3C004DF568 /* call_silence_h.png in Resources */,
 				E4E76D371A277B28004DF568 /* BjtzDetailViewController.xib in Resources */,
 				E4E76EF61A277B3C004DF568 /* call_out.png in Resources */,
+				E4EC158D1A77FF250048ACDB /* CollectionViewController.xib in Resources */,
 				E4E76BD31A277997004DF568 /* chatBar_more_face.png in Resources */,
 				E4E76C151A277997004DF568 /* MessageEntryBackground@2x.png in Resources */,
 				E4E76BCB1A277997004DF568 /* VoiceSearchFeedback019@2x.png in Resources */,
@@ -3127,6 +3212,7 @@
 				E4EB90131A2DB9F600DFEA47 /* xxhd@2x.png in Resources */,
 				E4E76C001A277997004DF568 /* ic_index_003.png in Resources */,
 				E4E76D4A1A277B28004DF568 /* GgxqViewController.xib in Resources */,
+				E4C3F46E1A7A40C90055041E /* checkbox1_unchecked@2x.png in Resources */,
 				E4E76B011A277979004DF568 /* LoginViewController.xib in Resources */,
 				E4E76F151A277B3C004DF568 /* chatBar_more@2x.png in Resources */,
 				E4E76C0D1A277997004DF568 /* ic_login.png in Resources */,
@@ -3253,6 +3339,7 @@
 				E4E76BBF1A277997004DF568 /* VoiceSearchFeedback013@2x.png in Resources */,
 				E4EB90111A2DB9F600DFEA47 /* xxhd_high@2x.png in Resources */,
 				E4EB901C1A2DBBD000DFEA47 /* XxhdViewController.xib in Resources */,
+				E4ED052F1A7905BF005C5683 /* CwjDetailViewController.xib in Resources */,
 				E4E76F241A277B3C004DF568 /* chatBar_colorMore_photo@2x.png in Resources */,
 				E4E76F111A277B3C004DF568 /* chatBar_keyboard@2x.png in Resources */,
 				E4E76C201A277997004DF568 /* tabbar_contactsHL@2x.png in Resources */,
@@ -3309,6 +3396,7 @@
 				E4E76F171A277B3C004DF568 /* chatBar_moreSelected@2x.png in Resources */,
 				E4E76F471A277B3C004DF568 /* group_invitee_delete@2x.png in Resources */,
 				E4E76BA51A277997004DF568 /* chatFire_audioPlaying3@2x.png in Resources */,
+				E4C3F46C1A7A40C90055041E /* checkbox1_checked@2x.png in Resources */,
 				E4E76BCA1A277997004DF568 /* VoiceSearchFeedback019.png in Resources */,
 				E4E76F4C1A277B3C004DF568 /* groupPublicHeader@2x.png in Resources */,
 				E4E76BAC1A277997004DF568 /* VoiceSearchFeedback004.png in Resources */,
@@ -3345,6 +3433,7 @@
 				E4ECE9481A2F74BD00860CE7 /* wdgg_high.png in Resources */,
 				E4E76BA71A277997004DF568 /* VoiceSearchFeedback001@2x.png in Resources */,
 				E4B916A61A30A69A009075A0 /* MyNoticeReviewDetailViewController.xib in Resources */,
+				E4C3F46D1A7A40C90055041E /* checkbox1_unchecked.png in Resources */,
 				E4E76C0E1A277997004DF568 /* ic_login_password.png in Resources */,
 				E4E76BDF1A277997004DF568 /* chat_location_preview.png in Resources */,
 				E4E76BD81A277997004DF568 /* chatBar_textBg@2x.png in Resources */,
@@ -3359,6 +3448,7 @@
 				E4E76EE61A277B3C004DF568 /* sr_refresh.png in Resources */,
 				E4E76BAA1A277997004DF568 /* VoiceSearchFeedback003.png in Resources */,
 				E4E76F221A277B3C004DF568 /* chatBar_colorMore_location@2x.png in Resources */,
+				E4C3F46B1A7A40C90055041E /* checkbox1_checked.png in Resources */,
 				E4E76D331A277B28004DF568 /* BbspViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3411,6 +3501,7 @@
 				E4E76F5B1A277B3C004DF568 /* RealtimeSearchUtil.m in Sources */,
 				E4F2AA3F1A42DF900072725E /* Friend.m in Sources */,
 				E4E76F061A277B3C004DF568 /* DXFaceView.m in Sources */,
+				E4ED05271A78F44E005C5683 /* CwjTabBarController.m in Sources */,
 				E4E76F821A277B3C004DF568 /* EMChooseViewController.m in Sources */,
 				E4E76D401A277B28004DF568 /* ChooseClassViewController.m in Sources */,
 				E4EC155A1A77E51F0048ACDB /* IQToolbar.m in Sources */,
@@ -3444,6 +3535,7 @@
 				E4EC155C1A77E51F0048ACDB /* UIView+Hierarchy.m in Sources */,
 				E4B916A31A30A69A009075A0 /* AddNoticeViewController.m in Sources */,
 				E4E76CAB1A277AF9004DF568 /* NSDate+RFC1123.m in Sources */,
+				E4ED05361A79182B005C5683 /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				E4E76ED21A277B3C004DF568 /* MWPhotoBrowser.m in Sources */,
 				E4E76F381A277B3C004DF568 /* EMChatLocationBubbleView.m in Sources */,
 				E4E76F841A277B3C004DF568 /* EMSearchDisplayController.m in Sources */,
@@ -3469,6 +3561,7 @@
 				E4E76F451A277B3C004DF568 /* CreateGroupViewController.m in Sources */,
 				E4E76F931A277B67004DF568 /* Utils.m in Sources */,
 				E4E76F641A277B3C004DF568 /* NSManagedObject+MagicalAggregation.m in Sources */,
+				E4ED05371A79182B005C5683 /* UIScrollView+SVPullToRefresh.m in Sources */,
 				E4E76EDA1A277B3C004DF568 /* PSTCollectionViewController.m in Sources */,
 				E4CAF5BE1A31B333009A77BE /* AddActivityViewController.m in Sources */,
 				E4CAF5E01A31BE0A009A77BE /* ELCConsole.m in Sources */,
@@ -3488,6 +3581,7 @@
 				E4E76F741A277B3C004DF568 /* MagicalRecord+Setup.m in Sources */,
 				E4E76F961A277B7F004DF568 /* UIDevice+Resolutions.m in Sources */,
 				E4E76F791A277B3C004DF568 /* BlackListViewController.m in Sources */,
+				E4EC158A1A77FF250048ACDB /* CollectionCell.m in Sources */,
 				E4E76CB11A277AF9004DF568 /* MKNetworkOperation.m in Sources */,
 				E4E76F691A277B3C004DF568 /* NSManagedObjectContext+MagicalObserving.m in Sources */,
 				E4E76D5B1A277B28004DF568 /* TapImageView.m in Sources */,
@@ -3543,6 +3637,7 @@
 				E4E76D341A277B28004DF568 /* BjjsViewController.m in Sources */,
 				E4E76EED1A277B3C004DF568 /* NSDate+Category.m in Sources */,
 				E4E76D421A277B28004DF568 /* ContentCell.m in Sources */,
+				E4EC158C1A77FF250048ACDB /* CollectionViewController.m in Sources */,
 				E4E76F8D1A277B4F004DF568 /* ShezhiViewController.m in Sources */,
 				E4B916A51A30A69A009075A0 /* MyNoticeReviewDetailViewController.m in Sources */,
 				E4E76F6A1A277B3C004DF568 /* NSManagedObjectContext+MagicalRecord.m in Sources */,
@@ -3560,6 +3655,7 @@
 				E4E76EE01A277B3C004DF568 /* PSTGridLayoutInfo.m in Sources */,
 				E4E76D451A277B28004DF568 /* GgtzTableViewCell.m in Sources */,
 				E4E76F731A277B3C004DF568 /* MagicalRecord+Options.m in Sources */,
+				E4ED052E1A7905BF005C5683 /* CwjDetailViewController.m in Sources */,
 				E4E76F0A1A277B3C004DF568 /* DXChatBarMoreView.m in Sources */,
 				E4E76EE81A277B3C004DF568 /* SRRefreshView.m in Sources */,
 				E4E76F771A277B3C004DF568 /* UIDemo.xcdatamodeld in Sources */,
@@ -3577,6 +3673,8 @@
 				E4E76F711A277B3C004DF568 /* MagicalRecord+ErrorHandling.m in Sources */,
 				E4E76EEA1A277B3C004DF568 /* THProgressView.m in Sources */,
 				E4E76CAF1A277AF9004DF568 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
+				E4C3F46F1A7A40C90055041E /* QCheckBox.m in Sources */,
+				E4ED052A1A78FF40005C5683 /* CustomCellBackground.m in Sources */,
 				E4E76CDF1A277B0E004DF568 /* AFURLRequestSerialization.m in Sources */,
 				E4E76ED71A277B3C004DF568 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				E4E76CE21A277B0E004DF568 /* AFNetworkActivityIndicatorManager.m in Sources */,

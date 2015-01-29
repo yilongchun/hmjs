@@ -49,7 +49,7 @@
     self.bjsj.scrollEnabled = YES;
     self.bjsj.font = [UIFont fontWithName:@"Helvetica Neue" size:16.0];
     self.bjsj.returnKeyType = UIReturnKeyDefault;
-    self.bjsj.delegate = self;
+    
     [self.bjsj.layer setMasksToBounds:YES];
     
     

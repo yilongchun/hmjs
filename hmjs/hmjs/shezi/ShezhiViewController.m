@@ -105,7 +105,7 @@
     }else{
         if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1){
             alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
-            [alert addAction:[UIAlertAction actionWithTitle:@"确定"
+            [alert addAction:[UIAlertAction actionWithTitle:@"退出登录"
                                                       style:UIAlertActionStyleDestructive
                                                     handler:^(UIAlertAction *action) {
                                                         //退出登陆

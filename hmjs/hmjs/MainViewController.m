@@ -28,6 +28,7 @@
 #import "MyTabbarController.h"
 #import "BbxxTarbarViewController.h"
 #import "EaseMob.h"
+#import "CwjTabBarController.h"
 
 
 //两次提示的默认间隔
@@ -53,6 +54,9 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setButtons)
+                                                 name:@"setButtons" object:nil];
     
     //设置导航栏
     self.navigationController.delegate = self;
@@ -154,25 +158,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                 }
                 
                 
-                if (self.menus.count > 6) {
-                    if (height <= 480) {
-                        [mainScrollView setContentSize:CGSizeMake(width*2, height-170)];
-                        if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
-                            spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-30, width, 10)];
-                        }else{
-                            spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-50, width, 10)];
-                        }
-                        spacePageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
-                        spacePageControl.pageIndicatorTintColor = [UIColor grayColor];
-                        spacePageControl.numberOfPages = 2;
-                        spacePageControl.userInteractionEnabled = NO;
-                        [self.view addSubview:spacePageControl];
-                    }else{
-                        [mainScrollView setContentSize:CGSizeMake(width, height-170)];
-                    }
-                }else{
-                    [mainScrollView setContentSize:CGSizeMake(width, height-170)];
-                }
+                
                 
                 
                 int i = 0;
@@ -206,119 +192,184 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                                 btnr = CGRectMake(10, 260, 90, 90);
                             }
                             break;
+                        case 7:
+                            if (height <= 480) {
+                                btnr = CGRectMake(width+width/2-45, 10, 90, 90);
+                            }else{
+                                btnr = CGRectMake(width/2-45, 260, 90, 90);
+                            }
+                            break;
                         default:
                             btnr = CGRectMake(0, 0, 0, 0);
                             break;
                     }
                     
                     if ([menuStr isEqualToString:@"16_singleChat"]) {//1_singleChat">小纸条
+                        i++;
                         UIButton *btn4 = [[UIButton alloc] init];
                         [btn4 setFrame:btnr];
                         [btn4 setBackgroundImage:[UIImage imageNamed:@"ic_index_009.png"] forState:UIControlStateNormal];
                         [btn4 setBackgroundImage:[UIImage imageNamed:@"ic_index_009_high.png"] forState:UIControlStateHighlighted];
                         [btn4 addTarget:self action:@selector(xztAction:) forControlEvents:UIControlEventTouchUpInside];
                         UILabel *label4 = [[UILabel alloc] init];
-                        [label4 setFrame:CGRectMake(btn4.frame.origin.x, btn4.frame.origin.y+95, 90, 20)];
-                        label4.text = @"小纸条";
-                        label4.textAlignment = NSTextAlignmentCenter;
-                        [label4 setFont:[UIFont systemFontOfSize:16]];
-                        [label4 setBackgroundColor:[UIColor clearColor]];
-                        [unreadlabel setFrame:CGRectMake(btn4.frame.origin.x + btn4.frame.size.width - 12, btn4.frame.origin.y - 8, 20, 20)];
-                        unreadlabel.layer.cornerRadius = unreadlabel.frame.size.height/2;
-                        unreadlabel.layer.masksToBounds = YES;
-                        [unreadlabel setTextColor:[UIColor whiteColor]];
-                        [unreadlabel setTextAlignment:NSTextAlignmentCenter];
-                        [unreadlabel setBackgroundColor:[UIColor redColor]];
-                        [unreadlabel setHidden:YES];
-                        [mainScrollView addSubview:btn4];
-                        [mainScrollView addSubview:label4];
-                        [mainScrollView addSubview:unreadlabel];
+                        if (btn4.frame.origin.x != 0) {
+                            [label4 setFrame:CGRectMake(btn4.frame.origin.x, btn4.frame.origin.y+95, 90, 20)];
+                            label4.text = @"小纸条";
+                            label4.textAlignment = NSTextAlignmentCenter;
+                            [label4 setFont:[UIFont systemFontOfSize:16]];
+                            [label4 setBackgroundColor:[UIColor clearColor]];
+                            [unreadlabel setFrame:CGRectMake(btn4.frame.origin.x + btn4.frame.size.width - 12, btn4.frame.origin.y - 8, 20, 20)];
+                            unreadlabel.layer.cornerRadius = unreadlabel.frame.size.height/2;
+                            unreadlabel.layer.masksToBounds = YES;
+                            [unreadlabel setTextColor:[UIColor whiteColor]];
+                            [unreadlabel setTextAlignment:NSTextAlignmentCenter];
+                            [unreadlabel setBackgroundColor:[UIColor redColor]];
+                            [unreadlabel setHidden:YES];
+                            [mainScrollView addSubview:btn4];
+                            [mainScrollView addSubview:label4];
+                            [mainScrollView addSubview:unreadlabel];
+                        }
                     }else if([menuStr isEqualToString:@"17_groupleChat"]){//1_groupleChat">教师园地
+                        i++;
                         UIButton *btn2 = [[UIButton alloc] init];
                         [btn2 setFrame:btnr];
                         [btn2 setBackgroundImage:[UIImage imageNamed:@"ic_index_005.png"] forState:UIControlStateNormal];
                         [btn2 setBackgroundImage:[UIImage imageNamed:@"ic_index_005_high.png"] forState:UIControlStateHighlighted];
                         [btn2 addTarget:self action:@selector(jsydAction:) forControlEvents:UIControlEventTouchUpInside];
                         UILabel *label2 = [[UILabel alloc] init];
-                        [label2 setFrame:CGRectMake(btn2.frame.origin.x, btn2.frame.origin.y+95, 90, 20)];
-                        label2.text = @"教师园地";
-                        label2.textAlignment = NSTextAlignmentCenter;
-                        [label2 setFont:[UIFont systemFontOfSize:16]];
-                        [label2 setBackgroundColor:[UIColor clearColor]];
-                        [mainScrollView addSubview:btn2];
-                        [mainScrollView addSubview:label2];
+                        if (btn2.frame.origin.x != 0) {
+                            [label2 setFrame:CGRectMake(btn2.frame.origin.x, btn2.frame.origin.y+95, 90, 20)];
+                            label2.text = @"教师园地";
+                            label2.textAlignment = NSTextAlignmentCenter;
+                            [label2 setFont:[UIFont systemFontOfSize:16]];
+                            [label2 setBackgroundColor:[UIColor clearColor]];
+                            [mainScrollView addSubview:btn2];
+                            [mainScrollView addSubview:label2];
+                        }
                     }else if([menuStr isEqualToString:@"11_school"]){//1_school">园所动态
+                        i++;
                         UIButton *btn2 = [[UIButton alloc] init];
                         [btn2 setFrame:btnr];
                         [btn2 setBackgroundImage:[UIImage imageNamed:@"ic_index_003.png"] forState:UIControlStateNormal];
                         [btn2 setBackgroundImage:[UIImage imageNamed:@"ic_index_003_high.png"] forState:UIControlStateHighlighted];
                         [btn2 addTarget:self action:@selector(ysdtAction:) forControlEvents:UIControlEventTouchUpInside];
                         UILabel *label2 = [[UILabel alloc] init];
-                        [label2 setFrame:CGRectMake(btn2.frame.origin.x, btn2.frame.origin.y+95, 90, 20)];
-                        label2.text = @"园所动态";
-                        label2.textAlignment = NSTextAlignmentCenter;
-                        [label2 setFont:[UIFont systemFontOfSize:16]];
-                        [label2 setBackgroundColor:[UIColor clearColor]];
-                        [mainScrollView addSubview:btn2];
-                        [mainScrollView addSubview:label2];
+                        if (btn2.frame.origin.x != 0) {
+                            [label2 setFrame:CGRectMake(btn2.frame.origin.x, btn2.frame.origin.y+95, 90, 20)];
+                            label2.text = @"园所动态";
+                            label2.textAlignment = NSTextAlignmentCenter;
+                            [label2 setFont:[UIFont systemFontOfSize:16]];
+                            [label2 setBackgroundColor:[UIColor clearColor]];
+                            [mainScrollView addSubview:btn2];
+                            [mainScrollView addSubview:label2];
+                        }
                     }else if([menuStr isEqualToString:@"12_class"]){//1_class">班级管理
+                        i++;
                         UIButton *btn1 = [[UIButton alloc] init];
                         [btn1 setFrame:btnr];
                         [btn1 setBackgroundImage:[UIImage imageNamed:@"ic_index_002.png"] forState:UIControlStateNormal];
                         [btn1 setBackgroundImage:[UIImage imageNamed:@"ic_index_002_high.png"] forState:UIControlStateHighlighted];
                         [btn1 addTarget:self action:@selector(bwglAction:) forControlEvents:UIControlEventTouchUpInside];
                         UILabel *label1 = [[UILabel alloc] init];
-                        [label1 setFrame:CGRectMake(btn1.frame.origin.x, btn1.frame.origin.y+95, 90, 20)];
-                        label1.text = @"班务管理";
-                        label1.textAlignment = NSTextAlignmentCenter;
-                        [label1 setFont:[UIFont systemFontOfSize:16]];
-                        [label1 setBackgroundColor:[UIColor clearColor]];
-                        [mainScrollView addSubview:btn1];
-                        [mainScrollView addSubview:label1];
+                        if (btn1.frame.origin.x != 0) {
+                            [label1 setFrame:CGRectMake(btn1.frame.origin.x, btn1.frame.origin.y+95, 90, 20)];
+                            label1.text = @"班务管理";
+                            label1.textAlignment = NSTextAlignmentCenter;
+                            [label1 setFont:[UIFont systemFontOfSize:16]];
+                            [label1 setBackgroundColor:[UIColor clearColor]];
+                            [mainScrollView addSubview:btn1];
+                            [mainScrollView addSubview:label1];
+                        }
                     }else if([menuStr isEqualToString:@"14_cookbook"]){//1_cookbook">学生食谱
+                        i++;
                         UIButton *btn3 = [[UIButton alloc] init];
                         [btn3 setFrame:btnr];
                         [btn3 setBackgroundImage:[UIImage imageNamed:@"ic_index_004.png"] forState:UIControlStateNormal];
                         [btn3 setBackgroundImage:[UIImage imageNamed:@"ic_index_004_high.png"] forState:UIControlStateHighlighted];
                         [btn3 addTarget:self action:@selector(xsspAction:) forControlEvents:UIControlEventTouchUpInside];
                         UILabel *label3 = [[UILabel alloc] init];
-                        [label3 setFrame:CGRectMake(btn3.frame.origin.x, btn3.frame.origin.y+95, 90, 20)];
-                        label3.text = @"学生食谱";
-                        label3.textAlignment = NSTextAlignmentCenter;
-                        [label3 setFont:[UIFont systemFontOfSize:16]];
-                        [label3 setBackgroundColor:[UIColor clearColor]];
-                        [mainScrollView addSubview:btn3];
-                        [mainScrollView addSubview:label3];
+                        if (btn3.frame.origin.x != 0) {
+                            [label3 setFrame:CGRectMake(btn3.frame.origin.x, btn3.frame.origin.y+95, 90, 20)];
+                            label3.text = @"学生食谱";
+                            label3.textAlignment = NSTextAlignmentCenter;
+                            [label3 setFont:[UIFont systemFontOfSize:16]];
+                            [label3 setBackgroundColor:[UIColor clearColor]];
+                            [mainScrollView addSubview:btn3];
+                            [mainScrollView addSubview:label3];
+                        }
                     }else if([menuStr isEqualToString:@"15_information"]){//1_information">育儿资讯
+                        i++;
                         UIButton *btn5 = [[UIButton alloc] init];
                         [btn5 setFrame:btnr];
                         [btn5 setBackgroundImage:[UIImage imageNamed:@"ic_index_006.png"] forState:UIControlStateNormal];
                         [btn5 setBackgroundImage:[UIImage imageNamed:@"ic_index_006_high.png"] forState:UIControlStateHighlighted];
                         [btn5 addTarget:self action:@selector(yezxAction:) forControlEvents:UIControlEventTouchUpInside];
                         UILabel *label5 = [[UILabel alloc] init];
-                        [label5 setFrame:CGRectMake(btn5.frame.origin.x, btn5.frame.origin.y+95, 90, 20)];
-                        label5.text = @"育儿资讯";
-                        label5.textAlignment = NSTextAlignmentCenter;
-                        [label5 setFont:[UIFont systemFontOfSize:16]];
-                        [label5 setBackgroundColor:[UIColor clearColor]];
-                        [mainScrollView addSubview:btn5];
-                        [mainScrollView addSubview:label5];
+                        if (btn5.frame.origin.x != 0) {
+                            [label5 setFrame:CGRectMake(btn5.frame.origin.x, btn5.frame.origin.y+95, 90, 20)];
+                            label5.text = @"育儿资讯";
+                            label5.textAlignment = NSTextAlignmentCenter;
+                            [label5 setFont:[UIFont systemFontOfSize:16]];
+                            [label5 setBackgroundColor:[UIColor clearColor]];
+                            [mainScrollView addSubview:btn5];
+                            [mainScrollView addSubview:label5];
+                        }
                     }else if([menuStr isEqualToString:@"13_course"]){//1_course">课程表
+                        i++;
                         UIButton *btn6 = [[UIButton alloc] init];
                         [btn6 setFrame:btnr];
                         [btn6 setBackgroundImage:[UIImage imageNamed:@"ic_index_007.png"] forState:UIControlStateNormal];
                         [btn6 setBackgroundImage:[UIImage imageNamed:@"ic_index_007_high.png"] forState:UIControlStateHighlighted];
                         [btn6 addTarget:self action:@selector(kcbAction:) forControlEvents:UIControlEventTouchUpInside];
                         UILabel *label6 = [[UILabel alloc] init];
-                        [label6 setFrame:CGRectMake(btn6.frame.origin.x, btn6.frame.origin.y+95, 90, 20)];
-                        label6.text = @"课程表";
-                        label6.textAlignment = NSTextAlignmentCenter;
-                        [label6 setFont:[UIFont systemFontOfSize:16]];
-                        [label6 setBackgroundColor:[UIColor clearColor]];
-                        [mainScrollView addSubview:btn6];
-                        [mainScrollView addSubview:label6];
+                        if (btn6.frame.origin.x != 0) {
+                            [label6 setFrame:CGRectMake(btn6.frame.origin.x, btn6.frame.origin.y+95, 90, 20)];
+                            label6.text = @"课程表";
+                            label6.textAlignment = NSTextAlignmentCenter;
+                            [label6 setFont:[UIFont systemFontOfSize:16]];
+                            [label6 setBackgroundColor:[UIColor clearColor]];
+                            [mainScrollView addSubview:btn6];
+                            [mainScrollView addSubview:label6];
+                        }
+                    }else if([menuStr isEqualToString:@"18_examine"]){//1_course">课程表
+                        i++;
+                        UIButton *btn6 = [[UIButton alloc] init];
+                        [btn6 setFrame:btnr];
+                        [btn6 setBackgroundImage:[UIImage imageNamed:@"ic_index_007.png"] forState:UIControlStateNormal];
+                        [btn6 setBackgroundImage:[UIImage imageNamed:@"ic_index_007_high.png"] forState:UIControlStateHighlighted];
+                        [btn6 addTarget:self action:@selector(cwjAction) forControlEvents:UIControlEventTouchUpInside];
+                        UILabel *label6 = [[UILabel alloc] init];
+                        if (btn6.frame.origin.x != 0) {
+                            [label6 setFrame:CGRectMake(btn6.frame.origin.x, btn6.frame.origin.y+95, 90, 20)];
+                            label6.text = @"晨午检";
+                            label6.textAlignment = NSTextAlignmentCenter;
+                            [label6 setFont:[UIFont systemFontOfSize:16]];
+                            [label6 setBackgroundColor:[UIColor clearColor]];
+                            [mainScrollView addSubview:btn6];
+                            [mainScrollView addSubview:label6];
+                        }
+                    }else{
+                        continue;
                     }
-                    i++;
+                }
+                if (i > 6) {
+                    if (height <= 480) {
+                        [mainScrollView setContentSize:CGSizeMake(width*2, height-170)];
+                        if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+                            spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-30, width, 10)];
+                        }else{
+                            spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-50, width, 10)];
+                        }
+                        spacePageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+                        spacePageControl.pageIndicatorTintColor = [UIColor grayColor];
+                        spacePageControl.numberOfPages = 2;
+                        spacePageControl.userInteractionEnabled = NO;
+                        [self.view addSubview:spacePageControl];
+                    }else{
+                        [mainScrollView setContentSize:CGSizeMake(width, height-170)];
+                    }
+                }else{
+                    [mainScrollView setContentSize:CGSizeMake(width, height-170)];
                 }
             }
             [HUD hide:YES];
@@ -776,6 +827,12 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     [self.navigationController setNavigationBarHidden:NO];
     [self.navigationController pushViewController:slideSegmentController animated:YES];
     
+}
+
+-(void)cwjAction{
+    CwjTabBarController *cwj = [[CwjTabBarController alloc] init];
+    [self.navigationController pushViewController:cwj animated:YES];
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 

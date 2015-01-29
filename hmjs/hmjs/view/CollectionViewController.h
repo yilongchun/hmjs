@@ -1,0 +1,18 @@
+//
+//  CollectionViewController.h
+//  hmxx
+//
+//  Created by yons on 15-1-20.
+//  Copyright (c) 2015年 hmzl. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface CollectionViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+@property (weak, nonatomic) IBOutlet UICollectionView *mycollectionview;
+@property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) NSString* examinetype;
+@property (weak, nonatomic) IBOutlet UILabel *label1;
+@property (weak, nonatomic) IBOutlet UILabel *label2;
+@property (weak, nonatomic) IBOutlet UILabel *label3;
+@end
