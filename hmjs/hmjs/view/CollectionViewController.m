@@ -38,7 +38,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+//    mycollectionview.delegate = self;
+//    mycollectionview.dataSource = self;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(loadData)
                                                  name:@"reloadCwj"
@@ -326,6 +327,7 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *info = [dataSource objectAtIndex:indexPath.row];
+//    NSNumber *sortNum = [info objectForKey:@"sort"];
     CwjDetailViewController *cwj = [[CwjDetailViewController alloc] init];
     cwj.title = self.tabBarController.title;
     cwj.info = info;
@@ -357,6 +359,97 @@
 //    [self loadData];
 //    [_slimeView endRefresh];
 //}
+
+#pragma mark - RACollectionViewDelegate
+//- (CGFloat)sectionSpacingForCollectionView:(UICollectionView *)collectionView
+//{
+//    return 5.f;
+//}
+
+//- (CGFloat)minimumInteritemSpacingForCollectionView:(UICollectionView *)collectionView
+//{
+//    return 5.f;
+//}
+
+//- (CGFloat)minimumLineSpacingForCollectionView:(UICollectionView *)collectionView
+//{
+//    return 5.f;
+//}
+
+//- (UIEdgeInsets)insetsForCollectionView:(UICollectionView *)collectionView
+//{
+//    return UIEdgeInsetsMake(5.f, 0, 5.f, 0);
+//}
+//- (CGSize)collectionView:(UICollectionView *)collectionView sizeForLargeItemsInSection:(NSInteger)section
+//{
+////    return CGSizeMake(90, 110);
+//    return RACollectionViewTripletLayoutStyleSquare; //same as default !
+//}
+//- (UIEdgeInsets)autoScrollTrigerEdgeInsets:(UICollectionView *)collectionView
+//{
+//    return UIEdgeInsetsMake(50.f, 0, 50.f, 0); //Sorry, horizontal scroll is not supported now.
+//}
+
+//- (UIEdgeInsets)autoScrollTrigerPadding:(UICollectionView *)collectionView
+//{
+//    return UIEdgeInsetsMake(64.f, 0, 0, 0);
+//}
+
+//- (CGFloat)reorderingItemAlpha:(UICollectionView *)collectionview
+//{
+//    return .3f;
+//}
+//- (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    [mycollectionview reloadData];
+//}
+
+
+#pragma mark - LXReorderableCollectionViewDataSource methods
+
+- (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath willMoveToIndexPath:(NSIndexPath *)toIndexPath {
+    
+    NSDictionary *info = [dataSource objectAtIndex:fromIndexPath.item];
+    
+    [dataSource removeObjectAtIndex:fromIndexPath.item];
+    [dataSource insertObject:info atIndex:toIndexPath.item];
+}
+
+//- (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath didMoveToIndexPath:(NSIndexPath *)toIndexPath
+//{
+////    UIImage *image = [_photosArray objectAtIndex:fromIndexPath.item];
+//    NSDictionary *info = [dataSource objectAtIndex:fromIndexPath.item];
+//    
+//    [dataSource removeObjectAtIndex:fromIndexPath.item];
+//    [dataSource insertObject:info atIndex:toIndexPath.item];
+//}
+- (BOOL)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath canMoveToIndexPath:(NSIndexPath *)toIndexPath
+{
+    return YES;
+}
+
+- (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+#pragma mark - LXReorderableCollectionViewDelegateFlowLayout methods
+
+- (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout willBeginDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"will begin drag");
+}
+
+- (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didBeginDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"did begin drag");
+}
+
+- (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout willEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"will end drag");
+}
+
+- (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"did end drag");
+}
 
 #pragma mark - private
 //成功

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LXReorderableCollectionViewFlowLayout.h"
 
-@interface CollectionViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+@interface CollectionViewController : UIViewController<LXReorderableCollectionViewDataSource, LXReorderableCollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UICollectionView *mycollectionview;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) NSString* examinetype;

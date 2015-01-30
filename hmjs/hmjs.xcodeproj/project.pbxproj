@@ -18,6 +18,7 @@
 		E4C3F46D1A7A40C90055041E /* checkbox1_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3F4671A7A40C90055041E /* checkbox1_unchecked.png */; };
 		E4C3F46E1A7A40C90055041E /* checkbox1_unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3F4681A7A40C90055041E /* checkbox1_unchecked@2x.png */; };
 		E4C3F46F1A7A40C90055041E /* QCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C3F46A1A7A40C90055041E /* QCheckBox.m */; };
+		E4C82B931A7B8B8A00AEFCBC /* LXReorderableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C82B921A7B8B8A00AEFCBC /* LXReorderableCollectionViewFlowLayout.m */; };
 		E4CAF5BE1A31B333009A77BE /* AddActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CAF5BC1A31B333009A77BE /* AddActivityViewController.m */; };
 		E4CAF5BF1A31B333009A77BE /* AddActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4CAF5BD1A31B333009A77BE /* AddActivityViewController.xib */; };
 		E4CAF5C21A31B7A4009A77BE /* smiley_add_btn_nor.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CAF5C01A31B7A4009A77BE /* smiley_add_btn_nor.png */; };
@@ -578,6 +579,8 @@
 		E4C3F4681A7A40C90055041E /* checkbox1_unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox1_unchecked@2x.png"; sourceTree = "<group>"; };
 		E4C3F4691A7A40C90055041E /* QCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCheckBox.h; sourceTree = "<group>"; };
 		E4C3F46A1A7A40C90055041E /* QCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCheckBox.m; sourceTree = "<group>"; };
+		E4C82B911A7B8B8A00AEFCBC /* LXReorderableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXReorderableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		E4C82B921A7B8B8A00AEFCBC /* LXReorderableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXReorderableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		E4CAF5BB1A31B333009A77BE /* AddActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddActivityViewController.h; sourceTree = "<group>"; };
 		E4CAF5BC1A31B333009A77BE /* AddActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AddActivityViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E4CAF5BD1A31B333009A77BE /* AddActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddActivityViewController.xib; sourceTree = "<group>"; };
@@ -1480,6 +1483,15 @@
 			path = QCheckbox;
 			sourceTree = "<group>";
 		};
+		E4C82B901A7B8B8A00AEFCBC /* LXReorderableCollectionViewFlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				E4C82B911A7B8B8A00AEFCBC /* LXReorderableCollectionViewFlowLayout.h */,
+				E4C82B921A7B8B8A00AEFCBC /* LXReorderableCollectionViewFlowLayout.m */,
+			);
+			path = LXReorderableCollectionViewFlowLayout;
+			sourceTree = "<group>";
+		};
 		E4CAF5C41A31BE0A009A77BE /* ELCImagePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -1555,6 +1567,7 @@
 				E4E76AFF1A277979004DF568 /* MainViewController.xib */,
 				E4E76CEA1A277B28004DF568 /* view */,
 				E4E76C281A277AB7004DF568 /* EaseMobSDK */,
+				E4C82B901A7B8B8A00AEFCBC /* LXReorderableCollectionViewFlowLayout */,
 				E4C3F4641A7A40C90055041E /* QCheckbox */,
 				E4ED05301A79182B005C5683 /* SVPullToRefresh */,
 				E4CAF5C41A31BE0A009A77BE /* ELCImagePicker */,
@@ -3479,6 +3492,7 @@
 				E4E76F7C1A277B3C004DF568 /* SettingsViewController.m in Sources */,
 				E4E76F351A277B3C004DF568 /* EMChatAudioBubbleView.m in Sources */,
 				E4E76F441A277B3C004DF568 /* ContactSelectionViewController.m in Sources */,
+				E4C82B931A7B8B8A00AEFCBC /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				E4E76CE61A277B0E004DF568 /* UIImageView+AFNetworking.m in Sources */,
 				E4E76F7D1A277B3C004DF568 /* BaseTableViewCell.m in Sources */,
 				E4E76EF21A277B3C004DF568 /* UIViewController+HUD.m in Sources */,
