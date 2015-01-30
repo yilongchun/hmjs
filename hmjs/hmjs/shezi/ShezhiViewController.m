@@ -80,7 +80,7 @@
                 break;
         }
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -92,6 +92,7 @@
 
 #pragma mark - UITableViewDatasource Methods
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             YjfkViewController *vc = [[YjfkViewController alloc] init];
@@ -123,6 +124,7 @@
             [actionsheet showInView:self.view];
         }
     }
+    
 }
 
 #pragma mark - 检查更新
