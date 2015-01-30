@@ -34,6 +34,14 @@
     [self.view addSubview:HUD];
     HUD.delegate = self;
     
+    CGRect rect = self.temperatureText.frame;
+    rect.size.height = 40;
+    self.temperatureText.frame = rect;
+    
+    rect = self.mobileText.frame;
+    rect.size.height = 40;
+    self.mobileText.frame = rect;
+    
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
     NSString *studentName = [info objectForKey:@"studentName"];
@@ -58,7 +66,7 @@
     _check1.frame = CGRectMake((width-checkBoxWidth)/2 - 100, 102, checkBoxWidth, 40);
     [_check1 setTitle:@"正常" forState:UIControlStateNormal];
     [_check1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [_check1.titleLabel setFont:[UIFont boldSystemFontOfSize:15.0f]];
+    [_check1.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
     [_check1 addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_check1];
     
@@ -68,7 +76,7 @@
     _check2.frame = CGRectMake((width-checkBoxWidth)/2, 102, checkBoxWidth, 40);
     [_check2 setTitle:@"缺勤" forState:UIControlStateNormal];
     [_check2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [_check2.titleLabel setFont:[UIFont boldSystemFontOfSize:15.0f]];
+    [_check2.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
     [_check2 addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_check2];
     
@@ -77,7 +85,7 @@
     _check3.frame = CGRectMake((width-checkBoxWidth)/2 + 100, 102, checkBoxWidth, 40);
     [_check3 setTitle:@"异常" forState:UIControlStateNormal];
     [_check3 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [_check3.titleLabel setFont:[UIFont boldSystemFontOfSize:15.0f]];
+    [_check3.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
     [_check3 addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_check3];
     
@@ -150,7 +158,7 @@
     }
     [dic setValue:self.mytextview1.text forKey:@"detail"];
     [dic setValue:self.mobileText.text forKey:@"mobile"];
-    [dic setValue:self.sortNum forKey:@"sort"];
+    [dic setValue:[info objectForKey:@"sort"] forKey:@"sort"];
     
     MKNetworkOperation *op = [engine operationWithPath:@"/examine/update.do" params:dic httpMethod:@"POST"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
