@@ -18,6 +18,7 @@
 #import "ImgScrollView.h"
 #import "SRRefreshView.h"
 #import "IQKeyboardManager.h"
+#import "MoreTableViewCell.h"
 
 @interface MyViewControllerCellDetail ()<MBProgressHUDDelegate,TapImageViewDelegate,ImgScrollViewDelegate,UIScrollViewDelegate,SRRefreshDelegate>{
     MKNetworkEngine *engine;
@@ -33,6 +34,7 @@
     UIView *markView;
     UIView *scrollPanel;
     ContentCell *tapCell;
+    UIActivityIndicatorView *tempactivity;
 }
 
 @property (strong, nonatomic)UIButton *videoPlayButton;
@@ -448,11 +450,12 @@
                 }else{
                     totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue] + 1];
                 }
-                [self.mytableview reloadData];
             }
-            [HUD hide:YES];
+            if ([tempactivity isAnimating]) {
+                [tempactivity stopAnimating];
+            }
+            [self.mytableview reloadData];
         }else{
-            [HUD hide:YES];
             [self alertMsg:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
@@ -545,12 +548,11 @@
     }else{
         if ([self.dataSource count] == indexPath.row) {
             static NSString *cellIdentifier = @"morecell";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+            MoreTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
             if (!cell) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-                cell.textLabel.text = @"点击加载更多";
+                cell = [[[NSBundle mainBundle] loadNibNamed:@"MoreTableViewCell" owner:self options:nil] lastObject];
             }
-            cell.textLabel.textAlignment = NSTextAlignmentCenter;
+            cell.msg.text = @"显示下10条";
             return cell;
             
         }else{
@@ -651,7 +653,7 @@
         return size.height;
     }else{
         if ([self.dataSource count] == indexPath.row) {
-            return 44;
+            return 55;
         }else{
             NSInteger row = [indexPath row];
             // 列寬
@@ -687,7 +689,10 @@
             if (page == totalpage) {
                 
             }else{
-                [HUD show:YES];
+                MoreTableViewCell *cell = (MoreTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+                cell.msg.text = @"加载中...";
+                [cell.activity startAnimating];
+                tempactivity = cell.activity;
                 [self loadDataPingLunMore];
             }
         }else{

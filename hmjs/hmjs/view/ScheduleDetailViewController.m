@@ -38,10 +38,7 @@
     
     
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
-                                 initWithTitle:@"修改"
-                                 style:UIBarButtonItemStyleBordered
-                                 target:self
-                                 action:@selector(save)];
+                                 initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(save)];
     self.navigationItem.rightBarButtonItem = rightBtn;
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];

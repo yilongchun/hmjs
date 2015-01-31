@@ -117,10 +117,7 @@
     
     //添加按钮
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
-                                 initWithTitle:@"提交"
-                                 style:UIBarButtonItemStyleBordered
-                                 target:self
-                                 action:@selector(save)];
+                                 initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(save)];
     self.navigationItem.rightBarButtonItem = rightBtn;
     
     NSDate *date = [NSDate date];

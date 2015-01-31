@@ -115,13 +115,7 @@
     self.mytextview1.layer.cornerRadius = 5.0f;
     [self.mytextview1.layer setMasksToBounds:YES];
     
-//    //添加按钮
-//    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
-//                                 initWithTitle:@"提交"
-//                                 style:UIBarButtonItemStyleBordered
-//                                 target:self
-//                                 action:@selector(save:)];
-//    self.navigationItem.rightBarButtonItem = rightBtn;
+
 }
 
 - (void)didReceiveMemoryWarning {

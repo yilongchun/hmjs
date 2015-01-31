@@ -57,10 +57,7 @@
     }
     
     //初始化按钮
-    UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [addButton setImage:[UIImage imageNamed:@"add.png"] forState:UIControlStateNormal];
-    [addButton addTarget:self action:@selector(addFriendAction2) forControlEvents:UIControlEventTouchUpInside];
-    _addFriendItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
+    _addFriendItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addFriendAction2)];
     self.navigationItem.rightBarButtonItem = _addFriendItem;
     
     

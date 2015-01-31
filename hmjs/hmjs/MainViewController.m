@@ -45,6 +45,11 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     UILabel *unreadlabel;
     UIPageControl *spacePageControl;
     UIScrollView *mainScrollView;
+    
+    MyTabbarController *tabBarCtl;//园所动态
+    BbxxTarbarViewController *bwgl;//班务管理
+    CwjTabBarController *cwj;//晨午检
+    MyTabbarController4 *tab4;//个人日志
 }
 
 @property (strong, nonatomic)NSDate *lastPlaySoundDate;
@@ -569,12 +574,10 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 }
 //班务管理
 - (IBAction)bwglAction:(UIButton *)sender {
-    
-    BbxxTarbarViewController *vc = [[BbxxTarbarViewController alloc] init];
-    
-    
-//    YsdtViewController *ysdt = [[YsdtViewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
+    if (bwgl == nil) {
+        bwgl = [[BbxxTarbarViewController alloc] init];
+    }
+    [self.navigationController pushViewController:bwgl animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
 }
 //教师园地
@@ -591,36 +594,11 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 }
 //园所动态
 - (IBAction)ysdtAction:(UIButton *)sender {
-    
-    //    初始化第一个视图控制器
-//    BwhdViewController *vc1 = [[BwhdViewController alloc] init];
-//    vc1.tabBarItem =[[UITabBarItem alloc] initWithTitle:@"班务活动" image:[UIImage imageNamed:@"ic_bwrz_002.png"] tag:0];
-//    
-//    
-//    //    初始化第二个视图控制器
-//    BjtzViewController *vc2 = [[BjtzViewController alloc] init];
-//    vc2.tabBarItem =[[UITabBarItem alloc] initWithTitle:@"班级通知" image:[UIImage imageNamed:@"ic_bwrz_003.png"] tag:1];
-//
-//    //    把导航控制器加入到数组
-//    NSMutableArray *viewArr_ = [NSMutableArray arrayWithObjects:vc1,vc2, nil];
-    
-    
-    MyTabbarController *tabBarCtl = [[MyTabbarController alloc] init];
-    
-    //    把视图数组放到tabbarcontroller 里面
-//    UITabBarController *tabBarCtl = [[UITabBarController alloc] init];
-//    [tabBarCtl.view setFrame:CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height)];
-//    tabBarCtl.title = @"班务活动";
-//    tabBarCtl.viewControllers = viewArr_;
-//    
-//    tabBarCtl.selectedIndex = 0;
-//    [[tabBarCtl tabBar] setSelectedImageTintColor:[UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1]];
-    
-    
-    
+    if (tabBarCtl == nil) {
+        tabBarCtl = [[MyTabbarController alloc] init];
+    }
     [self.navigationController pushViewController:tabBarCtl animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
-    
 }
 
 
@@ -854,7 +832,9 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 }
 
 -(void)cwjAction{
-    CwjTabBarController *cwj = [[CwjTabBarController alloc] init];
+    if (cwj == nil) {
+        cwj = [[CwjTabBarController alloc] init];
+    }
     [self.navigationController pushViewController:cwj animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
 }
@@ -873,8 +853,11 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     [self.navigationController pushViewController:_chatListController animated:YES];
 }
 
+//个人日志
 -(void)grrz{
-    MyTabbarController4 *tab4 = [[MyTabbarController4 alloc] init];
+    if (tab4 == nil) {
+        tab4 = [[MyTabbarController4 alloc] init];
+    }
     [self.navigationController pushViewController:tab4 animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
 }
