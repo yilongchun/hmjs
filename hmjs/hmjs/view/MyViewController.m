@@ -143,7 +143,7 @@
     cell.gdispcription.lineBreakMode = NSLineBreakByCharWrapping;// 不可少Label属性之二
     
     if ([Utils isBlankString:fileid]) {
-        [cell.imageview setImage:[UIImage imageNamed:@"nopicture.png"]];
+        [cell.imageview setImage:[UIImage imageNamed:@"nopicture2.png"]];
     }else{
 //        [cell.imageview setImageFromURL:[NSURL URLWithString:fileid] placeHolderImage:nil usingEngine:engine animation:YES];
         
