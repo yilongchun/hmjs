@@ -551,6 +551,7 @@
 		E4F38F6A1A373D7100F4FE3B /* AddBwrzViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F38F681A373D7100F4FE3B /* AddBwrzViewController.xib */; };
 		E4F38F6E1A37589100F4FE3B /* UpdateBwrzViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F38F6C1A37589100F4FE3B /* UpdateBwrzViewController.m */; };
 		E4F38F6F1A37589100F4FE3B /* UpdateBwrzViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F38F6D1A37589100F4FE3B /* UpdateBwrzViewController.xib */; };
+		E4F3AFD61A7CE35900176E56 /* nopicture2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F3AFD51A7CE35900176E56 /* nopicture2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1430,6 +1431,7 @@
 		E4F38F6B1A37589100F4FE3B /* UpdateBwrzViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateBwrzViewController.h; sourceTree = "<group>"; };
 		E4F38F6C1A37589100F4FE3B /* UpdateBwrzViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = UpdateBwrzViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E4F38F6D1A37589100F4FE3B /* UpdateBwrzViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateBwrzViewController.xib; sourceTree = "<group>"; };
+		E4F3AFD51A7CE35900176E56 /* nopicture2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nopicture2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1618,6 +1620,7 @@
 		E4E76B041A277997004DF568 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E4F3AFD51A7CE35900176E56 /* nopicture2.png */,
 				E4EC153A1A77E4BF0048ACDB /* loginBtnBg.png */,
 				E4EC153B1A77E4BF0048ACDB /* loginBtnBg2.png */,
 				E4EDEABB1A403A7000711A94 /* currentPageDot@2x.png */,
@@ -3460,6 +3463,7 @@
 				E4E76F2C1A277B3C004DF568 /* chatBar_more_location.png in Resources */,
 				E4E76EE61A277B3C004DF568 /* sr_refresh.png in Resources */,
 				E4E76BAA1A277997004DF568 /* VoiceSearchFeedback003.png in Resources */,
+				E4F3AFD61A7CE35900176E56 /* nopicture2.png in Resources */,
 				E4E76F221A277B3C004DF568 /* chatBar_colorMore_location@2x.png in Resources */,
 				E4C3F46B1A7A40C90055041E /* checkbox1_checked.png in Resources */,
 				E4E76D331A277B28004DF568 /* BbspViewController.xib in Resources */,

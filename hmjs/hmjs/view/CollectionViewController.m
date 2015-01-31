@@ -20,15 +20,14 @@
     MBProgressHUD *HUD;
     MKNetworkEngine *engine;
     NSNumber *totalpage;
-//    NSNumber *page;
-//    NSNumber *rows;
     
     NSString *userid;
     NSString *classid;
-    int sort;
-//    UIActivityIndicatorView *tempactivity;
+    NSString *fileName;
+    
+    NSIndexPath *fromIndex;
+    NSIndexPath *toIndex;
 }
-//@property (nonatomic, strong) SRRefreshView *slimeView;
 @end
 
 @implementation CollectionViewController
@@ -37,15 +36,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    fileName = @"collectionUser";
     // Do any additional setup after loading the view from its nib.
-//    mycollectionview.delegate = self;
-//    mycollectionview.dataSource = self;
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(loadData)
+                                             selector:@selector(loadData2)
                                                  name:@"reloadCwj"
                                                object:nil];
     
-//    [mycollectionview addSubview:self.slimeView];
     [mycollectionview registerClass:[CollectionCell class] forCellWithReuseIdentifier:@"CollectionCell"];
     mycollectionview.alwaysBounceVertical = YES;
     //添加加载等待条
@@ -67,126 +65,31 @@
     [mycollectionview addPullToRefreshWithActionHandler:^{
         [weakSelf insertRowAtTop];
     }];
-    // setup infinite scrolling
-//    [mycollectionview addInfiniteScrollingWithActionHandler:^{
-//        [weakSelf insertRowAtBottom];
-//    }];
+
     //初始化数据
     [mycollectionview triggerPullToRefresh];
 }
 
-//#pragma mark - getter
-//- (SRRefreshView *)slimeView
-//{
-//    if (!_slimeView) {
-//        _slimeView = [[SRRefreshView alloc] init];
-//        _slimeView.delegate = self;
-//        _slimeView.upInset = 0;
-//        _slimeView.slimeMissWhenGoingBack = YES;
-//        _slimeView.slime.bodyColor = [UIColor grayColor];
-//        _slimeView.slime.skinColor = [UIColor grayColor];
-//        _slimeView.slime.lineWith = 1;
-//        _slimeView.slime.shadowBlur = 4;
-//        _slimeView.slime.shadowColor = [UIColor grayColor];
-//        _slimeView.backgroundColor = [UIColor whiteColor];
-//    }
-//    
-//    return _slimeView;
-//}
-
 - (void)insertRowAtTop {
-    
     int64_t delayInSeconds = 0.5;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self loadData];
+        [self loadData:YES];
     });
 }
 
-//- (void)insertRowAtBottom {
-//    NSLog(@"insertRowAtBottom");
-//    int64_t delayInSeconds = 0.5;
-//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//        if ([page intValue] < [totalpage intValue]) {NSLog(@"1");
-//            page = [NSNumber numberWithInt:[page intValue] +1];
-//        
-//            NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-//            [dic setValue:self.examinetype forKey:@"examinetype"];
-//            [dic setValue:classid forKey:@"classid"];
-//            [dic setValue:userid forKey:@"userid"];
-//            [dic setValue:page forKey:@"page"];
-//            [dic setValue:rows forKey:@"rows"];
-//            MKNetworkOperation *op = [engine operationWithPath:@"/examine/findPageList.do" params:dic httpMethod:@"GET"];
-//            [op addCompletionHandler:^(MKNetworkOperation *operation) {
-//                NSString *result = [operation responseString];
-//                NSError *error;
-//                NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
-//                if (resultDict == nil) {
-//                    NSLog(@"json parse failed \r\n");
-//                }
-//                NSNumber *success = [resultDict objectForKey:@"success"];
-//                NSString *msg = [resultDict objectForKey:@"msg"];
-//                if ([success boolValue]) {
-//                    NSDictionary *data = [resultDict objectForKey:@"data"];
-//                    if (data != nil) {
-//                        NSArray *arr = [data objectForKey:@"rows"];
-//                        
-//                        NSNumber *total = [data objectForKey:@"total"];
-//                        if ([total intValue] % [rows intValue] == 0) {
-//                            totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue]];
-//                        }else{
-//                            totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue] + 1];
-//                        }
-//                        
-//                        NSMutableArray *indexPathArr = [NSMutableArray array];
-//                        for (int i = 0; i < arr.count; i++) {
-//                            [dataSource addObject:[arr objectAtIndex:i]];
-//                            NSIndexPath *indexpath = [NSIndexPath indexPathForRow:dataSource.count-1 inSection:0];
-//                            [indexPathArr addObject:indexpath];
-//                        }
-//                        [mycollectionview insertItemsAtIndexPaths:indexPathArr];
-//                    }
-//                    [mycollectionview.infiniteScrollingView stopAnimating];
-//                    
-//                    if ([page intValue] == [totalpage intValue]) {
-//                        [self performSelector:@selector(showsInfiniteScrolling) withObject:nil afterDelay:0.5];
-//                    }
-//                    
-//                }else{
-//                    [mycollectionview.infiniteScrollingView stopAnimating];
-//                    [self alertMsg:msg];
-//                }
-//            }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
-//                NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-//                [mycollectionview.infiniteScrollingView stopAnimating];
-//                [self alertMsg:@"连接服务器失败"];
-//            }];
-//            [engine enqueueOperation:op];
-//        }else{NSLog(@"2");
-//            [self showsInfiniteScrolling];
-//        }
-//    });
-//}
 
-//-(void)showsInfiniteScrolling{NSLog(@"3");
-//    if (mycollectionview.showsInfiniteScrolling) {NSLog(@"4");
-//        mycollectionview.showsInfiniteScrolling = NO;
-//    }
-//}
+-(void)loadData2{
+    [self loadData:NO];
+}
 
 //加载数据
-- (void)loadData{
-//    [HUD show:YES];
-//    page = [NSNumber numberWithInt:1];
-//    rows = [NSNumber numberWithInt:12];
-    
+- (void)loadData:(BOOL)flag{
+    [dataSource removeAllObjects];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:self.examinetype forKey:@"examinetype"];
     [dic setValue:classid forKey:@"classid"];
     [dic setValue:userid forKey:@"userid"];
-//    [dic setValue:page forKey:@"page"];
-//    [dic setValue:rows forKey:@"rows"];
     MKNetworkOperation *op = [engine operationWithPath:@"/examine/findPageList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         NSString *result = [operation responseString];
@@ -201,10 +104,7 @@
             NSDictionary *data = [resultDict objectForKey:@"data"];
             if (data != nil) {
                 NSArray *arr = [data objectForKey:@"list"];
-                self.dataSource = [NSMutableArray arrayWithArray:arr];
-                
-                
-                
+
                 NSDictionary *map = [data objectForKey:@"examineMap"];
                 NSNumber *okcount = [map objectForKey:@"okcount"];
                 NSNumber *qqcount = [map objectForKey:@"qqcount"];
@@ -213,44 +113,50 @@
                 self.label1.text = [NSString stringWithFormat:@"正常%d人",[okcount intValue]];
                 self.label2.text = [NSString stringWithFormat:@"异常%d人",[yccount intValue]];
                 self.label3.text = [NSString stringWithFormat:@"缺勤%d人",[qqcount intValue]];
-//                NSNumber *total = [data objectForKey:@"total"];
-//                if ([total intValue] % [rows intValue] == 0) {
-//                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue]];
-//                }else{
-//                    totalpage = [NSNumber numberWithInt:[total intValue] / [rows intValue] + 1];
-//                }
+
+                NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,  NSUserDomainMask,YES);
+                NSString *documentDirectory =[documentPaths objectAtIndex:0];
+                NSString *filePath=[documentDirectory stringByAppendingPathComponent:fileName];
+                NSMutableDictionary *localDic = [self readFromLocal:filePath];
                 
+                NSMutableDictionary *dic = [NSMutableDictionary dictionary];
                 for (int i = 0; i < arr.count; i++) {
-                    NSDictionary *info = [arr objectAtIndex:i];
-                    NSNumber *sortNum = [info objectForKey:@"sort"];
-                    if ([sortNum intValue] != 999) {
-                        int temp = [sortNum intValue];
-                        if (temp > sort) {
-                            sort = temp;
+                    NSMutableDictionary *info = [NSMutableDictionary dictionaryWithDictionary:[arr objectAtIndex:i]];
+                    NSString *tempuserid = [info objectForKey:@"studentid"];
+                    if (localDic) {
+                        NSNumber *localsort = [localDic objectForKey:tempuserid];
+                        if (localsort) {//如果存在本地数据
+                            [info setValue:localsort forKey:@"localsort"];
+                        }else{//如果没有本地数据
+                            NSNumber *sort = [info objectForKey:@"sort"];
+                            [info setValue:sort forKey:@"localsort"];
                         }
+                    }else{//如果没有本地数据
+                        NSNumber *sort = [info objectForKey:@"sort"];
+                        [info setValue:sort forKey:@"localsort"];
                     }
+                    [dic setValue:[info objectForKey:@"localsort"]  forKey:tempuserid];
+                    [self.dataSource addObject:info];
                 }
-                
-                
+                [self saveToLocal:dic];
+                //排序
+                [self arrSort:self.dataSource];
             }
+            NSLog(@"表格刷新");
             [mycollectionview.pullToRefreshView stopAnimating];
             [mycollectionview reloadData];
-//            if (!mycollectionview.showsInfiniteScrolling) {NSLog(@"5");
-//                mycollectionview.showsInfiniteScrolling = YES;
-//            }
-//            [HUD hide:YES];
+            if (flag) {
+                [self alertMsg:@"刷新成功,长按头像拖动排序"];
+            }
+//            NSIndexPath *index = [NSIndexPath indexPathForItem:dataSource.count - 5 inSection:0];
+//            [mycollectionview scrollToItemAtIndexPath:index atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
         }else{
-//            [HUD hide:YES];
             [mycollectionview.pullToRefreshView stopAnimating];
             [self alertMsg:msg];
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-//        [HUD hide:YES];
         [mycollectionview.pullToRefreshView stopAnimating];
-//        if (mycollectionview.showsInfiniteScrolling) {NSLog(@"6");
-//            mycollectionview.showsInfiniteScrolling = NO;
-//        }
         [self alertMsg:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
@@ -280,18 +186,17 @@
     
     NSDictionary *info = [dataSource objectAtIndex:indexPath.row];
     NSString *fileid = [info objectForKey:@"fileid"];
-    
     NSString *situationtype = [info objectForKey:@"situationtype"];
     if (situationtype) {
         [cell.label1 setHidden:NO];
         if ([situationtype isEqualToString:@"1"]) {
-            [cell.label1 setText:@"正常"];
+            [cell.label1 setText:[NSString stringWithFormat:@"正常"]];
             [cell.label1 setBackgroundColor:[UIColor colorWithRed:116/255.0 green:176/255.0 blue:64/255.0 alpha:1]];
         }else if ([situationtype isEqualToString:@"2"]) {
-            [cell.label1 setText:@"缺勤"];
+            [cell.label1 setText:[NSString stringWithFormat:@"缺勤"]];
             [cell.label1 setBackgroundColor:[UIColor colorWithRed:130/255.0 green:115/255.0 blue:8/255.0 alpha:1]];
         }else if ([situationtype isEqualToString:@"3"]) {
-            [cell.label1 setText:@"异常"];
+            [cell.label1 setText:[NSString stringWithFormat:@"异常"]];
             [cell.label1 setBackgroundColor:[UIColor colorWithRed:76/255.0 green:28/255.0 blue:12/255.0 alpha:1]];
         }else{
             [cell.label1 setHidden:YES];
@@ -305,9 +210,9 @@
     
     
     if ([Utils isBlankString:fileid]) {
-        [cell.myimageview setImage:[UIImage imageNamed:@"nopicture.png"]];
+        [cell.myimageview setImage:[UIImage imageNamed:@"nopicture2.png"]];
     }else{
-        [cell.myimageview setImageWithURL:[NSURL URLWithString:fileid] placeholderImage:[UIImage imageNamed:@"nopicture.png"]];
+        [cell.myimageview setImageWithURL:[NSURL URLWithString:fileid] placeholderImage:[UIImage imageNamed:@"nopicture2.png"]];
     }
     return cell;
 }
@@ -331,7 +236,7 @@
     CwjDetailViewController *cwj = [[CwjDetailViewController alloc] init];
     cwj.title = self.tabBarController.title;
     cwj.info = info;
-    cwj.sortNum = [NSNumber numberWithInt:sort+1];
+//    cwj.sortNum = [NSNumber numberWithInt:sort+1];
     [self.navigationController pushViewController:cwj animated:YES];
 }
 //返回这个UICollectionView是否可以被选择
@@ -339,71 +244,6 @@
 {
     return YES;
 }
-
-//#pragma mark - scrollView delegate
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-//{
-//    [_slimeView scrollViewDidScroll];
-//}
-//
-//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-//{
-//    [_slimeView scrollViewDidEndDraging];
-//}
-//
-//#pragma mark - slimeRefresh delegate
-////刷新消息列表
-//- (void)slimeRefreshStartRefresh:(SRRefreshView *)refreshView
-//{
-//    [HUD show:YES];
-//    [self loadData];
-//    [_slimeView endRefresh];
-//}
-
-#pragma mark - RACollectionViewDelegate
-//- (CGFloat)sectionSpacingForCollectionView:(UICollectionView *)collectionView
-//{
-//    return 5.f;
-//}
-
-//- (CGFloat)minimumInteritemSpacingForCollectionView:(UICollectionView *)collectionView
-//{
-//    return 5.f;
-//}
-
-//- (CGFloat)minimumLineSpacingForCollectionView:(UICollectionView *)collectionView
-//{
-//    return 5.f;
-//}
-
-//- (UIEdgeInsets)insetsForCollectionView:(UICollectionView *)collectionView
-//{
-//    return UIEdgeInsetsMake(5.f, 0, 5.f, 0);
-//}
-//- (CGSize)collectionView:(UICollectionView *)collectionView sizeForLargeItemsInSection:(NSInteger)section
-//{
-////    return CGSizeMake(90, 110);
-//    return RACollectionViewTripletLayoutStyleSquare; //same as default !
-//}
-//- (UIEdgeInsets)autoScrollTrigerEdgeInsets:(UICollectionView *)collectionView
-//{
-//    return UIEdgeInsetsMake(50.f, 0, 50.f, 0); //Sorry, horizontal scroll is not supported now.
-//}
-
-//- (UIEdgeInsets)autoScrollTrigerPadding:(UICollectionView *)collectionView
-//{
-//    return UIEdgeInsetsMake(64.f, 0, 0, 0);
-//}
-
-//- (CGFloat)reorderingItemAlpha:(UICollectionView *)collectionview
-//{
-//    return .3f;
-//}
-//- (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    [mycollectionview reloadData];
-//}
-
 
 #pragma mark - LXReorderableCollectionViewDataSource methods
 
@@ -413,29 +253,25 @@
     
     [dataSource removeObjectAtIndex:fromIndexPath.item];
     [dataSource insertObject:info atIndex:toIndexPath.item];
+    
+    fromIndex = fromIndexPath;
+    toIndex = toIndexPath;
+    NSLog(@"fromIndexPath:%d toIndexPath%d",fromIndexPath.row , toIndexPath.row);
 }
 
-//- (void)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath didMoveToIndexPath:(NSIndexPath *)toIndexPath
-//{
-////    UIImage *image = [_photosArray objectAtIndex:fromIndexPath.item];
-//    NSDictionary *info = [dataSource objectAtIndex:fromIndexPath.item];
-//    
-//    [dataSource removeObjectAtIndex:fromIndexPath.item];
-//    [dataSource insertObject:info atIndex:toIndexPath.item];
-//}
-- (BOOL)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath canMoveToIndexPath:(NSIndexPath *)toIndexPath
-{
+- (BOOL)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath canMoveToIndexPath:(NSIndexPath *)toIndexPath{
     return YES;
 }
 
-- (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (BOOL)collectionView:(UICollectionView *)collectionView canMoveItemAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
 }
 
 #pragma mark - LXReorderableCollectionViewDelegateFlowLayout methods
 
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout willBeginDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
+    fromIndex = nil;
+    toIndex = nil;
     NSLog(@"will begin drag");
 }
 
@@ -449,6 +285,22 @@
 
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"did end drag");
+    NSLog(@"fromIndexPath:%d toIndexPath%d",fromIndex.row , toIndex.row);
+    NSLog(@"%d",indexPath.row);
+    if (fromIndex && toIndex && fromIndex.row != toIndex.row) {
+        NSLog(@"开始排序%@",[NSDate date]);
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        for (int i = 0 ; i < dataSource.count; i++) {
+            NSDictionary *info = [dataSource objectAtIndex:i];
+            NSString *studentName = [info objectForKey:@"studentName"];
+            NSString *tempuserid = [info objectForKey:@"studentid"];
+            [dic setValue:[NSNumber numberWithInt:i+1]  forKey:tempuserid];
+            NSLog(@"%@ 序号 %d",studentName,i+1);
+        }
+        [self saveToLocal:dic];
+        NSLog(@"排序结束%@",[NSDate date]);
+    }
+    
 }
 
 #pragma mark - private
@@ -471,9 +323,87 @@
     hud.labelText = msg;
     hud.margin = 10.f;
     hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.0];
+    [hud hide:YES afterDelay:3];
 }
 
+-(void)saveToLocal:(NSMutableDictionary *)dic{
+    NSArray *documentPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,  NSUserDomainMask,YES);
+    NSString *documentDirectory =[documentPaths objectAtIndex:0];
+//    NSLog(@"%@",documentDirectory);
+    NSString *filePath=[documentDirectory stringByAppendingPathComponent:fileName];
+//    NSData* xmlData = [@"testdata" dataUsingEncoding:NSUTF8StringEncoding];
+//    BOOL flag = [xmlData writeToFile:fileName atomically:YES];
+//    NSLog(@"%@",flag ? @"成功" : @"失败");
+    
+//    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+//                            @"balance", @"key",
+//                            @"remaining balance", @"label",
+//                            @"45", @"value",
+//                            @"USD", @"currencyCode",nil];
+    
+    
+    NSMutableDictionary *localDic = [self readFromLocal:filePath];
+    if (localDic) {
+        NSLog(@"添加了%d条数据",[dic count]);
+        [localDic setValuesForKeysWithDictionary:dic];
+    }else{
+        NSLog(@"初始化 添加了%d条数据",[dic count]);
+        localDic = [NSMutableDictionary dictionaryWithDictionary:dic];
+    }
+    
+    NSMutableData *data = [[NSMutableData alloc] init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [archiver encodeObject:localDic forKey:@"userlist"];
+    [archiver finishEncoding];
+    BOOL flag = [data writeToFile:filePath atomically:YES];
+    NSLog(@"保存本地:%@ : %d",flag ? @"成功" : @"失败",[localDic count]);
+//    NSData *data=[NSData dataWithContentsOfFile:fileName options:0 error:NULL];
+//    NSString *s = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+}
+
+-(NSMutableDictionary *)readFromLocal:(NSString *)filename{
+    NSData *data=[NSData dataWithContentsOfFile:filename options:0 error:NULL];
+    if (data) {
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+        NSMutableDictionary *myDictionary = [unarchiver decodeObjectForKey:@"userlist"];
+        [unarchiver finishDecoding];
+        NSLog(@"读取本地数据成功:%d",[myDictionary count]);
+        return myDictionary;
+    }else{
+        NSLog(@"读取本地数据失败");
+        return nil;
+    }
+}
+
+-(void)arrSort:(NSArray *)beforeArray{
+    NSComparator cmptr = ^(id obj1, id obj2){
+        NSNumber *sort1 = [obj1 objectForKey:@"localsort"];
+        NSNumber *sort2 = [obj2 objectForKey:@"localsort"];
+        if ([sort1 integerValue] > [sort2 integerValue]) {
+            return (NSComparisonResult)NSOrderedDescending;
+        }
+        if ([sort1 integerValue] < [sort2 integerValue]) {
+            return (NSComparisonResult)NSOrderedAscending;
+        }
+        return (NSComparisonResult)NSOrderedSame;
+    };
+    
+    //排序前
+    NSLog(@"排序前:");
+    for (NSDictionary *info in beforeArray) {
+        NSNumber *localsort = [info objectForKey:@"localsort"];
+        NSLog(@"%d",[localsort intValue]);
+    }
+    //第一种排序
+    NSArray *array = [beforeArray sortedArrayUsingComparator:cmptr];
+    NSLog(@"排序后:");
+    for (NSDictionary *info in array) {
+        NSNumber *localsort = [info objectForKey:@"localsort"];
+        NSLog(@"%d",[localsort intValue]);
+    }
+    dataSource = [NSMutableArray arrayWithArray:array];
+}
 /*
 #pragma mark - Navigation
 

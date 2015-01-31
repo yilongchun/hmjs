@@ -36,7 +36,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <size key="customSize" width="90" height="100"/>
             <connections>
                 <outlet property="label1" destination="YLy-fh-yaV" id="7CR-xX-V2Y"/>

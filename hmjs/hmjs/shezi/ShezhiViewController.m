@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "YjfkViewController.h"
 #import "UpdatePasswordViewController.h"
+#import "ApplyViewController.h"
 
 @interface ShezhiViewController (){
     NSString *trackViewUrl;
@@ -110,8 +111,9 @@
                                                       style:UIAlertActionStyleDestructive
                                                     handler:^(UIAlertAction *action) {
                                                         //退出登陆
-                                                        [self.navigationController setNavigationBarHidden:YES];
-                                                        [self.navigationController popToRootViewControllerAnimated:YES];
+                                                        [self logoutAction];
+//                                                        [self.navigationController setNavigationBarHidden:YES];
+//                                                        [self.navigationController popToRootViewControllerAnimated:YES];
                                                     }]];
             [alert addAction:[UIAlertAction actionWithTitle:@"取消"
                                                       style:UIAlertActionStyleCancel
@@ -205,8 +207,9 @@
     if (actionSheet.tag == 100) {
         if (buttonIndex == 0) {
             //退出登陆
-            [self.navigationController setNavigationBarHidden:YES];
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            [self logoutAction];
+//            [self.navigationController setNavigationBarHidden:YES];
+//            [self.navigationController popToRootViewControllerAnimated:YES];
         }
     }
 }
@@ -217,6 +220,21 @@
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
         }
     }
+}
+
+- (void)logoutAction
+{
+    
+    [self showHudInView:self.view hint:@"正在退出..."];
+    [[EaseMob sharedInstance].chatManager asyncLogoffWithCompletion:^(NSDictionary *info, EMError *error) {
+        if (error) {
+            
+        }
+        else{
+            [[ApplyViewController shareController] clear];
+            [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@NO];
+        }
+    } onQueue:nil];
 }
 
 /*
