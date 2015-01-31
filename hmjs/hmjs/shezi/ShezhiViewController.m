@@ -138,26 +138,42 @@
     [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://itunes.apple.com/cn/lookup?id=%@",APPID]]];
     [request setHTTPMethod:@"GET"];
     NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:returnData options:0 error:nil];
-    NSArray *infoArray = [jsonData objectForKey:@"results"];
-    if ([infoArray count]) {
-        NSDictionary *releaseInfo = [infoArray objectAtIndex:0];
-        NSString *lastVersion = [releaseInfo objectForKey:@"version"];
-        if (![lastVersion isEqualToString:currentVersion]) {
-            trackViewUrl = [releaseInfo objectForKey:@"trackViewUrl"];
-            if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1){
-                alert = [UIAlertController alertControllerWithTitle:@"更新" message:@"有新的版本更新，是否前往更新？" preferredStyle:UIAlertControllerStyleAlert];
-                [alert addAction:[UIAlertAction actionWithTitle:@"更新"
-                                                          style:UIAlertActionStyleDestructive
-                                                        handler:^(UIAlertAction *action) {
-                                                            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
-                                                        }]];
-                [alert addAction:[UIAlertAction actionWithTitle:@"关闭"
-                                                          style:UIAlertActionStyleCancel
-                                                        handler:^(UIAlertAction *action) {
-                                                        }]];
-                [self presentViewController:alert animated:YES completion:nil];
-            }else{
+    if (returnData) {
+        NSDictionary *jsonData = [NSJSONSerialization JSONObjectWithData:returnData options:0 error:nil];
+        NSArray *infoArray = [jsonData objectForKey:@"results"];
+        if ([infoArray count]) {
+            NSDictionary *releaseInfo = [infoArray objectAtIndex:0];
+            NSString *lastVersion = [releaseInfo objectForKey:@"version"];
+            if (![lastVersion isEqualToString:currentVersion]) {
+                trackViewUrl = [releaseInfo objectForKey:@"trackViewUrl"];
+                if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1){
+                    alert = [UIAlertController alertControllerWithTitle:@"更新" message:@"有新的版本更新，是否前往更新？" preferredStyle:UIAlertControllerStyleAlert];
+                    [alert addAction:[UIAlertAction actionWithTitle:@"更新"
+                                                              style:UIAlertActionStyleDestructive
+                                                            handler:^(UIAlertAction *action) {
+                                                                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
+                                                            }]];
+                    [alert addAction:[UIAlertAction actionWithTitle:@"关闭"
+                                                              style:UIAlertActionStyleCancel
+                                                            handler:^(UIAlertAction *action) {
+                                                            }]];
+                    [self presentViewController:alert animated:YES completion:nil];
+                }else{
+                    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1){
+                        alert = [UIAlertController alertControllerWithTitle:@"更新" message:@"此版本为最新版本" preferredStyle:UIAlertControllerStyleAlert];
+                        [alert addAction:[UIAlertAction actionWithTitle:@"确定"
+                                                                  style:UIAlertActionStyleDestructive
+                                                                handler:^(UIAlertAction *action) {
+                                                                }]];
+                        [self presentViewController:alert animated:YES completion:nil];
+                    }else{
+                        UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"此版本为最新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                        alert2.tag = 10001;
+                        [alert2 show];
+                    }
+                }
+            }
+            else{
                 if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1){
                     alert = [UIAlertController alertControllerWithTitle:@"更新" message:@"此版本为最新版本" preferredStyle:UIAlertControllerStyleAlert];
                     [alert addAction:[UIAlertAction actionWithTitle:@"确定"
@@ -171,17 +187,16 @@
                     [alert2 show];
                 }
             }
-        }
-        else{
+        }else{
             if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1){
-                alert = [UIAlertController alertControllerWithTitle:@"更新" message:@"此版本为最新版本" preferredStyle:UIAlertControllerStyleAlert];
+                alert = [UIAlertController alertControllerWithTitle:@"更新" message:@"没有获取到版本信息" preferredStyle:UIAlertControllerStyleAlert];
                 [alert addAction:[UIAlertAction actionWithTitle:@"确定"
                                                           style:UIAlertActionStyleDestructive
                                                         handler:^(UIAlertAction *action) {
                                                         }]];
                 [self presentViewController:alert animated:YES completion:nil];
             }else{
-                UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"此版本为最新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"没有获取到版本信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                 alert2.tag = 10001;
                 [alert2 show];
             }
@@ -200,6 +215,7 @@
             [alert2 show];
         }
     }
+    
 }
 
 #pragma mark - UIActionSheet Delegate
@@ -225,7 +241,7 @@
 - (void)logoutAction
 {
     
-    [self showHudInView:self.view hint:@"正在退出..."];
+//    [self showHudInView:self.view hint:@"正在退出..."];
     [[EaseMob sharedInstance].chatManager asyncLogoffWithCompletion:^(NSDictionary *info, EMError *error) {
         if (error) {
             

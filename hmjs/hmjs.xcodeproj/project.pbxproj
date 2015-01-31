@@ -552,6 +552,25 @@
 		E4F38F6E1A37589100F4FE3B /* UpdateBwrzViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F38F6C1A37589100F4FE3B /* UpdateBwrzViewController.m */; };
 		E4F38F6F1A37589100F4FE3B /* UpdateBwrzViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F38F6D1A37589100F4FE3B /* UpdateBwrzViewController.xib */; };
 		E4F3AFD61A7CE35900176E56 /* nopicture2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F3AFD51A7CE35900176E56 /* nopicture2.png */; };
+		E4F3AFE51A7CF17D00176E56 /* AddScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F3AFD81A7CF17D00176E56 /* AddScheduleViewController.m */; };
+		E4F3AFE61A7CF17D00176E56 /* AddScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F3AFD91A7CF17D00176E56 /* AddScheduleViewController.xib */; };
+		E4F3AFE71A7CF17D00176E56 /* DailyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F3AFDB1A7CF17D00176E56 /* DailyTableViewCell.m */; };
+		E4F3AFE81A7CF17D00176E56 /* DailyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F3AFDC1A7CF17D00176E56 /* DailyTableViewCell.xib */; };
+		E4F3AFE91A7CF17D00176E56 /* MyTabbarController4.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F3AFDE1A7CF17D00176E56 /* MyTabbarController4.m */; };
+		E4F3AFEA1A7CF17D00176E56 /* ScheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F3AFE01A7CF17D00176E56 /* ScheduleDetailViewController.m */; };
+		E4F3AFEB1A7CF17D00176E56 /* ScheduleDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F3AFE11A7CF17D00176E56 /* ScheduleDetailViewController.xib */; };
+		E4F3AFEC1A7CF17D00176E56 /* ScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F3AFE31A7CF17D00176E56 /* ScheduleViewController.m */; };
+		E4F3AFED1A7CF17D00176E56 /* ScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F3AFE41A7CF17D00176E56 /* ScheduleViewController.xib */; };
+		E4F3AFF11A7CF1F400176E56 /* MoreTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F3AFEF1A7CF1F400176E56 /* MoreTableViewCell.m */; };
+		E4F3AFF21A7CF1F400176E56 /* MoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F3AFF01A7CF1F400176E56 /* MoreTableViewCell.xib */; };
+		E4F3AFFB1A7CF74600176E56 /* planmanage1.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F3AFF31A7CF74600176E56 /* planmanage1.png */; };
+		E4F3AFFC1A7CF74600176E56 /* planmanage1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F3AFF41A7CF74600176E56 /* planmanage1@2x.png */; };
+		E4F3AFFD1A7CF74600176E56 /* planmanage2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F3AFF51A7CF74600176E56 /* planmanage2.png */; };
+		E4F3AFFE1A7CF74600176E56 /* planmanage2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F3AFF61A7CF74600176E56 /* planmanage2@2x.png */; };
+		E4F3AFFF1A7CF74600176E56 /* summarymanage1.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F3AFF71A7CF74600176E56 /* summarymanage1.png */; };
+		E4F3B0001A7CF74600176E56 /* summarymanage1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F3AFF81A7CF74600176E56 /* summarymanage1@2x.png */; };
+		E4F3B0011A7CF74600176E56 /* summarymanage2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F3AFF91A7CF74600176E56 /* summarymanage2.png */; };
+		E4F3B0021A7CF74600176E56 /* summarymanage2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F3AFFA1A7CF74600176E56 /* summarymanage2@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1432,6 +1451,31 @@
 		E4F38F6C1A37589100F4FE3B /* UpdateBwrzViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = UpdateBwrzViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E4F38F6D1A37589100F4FE3B /* UpdateBwrzViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateBwrzViewController.xib; sourceTree = "<group>"; };
 		E4F3AFD51A7CE35900176E56 /* nopicture2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nopicture2.png; sourceTree = "<group>"; };
+		E4F3AFD71A7CF17D00176E56 /* AddScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddScheduleViewController.h; sourceTree = "<group>"; };
+		E4F3AFD81A7CF17D00176E56 /* AddScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddScheduleViewController.m; sourceTree = "<group>"; };
+		E4F3AFD91A7CF17D00176E56 /* AddScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddScheduleViewController.xib; sourceTree = "<group>"; };
+		E4F3AFDA1A7CF17D00176E56 /* DailyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyTableViewCell.h; sourceTree = "<group>"; };
+		E4F3AFDB1A7CF17D00176E56 /* DailyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyTableViewCell.m; sourceTree = "<group>"; };
+		E4F3AFDC1A7CF17D00176E56 /* DailyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyTableViewCell.xib; sourceTree = "<group>"; };
+		E4F3AFDD1A7CF17D00176E56 /* MyTabbarController4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTabbarController4.h; sourceTree = "<group>"; };
+		E4F3AFDE1A7CF17D00176E56 /* MyTabbarController4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTabbarController4.m; sourceTree = "<group>"; };
+		E4F3AFDF1A7CF17D00176E56 /* ScheduleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleDetailViewController.h; sourceTree = "<group>"; };
+		E4F3AFE01A7CF17D00176E56 /* ScheduleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleDetailViewController.m; sourceTree = "<group>"; };
+		E4F3AFE11A7CF17D00176E56 /* ScheduleDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleDetailViewController.xib; sourceTree = "<group>"; };
+		E4F3AFE21A7CF17D00176E56 /* ScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleViewController.h; sourceTree = "<group>"; };
+		E4F3AFE31A7CF17D00176E56 /* ScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleViewController.m; sourceTree = "<group>"; };
+		E4F3AFE41A7CF17D00176E56 /* ScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleViewController.xib; sourceTree = "<group>"; };
+		E4F3AFEE1A7CF1F400176E56 /* MoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreTableViewCell.h; sourceTree = "<group>"; };
+		E4F3AFEF1A7CF1F400176E56 /* MoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreTableViewCell.m; sourceTree = "<group>"; };
+		E4F3AFF01A7CF1F400176E56 /* MoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoreTableViewCell.xib; sourceTree = "<group>"; };
+		E4F3AFF31A7CF74600176E56 /* planmanage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planmanage1.png; sourceTree = "<group>"; };
+		E4F3AFF41A7CF74600176E56 /* planmanage1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "planmanage1@2x.png"; sourceTree = "<group>"; };
+		E4F3AFF51A7CF74600176E56 /* planmanage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = planmanage2.png; sourceTree = "<group>"; };
+		E4F3AFF61A7CF74600176E56 /* planmanage2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "planmanage2@2x.png"; sourceTree = "<group>"; };
+		E4F3AFF71A7CF74600176E56 /* summarymanage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = summarymanage1.png; sourceTree = "<group>"; };
+		E4F3AFF81A7CF74600176E56 /* summarymanage1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "summarymanage1@2x.png"; sourceTree = "<group>"; };
+		E4F3AFF91A7CF74600176E56 /* summarymanage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = summarymanage2.png; sourceTree = "<group>"; };
+		E4F3AFFA1A7CF74600176E56 /* summarymanage2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "summarymanage2@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1620,6 +1664,14 @@
 		E4E76B041A277997004DF568 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E4F3AFF31A7CF74600176E56 /* planmanage1.png */,
+				E4F3AFF41A7CF74600176E56 /* planmanage1@2x.png */,
+				E4F3AFF51A7CF74600176E56 /* planmanage2.png */,
+				E4F3AFF61A7CF74600176E56 /* planmanage2@2x.png */,
+				E4F3AFF71A7CF74600176E56 /* summarymanage1.png */,
+				E4F3AFF81A7CF74600176E56 /* summarymanage1@2x.png */,
+				E4F3AFF91A7CF74600176E56 /* summarymanage2.png */,
+				E4F3AFFA1A7CF74600176E56 /* summarymanage2@2x.png */,
 				E4F3AFD51A7CE35900176E56 /* nopicture2.png */,
 				E4EC153A1A77E4BF0048ACDB /* loginBtnBg.png */,
 				E4EC153B1A77E4BF0048ACDB /* loginBtnBg2.png */,
@@ -2201,6 +2253,9 @@
 		E4E76CEA1A277B28004DF568 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				E4F3AFEE1A7CF1F400176E56 /* MoreTableViewCell.h */,
+				E4F3AFEF1A7CF1F400176E56 /* MoreTableViewCell.m */,
+				E4F3AFF01A7CF1F400176E56 /* MoreTableViewCell.xib */,
 				E4EF57761A681099004B57E6 /* MyActivityReviewViewController.h */,
 				E4EF57771A681099004B57E6 /* MyActivityReviewViewController.m */,
 				E4EF57781A681099004B57E6 /* MyActivityReviewViewController.xib */,
@@ -2321,6 +2376,20 @@
 				E4ED052B1A7905BF005C5683 /* CwjDetailViewController.h */,
 				E4ED052C1A7905BF005C5683 /* CwjDetailViewController.m */,
 				E4ED052D1A7905BF005C5683 /* CwjDetailViewController.xib */,
+				E4F3AFDD1A7CF17D00176E56 /* MyTabbarController4.h */,
+				E4F3AFDE1A7CF17D00176E56 /* MyTabbarController4.m */,
+				E4F3AFDA1A7CF17D00176E56 /* DailyTableViewCell.h */,
+				E4F3AFDB1A7CF17D00176E56 /* DailyTableViewCell.m */,
+				E4F3AFDC1A7CF17D00176E56 /* DailyTableViewCell.xib */,
+				E4F3AFE21A7CF17D00176E56 /* ScheduleViewController.h */,
+				E4F3AFE31A7CF17D00176E56 /* ScheduleViewController.m */,
+				E4F3AFE41A7CF17D00176E56 /* ScheduleViewController.xib */,
+				E4F3AFDF1A7CF17D00176E56 /* ScheduleDetailViewController.h */,
+				E4F3AFE01A7CF17D00176E56 /* ScheduleDetailViewController.m */,
+				E4F3AFE11A7CF17D00176E56 /* ScheduleDetailViewController.xib */,
+				E4F3AFD71A7CF17D00176E56 /* AddScheduleViewController.h */,
+				E4F3AFD81A7CF17D00176E56 /* AddScheduleViewController.m */,
+				E4F3AFD91A7CF17D00176E56 /* AddScheduleViewController.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -3179,6 +3248,7 @@
 				E4E76BED1A277997004DF568 /* chat_sender_audio_playing_000.png in Resources */,
 				E4EB900C1A2DB9F600DFEA47 /* xxgg_high.png in Resources */,
 				E4ECE94E1A2F74BD00860CE7 /* wdhd.png in Resources */,
+				E4F3B0021A7CF74600176E56 /* summarymanage2@2x.png in Resources */,
 				E4F38F6F1A37589100F4FE3B /* UpdateBwrzViewController.xib in Resources */,
 				E4EB90141A2DB9F600DFEA47 /* xxjs_high.png in Resources */,
 				E4E76F5A1A277B3C004DF568 /* newFriends@2x.png in Resources */,
@@ -3230,6 +3300,7 @@
 				E4E76D4A1A277B28004DF568 /* GgxqViewController.xib in Resources */,
 				E4C3F46E1A7A40C90055041E /* checkbox1_unchecked@2x.png in Resources */,
 				E4E76B011A277979004DF568 /* LoginViewController.xib in Resources */,
+				E4F3AFEB1A7CF17D00176E56 /* ScheduleDetailViewController.xib in Resources */,
 				E4E76F151A277B3C004DF568 /* chatBar_more@2x.png in Resources */,
 				E4E76C0D1A277997004DF568 /* ic_login.png in Resources */,
 				E4E76F301A277B3C004DF568 /* chatBar_more_photo.png in Resources */,
@@ -3263,12 +3334,14 @@
 				E4F38F651A373A5B00F4FE3B /* BwrzTableViewCell.xib in Resources */,
 				E4E76D5D1A277B28004DF568 /* UpdatePasswordViewController.xib in Resources */,
 				E4ECE94A1A2F74BD00860CE7 /* wdgg.png in Resources */,
+				E4F3AFE61A7CF17D00176E56 /* AddScheduleViewController.xib in Resources */,
 				E4E76F481A277B3C004DF568 /* group_participant_add@2x.png in Resources */,
 				E4E76F251A277B3C004DF568 /* chatBar_colorMore_photoSelected@2x.png in Resources */,
 				E4E76EF91A277B3C004DF568 /* call_out_h@2x.png in Resources */,
 				E4E76AE01A2773BB004DF568 /* Main.storyboard in Resources */,
 				E4E76BC91A277997004DF568 /* VoiceSearchFeedback018@2x.png in Resources */,
 				E4E76BAB1A277997004DF568 /* VoiceSearchFeedback003@2x.png in Resources */,
+				E4F3AFE81A7CF17D00176E56 /* DailyTableViewCell.xib in Resources */,
 				E4B916A41A30A69A009075A0 /* AddNoticeViewController.xib in Resources */,
 				E4EB90161A2DB9F600DFEA47 /* xxjs.png in Resources */,
 				E4E76F191A277B3C004DF568 /* chatBar_record@2x.png in Resources */,
@@ -3280,6 +3353,7 @@
 				E4CFE20E1A3F5014006BD88C /* ic_index_002_high.png in Resources */,
 				E4E76C1D1A277997004DF568 /* tabbar_contacts.png in Resources */,
 				E4E76C081A277997004DF568 /* ic_index_011.png in Resources */,
+				E4F3AFFD1A7CF74600176E56 /* planmanage2.png in Resources */,
 				E4E76BCE1A277997004DF568 /* chat_video_play.png in Resources */,
 				E4E76F901A277B4F004DF568 /* YjfkViewController.xib in Resources */,
 				E4E76EFB1A277B3C004DF568 /* call_silence@2x.png in Resources */,
@@ -3321,12 +3395,15 @@
 				E4E76EE41A277B3C004DF568 /* MWPhotoBrowser.bundle in Resources */,
 				E4E76C181A277997004DF568 /* nopicture.png in Resources */,
 				E4E76F261A277B3C004DF568 /* chatBar_colorMore_video@2x.png in Resources */,
+				E4F3AFFB1A7CF74600176E56 /* planmanage1.png in Resources */,
 				E4E76C031A277997004DF568 /* ic_index_006.png in Resources */,
 				E4E76B9E1A277997004DF568 /* chatFire_audioPlaying0.png in Resources */,
 				E4ECE94B1A2F74BD00860CE7 /* wdgg@2x.png in Resources */,
 				E4E76F0E1A277B3C004DF568 /* chatBar_faceSelected.png in Resources */,
+				E4F3AFF21A7CF1F400176E56 /* MoreTableViewCell.xib in Resources */,
 				E4E76BBD1A277997004DF568 /* VoiceSearchFeedback012@2x.png in Resources */,
 				E4E76BB91A277997004DF568 /* VoiceSearchFeedback010@2x.png in Resources */,
+				E4F3B0011A7CF74600176E56 /* summarymanage2.png in Resources */,
 				E4E76C0C1A277997004DF568 /* ic_kcb_bg2.png in Resources */,
 				E4E76BB11A277997004DF568 /* VoiceSearchFeedback006@2x.png in Resources */,
 				E4E76EF31A277B3C004DF568 /* back@2x.png in Resources */,
@@ -3337,6 +3414,7 @@
 				E4E76BB51A277997004DF568 /* VoiceSearchFeedback008@2x.png in Resources */,
 				E4E76BF01A277997004DF568 /* chat_sender_audio_playing_001@2x.png in Resources */,
 				E4E76BA31A277997004DF568 /* chatFire_audioPlaying2@2x.png in Resources */,
+				E4F3B0001A7CF74600176E56 /* summarymanage1@2x.png in Resources */,
 				E4E76BD41A277997004DF568 /* chatBar_more_face@2x.png in Resources */,
 				E4E76C101A277997004DF568 /* ic_login_user.png in Resources */,
 				E4E76D581A277B28004DF568 /* PinglunTableViewCell.xib in Resources */,
@@ -3360,11 +3438,13 @@
 				E4E76F111A277B3C004DF568 /* chatBar_keyboard@2x.png in Resources */,
 				E4E76C201A277997004DF568 /* tabbar_contactsHL@2x.png in Resources */,
 				E4E76BE61A277997004DF568 /* chat_receiver_audio_playing002@2x.png in Resources */,
+				E4F3AFFF1A7CF74600176E56 /* summarymanage1.png in Resources */,
 				E4E76D561A277B28004DF568 /* MyViewControllerDetail.xib in Resources */,
 				E4E76BDB1A277997004DF568 /* chat_location_detail_disclosure.png in Resources */,
 				E4EB90291A2DBEE500DFEA47 /* guide_3.png in Resources */,
 				E4E76BCF1A277997004DF568 /* chatBar_more_card.png in Resources */,
 				E4E76BA41A277997004DF568 /* chatFire_audioPlaying3.png in Resources */,
+				E4F3AFFE1A7CF74600176E56 /* planmanage2@2x.png in Resources */,
 				E4CFE2111A3F5014006BD88C /* ic_index_007_high.png in Resources */,
 				E4ECE9491A2F74BD00860CE7 /* wdgg_high@2x.png in Resources */,
 				E4CFE20F1A3F5014006BD88C /* ic_index_003_high.png in Resources */,
@@ -3426,6 +3506,7 @@
 				E4EB900F1A2DB9F600DFEA47 /* xxgg@2x.png in Resources */,
 				E4E76BFD1A277997004DF568 /* ic_bwrz_003.png in Resources */,
 				E4EB90211A2DBE3D00DFEA47 /* GuideViewController.xib in Resources */,
+				E4F3AFFC1A7CF74600176E56 /* planmanage1@2x.png in Resources */,
 				E4E76BF51A277997004DF568 /* chat_sender_audio_playing_full.png in Resources */,
 				E4E76F281A277B3C004DF568 /* chatBar_more_camera.png in Resources */,
 				E4E76F4B1A277B3C004DF568 /* groupPrivateHeader@2x.png in Resources */,
@@ -3443,6 +3524,7 @@
 				E4E76C231A277997004DF568 /* tabbar_settingHL.png in Resources */,
 				E4E76F031A277B3C004DF568 /* delete@2x.png in Resources */,
 				E4E76BFC1A277997004DF568 /* ic_bwrz_002@2x.png in Resources */,
+				E4F3AFED1A7CF17D00176E56 /* ScheduleViewController.xib in Resources */,
 				E4EB90171A2DB9F600DFEA47 /* xxjs@2x.png in Resources */,
 				E4E76AE51A2773BB004DF568 /* LaunchScreen.xib in Resources */,
 				E4E76F531A277B3C004DF568 /* add@2x.png in Resources */,
@@ -3496,6 +3578,7 @@
 				E4E76F7C1A277B3C004DF568 /* SettingsViewController.m in Sources */,
 				E4E76F351A277B3C004DF568 /* EMChatAudioBubbleView.m in Sources */,
 				E4E76F441A277B3C004DF568 /* ContactSelectionViewController.m in Sources */,
+				E4F3AFF11A7CF1F400176E56 /* MoreTableViewCell.m in Sources */,
 				E4C82B931A7B8B8A00AEFCBC /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				E4E76CE61A277B0E004DF568 /* UIImageView+AFNetworking.m in Sources */,
 				E4E76F7D1A277B3C004DF568 /* BaseTableViewCell.m in Sources */,
@@ -3572,6 +3655,7 @@
 				E4E76CDD1A277B0E004DF568 /* AFSecurityPolicy.m in Sources */,
 				E4E76F401A277B3C004DF568 /* MessageModel.m in Sources */,
 				E4E76CE71A277B0E004DF568 /* UIProgressView+AFNetworking.m in Sources */,
+				E4F3AFEA1A7CF17D00176E56 /* ScheduleDetailViewController.m in Sources */,
 				E4E76F6C1A277B3C004DF568 /* NSManagedObjectContext+MagicalThreading.m in Sources */,
 				E4E76ECB1A277B3C004DF568 /* EmojiEmoticons.m in Sources */,
 				E4CAF5DF1A31BE0A009A77BE /* ELCAssetTablePicker.m in Sources */,
@@ -3598,6 +3682,7 @@
 				E4E76D471A277B28004DF568 /* GgtzViewController.m in Sources */,
 				E4E76F741A277B3C004DF568 /* MagicalRecord+Setup.m in Sources */,
 				E4E76F961A277B7F004DF568 /* UIDevice+Resolutions.m in Sources */,
+				E4F3AFE51A7CF17D00176E56 /* AddScheduleViewController.m in Sources */,
 				E4E76F791A277B3C004DF568 /* BlackListViewController.m in Sources */,
 				E4EC158A1A77FF250048ACDB /* CollectionCell.m in Sources */,
 				E4E76CB11A277AF9004DF568 /* MKNetworkOperation.m in Sources */,
@@ -3615,6 +3700,7 @@
 				E4EC15571A77E51F0048ACDB /* IQSegmentedNextPrevious.m in Sources */,
 				E4E76ED31A277B3C004DF568 /* MWTapDetectingImageView.m in Sources */,
 				E4E76F811A277B3C004DF568 /* BaseViewController.m in Sources */,
+				E4F3AFE91A7CF17D00176E56 /* MyTabbarController4.m in Sources */,
 				E4E76ED01A277B3C004DF568 /* MWGridViewController.m in Sources */,
 				E4E76ED91A277B3C004DF568 /* PSTCollectionViewCell.m in Sources */,
 				E4E76F021A277B3C004DF568 /* ConvertToCommonEmoticonsHelper.m in Sources */,
@@ -3623,6 +3709,7 @@
 				E4E76F4A1A277B3C004DF568 /* GroupListViewController.m in Sources */,
 				E4E76F091A277B3C004DF568 /* FacialView.m in Sources */,
 				E4E76F801A277B3C004DF568 /* EMRemarkImageView.m in Sources */,
+				E4F3AFEC1A7CF17D00176E56 /* ScheduleViewController.m in Sources */,
 				E4E76F9C1A277C04004DF568 /* JYSlideSegmentController.m in Sources */,
 				E4E76F6B1A277B3C004DF568 /* NSManagedObjectContext+MagicalSaves.m in Sources */,
 				E4EB90201A2DBE3D00DFEA47 /* GuideViewController.m in Sources */,
@@ -3672,6 +3759,7 @@
 				E4EB901B1A2DBBD000DFEA47 /* XxhdViewController.m in Sources */,
 				E4E76EE01A277B3C004DF568 /* PSTGridLayoutInfo.m in Sources */,
 				E4E76D451A277B28004DF568 /* GgtzTableViewCell.m in Sources */,
+				E4F3AFE71A7CF17D00176E56 /* DailyTableViewCell.m in Sources */,
 				E4E76F731A277B3C004DF568 /* MagicalRecord+Options.m in Sources */,
 				E4ED052E1A7905BF005C5683 /* CwjDetailViewController.m in Sources */,
 				E4E76F0A1A277B3C004DF568 /* DXChatBarMoreView.m in Sources */,

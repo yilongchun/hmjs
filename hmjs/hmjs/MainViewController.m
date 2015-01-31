@@ -29,6 +29,7 @@
 #import "BbxxTarbarViewController.h"
 #import "EaseMob.h"
 #import "CwjTabBarController.h"
+#import "MyTabbarController4.h"
 
 
 //两次提示的默认间隔
@@ -199,6 +200,13 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                                 btnr = CGRectMake(width/2-45, 260, 90, 90);
                             }
                             break;
+                        case 8:
+                            if (height <= 480) {
+                                btnr = CGRectMake(width*2-100, 10, 90, 90);
+                            }else{
+                                btnr = CGRectMake(width-100, 260, 90, 90);
+                            }
+                            break;
                         default:
                             btnr = CGRectMake(0, 0, 0, 0);
                             break;
@@ -348,6 +356,22 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                             [mainScrollView addSubview:btn6];
                             [mainScrollView addSubview:label6];
                         }
+                    }else if([menuStr isEqualToString:@"19_personalmanage"]){
+                        i++;
+                        UIButton *btn1 = [[UIButton alloc] init];
+                        [btn1 setFrame:btnr];
+                        [btn1 setBackgroundImage:[UIImage imageNamed:@"ic_index_007.png"] forState:UIControlStateNormal];
+                        [btn1 addTarget:self action:@selector(grrz) forControlEvents:UIControlEventTouchUpInside];
+                        UILabel *label1 = [[UILabel alloc] init];
+                        if (btn1.frame.origin.x != 0) {
+                            [label1 setFrame:CGRectMake(btn1.frame.origin.x, btn1.frame.origin.y+95, 90, 20)];
+                            label1.text = @"个人日志";
+                            label1.textAlignment = NSTextAlignmentCenter;
+                            [label1 setFont:[UIFont systemFontOfSize:15]];
+                            [label1 setBackgroundColor:[UIColor clearColor]];
+                            [mainScrollView addSubview:btn1];
+                            [mainScrollView addSubview:label1];
+                        }
                     }else{
                         continue;
                     }
@@ -437,9 +461,9 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                 
                 //设置头像
                 if ([Utils isBlankString:fileid]) {
-                    [self.teacherimg setImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+                    [self.teacherimg setImage:[UIImage imageNamed:@"nopicture2.png"]];
                 }else{
-                    [self.teacherimg setImageWithURL:[NSURL URLWithString:fileid] placeholderImage:[UIImage imageNamed:@"chatListCellHead.png"]];
+                    [self.teacherimg setImageWithURL:[NSURL URLWithString:fileid] placeholderImage:[UIImage imageNamed:@"nopicture2.png"]];
                 }
                 [userDefaults setObject:data forKey:@"teacher"];
             }
@@ -847,6 +871,12 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     }
     [self.navigationController setNavigationBarHidden:NO];
     [self.navigationController pushViewController:_chatListController animated:YES];
+}
+
+-(void)grrz{
+    MyTabbarController4 *tab4 = [[MyTabbarController4 alloc] init];
+    [self.navigationController pushViewController:tab4 animated:YES];
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 //返回到该页面调用
