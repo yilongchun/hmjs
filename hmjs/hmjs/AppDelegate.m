@@ -12,6 +12,7 @@
 #import "Utils.h"
 #import "GuideViewController.h"
 #import "IQKeyboardManager.h"
+//#import "TempViewController.h"
 
 @interface AppDelegate ()
 
@@ -100,6 +101,7 @@
         //  [self.viewController setNsstilt:@"这是程序的N次启动"];
         LoginViewController *loginvc =  [[LoginViewController alloc] init];
         loginvc.logintype = @"login";
+//        TempViewController *loginvc = [[TempViewController alloc] init];
         UINavigationController *vc = [[UINavigationController alloc] initWithRootViewController:loginvc];
         [vc setNavigationBarHidden:YES];
         self.window.rootViewController = vc;

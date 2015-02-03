@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
+                <outlet property="backImage" destination="RbW-Yk-T7o" id="cfr-r8-He6"/>
                 <outlet property="loginBtn" destination="1fM-Y9-9Cf" id="GoD-3A-fHl"/>
                 <outlet property="password" destination="G9Q-Cl-70f" id="jre-dS-y6M"/>
                 <outlet property="username" destination="lhE-K4-9cB" id="spa-1G-Kad"/>
@@ -18,9 +19,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default4.png" id="RbW-Yk-T7o">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default4@3x.png" id="RbW-Yk-T7o">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1fM-Y9-9Cf">
                     <rect key="frame" x="40" y="420" width="240" height="48"/>
@@ -76,7 +78,7 @@
         </view>
     </objects>
     <resources>
-        <image name="default4.png" width="1242" height="2208"/>
+        <image name="default4@3x.png" width="1242" height="2208"/>
         <image name="ic_login_password.png" width="80" height="80"/>
         <image name="ic_login_user.png" width="80" height="80"/>
     </resources>

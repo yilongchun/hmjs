@@ -14,7 +14,8 @@
 #import "ChooseClassViewController.h"
 #import "EMError.h"
 
-
+#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+#define iPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
 
 @interface LoginViewController ()<MBProgressHUDDelegate,IChatManagerDelegate>{
     MBProgressHUD *HUD;
@@ -28,6 +29,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+//    [self.backImage setImage:[UIImage imageNamed:@"default4"]];
+    
+//    if (iPhone5) {
+//        [self.backImage setImage:[UIImage imageNamed:@"default4_ip5"]];
+//    }else if(iPhone6){
+//        [self.backImage setImage:[UIImage imageNamed:@"default4_ip6"]];
+//    }else{
+//        [self.backImage setImage:[UIImage imageNamed:@"default4"]];
+//    }
+    
+    NSLog(@"%f",self.view.frame.size.width);
+
     
     // 禁用 iOS7 返回手势
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
@@ -87,7 +101,7 @@
     [super viewDidAppear:animated];
     if ([self.logintype isEqualToString:@"login"] && ![Utils isBlankString:self.username.text] && ![Utils isBlankString:self.password.text]) {
         self.logintype = @"";
-        [self login:nil];
+//        [self login:nil];
     }
 }
 
