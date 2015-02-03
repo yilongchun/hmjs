@@ -40,7 +40,7 @@
     fileName = @"collectionUser";
     // Do any additional setup after loading the view from its nib.
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(loadData2)
+                                             selector:@selector(loadData2:)
                                                  name:@"reloadCwj"
                                                object:nil];
     
@@ -74,20 +74,23 @@
     int64_t delayInSeconds = 0.5;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self loadData:YES];
+        [self loadData:YES indexPath:nil];
     });
 }
 
 
--(void)loadData2{
-    [self loadData:NO];
+-(void)loadData2:(NSNotification*) notification{
+    NSIndexPath *indexpath = [notification object];
+    NSLog(@"%d",indexpath.row);
+    [self loadData:NO indexPath:indexpath];
 }
 
 //加载数据
-- (void)loadData:(BOOL)flag{
-    [dataSource removeAllObjects];
+- (void)loadData:(BOOL)flag indexPath:(NSIndexPath *)indexPath{
+    
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:self.examinetype forKey:@"examinetype"];
+    [dic setValue:@"" forKey:@"examinedate"];
     [dic setValue:classid forKey:@"classid"];
     [dic setValue:userid forKey:@"userid"];
     MKNetworkOperation *op = [engine operationWithPath:@"/examine/findPageList.do" params:dic httpMethod:@"GET"];
@@ -118,7 +121,7 @@
                 NSString *documentDirectory =[documentPaths objectAtIndex:0];
                 NSString *filePath=[documentDirectory stringByAppendingPathComponent:fileName];
                 NSMutableDictionary *localDic = [self readFromLocal:filePath];
-                
+                [dataSource removeAllObjects];
                 NSMutableDictionary *dic = [NSMutableDictionary dictionary];
                 for (int i = 0; i < arr.count; i++) {
                     NSMutableDictionary *info = [NSMutableDictionary dictionaryWithDictionary:[arr objectAtIndex:i]];
@@ -147,9 +150,9 @@
             [mycollectionview reloadData];
             if (flag) {
                 [self alertMsg:@"刷新成功,长按头像拖动排序"];
+            }else{
+                [mycollectionview scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
             }
-//            NSIndexPath *index = [NSIndexPath indexPathForItem:dataSource.count - 5 inSection:0];
-//            [mycollectionview scrollToItemAtIndexPath:index atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
         }else{
             [mycollectionview.pullToRefreshView stopAnimating];
             [self alertMsg:msg];
@@ -232,11 +235,10 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary *info = [dataSource objectAtIndex:indexPath.row];
-//    NSNumber *sortNum = [info objectForKey:@"sort"];
     CwjDetailViewController *cwj = [[CwjDetailViewController alloc] init];
     cwj.title = self.tabBarController.title;
     cwj.info = info;
-//    cwj.sortNum = [NSNumber numberWithInt:sort+1];
+    cwj.indexpath = indexPath;
     [self.navigationController pushViewController:cwj animated:YES];
 }
 //返回这个UICollectionView是否可以被选择
@@ -323,7 +325,7 @@
     hud.labelText = msg;
     hud.margin = 10.f;
     hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:3];
+    [hud hide:YES afterDelay:2];
 }
 
 -(void)saveToLocal:(NSMutableDictionary *)dic{

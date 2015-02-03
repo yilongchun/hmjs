@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    NSLog(@"%d",self.indexpath.row);
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.labelText = @"加载中...";
@@ -216,6 +216,6 @@
 
 -(void)backAndReload{
     [self.navigationController popViewControllerAnimated:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadCwj" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadCwj" object:self.indexpath];
 }
 @end
