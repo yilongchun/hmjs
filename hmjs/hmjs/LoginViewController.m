@@ -101,7 +101,7 @@
     [super viewDidAppear:animated];
     if ([self.logintype isEqualToString:@"login"] && ![Utils isBlankString:self.username.text] && ![Utils isBlankString:self.password.text]) {
         self.logintype = @"";
-//        [self login:nil];
+        [self login:nil];
     }
 }
 

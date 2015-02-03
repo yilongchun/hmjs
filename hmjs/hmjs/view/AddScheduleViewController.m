@@ -31,9 +31,9 @@
     rect.size.height = 35;
     self.scheduleTypeSegmented.frame = rect;
     
-    if ([self.type isEqualToString:@"1"]) {
+    if ([self.type isEqualToString:@"2"]) {
         [self.scheduleTypeSegmented setSelectedSegmentIndex:0];
-    }else if([self.type isEqualToString:@"2"]){
+    }else if([self.type isEqualToString:@"1"]){
         [self.scheduleTypeSegmented setSelectedSegmentIndex:1];
     }
    
@@ -83,10 +83,10 @@
         [self alertMsg:@"请填写日期标题"];
         return;
     }
-    if (self.mytextview.text.length == 0) {
-        [self alertMsg:@"请填写日志内容"];
-        return;
-    }
+//    if (self.mytextview.text.length == 0) {
+//        [self alertMsg:@"请填写日志内容"];
+//        return;
+//    }
     
     [HUD show:YES];
     
@@ -96,9 +96,9 @@
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:userid forKey:@"userid"];
     if (self.scheduleTypeSegmented.selectedSegmentIndex == 0) {
-        [dic setValue:@"1" forKey:@"dailyType"];
-    }else if (self.scheduleTypeSegmented.selectedSegmentIndex == 1) {
         [dic setValue:@"2" forKey:@"dailyType"];
+    }else if (self.scheduleTypeSegmented.selectedSegmentIndex == 1) {
+        [dic setValue:@"1" forKey:@"dailyType"];
     }
     [dic setValue:self.titleText.text forKey:@"title"];
     [dic setValue:self.mytextview.text forKey:@"content"];
