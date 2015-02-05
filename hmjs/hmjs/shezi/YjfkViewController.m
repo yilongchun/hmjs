@@ -37,15 +37,12 @@
     //初始化引擎
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
-    //设置导航栏右侧按钮
-    UIImage* image= [UIImage imageNamed:@"ic_sz_002.png"];
-    CGRect frame= CGRectMake(0, 0, 20, 20);
-    UIButton* someButton= [[UIButton alloc] initWithFrame:frame];
-    [someButton addTarget:self action:@selector(feecback) forControlEvents:UIControlEventTouchUpInside];
-    [someButton setBackgroundImage:image forState:UIControlStateNormal];
-    [someButton setShowsTouchWhenHighlighted:NO];
-    UIBarButtonItem *someBarButtonItem= [[UIBarButtonItem alloc] initWithCustomView:someButton];
-    [self.navigationItem setRightBarButtonItem:someBarButtonItem];
+    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc]
+                                 initWithTitle:@"提交"
+                                 style:UIBarButtonItemStyleBordered
+                                 target:self
+                                 action:@selector(feecback)];
+    self.navigationItem.rightBarButtonItem = rightBtn;
     
     //初始化文本域
     
@@ -72,8 +69,12 @@
     [self.view addSubview:HUD];
     HUD.delegate = self;
     
-    
-    
+    NSString* phoneVersion = [[UIDevice currentDevice] systemVersion];
+    NSString* phoneModel = [[UIDevice currentDevice] model];
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString *appCurName = [infoDictionary objectForKey:@"CFBundleDisplayName"];
+    NSString *appCurVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+    [self.mytextview setText:[NSString stringWithFormat:@"设备: %@,系统: %@,应用名称：%@,客户端版本:%@,",phoneModel,phoneVersion,appCurName,appCurVersion]];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
