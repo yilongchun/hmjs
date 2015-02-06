@@ -79,7 +79,9 @@
         height = self.rightContent.frame.size.height;
     }
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
-        
+        if (iPhone4) {
+            height += 50;
+        }
     }else{
         height += 64;
     }

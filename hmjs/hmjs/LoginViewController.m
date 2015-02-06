@@ -14,8 +14,7 @@
 #import "ChooseClassViewController.h"
 #import "EMError.h"
 
-#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
-#define iPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
+
 
 @interface LoginViewController ()<MBProgressHUDDelegate,IChatManagerDelegate>{
     MBProgressHUD *HUD;

@@ -31,6 +31,7 @@
 @end
 
 @implementation GgxqViewController
+@synthesize mytableview;
 
 - (id)init{
     self = [super init];
@@ -251,9 +252,15 @@
     
     
     
-    self.mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+    UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
+    [mytableview setTableFooterView:v];
    [self.mytableview addSubview:self.slimeView];
+    if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
+        [mytableview setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
+        [mytableview setLayoutMargins:UIEdgeInsetsZero];
+    }
     
     [self loadData];
 }
@@ -581,13 +588,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    //    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-    //        [cell setSeparatorInset:UIEdgeInsetsZero];
-    //    }
-    //    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-    //        [cell setLayoutMargins:UIEdgeInsetsZero];
-    //    }
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

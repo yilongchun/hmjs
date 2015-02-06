@@ -42,7 +42,7 @@
 @end
 
 @implementation MyViewControllerCellDetail
-
+@synthesize mytableview;
 
 - (id)init{
     self = [super init];
@@ -258,14 +258,14 @@
     [self.view addSubview:HUD];
     HUD.delegate = self;
     
-    self.mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    [self.mytableview setSeparatorColor:[UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1]];
-//    if ([self.mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
-//        [self.mytableview setSeparatorInset:UIEdgeInsetsZero];
-//    }
-//    if ([self.mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
-//        [self.mytableview setLayoutMargins:UIEdgeInsetsZero];
-//    }
+    UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
+    [mytableview setTableFooterView:v];
+    if ([self.mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.mytableview setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([self.mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.mytableview setLayoutMargins:UIEdgeInsetsZero];
+    }
     
     [self.mytableview addSubview:self.slimeView];
     
@@ -674,13 +674,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-//    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-//        [cell setSeparatorInset:UIEdgeInsetsZero];
-//    }
-//    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-//        [cell setLayoutMargins:UIEdgeInsetsZero];
-//    }
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

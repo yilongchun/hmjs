@@ -46,6 +46,8 @@
                                              selector:@selector(loadData)
                                                  name:@"reloadCwjVc"
                                                object:nil];
+    UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
+    [mytableview setTableFooterView:v];
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     [mytableview addSubview:self.slimeView];

@@ -50,6 +50,8 @@
     }
     mytableview = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
     //    [mytableview setSeparatorColor:[UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1]];
+    UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
+    [mytableview setTableFooterView:v];
     if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
         [mytableview setSeparatorInset:UIEdgeInsetsZero];
     }
@@ -279,7 +281,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
         [cell setSeparatorInset:UIEdgeInsetsZero];
     }

@@ -51,14 +51,14 @@
         cg = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-49-64);
     }
     mytableview = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
-    mytableview.separatorStyle = UITableViewCellSeparatorStyleNone;
-    //    [mytableview setSeparatorColor:[UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1]];
-    //    if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
-    //        [mytableview setSeparatorInset:UIEdgeInsetsZero];
-    //    }
-    //    if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
-    //        [mytableview setLayoutMargins:UIEdgeInsetsZero];
-    //    }
+    UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
+    [mytableview setTableFooterView:v];
+    if ([mytableview respondsToSelector:@selector(setSeparatorInset:)]) {
+        [mytableview setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([mytableview respondsToSelector:@selector(setLayoutMargins:)]) {
+        [mytableview setLayoutMargins:UIEdgeInsetsZero];
+    }
     mytableview.dataSource = self;
     mytableview.delegate = self;
     [self.view addSubview:mytableview];
@@ -303,13 +303,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    //    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-    //        [cell setSeparatorInset:UIEdgeInsetsZero];
-    //    }
-    //    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-    //        [cell setLayoutMargins:UIEdgeInsetsZero];
-    //    }
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

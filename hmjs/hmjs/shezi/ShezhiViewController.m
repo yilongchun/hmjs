@@ -23,6 +23,7 @@
 
 @implementation ShezhiViewController
 @synthesize alert;
+@synthesize alert2;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,6 +43,22 @@
     [tview setDataSource:self];
     [tview setScrollEnabled:YES];
     [self.view addSubview:tview];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [engine cancelAllOperations];
+    alert = nil;
+    alert2 = nil;
+    NSLog(@"viewDidDisappear");
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [engine cancelAllOperations];
+    alert = nil;
+    alert2 = nil;
+    NSLog(@"viewWillDisappear");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -201,7 +218,7 @@
                                                                 }]];
                         [self presentViewController:alert animated:YES completion:nil];
                     }else{
-                        UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"此版本为最新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                        alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"此版本为最新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                         alert2.tag = 10001;
                         [alert2 show];
                     }
@@ -216,7 +233,7 @@
                                                             }]];
                     [self presentViewController:alert animated:YES completion:nil];
                 }else{
-                    UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"此版本为最新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                    alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"此版本为最新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                     alert2.tag = 10001;
                     [alert2 show];
                 }
@@ -230,7 +247,7 @@
                                                         }]];
                 [self presentViewController:alert animated:YES completion:nil];
             }else{
-                UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"没有获取到版本信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"没有获取到版本信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                 alert2.tag = 10001;
                 [alert2 show];
             }
@@ -246,7 +263,7 @@
                                                     }]];
             [self presentViewController:alert animated:YES completion:nil];
         }else{
-            UIAlertView *alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"没有获取到版本信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"没有获取到版本信息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             alert2.tag = 10001;
             [alert2 show];
         }

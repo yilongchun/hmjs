@@ -45,7 +45,7 @@
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
     NSString *studentName = [info objectForKey:@"studentName"];
-    NSNumber *temperature = [info objectForKey:@"temperature"];
+    NSString *temperature = [info objectForKey:@"temperature"];
     NSString *mobile = [info objectForKey:@"mobile"];
     NSString *detail = [info objectForKey:@"detail"];
     NSNumber *situationtype = [info objectForKey:@"situationtype"];
@@ -53,7 +53,7 @@
     self.nameLabel.text = studentName;
     self.mobileText.text = mobile;
     self.mytextview1.text = detail;
-    if (![Utils isBlankString:[situationtype stringValue]]) {
+    if (![Utils isBlankString:temperature] && ![temperature isEqualToString:@"0"]) {
         self.temperatureText.text = [NSString stringWithFormat:@"%.1f",[temperature floatValue]];
     }
     
