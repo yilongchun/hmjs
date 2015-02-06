@@ -544,6 +544,10 @@
 		E4EF57791A681099004B57E6 /* MyActivityReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF57771A681099004B57E6 /* MyActivityReviewViewController.m */; };
 		E4EF577A1A681099004B57E6 /* MyActivityReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EF57781A681099004B57E6 /* MyActivityReviewViewController.xib */; };
 		E4EF641C1A836EAE00B1EFC0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4EF641B1A836EAE00B1EFC0 /* StoreKit.framework */; };
+		E4EF64241A838D8800B1EFC0 /* CwjTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF64221A838D8800B1EFC0 /* CwjTableViewCell.m */; };
+		E4EF64251A838D8800B1EFC0 /* CwjTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EF64231A838D8800B1EFC0 /* CwjTableViewCell.xib */; };
+		E4EF64291A83901D00B1EFC0 /* CwjViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EF64271A83901D00B1EFC0 /* CwjViewController.m */; };
+		E4EF642A1A83901D00B1EFC0 /* CwjViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EF64281A83901D00B1EFC0 /* CwjViewController.xib */; };
 		E4EFFE701A810CCD00FA951D /* default4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EFFE6D1A810CCD00FA951D /* default4@2x.png */; };
 		E4EFFE711A810CCD00FA951D /* default4@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EFFE6E1A810CCD00FA951D /* default4@3x.png */; };
 		E4EFFE731A810FBB00FA951D /* default4.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EFFE721A810FBB00FA951D /* default4.png */; };
@@ -1444,6 +1448,12 @@
 		E4EF57771A681099004B57E6 /* MyActivityReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MyActivityReviewViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E4EF57781A681099004B57E6 /* MyActivityReviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyActivityReviewViewController.xib; sourceTree = "<group>"; };
 		E4EF641B1A836EAE00B1EFC0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		E4EF64211A838D8800B1EFC0 /* CwjTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CwjTableViewCell.h; sourceTree = "<group>"; };
+		E4EF64221A838D8800B1EFC0 /* CwjTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CwjTableViewCell.m; sourceTree = "<group>"; };
+		E4EF64231A838D8800B1EFC0 /* CwjTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CwjTableViewCell.xib; sourceTree = "<group>"; };
+		E4EF64261A83901D00B1EFC0 /* CwjViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CwjViewController.h; sourceTree = "<group>"; };
+		E4EF64271A83901D00B1EFC0 /* CwjViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CwjViewController.m; sourceTree = "<group>"; };
+		E4EF64281A83901D00B1EFC0 /* CwjViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CwjViewController.xib; sourceTree = "<group>"; };
 		E4EFFE6D1A810CCD00FA951D /* default4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default4@2x.png"; sourceTree = "<group>"; };
 		E4EFFE6E1A810CCD00FA951D /* default4@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default4@3x.png"; sourceTree = "<group>"; };
 		E4EFFE721A810FBB00FA951D /* default4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default4.png; sourceTree = "<group>"; };
@@ -2380,6 +2390,12 @@
 				E4E76D311A277B28004DF568 /* YqjsViewController.xib */,
 				E4ED05251A78F44E005C5683 /* CwjTabBarController.h */,
 				E4ED05261A78F44E005C5683 /* CwjTabBarController.m */,
+				E4EF64211A838D8800B1EFC0 /* CwjTableViewCell.h */,
+				E4EF64221A838D8800B1EFC0 /* CwjTableViewCell.m */,
+				E4EF64231A838D8800B1EFC0 /* CwjTableViewCell.xib */,
+				E4EF64261A83901D00B1EFC0 /* CwjViewController.h */,
+				E4EF64271A83901D00B1EFC0 /* CwjViewController.m */,
+				E4EF64281A83901D00B1EFC0 /* CwjViewController.xib */,
 				E4EC15841A77FF250048ACDB /* CollectionCell.h */,
 				E4EC15851A77FF250048ACDB /* CollectionCell.m */,
 				E4EC15861A77FF250048ACDB /* CollectionCell.xib */,
@@ -3401,6 +3417,7 @@
 				E4E76B9A1A277997004DF568 /* 37x-Checkmark.png in Resources */,
 				E4E76B031A277979004DF568 /* MainViewController.xib in Resources */,
 				E4E76BB21A277997004DF568 /* VoiceSearchFeedback007.png in Resources */,
+				E4EF642A1A83901D00B1EFC0 /* CwjViewController.xib in Resources */,
 				E4EDEABD1A403A7000711A94 /* currentPageDot@2x.png in Resources */,
 				E4E76BB81A277997004DF568 /* VoiceSearchFeedback010.png in Resources */,
 				E4E76BC61A277997004DF568 /* VoiceSearchFeedback017.png in Resources */,
@@ -3490,6 +3507,7 @@
 				E4E76D4C1A277B28004DF568 /* GrdaViewController.xib in Resources */,
 				E4CFE2081A3F4E31006BD88C /* ic_index_006_high.png in Resources */,
 				E4EB90331A2E17EA00DFEA47 /* BwrzViewController.xib in Resources */,
+				E4EF64251A838D8800B1EFC0 /* CwjTableViewCell.xib in Resources */,
 				E4EB90281A2DBEE500DFEA47 /* guide_2.png in Resources */,
 				E4E76C0B1A277997004DF568 /* ic_kcb_bg.png in Resources */,
 				E4E76BEE1A277997004DF568 /* chat_sender_audio_playing_000@2x.png in Resources */,
@@ -3763,10 +3781,12 @@
 				E4E76EED1A277B3C004DF568 /* NSDate+Category.m in Sources */,
 				E4E76D421A277B28004DF568 /* ContentCell.m in Sources */,
 				E4EC158C1A77FF250048ACDB /* CollectionViewController.m in Sources */,
+				E4EF64291A83901D00B1EFC0 /* CwjViewController.m in Sources */,
 				E4E76F8D1A277B4F004DF568 /* ShezhiViewController.m in Sources */,
 				E4B916A51A30A69A009075A0 /* MyNoticeReviewDetailViewController.m in Sources */,
 				E4E76F6A1A277B3C004DF568 /* NSManagedObjectContext+MagicalRecord.m in Sources */,
 				E4E76EF41A277B3C004DF568 /* ChatListCell.m in Sources */,
+				E4EF64241A838D8800B1EFC0 /* CwjTableViewCell.m in Sources */,
 				E4E76D531A277B28004DF568 /* MyViewControllerCellDetail.m in Sources */,
 				E4E76D4D1A277B28004DF568 /* ImgScrollView.m in Sources */,
 				E4E76F001A277B3C004DF568 /* ChatSendHelper.m in Sources */,

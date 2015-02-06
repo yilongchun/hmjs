@@ -8,8 +8,11 @@
 
 #import "CwjTabBarController.h"
 #import "CollectionViewController.h"
+#import "CwjViewController.h"
 
-@interface CwjTabBarController ()
+@interface CwjTabBarController (){
+    NSString *type;
+}
 
 @end
 
@@ -21,14 +24,19 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     
+    UIBarButtonItem *buttonItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(action1)];
+    [self.navigationItem setRightBarButtonItem:buttonItem1];
+    
     //    初始化第一个视图控制器
-    CollectionViewController *vc1 = [[CollectionViewController alloc] init];
+//    CollectionViewController *vc1 = [[CollectionViewController alloc] init];
+    CwjViewController *vc1 = [[CwjViewController alloc] init];
     vc1.examinetype = @"1";
     vc1.tabBarItem =[[UITabBarItem alloc] initWithTitle:@"晨检" image:[UIImage imageNamed:@"ic_bwrz_002.png"] tag:0];
     
     
     //    初始化第二个视图控制器
-    CollectionViewController *vc2 = [[CollectionViewController alloc] init];
+//    CollectionViewController *vc2 = [[CollectionViewController alloc] init];
+    CwjViewController *vc2 = [[CwjViewController alloc] init];
     vc2.examinetype = @"2";
     vc2.tabBarItem =[[UITabBarItem alloc] initWithTitle:@"午检" image:[UIImage imageNamed:@"ic_bwrz_001.png"] tag:1];
     
@@ -39,6 +47,7 @@
     self.viewControllers = viewArr_;
     
     self.selectedIndex = 0;
+    type = @"1";
     [[self tabBar] setSelectedImageTintColor:[UIColor colorWithRed:42/255.0 green:173/255.0 blue:128/255.0 alpha:1]];
 }
 
@@ -48,9 +57,25 @@
 {
     if (item.tag == 0) {
         self.title = @"晨检";
+        type = @"1";
     }else if (item.tag == 1){
         self.title = @"午检";
+        type = @"2";
     }
+}
+
+-(void)action1{
+    CollectionViewController *vc = [[CollectionViewController alloc] init];
+    vc.examinetype = type;
+    vc.examinedate = @"";
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    if ([type isEqualToString:@"1"]) {
+        vc.title = [NSString stringWithFormat:@"%@ 晨检",[dateFormatter stringFromDate:[NSDate date]]];
+    }else if ([type isEqualToString:@"2"]) {
+        vc.title = [NSString stringWithFormat:@"%@ 午检",[dateFormatter stringFromDate:[NSDate date]]];
+    }
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

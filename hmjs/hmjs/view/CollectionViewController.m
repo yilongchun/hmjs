@@ -37,6 +37,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
+    self.navigationItem.backBarButtonItem = backItem;
+    backItem.title = @"返回";
+    
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+    
     fileName = @"collectionUser";
     // Do any additional setup after loading the view from its nib.
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -90,7 +98,7 @@
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:self.examinetype forKey:@"examinetype"];
-    [dic setValue:@"" forKey:@"examinedate"];
+    [dic setValue:self.examinedate forKey:@"examinedate"];
     [dic setValue:classid forKey:@"classid"];
     [dic setValue:userid forKey:@"userid"];
     MKNetworkOperation *op = [engine operationWithPath:@"/examine/findPageList.do" params:dic httpMethod:@"GET"];
@@ -239,6 +247,7 @@
     cwj.title = self.tabBarController.title;
     cwj.info = info;
     cwj.indexpath = indexPath;
+    cwj.title = [NSString stringWithFormat:@"%@详情",self.title];
     [self.navigationController pushViewController:cwj animated:YES];
 }
 //返回这个UICollectionView是否可以被选择
