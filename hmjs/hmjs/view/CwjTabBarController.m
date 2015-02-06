@@ -76,6 +76,7 @@
         vc.title = [NSString stringWithFormat:@"%@ 午检",[dateFormatter stringFromDate:[NSDate date]]];
     }
     [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {

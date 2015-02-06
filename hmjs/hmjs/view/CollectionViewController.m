@@ -334,7 +334,7 @@
     hud.labelText = msg;
     hud.margin = 10.f;
     hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:2];
+    [hud hide:YES afterDelay:1.5];
 }
 
 -(void)saveToLocal:(NSMutableDictionary *)dic{

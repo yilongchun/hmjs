@@ -43,6 +43,16 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ukO-qg-J3U">
+                    <rect key="frame" x="18" y="32" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="ic_index_010.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="chooseClass:" destination="-1" eventType="touchUpInside" id="nsD-8X-ocY"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="451" y="233"/>
@@ -64,6 +74,7 @@
         </label>
     </objects>
     <resources>
+        <image name="ic_index_010.png" width="68" height="74"/>
         <image name="ic_index_012.png" width="42" height="44"/>
         <image name="ic_index_bg.png" width="1080" height="1920"/>
         <image name="nopicture2.png" width="103" height="103"/>

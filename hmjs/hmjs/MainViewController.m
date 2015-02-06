@@ -869,9 +869,13 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     if ([@"1" isEqualToString:backflag]) {//选择完班级和宝宝 返回重新加载
         [userDefaults removeObjectForKey:@"backflag"];
         [self loadData];//设置学生信息
+        [self loadData2];//小纸条联系人
         [self loadYezx];//加载育儿资讯分类
         [self loadBbsp];//加载食谱
         [self loadKcb];//加载课程表
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadCwjVc" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadDaily" object:nil];
+        
     }
     NSString *loginflag = [userDefaults objectForKey:@"loginflag"];//如果是登陆则删除标识符
     if ([@"1" isEqualToString:loginflag]) {
