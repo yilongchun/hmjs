@@ -72,9 +72,9 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     [self.navigationController.navigationBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor whiteColor], UITextAttributeTextColor, nil]];
     [self.navigationController setNavigationBarHidden:YES];
     // 禁用 iOS7 返回手势
-    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-    }
+//    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+//        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+//    }
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
     self.navigationItem.backBarButtonItem = backItem;
     backItem.title = @"返回";
@@ -939,6 +939,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 {
     [super viewWillAppear:animated];
     [self setupUnreadMessageCount];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 
