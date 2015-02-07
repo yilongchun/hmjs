@@ -35,7 +35,9 @@
     HUD.labelText = @"加载中...";
     [self.view addSubview:HUD];
     HUD.delegate = self;
-    
+    CGRect rect = self.titleLabel.frame;
+    rect.size.height = 40;
+    self.titleLabel.frame = rect;
     if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
         self.contentTextview.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     }else{
