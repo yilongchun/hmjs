@@ -195,33 +195,25 @@
         if ([infoArray count]) {
             NSDictionary *releaseInfo = [infoArray objectAtIndex:0];
             NSString *lastVersion = [releaseInfo objectForKey:@"version"];
+            NSString *releaseNotes = [releaseInfo objectForKey:@"releaseNotes"];
             if (![lastVersion isEqualToString:currentVersion]) {
                 trackViewUrl = [releaseInfo objectForKey:@"trackViewUrl"];
                 if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1){
-                    alert = [UIAlertController alertControllerWithTitle:@"更新" message:@"有新的版本更新，是否前往更新？" preferredStyle:UIAlertControllerStyleAlert];
-                    [alert addAction:[UIAlertAction actionWithTitle:@"更新"
+                    alert = [UIAlertController alertControllerWithTitle:@"立即更新" message:releaseNotes preferredStyle:UIAlertControllerStyleAlert];
+                    [alert addAction:[UIAlertAction actionWithTitle:@"立即更新"
                                                               style:UIAlertActionStyleDestructive
                                                             handler:^(UIAlertAction *action) {
                                                                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:trackViewUrl]];
                                                             }]];
-                    [alert addAction:[UIAlertAction actionWithTitle:@"关闭"
+                    [alert addAction:[UIAlertAction actionWithTitle:@"以后再说"
                                                               style:UIAlertActionStyleCancel
                                                             handler:^(UIAlertAction *action) {
                                                             }]];
                     [self presentViewController:alert animated:YES completion:nil];
                 }else{
-                    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1){
-                        alert = [UIAlertController alertControllerWithTitle:@"更新" message:@"此版本为最新版本" preferredStyle:UIAlertControllerStyleAlert];
-                        [alert addAction:[UIAlertAction actionWithTitle:@"确定"
-                                                                  style:UIAlertActionStyleDestructive
-                                                                handler:^(UIAlertAction *action) {
-                                                                }]];
-                        [self presentViewController:alert animated:YES completion:nil];
-                    }else{
-                        alert2 = [[UIAlertView alloc] initWithTitle:@"更新" message:@"此版本为最新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-                        alert2.tag = 10001;
-                        [alert2 show];
-                    }
+                    alert2 = [[UIAlertView alloc] initWithTitle:@"立即更新" message:releaseNotes delegate:self cancelButtonTitle:@"以后再说" otherButtonTitles:@"立即更新", nil];
+                    alert2.tag = 10000;
+                    [alert2 show];
                 }
             }
             else{
