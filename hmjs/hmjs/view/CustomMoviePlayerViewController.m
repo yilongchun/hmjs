@@ -50,6 +50,9 @@
 //        //选中当前view
 //        [[self view] setTransform:CGAffineTransformMakeRotation(M_PI / 2)];
         
+//        CGAffineTransform transform = CGAffineTransformMakeRotation(M_PI/2);
+//        [self.view setTransform:transform];
+        
         // Set frame of movieplayer
         [[mp view] setFrame:self.view.frame];
 //        [mp setFullscreen:YES animated:YES];
@@ -73,9 +76,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:MPMoviePlayerPlaybackDidFinishNotification
                                                   object:nil];
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -91,7 +92,7 @@
         [mp setFullscreen:YES];
         // 有助于减少延迟
         [mp prepareToPlay];
-        
+       
         // Register that the load state changed (movie is ready)
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(moviePlayerLoadStateChanged:) 
@@ -110,7 +111,5 @@
                                                  name:MPMoviePlayerPlaybackDidFinishNotification 
                                                object:nil]; 
 } 
-
-
 
 @end
