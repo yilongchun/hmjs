@@ -348,8 +348,8 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         i++;
                         UIButton *btn6 = [[UIButton alloc] init];
                         [btn6 setFrame:btnr];
-                        [btn6 setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-                        [btn6 setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateHighlighted];
+                        [btn6 setBackgroundImage:[UIImage imageNamed:@"menu_cwj.png"] forState:UIControlStateNormal];
+//                        [btn6 setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateHighlighted];
                         [btn6 addTarget:self action:@selector(cwjAction) forControlEvents:UIControlEventTouchUpInside];
                         UILabel *label6 = [[UILabel alloc] init];
                         if (btn6.frame.origin.x != 0) {
@@ -365,7 +365,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         i++;
                         UIButton *btn1 = [[UIButton alloc] init];
                         [btn1 setFrame:btnr];
-                        [btn1 setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+                        [btn1 setBackgroundImage:[UIImage imageNamed:@"grrz.png"] forState:UIControlStateNormal];
                         [btn1 addTarget:self action:@selector(grrz) forControlEvents:UIControlEventTouchUpInside];
                         UILabel *label1 = [[UILabel alloc] init];
                         if (btn1.frame.origin.x != 0) {
