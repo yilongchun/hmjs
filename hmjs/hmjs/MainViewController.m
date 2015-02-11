@@ -30,7 +30,7 @@
 #import "EaseMob.h"
 #import "CwjTabBarController.h"
 #import "MyTabbarController4.h"
-
+#import "XsydViewController.h"
 
 //两次提示的默认间隔
 static const CGFloat kDefaultPlaySoundInterval = 3.0;
@@ -50,6 +50,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     BbxxTarbarViewController *bwgl;//班务管理
     CwjTabBarController *cwj;//晨午检
     MyTabbarController4 *tab4;//个人日志
+    XsydViewController *xsyd;//学生异动
 }
 
 @property (strong, nonatomic)NSDate *lastPlaySoundDate;
@@ -210,6 +211,16 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                                 btnr = CGRectMake(width*2-100, 10, 90, 90);
                             }else{
                                 btnr = CGRectMake(width-100, 260, 90, 90);
+                            }
+                            break;
+                        case 9:
+                            if (height <= 480) {
+                                btnr = CGRectMake(width+10, 135, 90, 90);
+                            }else if(height <= 1334/2){
+                                btnr = CGRectMake(width+10, 10, 90, 90);
+                            }
+                            else{
+                                btnr = CGRectMake(10, 385, 90, 90);
                             }
                             break;
                         default:
@@ -377,6 +388,22 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                             [mainScrollView addSubview:btn1];
                             [mainScrollView addSubview:label1];
                         }
+                    }else if([menuStr isEqualToString:@"191_move"]){
+                        i++;
+                        UIButton *btn1 = [[UIButton alloc] init];
+                        [btn1 setFrame:btnr];
+                        [btn1 setBackgroundImage:[UIImage imageNamed:@"menu_xsyd.png"] forState:UIControlStateNormal];
+                        [btn1 addTarget:self action:@selector(xsyd) forControlEvents:UIControlEventTouchUpInside];
+                        UILabel *label1 = [[UILabel alloc] init];
+                        if (btn1.frame.origin.x != 0) {
+                            [label1 setFrame:CGRectMake(btn1.frame.origin.x, btn1.frame.origin.y+95, 90, 20)];
+                            label1.text = @"学生异动";
+                            label1.textAlignment = NSTextAlignmentCenter;
+                            [label1 setFont:[UIFont systemFontOfSize:15]];
+                            [label1 setBackgroundColor:[UIColor clearColor]];
+                            [mainScrollView addSubview:btn1];
+                            [mainScrollView addSubview:label1];
+                        }
                     }else{
                         continue;
                     }
@@ -386,6 +413,23 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         [mainScrollView setContentSize:CGSizeMake(width*2, height-170)];
                         if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
                             spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-30, width, 10)];
+                        }else{
+                            spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-50, width, 10)];
+                        }
+                        spacePageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+                        spacePageControl.pageIndicatorTintColor = [UIColor grayColor];
+                        spacePageControl.numberOfPages = 2;
+                        spacePageControl.userInteractionEnabled = NO;
+                        [self.view addSubview:spacePageControl];
+                    }else if(height <= 1334/2){
+                        [mainScrollView setContentSize:CGSizeMake(width*2, height-170)];
+                        if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+                            if (iPhone5) {
+                                spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-20, width, 10)];
+                            }else{
+                                spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-30, width, 10)];
+                            }
+                            
                         }else{
                             spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-50, width, 10)];
                         }
@@ -862,6 +906,15 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     [self.navigationController setNavigationBarHidden:NO];
 }
 
+//学生异动
+-(void)xsyd{
+    if (xsyd == nil) {
+        xsyd = [[XsydViewController alloc] init];
+    }
+    [self.navigationController pushViewController:xsyd animated:YES];
+    [self.navigationController setNavigationBarHidden:NO];
+}
+
 //返回到该页面调用
 - (void)viewDidAppear:(BOOL)animated{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -873,6 +926,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
         [self loadYezx];//加载育儿资讯分类
         [self loadBbsp];//加载食谱
         [self loadKcb];//加载课程表
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadXsyd" object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadCwjVc" object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadDaily" object:nil];
         

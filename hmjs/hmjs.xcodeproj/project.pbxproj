@@ -594,6 +594,13 @@
 		E4F3B0001A7CF74600176E56 /* summarymanage1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F3AFF81A7CF74600176E56 /* summarymanage1@2x.png */; };
 		E4F3B0011A7CF74600176E56 /* summarymanage2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F3AFF91A7CF74600176E56 /* summarymanage2.png */; };
 		E4F3B0021A7CF74600176E56 /* summarymanage2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F3AFFA1A7CF74600176E56 /* summarymanage2@2x.png */; };
+		E4F483441A8A618600EFCB4E /* menu_xsyd.png in Resources */ = {isa = PBXBuildFile; fileRef = E4F483431A8A618600EFCB4E /* menu_xsyd.png */; };
+		E4F4834D1A8A63A800EFCB4E /* XsydViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F4834B1A8A63A800EFCB4E /* XsydViewController.m */; };
+		E4F4834E1A8A63A800EFCB4E /* XsydViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F4834C1A8A63A800EFCB4E /* XsydViewController.xib */; };
+		E4F483521A8A656400EFCB4E /* XsydDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F483501A8A656400EFCB4E /* XsydDetailViewController.m */; };
+		E4F483531A8A656400EFCB4E /* XsydDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F483511A8A656400EFCB4E /* XsydDetailViewController.xib */; };
+		E4F483571A8A65F900EFCB4E /* AddXsydViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F483551A8A65F900EFCB4E /* AddXsydViewController.m */; };
+		E4F483581A8A65F900EFCB4E /* AddXsydViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4F483561A8A65F900EFCB4E /* AddXsydViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1524,6 +1531,16 @@
 		E4F3AFF81A7CF74600176E56 /* summarymanage1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "summarymanage1@2x.png"; sourceTree = "<group>"; };
 		E4F3AFF91A7CF74600176E56 /* summarymanage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = summarymanage2.png; sourceTree = "<group>"; };
 		E4F3AFFA1A7CF74600176E56 /* summarymanage2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "summarymanage2@2x.png"; sourceTree = "<group>"; };
+		E4F483431A8A618600EFCB4E /* menu_xsyd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_xsyd.png; sourceTree = "<group>"; };
+		E4F4834A1A8A63A800EFCB4E /* XsydViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XsydViewController.h; sourceTree = "<group>"; };
+		E4F4834B1A8A63A800EFCB4E /* XsydViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XsydViewController.m; sourceTree = "<group>"; };
+		E4F4834C1A8A63A800EFCB4E /* XsydViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XsydViewController.xib; sourceTree = "<group>"; };
+		E4F4834F1A8A656400EFCB4E /* XsydDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XsydDetailViewController.h; sourceTree = "<group>"; };
+		E4F483501A8A656400EFCB4E /* XsydDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XsydDetailViewController.m; sourceTree = "<group>"; };
+		E4F483511A8A656400EFCB4E /* XsydDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XsydDetailViewController.xib; sourceTree = "<group>"; };
+		E4F483541A8A65F900EFCB4E /* AddXsydViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddXsydViewController.h; sourceTree = "<group>"; };
+		E4F483551A8A65F900EFCB4E /* AddXsydViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddXsydViewController.m; sourceTree = "<group>"; };
+		E4F483561A8A65F900EFCB4E /* AddXsydViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddXsydViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1713,6 +1730,7 @@
 		E4E76B041A277997004DF568 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E4F483431A8A618600EFCB4E /* menu_xsyd.png */,
 				E4C3D2A51A88D08C0027753D /* grrz.png */,
 				E4C3D2A31A88C8ED0027753D /* menu_cwj.png */,
 				E4C3D2611A88BBB20027753D /* btn_normal.png */,
@@ -2463,6 +2481,15 @@
 				E4F3AFD71A7CF17D00176E56 /* AddScheduleViewController.h */,
 				E4F3AFD81A7CF17D00176E56 /* AddScheduleViewController.m */,
 				E4F3AFD91A7CF17D00176E56 /* AddScheduleViewController.xib */,
+				E4F4834A1A8A63A800EFCB4E /* XsydViewController.h */,
+				E4F4834B1A8A63A800EFCB4E /* XsydViewController.m */,
+				E4F4834C1A8A63A800EFCB4E /* XsydViewController.xib */,
+				E4F4834F1A8A656400EFCB4E /* XsydDetailViewController.h */,
+				E4F483501A8A656400EFCB4E /* XsydDetailViewController.m */,
+				E4F483511A8A656400EFCB4E /* XsydDetailViewController.xib */,
+				E4F483541A8A65F900EFCB4E /* AddXsydViewController.h */,
+				E4F483551A8A65F900EFCB4E /* AddXsydViewController.m */,
+				E4F483561A8A65F900EFCB4E /* AddXsydViewController.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -3316,6 +3343,7 @@
 				E4E76EF71A277B3C004DF568 /* call_out@2x.png in Resources */,
 				E4E76F0F1A277B3C004DF568 /* chatBar_faceSelected@2x.png in Resources */,
 				E4E76BBC1A277997004DF568 /* VoiceSearchFeedback012.png in Resources */,
+				E4F4834E1A8A63A800EFCB4E /* XsydViewController.xib in Resources */,
 				E4E76BA81A277997004DF568 /* VoiceSearchFeedback002.png in Resources */,
 				E4ECE9541A2F77DF00860CE7 /* WdhdViewController.xib in Resources */,
 				E4E76F461A277B3C004DF568 /* group_detail@2x.png in Resources */,
@@ -3498,6 +3526,7 @@
 				E4E76C091A277997004DF568 /* ic_index_012.png in Resources */,
 				E4E76BC81A277997004DF568 /* VoiceSearchFeedback018.png in Resources */,
 				E4E76BB51A277997004DF568 /* VoiceSearchFeedback008@2x.png in Resources */,
+				E4F483441A8A618600EFCB4E /* menu_xsyd.png in Resources */,
 				E4E76BF01A277997004DF568 /* chat_sender_audio_playing_001@2x.png in Resources */,
 				E4E76BA31A277997004DF568 /* chatFire_audioPlaying2@2x.png in Resources */,
 				E4F3B0001A7CF74600176E56 /* summarymanage1@2x.png in Resources */,
@@ -3586,6 +3615,7 @@
 				E4C3F46C1A7A40C90055041E /* checkbox1_checked@2x.png in Resources */,
 				E4E76BCA1A277997004DF568 /* VoiceSearchFeedback019.png in Resources */,
 				E4E76F4C1A277B3C004DF568 /* groupPublicHeader@2x.png in Resources */,
+				E4F483581A8A65F900EFCB4E /* AddXsydViewController.xib in Resources */,
 				E4E76BAC1A277997004DF568 /* VoiceSearchFeedback004.png in Resources */,
 				E4E76F101A277B3C004DF568 /* chatBar_keyboard.png in Resources */,
 				E4E76BFF1A277997004DF568 /* ic_index_002.png in Resources */,
@@ -3639,6 +3669,7 @@
 				E4E76F2C1A277B3C004DF568 /* chatBar_more_location.png in Resources */,
 				E4E76EE61A277B3C004DF568 /* sr_refresh.png in Resources */,
 				E4E76BAA1A277997004DF568 /* VoiceSearchFeedback003.png in Resources */,
+				E4F483531A8A656400EFCB4E /* XsydDetailViewController.xib in Resources */,
 				E4F3AFD61A7CE35900176E56 /* nopicture2.png in Resources */,
 				E4E76F221A277B3C004DF568 /* chatBar_colorMore_location@2x.png in Resources */,
 				E4C3F46B1A7A40C90055041E /* checkbox1_checked.png in Resources */,
@@ -3670,6 +3701,7 @@
 				E4E76F6D1A277B3C004DF568 /* NSManagedObjectModel+MagicalRecord.m in Sources */,
 				E4E76D491A277B28004DF568 /* GgxqViewController.m in Sources */,
 				E4E76F7C1A277B3C004DF568 /* SettingsViewController.m in Sources */,
+				E4F483571A8A65F900EFCB4E /* AddXsydViewController.m in Sources */,
 				E4E76F351A277B3C004DF568 /* EMChatAudioBubbleView.m in Sources */,
 				E4E76F441A277B3C004DF568 /* ContactSelectionViewController.m in Sources */,
 				E4F3AFF11A7CF1F400176E56 /* MoreTableViewCell.m in Sources */,
@@ -3705,6 +3737,7 @@
 				E4E76F051A277B3C004DF568 /* DXMessageToolBar.m in Sources */,
 				E4E76D441A277B28004DF568 /* CustomMoviePlayerViewController.m in Sources */,
 				E4E76EE91A277B3C004DF568 /* SRSlimeView.m in Sources */,
+				E4F483521A8A656400EFCB4E /* XsydDetailViewController.m in Sources */,
 				E4E76ED81A277B3C004DF568 /* PSTCollectionView.m in Sources */,
 				E4E76F611A277B3C004DF568 /* NSObject+MagicalDataImport.m in Sources */,
 				E4EB90321A2E17EA00DFEA47 /* BwrzViewController.m in Sources */,
@@ -3875,6 +3908,7 @@
 				E4E76F711A277B3C004DF568 /* MagicalRecord+ErrorHandling.m in Sources */,
 				E4E76EEA1A277B3C004DF568 /* THProgressView.m in Sources */,
 				E4E76CAF1A277AF9004DF568 /* UIImageView+MKNetworkKitAdditions.m in Sources */,
+				E4F4834D1A8A63A800EFCB4E /* XsydViewController.m in Sources */,
 				E4C3F46F1A7A40C90055041E /* QCheckBox.m in Sources */,
 				E4ED052A1A78FF40005C5683 /* CustomCellBackground.m in Sources */,
 				E4E76CDF1A277B0E004DF568 /* AFURLRequestSerialization.m in Sources */,
