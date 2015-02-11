@@ -32,6 +32,9 @@
 		E4C3F46D1A7A40C90055041E /* checkbox1_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3F4671A7A40C90055041E /* checkbox1_unchecked.png */; };
 		E4C3F46E1A7A40C90055041E /* checkbox1_unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C3F4681A7A40C90055041E /* checkbox1_unchecked@2x.png */; };
 		E4C3F46F1A7A40C90055041E /* QCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C3F46A1A7A40C90055041E /* QCheckBox.m */; };
+		E4C42DC41A8B5F5C004DF19B /* grayBg.png in Resources */ = {isa = PBXBuildFile; fileRef = E4C42DC31A8B5F5C004DF19B /* grayBg.png */; };
+		E4C42DC81A8B6870004DF19B /* ChooseStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C42DC61A8B6870004DF19B /* ChooseStudentViewController.m */; };
+		E4C42DC91A8B6870004DF19B /* ChooseStudentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4C42DC71A8B6870004DF19B /* ChooseStudentViewController.xib */; };
 		E4C82B931A7B8B8A00AEFCBC /* LXReorderableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C82B921A7B8B8A00AEFCBC /* LXReorderableCollectionViewFlowLayout.m */; };
 		E4CAF5BE1A31B333009A77BE /* AddActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CAF5BC1A31B333009A77BE /* AddActivityViewController.m */; };
 		E4CAF5BF1A31B333009A77BE /* AddActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4CAF5BD1A31B333009A77BE /* AddActivityViewController.xib */; };
@@ -643,6 +646,10 @@
 		E4C3F4681A7A40C90055041E /* checkbox1_unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox1_unchecked@2x.png"; sourceTree = "<group>"; };
 		E4C3F4691A7A40C90055041E /* QCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCheckBox.h; sourceTree = "<group>"; };
 		E4C3F46A1A7A40C90055041E /* QCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCheckBox.m; sourceTree = "<group>"; };
+		E4C42DC31A8B5F5C004DF19B /* grayBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayBg.png; sourceTree = "<group>"; };
+		E4C42DC51A8B6870004DF19B /* ChooseStudentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseStudentViewController.h; sourceTree = "<group>"; };
+		E4C42DC61A8B6870004DF19B /* ChooseStudentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseStudentViewController.m; sourceTree = "<group>"; };
+		E4C42DC71A8B6870004DF19B /* ChooseStudentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseStudentViewController.xib; sourceTree = "<group>"; };
 		E4C82B911A7B8B8A00AEFCBC /* LXReorderableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXReorderableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		E4C82B921A7B8B8A00AEFCBC /* LXReorderableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXReorderableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		E4CAF5BB1A31B333009A77BE /* AddActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddActivityViewController.h; sourceTree = "<group>"; };
@@ -1730,6 +1737,7 @@
 		E4E76B041A277997004DF568 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E4C42DC31A8B5F5C004DF19B /* grayBg.png */,
 				E4F483431A8A618600EFCB4E /* menu_xsyd.png */,
 				E4C3D2A51A88D08C0027753D /* grrz.png */,
 				E4C3D2A31A88C8ED0027753D /* menu_cwj.png */,
@@ -2490,6 +2498,9 @@
 				E4F483541A8A65F900EFCB4E /* AddXsydViewController.h */,
 				E4F483551A8A65F900EFCB4E /* AddXsydViewController.m */,
 				E4F483561A8A65F900EFCB4E /* AddXsydViewController.xib */,
+				E4C42DC51A8B6870004DF19B /* ChooseStudentViewController.h */,
+				E4C42DC61A8B6870004DF19B /* ChooseStudentViewController.m */,
+				E4C42DC71A8B6870004DF19B /* ChooseStudentViewController.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -3398,6 +3409,7 @@
 				E4EF577A1A681099004B57E6 /* MyActivityReviewViewController.xib in Resources */,
 				E4EB900B1A2DB9F600DFEA47 /* ic_sp_001.png in Resources */,
 				E4E76F201A277B3C004DF568 /* chatBar_colorMore_camera@2x.png in Resources */,
+				E4C42DC41A8B5F5C004DF19B /* grayBg.png in Resources */,
 				E4E76F2F1A277B3C004DF568 /* chatBar_more_locationSelected@2x.png in Resources */,
 				E4EB90131A2DB9F600DFEA47 /* xxhd@2x.png in Resources */,
 				E4E76C001A277997004DF568 /* ic_index_003.png in Resources */,
@@ -3673,6 +3685,7 @@
 				E4F3AFD61A7CE35900176E56 /* nopicture2.png in Resources */,
 				E4E76F221A277B3C004DF568 /* chatBar_colorMore_location@2x.png in Resources */,
 				E4C3F46B1A7A40C90055041E /* checkbox1_checked.png in Resources */,
+				E4C42DC91A8B6870004DF19B /* ChooseStudentViewController.xib in Resources */,
 				E4E76D331A277B28004DF568 /* BbspViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3778,6 +3791,7 @@
 				E4E76F5C1A277B3C004DF568 /* ApplyEntity.m in Sources */,
 				E4E76F631A277B3C004DF568 /* NSString+MagicalDataImport.m in Sources */,
 				E4E76D3A1A277B28004DF568 /* BwhdViewController.m in Sources */,
+				E4C42DC81A8B6870004DF19B /* ChooseStudentViewController.m in Sources */,
 				E4E76F671A277B3C004DF568 /* NSManagedObject+MagicalRecord.m in Sources */,
 				E4E76CDD1A277B0E004DF568 /* AFSecurityPolicy.m in Sources */,
 				E4E76F401A277B3C004DF568 /* MessageModel.m in Sources */,

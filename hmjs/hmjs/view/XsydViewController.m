@@ -259,29 +259,30 @@
         
         
         NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
-        NSString *createDate = [info objectForKey:@"createDate"];
+        NSString *createDate = [info objectForKey:@"occurdate"];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
         NSDate *date = [dateFormatter dateFromString:createDate];
         NSDateFormatter *dateFormatter2 = [[NSDateFormatter alloc] init];
         [dateFormatter2 setDateFormat:@"yyyy年MM月dd日"];
         NSString *date2 = [dateFormatter2 stringFromDate:date];
         
         
-        
-        
-        
         NSString *classname = [info objectForKey:@"classname"];
         NSNumber *type = [info objectForKey:@"type"];
-        NSString *detail;
-        if ([type intValue] == 0) {
-            detail = @"转入";
-        }else if ([type intValue] == 1){
-            detail = @"转出";
-        }
         NSString *studentname = [info objectForKey:@"studentname"];
+        NSMutableString *content = [NSMutableString string];
+        if ([type intValue] == 0) {
+            [content appendFormat:@"%@ ",studentname];
+            [content appendFormat:@"转入 "];
+            [content appendFormat:@"%@",classname];
+        }else if ([type intValue] == 1){
+            [content appendFormat:@"%@ ",studentname];
+            [content appendFormat:@"从 %@ ",classname];
+            [content appendFormat:@"转出"];
+        }
         cell.textLabel.text = date2;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@ %@",classname,studentname,detail];
+        cell.detailTextLabel.text = content;
         
         return cell;
     }
