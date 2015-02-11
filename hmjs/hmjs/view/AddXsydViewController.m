@@ -45,6 +45,8 @@
     self.remarkText.layer.borderWidth = 0.4f;
     self.remarkText.layer.cornerRadius = 5.0f;
     
+    [self.remarkText setFrame:CGRectMake(self.remarkText.frame.origin.x, self.remarkText.frame.origin.y, [UIScreen mainScreen].bounds.size.width-8-58, self.remarkText.frame.size.height)];
+    
     CGRect rect = self.nameText.frame;
     rect.size.height = 40;
     self.nameText.frame = rect;
