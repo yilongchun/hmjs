@@ -90,8 +90,8 @@
     
     
     
-    self.imageView.layer.cornerRadius = 5;
-    self.imageView.layer.masksToBounds = YES;
+//    self.imageView.layer.cornerRadius = 5;
+//    self.imageView.layer.masksToBounds = YES;
     
     self.textLabel.text = _name;
     self.textLabel.frame = CGRectMake(65, 7, 175, 20);

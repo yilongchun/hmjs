@@ -129,7 +129,7 @@
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         [self.tableView setLayoutMargins:UIEdgeInsetsZero];
     }
-    self.tableView.tableHeaderView = self.headerView;
+    //self.tableView.tableHeaderView = self.headerView;
     
     UIView *footerView = [[UIView alloc] init];
     footerView.backgroundColor = [UIColor colorWithRed:0.88 green:0.88 blue:0.88 alpha:1.0];
@@ -159,26 +159,26 @@
 
 #pragma mark - getter
 
-- (UITextField *)textField
-{
-    if (_textField == nil) {
-        _textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width - 20, 40)];
-        _textField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-        _textField.layer.borderWidth = 0.5;
-        _textField.layer.cornerRadius = 3;
-        _textField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 30)];
-        _textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-        _textField.leftViewMode = UITextFieldViewModeAlways;
-        _textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _textField.font = [UIFont systemFontOfSize:15.0];
-        _textField.backgroundColor = [UIColor whiteColor];
-        _textField.placeholder = @"输入要查找的好友";
-        _textField.returnKeyType = UIReturnKeyDone;
-        _textField.delegate = self;
-    }
-    
-    return _textField;
-}
+//- (UITextField *)textField
+//{
+//    if (_textField == nil) {
+//        _textField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width - 20, 40)];
+//        _textField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+//        _textField.layer.borderWidth = 0.5;
+//        _textField.layer.cornerRadius = 3;
+//        _textField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 30)];
+//        _textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+//        _textField.leftViewMode = UITextFieldViewModeAlways;
+//        _textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+//        _textField.font = [UIFont systemFontOfSize:15.0];
+//        _textField.backgroundColor = [UIColor whiteColor];
+//        _textField.placeholder = @"输入要查找的好友";
+//        _textField.returnKeyType = UIReturnKeyDone;
+//        _textField.delegate = self;
+//    }
+//    
+//    return _textField;
+//}
 
 - (UIView *)headerView
 {
