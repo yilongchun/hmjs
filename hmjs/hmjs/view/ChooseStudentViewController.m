@@ -17,6 +17,8 @@
     MKNetworkEngine *engine;
     NSString *classid;
     NSIndexPath *oldIndexPath;
+    
+    NSString *studentid;
 }
 @property (nonatomic, strong) SRRefreshView *slimeView;
 
@@ -168,7 +170,13 @@
     }
     NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
     NSString *studentname = [info objectForKey:@"studentname"];
+    NSString *tempstudentid = [info objectForKey:@"studentid"];
     cell.textLabel.text = studentname;
+    if ([tempstudentid isEqualToString:studentid]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }else{
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     return cell;
     
 }
@@ -197,6 +205,7 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryCheckmark;
     NSDictionary *info = [dataSource objectAtIndex:indexPath.row];
+    studentid = [info objectForKey:@"studentid"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"chooseStudentEnd" object:info];
     [self performSelector:@selector(backAndSetValue) withObject:nil afterDelay:0.3];
 }
