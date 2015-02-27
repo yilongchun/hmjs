@@ -280,7 +280,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         UILabel *label2 = [[UILabel alloc] init];
                         if (btn2.frame.origin.x != 0) {
                             [label2 setFrame:CGRectMake(btn2.frame.origin.x, btn2.frame.origin.y+95, 90, 20)];
-                            label2.text = @"园所动态";
+                            label2.text = @"我的学校";
                             label2.textAlignment = NSTextAlignmentCenter;
                             [label2 setFont:[UIFont systemFontOfSize:16]];
                             [label2 setBackgroundColor:[UIColor clearColor]];

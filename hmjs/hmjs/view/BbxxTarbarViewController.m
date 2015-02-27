@@ -39,20 +39,20 @@
 //    }
     
     
-    UIImage *img1 = [UIImage imageNamed:@"xxjs.png"];
-    UIImage *img1_h = [UIImage imageNamed:@"xxjs_high.png"];
+    UIImage *img1 = [UIImage imageNamed:@"bwhd.png"];
+    UIImage *img1_h = [UIImage imageNamed:@"bwhd_high.png"];
     
     UIImage *img2 = [UIImage imageNamed:@"wdhd.png"];
     UIImage *img2_h = [UIImage imageNamed:@"wdhd_high.png"];
     
-    UIImage *img3 = [UIImage imageNamed:@"xxgg.png"];
-    UIImage *img3_h = [UIImage imageNamed:@"xxgg_high.png"];
+    UIImage *img3 = [UIImage imageNamed:@"ggtz.png"];
+    UIImage *img3_h = [UIImage imageNamed:@"ggtz_high.png"];
     
     UIImage *img4 = [UIImage imageNamed:@"wdgg.png"];
     UIImage *img4_h = [UIImage imageNamed:@"wdgg_high.png"];
     
-    UIImage *img5 = [UIImage imageNamed:@"xxhd.png"];
-    UIImage *img5_h = [UIImage imageNamed:@"xxhd_high.png"];
+    UIImage *img5 = [UIImage imageNamed:@"bwrz.png"];
+    UIImage *img5_h = [UIImage imageNamed:@"bwrz_high.png"];
     
     
     BwhdViewController *vc1 = [[BwhdViewController alloc] init];
