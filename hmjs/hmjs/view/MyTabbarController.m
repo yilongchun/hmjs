@@ -49,7 +49,7 @@
     }else{
         UITabBarItem *item1 = [[UITabBarItem alloc] initWithTitle:@"学校介绍" image:img1 tag:0];
         vc1.tabBarItem = item1;
-        UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"班级介绍" image:img1 tag:1];
+        UITabBarItem *item2 = [[UITabBarItem alloc] initWithTitle:@"班级介绍" image:img2 tag:1];
         vc2.tabBarItem = item2;
     }
     
@@ -96,5 +96,24 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+//ios<6.0
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
+    NSLog(@"shouldAutorotateToInterfaceOrientation3");
+    return NO;
+}
+//ios>6.0
+- (BOOL)shouldAutorotate
+{
+    NSLog(@"shouldAutorotate3");
+    return NO;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    NSLog(@"supportedInterfaceOrientations3");
+    return UIInterfaceOrientationMaskPortrait;//只支持这一个方向(正常的方向)
+}
 
 @end
