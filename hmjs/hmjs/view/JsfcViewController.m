@@ -1,46 +1,61 @@
 //
-//  XxhdViewController.m
-//  hmjz
+//  JsfcViewController.m
+//  hmxx
 //
-//  Created by yons on 14-11-28.
-//  Copyright (c) 2014年 yons. All rights reserved.
+//  Created by yons on 15-1-23.
+//  Copyright (c) 2015年 hmzl. All rights reserved.
 //
 
-#import "XxhdViewController.h"
-#import "GgtzTableViewCell.h"
-#import "MBProgressHUD.h"
+#import "JsfcViewController.h"
 #import "MKNetworkKit.h"
 #import "Utils.h"
-#import "AFNetworking.h"
-#import "UIImageView+AFNetworking.h"
-#import "MyViewControllerCellDetail.h"
+#import "MBProgressHUD.h"
 #import "SRRefreshView.h"
+#import "JsfcTableViewCell.h"
+#import "UIImageView+AFNetworking.h"
+#import "JsfcDetailViewController.h"
 #import "MoreTableViewCell.h"
 
-@interface XxhdViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
+@interface JsfcViewController ()<MBProgressHUDDelegate,SRRefreshDelegate>{
     MBProgressHUD *HUD;
     MKNetworkEngine *engine;
     NSNumber *totalpage;
     NSNumber *page;
     NSNumber *rows;
+    NSString *classid;
+    
     UIActivityIndicatorView *tempactivity;
 }
-@property (nonatomic, strong) SRRefreshView         *slimeView;
-
+@property (nonatomic, strong) SRRefreshView *slimeView;
 @end
 
-@implementation XxhdViewController
+@implementation JsfcViewController
 @synthesize dataSource;
 @synthesize mytableview;
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Do any additional setup after loading the view from its nib.
+//    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+//        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+//    }
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loadData)
+                                                 name:@"reloadJsfc"
+                                               object:nil];
     
     //初始化tableview
-    CGRect cg = CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-49-64);
+    CGRect cg;
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
+        cg = CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-49-64);
+    }else{
+        cg = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-49-64);
+    }
     mytableview = [[UITableView alloc] initWithFrame:cg style:UITableViewStylePlain];
     UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
     [mytableview setTableFooterView:v];
@@ -53,9 +68,12 @@
     mytableview.dataSource = self;
     mytableview.delegate = self;
     [self.view addSubview:mytableview];
-    
     [mytableview addSubview:self.slimeView];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(loadData)
+                                                 name:@"reloadJsfc"
+                                               object:nil];
     
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -65,14 +83,15 @@
     [HUD show:YES];
     
     engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
-    //    [engine useCache];
     
     self.dataSource = [[NSMutableArray alloc] init];
+    NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+    NSDictionary *class = [userdefault objectForKey:@"class"];
+    classid = [class objectForKey:@"id"];
     
     
     //初始化数据
     [self loadData];
-    
 }
 
 #pragma mark - getter
@@ -102,16 +121,12 @@
     rows = [NSNumber numberWithInt:10];
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *student = [userDefaults objectForKey:@"student"];
-    NSString *schoolId = [student objectForKey:@"schoolid"];
-    [dic setValue:schoolId forKey:@"schoolId"];
     [dic setValue:page forKey:@"page"];
     [dic setValue:rows forKey:@"rows"];
-    //    [dic setValue:@"t_activity_title" forKey:@"type"];
-    MKNetworkOperation *op = [engine operationWithPath:@"/pactivity/schoolfindPageList.do" params:dic httpMethod:@"GET"];
+    [dic setValue:classid forKey:@"classId"];
+    
+    MKNetworkOperation *op = [engine operationWithPath:@"/teacherelegant/findPageList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
-        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
         NSString *result = [operation responseString];
         NSError *error;
         NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
@@ -121,7 +136,6 @@
         NSNumber *success = [resultDict objectForKey:@"success"];
         NSString *msg = [resultDict objectForKey:@"msg"];
         if ([success boolValue]) {
-            [HUD hide:YES];
             NSDictionary *data = [resultDict objectForKey:@"data"];
             if (data != nil) {
                 NSArray *arr = [data objectForKey:@"rows"];
@@ -134,35 +148,32 @@
                 }
                 [mytableview reloadData];
             }
+            [HUD hide:YES];
         }else{
             [HUD hide:YES];
             [self alertMsg:msg];
+            
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
         [HUD hide:YES];
-        [self alertMsg:[err localizedDescription]];
+        [self alertMsg:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }
 
 - (void)loadMore{
     
-    if ([page intValue]< [totalpage intValue]) {
+    if ([page intValue] < [totalpage intValue]) {
         page = [NSNumber numberWithInt:[page intValue] +1];
     }
-    
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *student = [userDefaults objectForKey:@"student"];
-    NSString *schoolId = [student objectForKey:@"schoolid"];
-    [dic setValue:schoolId forKey:@"schoolId"];
     [dic setValue:page forKey:@"page"];
     [dic setValue:rows forKey:@"rows"];
-    //    [dic setValue:@"t_activity_title" forKey:@"type"];
-    MKNetworkOperation *op = [engine operationWithPath:@"/pactivity/schoolfindPageList.do" params:dic httpMethod:@"GET"];
+    [dic setValue:classid forKey:@"classId"];
+    
+    MKNetworkOperation *op = [engine operationWithPath:@"/teacherelegant/findPageList.do" params:dic httpMethod:@"GET"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
-        //        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
         NSString *result = [operation responseString];
         NSError *error;
         NSDictionary *resultDict = [NSJSONSerialization JSONObjectWithData:[result dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:&error];
@@ -172,7 +183,6 @@
         NSNumber *success = [resultDict objectForKey:@"success"];
         NSString *msg = [resultDict objectForKey:@"msg"];
         if ([success boolValue]) {
-            [HUD hide:YES];
             NSDictionary *data = [resultDict objectForKey:@"data"];
             if (data != nil) {
                 NSArray *arr = [data objectForKey:@"rows"];
@@ -193,8 +203,7 @@
         }
     }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
         NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
-        [HUD hide:YES];
-        [self alertMsg:[err localizedDescription]];
+        [self alertMsg:@"连接服务器失败"];
     }];
     [engine enqueueOperation:op];
 }
@@ -208,7 +217,7 @@
     hud.delegate = self;
     hud.labelText = msg;
     [hud show:YES];
-    [hud hide:YES afterDelay:1.5];
+    [hud hide:YES afterDelay:1.0];
 }
 
 
@@ -219,7 +228,7 @@
     hud.labelText = msg;
     hud.margin = 10.f;
     hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.5];
+    [hud hide:YES afterDelay:1.0];
 }
 
 
@@ -245,52 +254,36 @@
         return cell;
         
     }else{
-        static NSString *cellIdentifier = @"ggtzcell";
-        GgtzTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        static NSString *cellIdentifier = @"jsfccell";
+        JsfcTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
         if (!cell) {
-            cell = [[[NSBundle mainBundle] loadNibNamed:@"GgtzTableViewCell" owner:self options:nil] lastObject];
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"JsfcTableViewCell" owner:self options:nil] lastObject];
         }
         NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
-        NSString *tntitle = [info objectForKey:@"activityTitle"];
-        NSString *teacherfileid = [info objectForKey:@"teacherfileid"];
-        NSString *tncontent = [info objectForKey:@"activityDigest"];
-        NSNumber *noticecount = [info objectForKey:@"count"];
-        NSString *tncreatedate = [info objectForKey:@"createDate"];
-        NSString *source = [info objectForKey:@"teachername"];
-        cell.gtitle.text = tntitle;
-        
-        if ([Utils isBlankString:teacherfileid]) {
-            [cell.imageview setImage:[UIImage imageNamed:@"nopicture2.png"]];
+        NSString *teacherName = [info objectForKey:@"teacherName"];
+        NSString *flieid = [info objectForKey:@"flieid"];
+        NSDictionary *classList = [info objectForKey:@"classList"];
+        NSNumber *ishead = [classList objectForKey:@"ishead"];
+        cell.username.text = teacherName;
+        if ([Utils isBlankString:flieid]) {
+            [cell.userimage setImage:[UIImage imageNamed:@"nopicture2.png"]];
         }else{
-            //            [cell.imageview setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@/image/show.do?id=%@",[Utils getImageHostname],teacherfileid]] placeholderImage:[UIImage imageNamed:@"nopicture2.png"]];
-            [cell.imageview setImageWithURL:[NSURL URLWithString:teacherfileid] placeholderImage:[UIImage imageNamed:@"nopicture2.png"]];
+            [cell.userimage setImageWithURL:[NSURL URLWithString:flieid] placeholderImage:[UIImage imageNamed:@"nopicture2.png"]];
         }
-        cell.gdispcription.text = tncontent;
-        cell.gdispcription.numberOfLines = 2;// 不可少Label属性之一
-        cell.gdispcription.lineBreakMode = NSLineBreakByCharWrapping;// 不可少Label属性之二
-        //[cell.gdispcription sizeToFit];
-        cell.gpinglun.text = [NSString stringWithFormat:@"评论(%@)",noticecount];
-        cell.gdate.text = tncreatedate;
-        cell.gsource.text = [NSString stringWithFormat:@"来自:%@",source];
+        if ([ishead boolValue]) {
+            cell.userjob.text = @"班主任";
+        }else{
+            cell.userjob.text = @"教师";
+        }
         return cell;
     }
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.dataSource count] == indexPath.row) {
         return 55;
     }else{
-        return 100;
-    }
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        [cell setSeparatorInset:UIEdgeInsetsZero];
-    }
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
+        return 70;
     }
 }
 
@@ -307,18 +300,25 @@
         }
         
     }else{
-        NSDictionary *data = [self.dataSource objectAtIndex:indexPath.row];
-        NSString *detailid = [data objectForKey:@"id"];
-        MyViewControllerCellDetail *detail = [[MyViewControllerCellDetail alloc] init];
-        detail.detailid = detailid;
-        detail.title = @"活动详情";
-        [self.navigationController pushViewController:detail animated:YES];
+        if (indexPath.row < [self.dataSource count]) {
+            NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
+            NSString *detailId = [info objectForKey:@"id"];
+            JsfcDetailViewController *vc = [[JsfcDetailViewController alloc] init];
+            vc.detailId = detailId;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 #pragma mark - scrollView delegate
@@ -336,9 +336,24 @@
 //刷新消息列表
 - (void)slimeRefreshStartRefresh:(SRRefreshView *)refreshView
 {
-    
+    [HUD show:YES];
     [self loadData];
     [_slimeView endRefresh];
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

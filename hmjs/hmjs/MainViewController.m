@@ -47,7 +47,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     UIScrollView *mainScrollView;
     
     MyTabbarController *tabBarCtl;//园所动态
-    BbxxTarbarViewController *bwgl;//班务管理
+    //班务管理
     CwjTabBarController *cwj;//晨午检
     MyTabbarController4 *tab4;//个人日志
     XsydViewController *xsyd;//学生异动
@@ -618,9 +618,9 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 }
 //班务管理
 - (IBAction)bwglAction:(UIButton *)sender {
-    if (bwgl == nil) {
-        bwgl = [[BbxxTarbarViewController alloc] init];
-    }
+//    if (bwgl == nil) {
+    BbxxTarbarViewController *bwgl = [[BbxxTarbarViewController alloc] init];
+//    }
     [self.navigationController pushViewController:bwgl animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
 }
@@ -926,10 +926,11 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
         [self loadYezx];//加载育儿资讯分类
         [self loadBbsp];//加载食谱
         [self loadKcb];//加载课程表
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadXsyd" object:nil];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadCwjVc" object:nil];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadDaily" object:nil];
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadXsyd" object:nil];//学生异动
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadCwjVc" object:nil];//晨午检
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadDaily" object:nil];//日志
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadBjjs" object:nil];//班级介绍
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadJsfc" object:nil];//教师风采
     }
     NSString *loginflag = [userDefaults objectForKey:@"loginflag"];//如果是登陆则删除标识符
     if ([@"1" isEqualToString:loginflag]) {

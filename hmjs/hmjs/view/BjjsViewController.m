@@ -36,20 +36,24 @@
     }else{
         [self.mywebview setFrame:CGRectMake(0, 0, self.mywebview.frame.size.width, self.mywebview.frame.size.height+64+49)];
     }
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(getInfo)
+                                                 name:@"reloadBjjs"
+                                               object:nil];
     
     HUD.labelText = @"加载中...";
     [HUD show:YES];
     
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *student = [userDefaults objectForKey:@"class"];
-    NSString *classid = [student objectForKey:@"id"];
-    [self getInfo:classid];
+    
+    [self getInfo];
     
 }
 
 //获取班级介绍
-- (void)getInfo:(NSString *)classid{
+- (void)getInfo{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary *student = [userDefaults objectForKey:@"class"];
+    NSString *classid = [student objectForKey:@"id"];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:classid forKey:@"classId"];
     

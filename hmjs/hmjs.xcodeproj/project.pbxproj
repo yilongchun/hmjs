@@ -509,8 +509,6 @@
 		E4EB90151A2DB9F600DFEA47 /* xxjs_high@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EB90081A2DB9F600DFEA47 /* xxjs_high@2x.png */; };
 		E4EB90161A2DB9F600DFEA47 /* xxjs.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EB90091A2DB9F600DFEA47 /* xxjs.png */; };
 		E4EB90171A2DB9F600DFEA47 /* xxjs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EB900A1A2DB9F600DFEA47 /* xxjs@2x.png */; };
-		E4EB901B1A2DBBD000DFEA47 /* XxhdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EB90191A2DBBD000DFEA47 /* XxhdViewController.m */; };
-		E4EB901C1A2DBBD000DFEA47 /* XxhdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EB901A1A2DBBD000DFEA47 /* XxhdViewController.xib */; };
 		E4EB90201A2DBE3D00DFEA47 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EB901E1A2DBE3D00DFEA47 /* GuideViewController.m */; };
 		E4EB90211A2DBE3D00DFEA47 /* GuideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4EB901F1A2DBE3D00DFEA47 /* GuideViewController.xib */; };
 		E4EB90271A2DBEE500DFEA47 /* guide_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E4EB90221A2DBEE500DFEA47 /* guide_1.png */; };
@@ -547,6 +545,16 @@
 		E4ECE94F1A2F74BD00860CE7 /* wdhd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE9471A2F74BD00860CE7 /* wdhd@2x.png */; };
 		E4ECE9531A2F77DF00860CE7 /* WdhdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ECE9511A2F77DF00860CE7 /* WdhdViewController.m */; };
 		E4ECE9541A2F77DF00860CE7 /* WdhdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4ECE9521A2F77DF00860CE7 /* WdhdViewController.xib */; };
+		E4ECFD421AA46FA700355924 /* JsfcDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ECFD3A1AA46FA700355924 /* JsfcDetailViewController.m */; };
+		E4ECFD431AA46FA700355924 /* JsfcDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4ECFD3B1AA46FA700355924 /* JsfcDetailViewController.xib */; };
+		E4ECFD441AA46FA700355924 /* JsfcTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ECFD3D1AA46FA700355924 /* JsfcTableViewCell.m */; };
+		E4ECFD451AA46FA700355924 /* JsfcTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4ECFD3E1AA46FA700355924 /* JsfcTableViewCell.xib */; };
+		E4ECFD461AA46FA700355924 /* JsfcViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ECFD401AA46FA700355924 /* JsfcViewController.m */; };
+		E4ECFD471AA46FA700355924 /* JsfcViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4ECFD411AA46FA700355924 /* JsfcViewController.xib */; };
+		E4ECFD4C1AA471F700355924 /* jsfc_high.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECFD481AA471F700355924 /* jsfc_high.png */; };
+		E4ECFD4D1AA471F700355924 /* jsfc_high@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECFD491AA471F700355924 /* jsfc_high@2x.png */; };
+		E4ECFD4E1AA471F700355924 /* jsfc.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECFD4A1AA471F700355924 /* jsfc.png */; };
+		E4ECFD4F1AA471F700355924 /* jsfc@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4ECFD4B1AA471F700355924 /* jsfc@2x.png */; };
 		E4ED05271A78F44E005C5683 /* CwjTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED05261A78F44E005C5683 /* CwjTabBarController.m */; };
 		E4ED052A1A78FF40005C5683 /* CustomCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED05291A78FF40005C5683 /* CustomCellBackground.m */; };
 		E4ED052E1A7905BF005C5683 /* CwjDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED052C1A7905BF005C5683 /* CwjDetailViewController.m */; };
@@ -1429,9 +1437,6 @@
 		E4EB90081A2DB9F600DFEA47 /* xxjs_high@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xxjs_high@2x.png"; sourceTree = "<group>"; };
 		E4EB90091A2DB9F600DFEA47 /* xxjs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xxjs.png; sourceTree = "<group>"; };
 		E4EB900A1A2DB9F600DFEA47 /* xxjs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xxjs@2x.png"; sourceTree = "<group>"; };
-		E4EB90181A2DBBD000DFEA47 /* XxhdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XxhdViewController.h; sourceTree = "<group>"; };
-		E4EB90191A2DBBD000DFEA47 /* XxhdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = XxhdViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		E4EB901A1A2DBBD000DFEA47 /* XxhdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XxhdViewController.xib; sourceTree = "<group>"; };
 		E4EB901D1A2DBE3D00DFEA47 /* GuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		E4EB901E1A2DBE3D00DFEA47 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
 		E4EB901F1A2DBE3D00DFEA47 /* GuideViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuideViewController.xib; sourceTree = "<group>"; };
@@ -1485,6 +1490,19 @@
 		E4ECE9501A2F77DF00860CE7 /* WdhdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WdhdViewController.h; sourceTree = "<group>"; };
 		E4ECE9511A2F77DF00860CE7 /* WdhdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WdhdViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E4ECE9521A2F77DF00860CE7 /* WdhdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WdhdViewController.xib; sourceTree = "<group>"; };
+		E4ECFD391AA46FA700355924 /* JsfcDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsfcDetailViewController.h; sourceTree = "<group>"; };
+		E4ECFD3A1AA46FA700355924 /* JsfcDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsfcDetailViewController.m; sourceTree = "<group>"; };
+		E4ECFD3B1AA46FA700355924 /* JsfcDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JsfcDetailViewController.xib; sourceTree = "<group>"; };
+		E4ECFD3C1AA46FA700355924 /* JsfcTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsfcTableViewCell.h; sourceTree = "<group>"; };
+		E4ECFD3D1AA46FA700355924 /* JsfcTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsfcTableViewCell.m; sourceTree = "<group>"; };
+		E4ECFD3E1AA46FA700355924 /* JsfcTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JsfcTableViewCell.xib; sourceTree = "<group>"; };
+		E4ECFD3F1AA46FA700355924 /* JsfcViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsfcViewController.h; sourceTree = "<group>"; };
+		E4ECFD401AA46FA700355924 /* JsfcViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsfcViewController.m; sourceTree = "<group>"; };
+		E4ECFD411AA46FA700355924 /* JsfcViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JsfcViewController.xib; sourceTree = "<group>"; };
+		E4ECFD481AA471F700355924 /* jsfc_high.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jsfc_high.png; sourceTree = "<group>"; };
+		E4ECFD491AA471F700355924 /* jsfc_high@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jsfc_high@2x.png"; sourceTree = "<group>"; };
+		E4ECFD4A1AA471F700355924 /* jsfc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jsfc.png; sourceTree = "<group>"; };
+		E4ECFD4B1AA471F700355924 /* jsfc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jsfc@2x.png"; sourceTree = "<group>"; };
 		E4ED05251A78F44E005C5683 /* CwjTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CwjTabBarController.h; sourceTree = "<group>"; };
 		E4ED05261A78F44E005C5683 /* CwjTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CwjTabBarController.m; sourceTree = "<group>"; };
 		E4ED05281A78FF40005C5683 /* CustomCellBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCellBackground.h; sourceTree = "<group>"; };
@@ -1769,6 +1787,10 @@
 		E4E76B041A277997004DF568 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E4ECFD481AA471F700355924 /* jsfc_high.png */,
+				E4ECFD491AA471F700355924 /* jsfc_high@2x.png */,
+				E4ECFD4A1AA471F700355924 /* jsfc.png */,
+				E4ECFD4B1AA471F700355924 /* jsfc@2x.png */,
 				E4F08A921AA0BB3200C6B521 /* ggtz_high.png */,
 				E4F08A931AA0BB3200C6B521 /* ggtz_high@2x.png */,
 				E4F08A941AA0BB3200C6B521 /* ggtz.png */,
@@ -2394,15 +2416,21 @@
 		E4E76CEA1A277B28004DF568 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				E4ECFD391AA46FA700355924 /* JsfcDetailViewController.h */,
+				E4ECFD3A1AA46FA700355924 /* JsfcDetailViewController.m */,
+				E4ECFD3B1AA46FA700355924 /* JsfcDetailViewController.xib */,
+				E4ECFD3C1AA46FA700355924 /* JsfcTableViewCell.h */,
+				E4ECFD3D1AA46FA700355924 /* JsfcTableViewCell.m */,
+				E4ECFD3E1AA46FA700355924 /* JsfcTableViewCell.xib */,
+				E4ECFD3F1AA46FA700355924 /* JsfcViewController.h */,
+				E4ECFD401AA46FA700355924 /* JsfcViewController.m */,
+				E4ECFD411AA46FA700355924 /* JsfcViewController.xib */,
 				E4F3AFEE1A7CF1F400176E56 /* MoreTableViewCell.h */,
 				E4F3AFEF1A7CF1F400176E56 /* MoreTableViewCell.m */,
 				E4F3AFF01A7CF1F400176E56 /* MoreTableViewCell.xib */,
 				E4EF57761A681099004B57E6 /* MyActivityReviewViewController.h */,
 				E4EF57771A681099004B57E6 /* MyActivityReviewViewController.m */,
 				E4EF57781A681099004B57E6 /* MyActivityReviewViewController.xib */,
-				E4EB90181A2DBBD000DFEA47 /* XxhdViewController.h */,
-				E4EB90191A2DBBD000DFEA47 /* XxhdViewController.m */,
-				E4EB901A1A2DBBD000DFEA47 /* XxhdViewController.xib */,
 				E4EB8FFB1A2DB84600DFEA47 /* BbxxTarbarViewController.h */,
 				E4EB8FFC1A2DB84600DFEA47 /* BbxxTarbarViewController.m */,
 				E4E76F9D1A277C8D004DF568 /* YsdtViewController.h */,
@@ -3471,6 +3499,7 @@
 				E4E76B011A277979004DF568 /* LoginViewController.xib in Resources */,
 				E4F3AFEB1A7CF17D00176E56 /* ScheduleDetailViewController.xib in Resources */,
 				E4E76F151A277B3C004DF568 /* chatBar_more@2x.png in Resources */,
+				E4ECFD4C1AA471F700355924 /* jsfc_high.png in Resources */,
 				E4E76C0D1A277997004DF568 /* ic_login.png in Resources */,
 				E4E76F301A277B3C004DF568 /* chatBar_more_photo.png in Resources */,
 				E4E76BB61A277997004DF568 /* VoiceSearchFeedback009.png in Resources */,
@@ -3487,6 +3516,7 @@
 				E4E76F2A1A277B3C004DF568 /* chatBar_more_cameraSelected.png in Resources */,
 				E4C3D2591A88BA010027753D /* tabbar_cj_high.png in Resources */,
 				E4F38F6A1A373D7100F4FE3B /* AddBwrzViewController.xib in Resources */,
+				E4ECFD4F1AA471F700355924 /* jsfc@2x.png in Resources */,
 				E4EDEABE1A403A7000711A94 /* pageDot@2x.png in Resources */,
 				E4E76BE51A277997004DF568 /* chat_receiver_audio_playing002.png in Resources */,
 				E4E76C041A277997004DF568 /* ic_index_007.png in Resources */,
@@ -3501,6 +3531,7 @@
 				E4E76F081A277B3C004DF568 /* faceDelete@2x.png in Resources */,
 				E4E76F1E1A277B3C004DF568 /* chatBar_recordSelectedBg.png in Resources */,
 				E4E76BFA1A277997004DF568 /* ic_bwrz_001@2x.png in Resources */,
+				E4ECFD431AA46FA700355924 /* JsfcDetailViewController.xib in Resources */,
 				E4E76F2B1A277B3C004DF568 /* chatBar_more_cameraSelected@2x.png in Resources */,
 				E4E76BFB1A277997004DF568 /* ic_bwrz_002.png in Resources */,
 				E4F38F651A373A5B00F4FE3B /* BwrzTableViewCell.xib in Resources */,
@@ -3595,6 +3626,7 @@
 				E4E76C091A277997004DF568 /* ic_index_012.png in Resources */,
 				E4E76BC81A277997004DF568 /* VoiceSearchFeedback018.png in Resources */,
 				E4E76BB51A277997004DF568 /* VoiceSearchFeedback008@2x.png in Resources */,
+				E4ECFD471AA46FA700355924 /* JsfcViewController.xib in Resources */,
 				E4F483441A8A618600EFCB4E /* menu_xsyd.png in Resources */,
 				E4E76BF01A277997004DF568 /* chat_sender_audio_playing_001@2x.png in Resources */,
 				E4E76BA31A277997004DF568 /* chatFire_audioPlaying2@2x.png in Resources */,
@@ -3615,10 +3647,10 @@
 				E4CAF5C31A31B7A4009A77BE /* smiley_add_btn_pressed.png in Resources */,
 				E4E76BE01A277997004DF568 /* chat_location_preview@2x.png in Resources */,
 				E4E76BD91A277997004DF568 /* chat_location_annotation_someone.png in Resources */,
+				E4ECFD4D1AA471F700355924 /* jsfc_high@2x.png in Resources */,
 				E4E76BBF1A277997004DF568 /* VoiceSearchFeedback013@2x.png in Resources */,
 				E4EB90111A2DB9F600DFEA47 /* xxhd_high@2x.png in Resources */,
 				E4F08A7E1AA0B87C00C6B521 /* bjjs_high.png in Resources */,
-				E4EB901C1A2DBBD000DFEA47 /* XxhdViewController.xib in Resources */,
 				E4F08A891AA0BA1D00C6B521 /* bwhd@2x.png in Resources */,
 				E4ED052F1A7905BF005C5683 /* CwjDetailViewController.xib in Resources */,
 				E4E76F241A277B3C004DF568 /* chatBar_colorMore_photo@2x.png in Resources */,
@@ -3719,6 +3751,7 @@
 				E4E76F321A277B3C004DF568 /* chatBar_more_photoSelected.png in Resources */,
 				E4EC153D1A77E4BF0048ACDB /* loginBtnBg2.png in Resources */,
 				E4CAF5C21A31B7A4009A77BE /* smiley_add_btn_nor.png in Resources */,
+				E4ECFD4E1AA471F700355924 /* jsfc.png in Resources */,
 				E4E76C231A277997004DF568 /* tabbar_settingHL.png in Resources */,
 				E4E76F031A277B3C004DF568 /* delete@2x.png in Resources */,
 				E4E76BFC1A277997004DF568 /* ic_bwrz_002@2x.png in Resources */,
@@ -3735,6 +3768,7 @@
 				E4E76C0E1A277997004DF568 /* ic_login_password.png in Resources */,
 				E4E76BDF1A277997004DF568 /* chat_location_preview.png in Resources */,
 				E4E76BD81A277997004DF568 /* chatBar_textBg@2x.png in Resources */,
+				E4ECFD451AA46FA700355924 /* JsfcTableViewCell.xib in Resources */,
 				E4CAF5BF1A31B333009A77BE /* AddActivityViewController.xib in Resources */,
 				E4E76BD01A277997004DF568 /* chatBar_more_card@2x.png in Resources */,
 				E4E76D411A277B28004DF568 /* ChooseClassViewController.xib in Resources */,
@@ -3768,6 +3802,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4ECFD421AA46FA700355924 /* JsfcDetailViewController.m in Sources */,
 				E4EC15561A77E51F0048ACDB /* IQKeyboardManager.m in Sources */,
 				E4E76F371A277B3C004DF568 /* EMChatImageBubbleView.m in Sources */,
 				E4E76ED61A277B3C004DF568 /* DACircularProgressView.m in Sources */,
@@ -3806,6 +3841,7 @@
 				E4F2AA3F1A42DF900072725E /* Friend.m in Sources */,
 				E4E76F061A277B3C004DF568 /* DXFaceView.m in Sources */,
 				E4ED05271A78F44E005C5683 /* CwjTabBarController.m in Sources */,
+				E4ECFD441AA46FA700355924 /* JsfcTableViewCell.m in Sources */,
 				E4E76F821A277B3C004DF568 /* EMChooseViewController.m in Sources */,
 				E4E76D401A277B28004DF568 /* ChooseClassViewController.m in Sources */,
 				E4EC155A1A77E51F0048ACDB /* IQToolbar.m in Sources */,
@@ -3938,6 +3974,7 @@
 				E4F38F691A373D7100F4FE3B /* AddBwrzViewController.m in Sources */,
 				E4E76F661A277B3C004DF568 /* NSManagedObject+MagicalFinders.m in Sources */,
 				E4E76F761A277B3C004DF568 /* MagicalRecord.m in Sources */,
+				E4ECFD461AA46FA700355924 /* JsfcViewController.m in Sources */,
 				E4E76F831A277B3C004DF568 /* EMNavigationController.m in Sources */,
 				E4E76F541A277B3C004DF568 /* AddFriendCell.m in Sources */,
 				E4E76F551A277B3C004DF568 /* AddFriendViewController.m in Sources */,
@@ -3963,7 +4000,6 @@
 				E4E76D4B1A277B28004DF568 /* GrdaViewController.m in Sources */,
 				E4F38F641A373A5B00F4FE3B /* BwrzTableViewCell.m in Sources */,
 				E4CAF5DD1A31BE0A009A77BE /* ELCAsset.m in Sources */,
-				E4EB901B1A2DBBD000DFEA47 /* XxhdViewController.m in Sources */,
 				E4E76EE01A277B3C004DF568 /* PSTGridLayoutInfo.m in Sources */,
 				E4E76D451A277B28004DF568 /* GgtzTableViewCell.m in Sources */,
 				E4F3AFE71A7CF17D00176E56 /* DailyTableViewCell.m in Sources */,
