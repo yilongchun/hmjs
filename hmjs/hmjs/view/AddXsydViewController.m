@@ -59,6 +59,14 @@
     rect.size.height = 35;
     self.typeSeg.frame = rect;
     
+    rect = self.mobile.frame;
+    rect.size.height = 35;
+    self.mobile.frame = rect;
+    
+    rect = self.listing.frame;
+    rect.size.height = 35;
+    self.listing.frame = rect;
+    
     UIBarButtonItem *buttonItem1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(save)];
     [self.navigationItem setRightBarButtonItem:buttonItem1];
     
@@ -315,6 +323,8 @@
     [dic setValue:self.reasonText.text forKey:@"detail"];
     [dic setValue:self.dateBtn.titleLabel.text forKey:@"occurdate"];
     [dic setValue:self.remarkText.text forKey:@"bak"];//备注
+    [dic setValue:self.mobile.text forKey:@"mobile"];
+    [dic setValue:self.listing.text forKey:@"listing"];
    
     
     

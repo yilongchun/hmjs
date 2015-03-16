@@ -9,6 +9,8 @@
             <connections>
                 <outlet property="classnameLabel" destination="43f-dS-vgE" id="QZr-o4-dTK"/>
                 <outlet property="dateBtn" destination="hCf-W4-UY3" id="ZF2-Pb-2qB"/>
+                <outlet property="listing" destination="BGT-Jj-Za2" id="b3w-XY-U5w"/>
+                <outlet property="mobile" destination="qhH-O6-KRZ" id="YDY-Qm-R9k"/>
                 <outlet property="nameText" destination="9tv-CL-VQV" id="PrE-Iv-JuK"/>
                 <outlet property="reasonText" destination="xks-KL-68b" id="Pie-3a-k8g"/>
                 <outlet property="remarkText" destination="gza-sy-d4G" id="np5-ks-Jua"/>
@@ -23,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nbq-DC-q3B">
-                    <rect key="frame" x="8" y="206" width="42" height="40"/>
+                    <rect key="frame" x="8" y="206" width="70" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -31,14 +33,14 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="未填写" minimumFontSize="17" id="9tv-CL-VQV">
-                    <rect key="frame" x="58" y="206" width="254" height="30"/>
+                    <rect key="frame" x="86" y="206" width="226" height="30"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日期" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gjV-Xy-sqS">
-                    <rect key="frame" x="8" y="112" width="42" height="40"/>
+                    <rect key="frame" x="8" y="112" width="70" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -46,7 +48,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="班级" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yy2-z5-dZT">
-                    <rect key="frame" x="8" y="74" width="42" height="30"/>
+                    <rect key="frame" x="8" y="74" width="70" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -54,7 +56,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="43f-dS-vgE">
-                    <rect key="frame" x="58" y="74" width="254" height="30"/>
+                    <rect key="frame" x="86" y="74" width="226" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -62,7 +64,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="类型" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VS2-9I-Z2W">
-                    <rect key="frame" x="8" y="160" width="42" height="35"/>
+                    <rect key="frame" x="8" y="160" width="70" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -70,7 +72,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="IfJ-KB-nUY">
-                    <rect key="frame" x="58" y="160" width="254" height="29"/>
+                    <rect key="frame" x="86" y="160" width="226" height="29"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
                     <segments>
@@ -80,7 +82,7 @@
                     <color key="tintColor" red="0.4549019608" green="0.69019607839999997" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                 </segmentedControl>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="原因" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="chh-nd-ned">
-                    <rect key="frame" x="8" y="254" width="42" height="40"/>
+                    <rect key="frame" x="8" y="254" width="70" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -88,14 +90,36 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="未填写" minimumFontSize="17" id="xks-KL-68b">
-                    <rect key="frame" x="58" y="254" width="254" height="30"/>
+                    <rect key="frame" x="86" y="254" width="226" height="30"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h1z-o7-tS9">
-                    <rect key="frame" x="8" y="307" width="42" height="21"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="未填写" minimumFontSize="17" id="qhH-O6-KRZ">
+                    <rect key="frame" x="86" y="302" width="226" height="30"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="未填写" minimumFontSize="17" id="BGT-Jj-Za2">
+                    <rect key="frame" x="86" y="350" width="226" height="30"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电话号码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hEr-dc-EdN">
+                    <rect key="frame" x="8" y="302" width="70" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="财务清单" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3WK-Em-B4x">
+                    <rect key="frame" x="8" y="350" width="70" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -103,7 +127,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hCf-W4-UY3">
-                    <rect key="frame" x="58" y="112" width="254" height="40"/>
+                    <rect key="frame" x="86" y="112" width="226" height="40"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
@@ -116,16 +140,8 @@
                         <action selector="chooseDate:" destination="-1" eventType="touchUpInside" id="yYQ-lI-ffY"/>
                     </connections>
                 </button>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="gza-sy-d4G">
-                    <rect key="frame" x="58" y="302" width="254" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QHk-56-xvf">
-                    <rect key="frame" x="58" y="206" width="254" height="40"/>
+                    <rect key="frame" x="86" y="206" width="226" height="40"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
@@ -138,6 +154,22 @@
                         <action selector="chooseStudent:" destination="-1" eventType="touchUpInside" id="xFZ-Z5-qMo"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h1z-o7-tS9">
+                    <rect key="frame" x="8" y="403" width="70" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="gza-sy-d4G">
+                    <rect key="frame" x="86" y="398" width="226" height="94"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <inset key="insetFor6xAndEarlier" minX="0.0" minY="64" maxX="0.0" maxY="-64"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
             <point key="canvasLocation" x="284" y="250"/>

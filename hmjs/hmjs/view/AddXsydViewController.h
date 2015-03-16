@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *remarkText;
 @property (weak, nonatomic) IBOutlet UIButton *studentBtn;
 @property (weak, nonatomic) IBOutlet UILabel *classnameLabel;
+@property (weak, nonatomic) IBOutlet UITextField *mobile;
+@property (weak, nonatomic) IBOutlet UITextField *listing;
 
 - (IBAction)chooseDate:(id)sender;
 - (IBAction)chooseStudent:(id)sender;

@@ -49,7 +49,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 7;
+    return 9;
 }
 
 
@@ -69,6 +69,9 @@
     NSNumber *type = [self.info objectForKey:@"type"];
     NSString *studentname = [self.info objectForKey:@"studentname"];
     NSString *creator = [self.info objectForKey:@"creator"];
+    
+    NSString *mobile = [self.info objectForKey:@"mobile"];
+    NSString *listing = [self.info objectForKey:@"listing"];
     
     switch (indexPath.row) {
         case 0:
@@ -94,12 +97,18 @@
             cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
             break;
         case 5:
+            cell.textLabel.text = [NSString stringWithFormat:@"电话号码    %@",mobile];
+            break;
+        case 6:
+            cell.textLabel.text = [NSString stringWithFormat:@"财务清单    %@",listing];
+            break;
+        case 7:
             cell.textLabel.text = [NSString stringWithFormat:@"备注    %@",bak];
             [cell.textLabel sizeToFit];
             cell.textLabel.numberOfLines = 0;
             cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
             break;
-        case 6:
+        case 8:
             cell.textLabel.text = [NSString stringWithFormat:@"发布人    %@",creator];
             break;
         default:
