@@ -893,6 +893,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     if (_chatListController == nil) {
         _chatListController = [[ChatListViewController alloc] init];
     }
+    _chatListController.title = @"小纸条";
     [self.navigationController setNavigationBarHidden:NO];
     [self.navigationController pushViewController:_chatListController animated:YES];
 }
