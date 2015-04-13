@@ -57,7 +57,7 @@
 #if DEBUG
     [[EaseMob sharedInstance] enableUncaughtExceptionHandler];
 #endif
-    [[[EaseMob sharedInstance] chatManager] setAutoFetchBuddyList:YES];
+    [[[EaseMob sharedInstance] chatManager] setIsAutoFetchBuddyList:YES];
     
     //以下一行代码的方法里实现了自动登录，异步登录，需要监听[didLoginWithInfo: error:]
     //demo中此监听方法在MainViewController中
@@ -225,7 +225,8 @@
 //    }
     if (isAutoLogin || loginSuccess) {
         NSLog(@"已登陆");
-        
+        NSString *ver = [[EaseMob sharedInstance] sdkVersion];
+        NSLog(@"%@",ver);
         
 //        [[ApplyViewController shareController] loadDataSourceFromLocalDB];
 //        if (_mainController == nil) {
@@ -236,6 +237,11 @@
 //        }
     }else{
 //        _mainController = nil;
+        
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults removeObjectForKey:@"loginusername"];
+        [userDefaults removeObjectForKey:@"loginpassword"];
+        
         LoginViewController *loginController = [[LoginViewController alloc] init];
         nav = [[UINavigationController alloc] initWithRootViewController:loginController];
         self.window.rootViewController = nav;

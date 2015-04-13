@@ -61,7 +61,8 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    NSString *ver = [[EaseMob sharedInstance] sdkVersion];
+    NSLog(@"%@",ver);
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setButtons)
                                                  name:@"setButtons" object:nil];
     
@@ -966,7 +967,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 {
     if (alertView.tag == 99) {
         if (buttonIndex != [alertView cancelButtonIndex]) {
-            [[EaseMob sharedInstance].chatManager asyncLogoffWithCompletion:^(NSDictionary *info, EMError *error) {
+            [[EaseMob sharedInstance].chatManager asyncLogoffWithUnbindDeviceToken:YES completion:^(NSDictionary *info, EMError *error) {
                 [[ApplyViewController shareController] clear];
                 [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@NO];
             } onQueue:nil];
@@ -1040,7 +1041,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 - (BOOL)needShowNotification:(NSString *)fromChatter
 {
     BOOL ret = YES;
-    NSArray *igGroupIds = [[EaseMob sharedInstance].chatManager ignoredGroupList];
+    NSArray *igGroupIds = [[EaseMob sharedInstance].chatManager ignoredGroupIds];
     for (NSString *str in igGroupIds) {
         if ([str isEqualToString:fromChatter]) {
             ret = NO;
@@ -1079,7 +1080,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 // 收到消息回调
 -(void)didReceiveMessage:(EMMessage *)message
 {
-    BOOL needShowNotification = message.isGroup ? [self needShowNotification:message.conversation.chatter] : YES;
+    BOOL needShowNotification = message.isGroup ? [self needShowNotification:message.conversationChatter] : YES;
     if (needShowNotification) {
 #if !TARGET_IPHONE_SIMULATOR
         [self playSoundAndVibration];
@@ -1156,7 +1157,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
         if (message.isGroup) {
             NSArray *groupArray = [[EaseMob sharedInstance].chatManager groupList];
             for (EMGroup *group in groupArray) {
-                if ([group.groupId isEqualToString:message.conversation.chatter]) {
+                if ([group.groupId isEqualToString:message.conversationChatter]) {
                     title = [NSString stringWithFormat:@"%@(%@)", message.groupSenderName, group.groupSubject];
                     break;
                 }
@@ -1224,7 +1225,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 
 - (void)didLoginFromOtherDevice
 {
-    [[EaseMob sharedInstance].chatManager asyncLogoffWithCompletion:^(NSDictionary *info, EMError *error) {
+    [[EaseMob sharedInstance].chatManager asyncLogoffWithUnbindDeviceToken:NO completion:^(NSDictionary *info, EMError *error) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
                                                             message:@"你的账号已在其他地方登录"
                                                            delegate:self
@@ -1237,7 +1238,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 }
 
 - (void)didRemovedFromServer {
-    [[EaseMob sharedInstance].chatManager asyncLogoffWithCompletion:^(NSDictionary *info, EMError *error) {
+    [[EaseMob sharedInstance].chatManager asyncLogoffWithUnbindDeviceToken:NO completion:^(NSDictionary *info, EMError *error) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示"
                                                             message:@"你的账号已被从服务器端移除"
                                                            delegate:self

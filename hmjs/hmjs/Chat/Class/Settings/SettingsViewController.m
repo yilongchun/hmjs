@@ -231,9 +231,9 @@
 {
     __weak SettingsViewController *weakSelf = self;
     [self showHudInView:self.view hint:@"正在退出..."];
-    [[EaseMob sharedInstance].chatManager asyncLogoffWithCompletion:^(NSDictionary *info, EMError *error) {
+    [[EaseMob sharedInstance].chatManager asyncLogoffWithUnbindDeviceToken:YES completion:^(NSDictionary *info, EMError *error) {
         [weakSelf hideHud];
-        if (error) {
+        if (error && error.errorCode != EMErrorServerNotLogin) {
             [weakSelf showHint:error.description];
         }
         else{

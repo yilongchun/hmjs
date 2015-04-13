@@ -33,21 +33,23 @@ typedef enum{
 
 /*!
  @property
- @brief 获取好友列表(由EMBuddy对象组成)
+ @brief 好友列表(由EMBuddy对象组成)
  */
 @property (nonatomic, strong, readonly) NSArray *buddyList;
 
 /*!
  @property
- @brief 获取好友分组信息(由EMBuddyGroup对象组成)
+ @brief 好友黑名单列表(由EMBuddy对象组成)
  */
-@property (nonatomic, strong, readonly) NSArray *buddyGroupList EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
+@property (nonatomic, strong, readonly) NSArray *blockedList;
 
 /*!
  @property
- @brief 自动获取好友列表(Default is NO), 当为 YES时, 登录成功后会自动调用 asyncFetchBuddyList 方法
+ @brief 群组分组列表
  */
-@property (assign) BOOL autoFetchBuddyList;
+@property (nonatomic, strong, readonly) NSArray *buddyGroupList EM_DEPRECATED_IOS(2_0_3, 2_0_9, "Delete");
+
+#pragma mark - fetch buddy from server
 
 /*!
  @method
@@ -89,7 +91,7 @@ typedef enum{
 - (BOOL)addBuddy:(NSString *)username
     withNickname:(NSString *)nickname
          message:(NSString *)message
-           error:(EMError **)pError __attribute__((deprecated("")));
+           error:(EMError **)pError EM_DEPRECATED_IOS(2_0_6, 2_0_7, "Use- addBuddy:message:error:");
 
 /*!
  @method
@@ -120,7 +122,7 @@ typedef enum{
     withNickname:(NSString *)nickname
          message:(NSString *)message
         toGroups:(NSArray *)groupNames
-           error:(EMError **)pError __attribute__((deprecated("")));
+           error:(EMError **)pError EM_DEPRECATED_IOS(2_0_6, 2_0_7, "Use- addBuddy:message:toGroups:error:");
 
 /*!
  @method
@@ -179,13 +181,7 @@ typedef enum{
                     reason:(NSString *)reason
                      error:(EMError **)pError;
 
-#pragma mark - block
-
-/*!
- @property
- @brief 黑名单
- */
-@property (nonatomic, strong, readonly) NSArray *blockedList;
+#pragma mark - fetch block
 
 /*!
  @method
@@ -213,11 +209,14 @@ typedef enum{
  获取黑名单成功 判断条件：completion中，error == nil
  函数执行完, 会调用参数completion
  */
+
+- (void)asyncFetchBlockListWithCompletion:(void (^)(NSArray *blockedList, EMError *error))completion
+                                  onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_6, 2_0_7, "Use -asyncFetchBlockedListWithCompletion:onQueue:");
+
 - (void)asyncFetchBlockedListWithCompletion:(void (^)(NSArray *blockedList, EMError *error))completion
                                     onQueue:(dispatch_queue_t)aQueue;
 
-- (void)asyncFetchBlockListWithCompletion:(void (^)(NSArray *blockedList, EMError *error))completion
-                                    onQueue:(dispatch_queue_t)aQueue EM_DEPRECATED_IOS(2_0_6, 2_0_7, "Use -asyncFetchBlockedListWithCompletion:onQueue:");
+#pragma mark - block buddy
 
 /*!
  @method
@@ -231,6 +230,8 @@ typedef enum{
  */
 - (EMError *)blockBuddy:(NSString *)username
            relationship:(EMRelationship)relationship;
+
+#pragma mark - unblock buddy
 
 /*!
  @method

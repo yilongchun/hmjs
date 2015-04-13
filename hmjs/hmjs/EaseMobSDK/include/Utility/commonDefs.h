@@ -7,9 +7,19 @@
 #ifndef EaseMobClientSDK_commonDefs_h
 #define EaseMobClientSDK_commonDefs_h
 
+//login info
 #define kSDKPassword   @"password"
 #define kSDKUsername   @"username"
 #define kSDKToken      @"token"
+
+//chat setting
+#define kSDKConfigKeyPushNickname @"PushNickname"
+#define kSDKConfigKeyAutoLogin @"AutoLogin"
+#define kSDKConfigKeyAutoAcceptGroupInvitation @"AutoAcceptGroupInvitation"
+#define kSDKConfigKeyAutoFetchBuddyList @"AutoFetchBuddyList"
+
+
+#define EM_DEPRECATED_IOS(_easemobIntro, _easemobDep, ...) __attribute__((deprecated("")))
 
 #pragma mark - buddy chatting state
 typedef enum {

@@ -89,7 +89,6 @@
 
 -(void)loadData2:(NSNotification*) notification{
     NSIndexPath *indexpath = [notification object];
-    NSLog(@"%d",indexpath.row);
     [self loadData:NO indexPath:indexpath];
 }
 
@@ -267,7 +266,7 @@
     
     fromIndex = fromIndexPath;
     toIndex = toIndexPath;
-    NSLog(@"fromIndexPath:%d toIndexPath%d",fromIndexPath.row , toIndexPath.row);
+    
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView itemAtIndexPath:(NSIndexPath *)fromIndexPath canMoveToIndexPath:(NSIndexPath *)toIndexPath{
@@ -295,9 +294,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout didEndDraggingItemAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"did end drag");
-    NSLog(@"fromIndexPath:%d toIndexPath%d",fromIndex.row , toIndex.row);
-    NSLog(@"%d",indexPath.row);
+    
     if (fromIndex && toIndex && fromIndex.row != toIndex.row) {
         NSLog(@"开始排序%@",[NSDate date]);
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
@@ -355,10 +352,10 @@
     
     NSMutableDictionary *localDic = [self readFromLocal:filePath];
     if (localDic) {
-        NSLog(@"添加了%d条数据",[dic count]);
+        
         [localDic setValuesForKeysWithDictionary:dic];
     }else{
-        NSLog(@"初始化 添加了%d条数据",[dic count]);
+        
         localDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     }
     
@@ -366,8 +363,8 @@
     NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
     [archiver encodeObject:localDic forKey:@"userlist"];
     [archiver finishEncoding];
-    BOOL flag = [data writeToFile:filePath atomically:YES];
-    NSLog(@"保存本地:%@ : %d",flag ? @"成功" : @"失败",[localDic count]);
+    [data writeToFile:filePath atomically:YES];
+//    NSLog(@"保存本地:%@ : %d",flag ? @"成功" : @"失败",[localDic count]);
 //    NSData *data=[NSData dataWithContentsOfFile:fileName options:0 error:NULL];
 //    NSString *s = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
@@ -379,7 +376,7 @@
         NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
         NSMutableDictionary *myDictionary = [unarchiver decodeObjectForKey:@"userlist"];
         [unarchiver finishDecoding];
-        NSLog(@"读取本地数据成功:%d",[myDictionary count]);
+        
         return myDictionary;
     }else{
         NSLog(@"读取本地数据失败");

@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    NSLog(@"%d",self.indexpath.row);
+
     //添加加载等待条
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     HUD.labelText = @"加载中...";
@@ -146,7 +146,7 @@
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setValue:[info objectForKey:@"examinetype"] forKey:@"examinetype"];
     [dic setValue:[info objectForKey:@"id"] forKey:@"id"];
-    [dic setValue:[NSString stringWithFormat:@"%d",oldButton.tag] forKey:@"situationtype"];
+    [dic setValue:[NSString stringWithFormat:@"%d",(int)oldButton.tag] forKey:@"situationtype"];
     if (self.temperatureText.text.length != 0) {
         [dic setValue:self.temperatureText.text forKey:@"temperature"];
     }

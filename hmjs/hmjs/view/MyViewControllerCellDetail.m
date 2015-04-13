@@ -352,7 +352,7 @@
                     contentSize.height = self.view.bounds.size.height;
                     contentSize.width = self.view.bounds.size.width * [filelist count];
                     myScrollView.contentSize = contentSize;
-                    imgCount = [filelist count];
+                    imgCount = (int)[filelist count];
                 }
                 
                 activityType = [data objectForKey:@"activityType"];
@@ -623,9 +623,9 @@
             if ([type isEqualToString:@"t_activity_image"]) {//显示图片
                 int count = 0;
                 if ([filelist count] % 3 == 0) {
-                    count = [filelist count] / 3;
+                    count = (int)([filelist count] / 3);
                 }else{
-                    count = [filelist count] / 3 + 1;
+                    count = (int)([filelist count] / 3 + 1);
                 }
                 size.height = size.height + 100 * count + 5;
             }else if ([type isEqualToString:@"t_activity_video"]){//显示视频

@@ -290,7 +290,7 @@
             EMError *error;
             [[EaseMob sharedInstance].chatManager removeBuddy:buddy.username removeFromRemote:YES error:&error];
             if (!error) {
-                [[EaseMob sharedInstance].chatManager removeConversationByChatter:buddy.username deleteMessages:YES];
+                [[EaseMob sharedInstance].chatManager removeConversationByChatter:buddy.username deleteMessages:YES append2Chat:YES];
             }
         });
     }

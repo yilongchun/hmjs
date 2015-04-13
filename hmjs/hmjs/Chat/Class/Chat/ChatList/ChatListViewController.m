@@ -461,7 +461,8 @@
         }
     }
     
-    [conversation markMessagesAsRead:YES];
+//    [conversation markMessagesAsRead:YES];
+    [conversation markAllMessagesAsRead:YES];
     [self.navigationController pushViewController:chatController animated:YES];
 }
 
@@ -473,7 +474,8 @@
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         EMConversation *converation = [self.dataSource objectAtIndex:indexPath.row];
-        [[EaseMob sharedInstance].chatManager removeConversationByChatter:converation.chatter deleteMessages:NO];
+        [[EaseMob sharedInstance].chatManager removeConversationByChatter:converation.chatter deleteMessages:NO append2Chat:YES];
+        
         [self.dataSource removeObjectAtIndex:indexPath.row];
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }

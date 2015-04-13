@@ -264,8 +264,8 @@
 }
 
 - (void)logoutAction{
-    [[EaseMob sharedInstance].chatManager asyncLogoffWithCompletion:^(NSDictionary *info, EMError *error) {
-        if (error) {
+    [[EaseMob sharedInstance].chatManager asyncLogoffWithUnbindDeviceToken:YES completion:^(NSDictionary *info, EMError *error) {
+        if (error && error.errorCode != EMErrorServerNotLogin) {
             
         }
         else{

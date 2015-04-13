@@ -90,9 +90,11 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *loginusername = [userDefaults objectForKey:@"loginusername"];
     NSString *loginpassword = [userDefaults objectForKey:@"loginpassword"];
+    if (loginusername && loginpassword) {
+        self.username.text = loginusername;
+        self.password.text = loginpassword;
+    }
     
-    self.username.text = loginusername;
-    self.password.text = loginpassword;
     
 }
 
@@ -333,12 +335,14 @@
              ^(NSDictionary *loginInfo, EMError *error) {
                  
                  if (loginInfo && !error) {
-                     
-                     //                     [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@YES];
+                     [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@YES];
                      [_mainController setupUnreadMessageCount];
-                     
+                     //将旧版的coredata数据导入新的数据库
+                     EMError *error = [[EaseMob sharedInstance].chatManager importDataToNewDatabase];
+                     if (!error) {
+                         error = [[EaseMob sharedInstance].chatManager loadDataFromDatabase];
+                     }
                  }else {
-                     
                      switch (error.errorCode) {
                          case EMErrorServerNotReachable:
                              [self alertMsg:@"连接服务器失败!"];

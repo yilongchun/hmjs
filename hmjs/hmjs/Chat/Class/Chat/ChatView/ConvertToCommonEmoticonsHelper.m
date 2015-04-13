@@ -13,7 +13,7 @@
 
 #pragma mark - emotics
 + (NSString *)convertToCommonEmoticons:(NSString *)text {
-    int allEmoticsCount = [Emoji allEmoji].count;
+    int allEmoticsCount = (int)[Emoji allEmoji].count;
     NSMutableString *retText = [[NSMutableString alloc] initWithString:text];
     for(int i=0; i<allEmoticsCount; ++i) {
         NSRange range;
@@ -270,7 +270,7 @@
 }
 
 + (NSString *)convertToSystemEmoticons:(NSString *)text {
-    int allEmoticsCount = [Emoji allEmoji].count;
+    int allEmoticsCount = (int)[Emoji allEmoji].count;
     NSMutableString *retText = [[NSMutableString alloc] initWithString:text];
     for(int i=0; i<allEmoticsCount; ++i) {
         NSRange range;
