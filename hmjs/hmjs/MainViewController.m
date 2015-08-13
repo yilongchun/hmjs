@@ -61,8 +61,8 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *ver = [[EaseMob sharedInstance] sdkVersion];
-    NSLog(@"%@",ver);
+//    NSString *ver = [[EaseMob sharedInstance] sdkVersion];
+//    NSLog(@"%@",ver);
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setButtons)
                                                  name:@"setButtons" object:nil];
     

@@ -46,14 +46,14 @@
       "orientation" : "portrait",
       "idiom" : "iphone",
       "extent" : "full-screen",
-      "filename" : "default2.png",
+      "filename" : "default2-1-1.png",
       "scale" : "2x"
     },
     {
       "orientation" : "portrait",
       "idiom" : "iphone",
       "extent" : "full-screen",
-      "filename" : "default5.png",
+      "filename" : "default5-1-1.png",
       "subtype" : "retina4",
       "scale" : "2x"
     }

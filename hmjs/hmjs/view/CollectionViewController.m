@@ -300,10 +300,10 @@
         NSMutableDictionary *dic = [NSMutableDictionary dictionary];
         for (int i = 0 ; i < dataSource.count; i++) {
             NSDictionary *info = [dataSource objectAtIndex:i];
-            NSString *studentName = [info objectForKey:@"studentName"];
+//            NSString *studentName = [info objectForKey:@"studentName"];
             NSString *tempuserid = [info objectForKey:@"studentid"];
             [dic setValue:[NSNumber numberWithInt:i+1]  forKey:tempuserid];
-            NSLog(@"%@ 序号 %d",studentName,i+1);
+//            NSLog(@"%@ 序号 %d",studentName,i+1);
         }
         [self saveToLocal:dic];
         NSLog(@"排序结束%@",[NSDate date]);
@@ -399,17 +399,17 @@
     
     //排序前
     NSLog(@"排序前:");
-    for (NSDictionary *info in beforeArray) {
-        NSNumber *localsort = [info objectForKey:@"localsort"];
-        NSLog(@"%d",[localsort intValue]);
-    }
+//    for (NSDictionary *info in beforeArray) {
+//        NSNumber *localsort = [info objectForKey:@"localsort"];
+//        NSLog(@"%d",[localsort intValue]);
+//    }
     //第一种排序
-    NSArray *array = [beforeArray sortedArrayUsingComparator:cmptr];
-    NSLog(@"排序后:");
-    for (NSDictionary *info in array) {
-        NSNumber *localsort = [info objectForKey:@"localsort"];
-        NSLog(@"%d",[localsort intValue]);
-    }
+//    NSArray *array = [beforeArray sortedArrayUsingComparator:cmptr];
+//    NSLog(@"排序后:");
+//    for (NSDictionary *info in array) {
+//        NSNumber *localsort = [info objectForKey:@"localsort"];
+//        NSLog(@"%d",[localsort intValue]);
+//    }
     dataSource = [NSMutableArray arrayWithArray:array];
 }
 /*
