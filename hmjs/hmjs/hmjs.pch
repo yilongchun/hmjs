@@ -9,6 +9,8 @@
 #ifndef hmjs_hmjs_pch
 #define hmjs_hmjs_pch
 
+#define HOST @"jzz.tunnel.mobi/sma"
+
 #import <Foundation/Foundation.h>
 
 // Include any system framework and library headers here that should be included in all compilation units.

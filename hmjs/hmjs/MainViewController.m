@@ -31,6 +31,7 @@
 #import "CwjTabBarController.h"
 #import "MyTabbarController4.h"
 #import "XsydViewController.h"
+#import "ChildrenStoryViewController.h"
 
 //两次提示的默认间隔
 static const CGFloat kDefaultPlaySoundInterval = 3.0;
@@ -224,6 +225,15 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                                 btnr = CGRectMake(10, 385, 90, 90);
                             }
                             break;
+                        case 10:
+                            if (height <= 480) {
+                                btnr = CGRectMake(width+width/2-45, 135, 90, 90);
+                            }else if(height <= 1334/2){
+                                btnr = CGRectMake(width+width/2-45, 10, 90, 90);
+                            }else{
+                                btnr = CGRectMake(width/2-45, 10, 90, 90);
+                            }
+                            break;
                         default:
                             btnr = CGRectMake(0, 0, 0, 0);
                             break;
@@ -405,6 +415,24 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                             [mainScrollView addSubview:btn1];
                             [mainScrollView addSubview:label1];
                         }
+                    }else if([menuStr isEqualToString:@"192_eggs"]){//儿歌故事会
+                        UIButton *btn2 = [[UIButton alloc] init];
+                        [btn2 setFrame:btnr];
+                        [btn2 setBackgroundImage:[UIImage imageNamed:@"ic_index_002_1_.png"] forState:UIControlStateNormal];
+                        //                        [btn2 setBackgroundImage:[UIImage imageNamed:@"ic_index_003_high.png"] forState:UIControlStateHighlighted];
+                        [btn2 addTarget:self action:@selector(childrenStory) forControlEvents:UIControlEventTouchUpInside];
+                        UILabel *label2 = [[UILabel alloc] init];
+                        if (btn2.frame.origin.x != 0) {
+                            [label2 setFrame:CGRectMake(btn2.frame.origin.x, btn2.frame.origin.y+95, 90, 20)];
+                            label2.text = @"儿歌故事";
+                            label2.textAlignment = NSTextAlignmentCenter;
+                            [label2 setFont:[UIFont systemFontOfSize:16]];
+                            [label2 setBackgroundColor:[UIColor clearColor]];
+                            [mainScrollView addSubview:btn2];
+                            [mainScrollView addSubview:label2];
+                        }
+                        //                        [self.view addSubview:btn2];
+                        //                        [self.view addSubview:label2];
                     }else{
                         continue;
                     }
@@ -915,6 +943,12 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
     }
     [self.navigationController pushViewController:xsyd animated:YES];
     [self.navigationController setNavigationBarHidden:NO];
+}
+
+-(void)childrenStory{
+    ChildrenStoryViewController *vc = [[ChildrenStoryViewController alloc] init];
+    [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 //返回到该页面调用

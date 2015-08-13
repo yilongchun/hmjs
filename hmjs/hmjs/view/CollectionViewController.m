@@ -404,7 +404,7 @@
 //        NSLog(@"%d",[localsort intValue]);
 //    }
     //第一种排序
-//    NSArray *array = [beforeArray sortedArrayUsingComparator:cmptr];
+    NSArray *array = [beforeArray sortedArrayUsingComparator:cmptr];
 //    NSLog(@"排序后:");
 //    for (NSDictionary *info in array) {
 //        NSNumber *localsort = [info objectForKey:@"localsort"];
