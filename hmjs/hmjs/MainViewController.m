@@ -416,6 +416,7 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                             [mainScrollView addSubview:label1];
                         }
                     }else if([menuStr isEqualToString:@"192_eggs"]){//儿歌故事会
+                        i++;
                         UIButton *btn2 = [[UIButton alloc] init];
                         [btn2 setFrame:btnr];
                         [btn2 setBackgroundImage:[UIImage imageNamed:@"ic_index_002_1_.png"] forState:UIControlStateNormal];
@@ -450,25 +451,22 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         spacePageControl.numberOfPages = 2;
                         spacePageControl.userInteractionEnabled = NO;
                         [self.view addSubview:spacePageControl];
-                    }else if(height <= 1334/2){
-                        [mainScrollView setContentSize:CGSizeMake(width*2, height-170)];
-                        if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
-                            if (iPhone5) {
+                    }else{
+                        if (i > 9) {
+                            if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
                                 spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-20, width, 10)];
                             }else{
-                                spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-30, width, 10)];
+                                spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-50, width, 10)];
                             }
-                            
+                            spacePageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
+                            spacePageControl.pageIndicatorTintColor = [UIColor grayColor];
+                            spacePageControl.numberOfPages = 2;
+                            spacePageControl.userInteractionEnabled = NO;
+                            [self.view addSubview:spacePageControl];
+                            [mainScrollView setContentSize:CGSizeMake(width * 2, height-170)];
                         }else{
-                            spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-50, width, 10)];
+                            [mainScrollView setContentSize:CGSizeMake(width, height-170)];
                         }
-                        spacePageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
-                        spacePageControl.pageIndicatorTintColor = [UIColor grayColor];
-                        spacePageControl.numberOfPages = 2;
-                        spacePageControl.userInteractionEnabled = NO;
-                        [self.view addSubview:spacePageControl];
-                    }else{
-                        [mainScrollView setContentSize:CGSizeMake(width, height-170)];
                     }
                 }else{
                     [mainScrollView setContentSize:CGSizeMake(width, height-170)];

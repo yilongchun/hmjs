@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E4254B6E1B81757E00D6BCCD /* GgxqWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4254B6C1B81757E00D6BCCD /* GgxqWebViewController.m */; };
+		E4254B6F1B81757E00D6BCCD /* GgxqWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4254B6D1B81757E00D6BCCD /* GgxqWebViewController.xib */; };
+		E4254B731B81798600D6BCCD /* PinglunTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4254B711B81798600D6BCCD /* PinglunTableViewCell.m */; };
+		E4254B741B81798600D6BCCD /* PinglunTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4254B721B81798600D6BCCD /* PinglunTableViewCell.xib */; };
 		E44D59FE1AD5443700744C0B /* libEaseMobClientSDKLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E44D59FA1AD5443700744C0B /* libEaseMobClientSDKLite.a */; };
 		E44D59FF1AD5443700744C0B /* EaseMob.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E44D59FC1AD5443700744C0B /* EaseMob.bundle */; };
 		E44D5A011AD544C700744C0B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E44D5A001AD544C700744C0B /* libsqlite3.dylib */; };
@@ -289,8 +293,6 @@
 		E4E76D541A277B28004DF568 /* MyViewControllerCellDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4E76D201A277B28004DF568 /* MyViewControllerCellDetail.xib */; };
 		E4E76D551A277B28004DF568 /* MyViewControllerDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E76D221A277B28004DF568 /* MyViewControllerDetail.m */; };
 		E4E76D561A277B28004DF568 /* MyViewControllerDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4E76D231A277B28004DF568 /* MyViewControllerDetail.xib */; };
-		E4E76D571A277B28004DF568 /* PinglunTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E76D251A277B28004DF568 /* PinglunTableViewCell.m */; };
-		E4E76D581A277B28004DF568 /* PinglunTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4E76D261A277B28004DF568 /* PinglunTableViewCell.xib */; };
 		E4E76D591A277B28004DF568 /* SpTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E76D281A277B28004DF568 /* SpTableViewCell.m */; };
 		E4E76D5A1A277B28004DF568 /* SpTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4E76D291A277B28004DF568 /* SpTableViewCell.xib */; };
 		E4E76D5B1A277B28004DF568 /* TapImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E76D2B1A277B28004DF568 /* TapImageView.m */; };
@@ -681,6 +683,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E4254B6B1B81757E00D6BCCD /* GgxqWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GgxqWebViewController.h; sourceTree = "<group>"; };
+		E4254B6C1B81757E00D6BCCD /* GgxqWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GgxqWebViewController.m; sourceTree = "<group>"; };
+		E4254B6D1B81757E00D6BCCD /* GgxqWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GgxqWebViewController.xib; sourceTree = "<group>"; };
+		E4254B701B81798600D6BCCD /* PinglunTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinglunTableViewCell.h; sourceTree = "<group>"; };
+		E4254B711B81798600D6BCCD /* PinglunTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinglunTableViewCell.m; sourceTree = "<group>"; };
+		E4254B721B81798600D6BCCD /* PinglunTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PinglunTableViewCell.xib; sourceTree = "<group>"; };
 		E44D59841AD5443700744C0B /* ICallManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ICallManagerDelegate.h; sourceTree = "<group>"; };
 		E44D59861AD5443700744C0B /* EMCallManagerCallDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCallManagerCallDelegate.h; sourceTree = "<group>"; };
 		E44D59871AD5443700744C0B /* EMCallManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCallManagerDelegate.h; sourceTree = "<group>"; };
@@ -1152,9 +1160,6 @@
 		E4E76D211A277B28004DF568 /* MyViewControllerDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewControllerDetail.h; sourceTree = "<group>"; };
 		E4E76D221A277B28004DF568 /* MyViewControllerDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MyViewControllerDetail.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		E4E76D231A277B28004DF568 /* MyViewControllerDetail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyViewControllerDetail.xib; sourceTree = "<group>"; };
-		E4E76D241A277B28004DF568 /* PinglunTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinglunTableViewCell.h; sourceTree = "<group>"; };
-		E4E76D251A277B28004DF568 /* PinglunTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinglunTableViewCell.m; sourceTree = "<group>"; };
-		E4E76D261A277B28004DF568 /* PinglunTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PinglunTableViewCell.xib; sourceTree = "<group>"; };
 		E4E76D271A277B28004DF568 /* SpTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpTableViewCell.h; sourceTree = "<group>"; };
 		E4E76D281A277B28004DF568 /* SpTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpTableViewCell.m; sourceTree = "<group>"; };
 		E4E76D291A277B28004DF568 /* SpTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpTableViewCell.xib; sourceTree = "<group>"; };
@@ -2734,9 +2739,15 @@
 				E4E76CEE1A277B28004DF568 /* BjjsViewController.h */,
 				E4E76CEF1A277B28004DF568 /* BjjsViewController.m */,
 				E4E76CF01A277B28004DF568 /* BjjsViewController.xib */,
+				E4254B6B1B81757E00D6BCCD /* GgxqWebViewController.h */,
+				E4254B6C1B81757E00D6BCCD /* GgxqWebViewController.m */,
+				E4254B6D1B81757E00D6BCCD /* GgxqWebViewController.xib */,
 				E4E76CF11A277B28004DF568 /* BjtzDetailViewController.h */,
 				E4E76CF21A277B28004DF568 /* BjtzDetailViewController.m */,
 				E4E76CF31A277B28004DF568 /* BjtzDetailViewController.xib */,
+				E4254B701B81798600D6BCCD /* PinglunTableViewCell.h */,
+				E4254B711B81798600D6BCCD /* PinglunTableViewCell.m */,
+				E4254B721B81798600D6BCCD /* PinglunTableViewCell.xib */,
 				E4E76CF71A277B28004DF568 /* BwhdViewController.h */,
 				E4E76CF81A277B28004DF568 /* BwhdViewController.m */,
 				E4E76CF91A277B28004DF568 /* BwhdViewController.xib */,
@@ -2806,9 +2817,6 @@
 				E4E76D211A277B28004DF568 /* MyViewControllerDetail.h */,
 				E4E76D221A277B28004DF568 /* MyViewControllerDetail.m */,
 				E4E76D231A277B28004DF568 /* MyViewControllerDetail.xib */,
-				E4E76D241A277B28004DF568 /* PinglunTableViewCell.h */,
-				E4E76D251A277B28004DF568 /* PinglunTableViewCell.m */,
-				E4E76D261A277B28004DF568 /* PinglunTableViewCell.xib */,
 				E4E76D271A277B28004DF568 /* SpTableViewCell.h */,
 				E4E76D281A277B28004DF568 /* SpTableViewCell.m */,
 				E4E76D291A277B28004DF568 /* SpTableViewCell.xib */,
@@ -3861,6 +3869,7 @@
 				E4E76B9B1A277997004DF568 /* 37x-Checkmark@2x.png in Resources */,
 				E4E76D351A277B28004DF568 /* BjjsViewController.xib in Resources */,
 				E4EB90271A2DBEE500DFEA47 /* guide_1.png in Resources */,
+				E4254B741B81798600D6BCCD /* PinglunTableViewCell.xib in Resources */,
 				E4E76C221A277997004DF568 /* tabbar_setting@2x.png in Resources */,
 				E4ECE94C1A2F74BD00860CE7 /* wdhd_high.png in Resources */,
 				E4E76BA61A277997004DF568 /* VoiceSearchFeedback001.png in Resources */,
@@ -4042,7 +4051,6 @@
 				E4F3B0001A7CF74600176E56 /* summarymanage1@2x.png in Resources */,
 				E4E76BD41A277997004DF568 /* chatBar_more_face@2x.png in Resources */,
 				E4E76C101A277997004DF568 /* ic_login_user.png in Resources */,
-				E4E76D581A277B28004DF568 /* PinglunTableViewCell.xib in Resources */,
 				E4E76F4E1A277B3C004DF568 /* nav_createGroup@2x.png in Resources */,
 				E4E76BDE1A277997004DF568 /* chat_location_detail_disclosureHL@2x.png in Resources */,
 				E4CAF5E51A31BE0A009A77BE /* ELCAssetTablePicker.xib in Resources */,
@@ -4081,6 +4089,7 @@
 				E4CFE20F1A3F5014006BD88C /* ic_index_003_high.png in Resources */,
 				E4E76BB41A277997004DF568 /* VoiceSearchFeedback008.png in Resources */,
 				E4F08A971AA0BB3200C6B521 /* ggtz_high@2x.png in Resources */,
+				E4254B6F1B81757E00D6BCCD /* GgxqWebViewController.xib in Resources */,
 				E4E76BE41A277997004DF568 /* chat_receiver_audio_playing001@2x.png in Resources */,
 				E4E76F1F1A277B3C004DF568 /* chatBar_recordSelectedBg@2x.png in Resources */,
 				E4E76C211A277997004DF568 /* tabbar_setting.png in Resources */,
@@ -4386,7 +4395,6 @@
 				E4E76EE21A277B3C004DF568 /* PSTGridLayoutRow.m in Sources */,
 				E4E76CDA1A277B0E004DF568 /* AFHTTPRequestOperationManager.m in Sources */,
 				E4E76F721A277B3C004DF568 /* MagicalRecord+iCloud.m in Sources */,
-				E4E76D571A277B28004DF568 /* PinglunTableViewCell.m in Sources */,
 				E4F38F6E1A37589100F4FE3B /* UpdateBwrzViewController.m in Sources */,
 				E4E76ED51A277B3C004DF568 /* MWZoomingScrollView.m in Sources */,
 				E4E76EF11A277B3C004DF568 /* UIViewController+DismissKeyboard.m in Sources */,
@@ -4447,10 +4455,12 @@
 				E4E76F771A277B3C004DF568 /* UIDemo.xcdatamodeld in Sources */,
 				E4E76B021A277979004DF568 /* MainViewController.m in Sources */,
 				E4E76F571A277B3C004DF568 /* ApplyViewController.m in Sources */,
+				E4254B731B81798600D6BCCD /* PinglunTableViewCell.m in Sources */,
 				E4E76F391A277B3C004DF568 /* EMChatTextBubbleView.m in Sources */,
 				E4E76ECE1A277B3C004DF568 /* MWCaptionView.m in Sources */,
 				E4E76CAA1A277AF9004DF568 /* NSData+MKBase64.m in Sources */,
 				E4E76D5E1A277B28004DF568 /* YqjsViewController.m in Sources */,
+				E4254B6E1B81757E00D6BCCD /* GgxqWebViewController.m in Sources */,
 				E4E76ECD1A277B3C004DF568 /* MBProgressHUD.m in Sources */,
 				E4E76EDB1A277B3C004DF568 /* PSTCollectionViewData.m in Sources */,
 				E4E76F7A1A277B3C004DF568 /* DebugViewController.m in Sources */,
