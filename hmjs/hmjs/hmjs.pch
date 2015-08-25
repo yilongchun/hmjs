@@ -9,7 +9,8 @@
 #ifndef hmjs_hmjs_pch
 #define hmjs_hmjs_pch
 
-#define HOST @"hmjxt.tunnel.mobi/sma"
+//#define HOST @"hmjxt.tunnel.mobi/sma"
+#define HOST @"mobile.hmjxt.com"
 
 #import <Foundation/Foundation.h>
 
