@@ -311,14 +311,25 @@
         }
         
     }else{
+        
         NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
-        NSString *tnid = [info objectForKey:@"tnid"];
         NSNumber *tntype = [info objectForKey:@"tntype"];
-        GgxqWebViewController *vc = [[GgxqWebViewController alloc] init];
+        NSString *tnid = [info objectForKey:@"tnid"];
+        GgxqViewController *vc = [[GgxqViewController alloc]init];
         vc.title = @"公告详情";
         vc.tnid = tnid;
         vc.type = [tntype intValue];
         [self.navigationController pushViewController:vc animated:YES];
+        
+        
+//        NSDictionary *info = [self.dataSource objectAtIndex:indexPath.row];
+//        NSString *tnid = [info objectForKey:@"tnid"];
+//        NSNumber *tntype = [info objectForKey:@"tntype"];
+//        GgxqWebViewController *vc = [[GgxqWebViewController alloc] init];
+//        vc.title = @"公告详情";
+//        vc.tnid = tnid;
+//        vc.type = [tntype intValue];
+//        [self.navigationController pushViewController:vc animated:YES];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

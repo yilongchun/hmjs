@@ -84,8 +84,6 @@
     self.chosenImages = [[NSMutableArray alloc] init];
     //[self.myscrollview setFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-64)];
     fileArr = [[NSMutableArray alloc] init];
-    
-    
 }
 
 //隐藏键盘
@@ -361,7 +359,7 @@
 
 - (void)reloadImageToView{
     
-    NSTimeInterval animationDuration = 1.0f;
+    NSTimeInterval animationDuration = 0.5f;
     [UIView beginAnimations:@"ReloadImage" context:nil];
     [UIView setAnimationDuration:animationDuration];
     

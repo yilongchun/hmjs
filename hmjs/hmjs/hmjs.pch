@@ -9,8 +9,13 @@
 #ifndef hmjs_hmjs_pch
 #define hmjs_hmjs_pch
 
-//#define HOST @"hmjxt.tunnel.mobi/sma"
-#define HOST @"mobile.hmjxt.com"
+//#define HOST @"hmjxt.tunnel.mobi/sma"//测试地址
+#define HOST @"mobile.hmjxt.com/sma"//正式地址
+
+//惠民家园 公司开发账号 环信推送证书 appStore版本
+#define EASEMOB_APP_KEY @"whhm918#hmjyt"
+#define APNSCERTNAME_DEVELOP @"hmjsDevelopPush"//开发推送证书
+#define APNSCERTNAME_PRODUCTION @"hmjsProductPush"//生产推送证书
 
 #import <Foundation/Foundation.h>
 

@@ -39,20 +39,19 @@
     }
     
     
+    //推送
+//    [self registerRemoteNotification];
+////#warning SDK注册 APNS文件的名字, 需要与后台上传证书时的名字一一对应
+//    NSString *apnsCertName = nil;
+//#if DEBUG
+//    apnsCertName = APNSCERTNAME_DEVELOP;
+//    NSLog(@"开发推送证书");
+//#else
+//    apnsCertName = APNSCERTNAME_PRODUCTION;
+//    NSLog(@"正式推送证书");
+//#endif
+//    [[EaseMob sharedInstance] registerSDKWithAppKey:EASEMOB_APP_KEY apnsCertName:apnsCertName];
     
-    [self registerRemoteNotification];
-    
-//#warning SDK注册 APNS文件的名字, 需要与后台上传证书时的名字一一对应
-    NSString *apnsCertName = nil;
-#if DEBUG
-    apnsCertName = @"hmjsDevelopPush";
-    NSLog(@"开发推送证书");
-#else
-    apnsCertName = @"hmjsProductPush";
-    NSLog(@"正式推送证书");
-#endif
-    
-    [[EaseMob sharedInstance] registerSDKWithAppKey:@"whhm918#hmjyt" apnsCertName:apnsCertName];
     
 #if DEBUG
     [[EaseMob sharedInstance] enableUncaughtExceptionHandler];
