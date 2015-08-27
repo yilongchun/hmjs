@@ -19,6 +19,7 @@
 #import "SRRefreshView.h"
 #import "IQKeyboardManager.h"
 #import "MoreTableViewCell.h"
+#import "MLPhotoBrowserViewController.h"
 
 @interface MyViewControllerCellDetail ()<MBProgressHUDDelegate,TapImageViewDelegate,ImgScrollViewDelegate,UIScrollViewDelegate,SRRefreshDelegate>{
     MKNetworkEngine *engine;
@@ -519,13 +520,20 @@
                         y += 105;
                     }
                     x = 5+(105 * (i % 3));
-                    TapImageView *tmpView = [[TapImageView alloc] initWithFrame:CGRectMake(x, y, 100, 100)];
-                    tmpView.t_delegate = self;
-                    [tmpView setImageWithURL:[file objectForKey:@"fileId"]];
-                    tmpView.tag = 10 + i;
-                    [cell.contentView addSubview:tmpView];
-                    tmpView = (TapImageView *)[cell.contentView viewWithTag:10+i];
-                    tmpView.identifier = cell;
+//                    TapImageView *tmpView = [[TapImageView alloc] initWithFrame:CGRectMake(x, y, 100, 100)];
+//                    tmpView.t_delegate = self;
+//                    [tmpView setImageWithURL:[file objectForKey:@"fileId"]];
+//                    tmpView.tag = 10 + i;
+//                    [cell.contentView addSubview:tmpView];
+//                    tmpView = (TapImageView *)[cell.contentView viewWithTag:10+i];
+//                    tmpView.identifier = cell;
+                    UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, 100, 100)];
+                    [imageview setImageWithURL:[file objectForKey:@"fileId"]];
+                    imageview.tag = i;
+                    imageview.userInteractionEnabled = YES;
+                    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPic:)];
+                    [imageview addGestureRecognizer:tap];
+                    [cell.contentView addSubview:imageview];
                 }
                 
                 
@@ -860,5 +868,40 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+/**
+ *  点击图片查看大图
+ */
+-(void)showPic:(UITapGestureRecognizer *)recognizer{
+    // 图片游览器
+    MLPhotoBrowserViewController *photoBrowser = [[MLPhotoBrowserViewController alloc] init];
+    // 缩放动画
+    photoBrowser.status = UIViewAnimationAnimationStatusFade;
+    // 可以删除
+    photoBrowser.editing = NO;
+    // 数据源/delegate
+    //    photoBrowser.delegate = self;
+    // 同样支持数据源/DataSource
+    //                    photoBrowser.dataSource = self;
+    
+    NSMutableArray *imgDataSource = [NSMutableArray array];
+    
+    
+    NSDictionary *data = [self.dataSource objectAtIndex:0];
+    NSArray *picList = [data objectForKey:@"filelist"];
+    
+    for (int i = 0; i < picList.count; i++) {
+        MLPhotoBrowserPhoto *photo = [[MLPhotoBrowserPhoto alloc] init];
+        photo.photoURL = [NSURL URLWithString:[[picList objectAtIndex:i] objectForKey:@"fileId"]];
+        [imgDataSource addObject:photo];
+    }
+    
+    photoBrowser.photos = imgDataSource;
+    int index = (int)recognizer.view.tag;
+    // 当前选中的值
+    photoBrowser.currentIndexPath = [NSIndexPath indexPathForItem:index inSection:0];
+    // 展示控制器
+    [photoBrowser showPickerVc:self];
+}
 
 @end
