@@ -547,8 +547,7 @@
         CGFloat contentWidth = [UIScreen mainScreen].bounds.size.width ;
         UIFont *font = [UIFont systemFontOfSize:14];
         CGSize size = [commentContent sizeWithFont:font constrainedToSize:CGSizeMake(contentWidth-59, MAXFLOAT) lineBreakMode:NSLineBreakByCharWrapping];
-        [cell.commentlabel setFrame:CGRectMake(cell.commentlabel.frame.origin.x, cell.commentlabel.frame.origin.y, cell.commentlabel.frame.size.width, size.height)];
-        
+        [cell.commentlabel setFrame:CGRectMake(cell.commentlabel.frame.origin.x, cell.commentlabel.frame.origin.y, size.width, size.height)];
         
         if ([Utils isBlankString:fileid]) {
             [cell.img setImage:[UIImage imageNamed:@"chatListCellHead.png"]];

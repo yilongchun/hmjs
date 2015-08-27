@@ -152,7 +152,6 @@
         [dic setValue:@"" forKey:@"fileid"];
     }
     
-    
     MKNetworkOperation *op = [engine operationWithPath:@"/Notice/savanotice.do" params:dic httpMethod:@"POST"];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         //        NSLog(@"[operation responseData]-->>%@", [operation responseString]);
