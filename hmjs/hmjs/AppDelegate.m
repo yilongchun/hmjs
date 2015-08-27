@@ -141,13 +141,13 @@
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
     //SDK方法调用
-    [[EaseMob sharedInstance] application:application didFailToRegisterForRemoteNotificationsWithError:error];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注册推送失败"
-                                                    message:error.description
-                                                   delegate:nil
-                                          cancelButtonTitle:@"确定"
-                                          otherButtonTitles:nil];
-    [alert show];
+//    [[EaseMob sharedInstance] application:application didFailToRegisterForRemoteNotificationsWithError:error];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"注册推送失败"
+//                                                    message:error.description
+//                                                   delegate:nil
+//                                          cancelButtonTitle:@"确定"
+//                                          otherButtonTitles:nil];
+//    [alert show];
 }
 
 //系统方法

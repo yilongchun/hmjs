@@ -10,6 +10,7 @@
 #import "MKNetworkKit.h"
 #import "Utils.h"
 #import <MobileCoreServices/UTCoreTypes.h>
+#import "UITextView+PlaceHolder.h"
 
 @interface AddNoticeViewController (){
     MKNetworkEngine *engine;
@@ -56,8 +57,8 @@
     tapGr.cancelsTouchesInView =NO;
     [self.view addGestureRecognizer:tapGr];
     
-    [self.imagePickBtn setBackgroundImage:[UIImage imageNamed:@"smiley_add_btn_nor.png"] forState:UIControlStateNormal];
-    [self.imagePickBtn setImage:[UIImage imageNamed:@"smiley_add_btn_pressed.png"] forState:UIControlStateHighlighted];
+//    [self.imagePickBtn setBackgroundImage:[UIImage imageNamed:@"smiley_add_btn_nor.png"] forState:UIControlStateNormal];
+//    [self.imagePickBtn setImage:[UIImage imageNamed:@"smiley_add_btn_pressed.png"] forState:UIControlStateHighlighted];
     
     //添加按钮
     UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(saveData)];
@@ -74,6 +75,8 @@
     self.chosenImages = [[NSMutableArray alloc] init];
     //[self.myscrollview setFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-64)];
     fileArr = [[NSMutableArray alloc] init];
+    
+    [self.contentTextview addPlaceHolder:@"请填写内容"];
     
 }
 
