@@ -9,7 +9,6 @@
 #import "GgxqViewController.h"
 #import "Utils.h"
 #import "UIImageView+AFNetworking.h"
-#import "MKNetworkKit.h"
 #import "ContentCell.h"
 #import "PinglunTableViewCell.h"
 #import "IQKeyboardManager.h"
@@ -18,7 +17,6 @@
 #import "MLPhotoBrowserViewController.h"
 
 @interface GgxqViewController (){
-    MKNetworkEngine *engine;
     NSNumber *totalpage;
     NSNumber *page;
     NSNumber *rows;
@@ -239,8 +237,6 @@
     }
     
     [self initTextView];
-
-    engine = [[MKNetworkEngine alloc] initWithHostName:[Utils getHostname] customHeaderFields:nil];
     
     UIView *v = [[UIView alloc] initWithFrame:CGRectZero];
     [mytableview setTableFooterView:v];
@@ -511,7 +507,7 @@
                 }
                 x = 5+(105 * (i % 3));
                 UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, 100, 100)];
-                [imageview setImageWithURL:[picDic objectForKey:@"fileId"]];
+                [imageview setImageWithURL:[NSURL URLWithString:[picDic objectForKey:@"fileId"]]];
                 imageview.tag = i;
                 imageview.userInteractionEnabled = YES;
                 UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPic:)];
