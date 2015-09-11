@@ -226,12 +226,12 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                             }
                             break;
                         case 10:
-                            if (height <= 480) {
+                            if (height <= 480) {//iphone4s
                                 btnr = CGRectMake(width+width/2-45, 135, 90, 90);
-                            }else if(height <= 1334/2){
+                            }else if(height <= 1334/2){//iphone5 iphone6
                                 btnr = CGRectMake(width+width/2-45, 10, 90, 90);
-                            }else{
-                                btnr = CGRectMake(width/2-45, 10, 90, 90);
+                            }else{//iphone6p
+                                btnr = CGRectMake(width/2-45, 385, 90, 90);
                             }
                             break;
                         default:
@@ -439,7 +439,8 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                     }
                 }
                 if (i > 6) {
-                    if (height <= 480) {
+                    
+                    if (height <= 480) {//iphone4s
                         [mainScrollView setContentSize:CGSizeMake(width*2, height-170)];
                         if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
                             spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-30, width, 10)];
@@ -451,7 +452,8 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         spacePageControl.numberOfPages = 2;
                         spacePageControl.userInteractionEnabled = NO;
                         [self.view addSubview:spacePageControl];
-                    }else{
+                    }else if(height <= 1334/2){//iphone5 iphone6
+                        
                         if (i > 9) {
                             if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1){
                                 spacePageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0.0, height-20, width, 10)];
@@ -467,6 +469,8 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
                         }else{
                             [mainScrollView setContentSize:CGSizeMake(width, height-170)];
                         }
+                    }else{//iphone6p
+                         [mainScrollView setContentSize:CGSizeMake(width, height-170)];
                     }
                 }else{
                     [mainScrollView setContentSize:CGSizeMake(width, height-170)];
@@ -831,24 +835,30 @@ static const CGFloat kDefaultPlaySoundInterval = 3.0;
 //育儿资讯
 - (IBAction)yezxAction:(UIButton *)sender {
     
-    NSMutableArray *vcs = [NSMutableArray array];
-    for (int i = 0; i < [typearr count]; i++) {
-        NSDictionary *type = [typearr objectAtIndex:i];
+    if ([typearr count] > 0) {
+        NSMutableArray *vcs = [NSMutableArray array];
+        for (int i = 0; i < [typearr count]; i++) {
+            NSDictionary *type = [typearr objectAtIndex:i];
+            
+            MyViewController *vc = [[MyViewController alloc] init];
+            vc.typeId = [type objectForKey:@"id"];
+            //        UIViewController *vc = [[UIViewController alloc] init];
+            vc.title = [NSString stringWithFormat:@"%@", [type objectForKey:@"typename"]];
+            [vcs addObject:vc];
+        }
         
-        MyViewController *vc = [[MyViewController alloc] init];
-        vc.typeId = [type objectForKey:@"id"];
-        //        UIViewController *vc = [[UIViewController alloc] init];
-        vc.title = [NSString stringWithFormat:@"%@", [type objectForKey:@"typename"]];
-        [vcs addObject:vc];
+        JYSlideSegmentController *slideSegmentController = [[JYSlideSegmentController alloc] initWithViewControllers:vcs];
+        slideSegmentController.title = @"育儿资讯";
+        slideSegmentController.indicatorInsets = UIEdgeInsetsMake(0, 8, 8, 8);
+        slideSegmentController.indicator.backgroundColor = [UIColor greenColor];
+        
+        [self.navigationController setNavigationBarHidden:NO];
+        [self.navigationController pushViewController:slideSegmentController animated:YES];
+    }else{
+        [self showHint:@"暂时没有育儿资讯"];
     }
     
-    JYSlideSegmentController *slideSegmentController = [[JYSlideSegmentController alloc] initWithViewControllers:vcs];
-    slideSegmentController.title = @"育儿资讯";
-    slideSegmentController.indicatorInsets = UIEdgeInsetsMake(0, 8, 8, 8);
-    slideSegmentController.indicator.backgroundColor = [UIColor greenColor];
     
-    [self.navigationController setNavigationBarHidden:NO];
-    [self.navigationController pushViewController:slideSegmentController animated:YES];
     
     
 }
